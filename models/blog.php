@@ -1,6 +1,6 @@
 <?php
   class Blog {
-    // we define 3 attributes
+    // defining the attributes
     public $blogID;
     public $userName;
     public $title;
@@ -26,33 +26,9 @@
     }
     public static function all() 
     {
-      $sql='SELECT 
-                b.BlogID
-                ,u.Username
-                ,b.Title
-                ,b.Content
-                ,cou.CountryName
-                ,con.ContinentName
-                ,cat.CategoryName
-                ,b.DatePosted
-                ,b.LikeCounter
-
-                FROM `blog` as b
-                INNER JOIN country as cou
-                ON b.CountryID = cou.CountryID
-                INNER JOIN continent as con
-                ON b.ContinentID = con.ContinentID
-                INNER JOIN category as cat
-                ON b.CategoryID = cat.CategoryID
-                INNER JOIN user as u
-                ON b.UserID = u.UserID
-
-
-                WHERE b.Published =1
-                ORDER BY b.DatePosted DESC';
       $list = [];
       $db = Db::getInstance();
-      $req = $db->query($sql);
+      $req = $db->query('Call findAllPublishedBlogs'); //stored procedure that returns all blogs in reverse chronological order
       // we create a list of Product objects from the database results
       foreach($req->fetchAll() as $blog) 
           {
@@ -60,23 +36,26 @@
       }
       return $list;
     }
-    public static function find($id) {
-      $db = Db::getInstance();
-      //use intval to make sure $id is an integer
-      $id = intval($id);
-      $req = $db->prepare('SELECT * FROM blog WHERE id = :id');
-      //the query was prepared, now replace :id with the actual $id value
-      $req->execute(array('id' => $id));
-      $blog = $req->fetch();
-if($blog){
-      return new Blog($blog['id'], $blog['name'], $blog['price']);
-    }
-    else
-    {
-        //replace with a more meaningful exception
-        throw new Exception('A real exception should go here');
-    }
-    }
+    
+    
+//    public static function find($id) {
+//      $db = Db::getInstance();
+//      //use intval to make sure $id is an integer
+//      $id = intval($id);
+//      $req = $db->prepare('SELECT * FROM blog WHERE id = :id');
+//      //the query was prepared, now replace :id with the actual $id value
+//      $req->execute(array('id' => $id));
+//      $blog = $req->fetch();
+//if($blog){
+//      return new Blog($blog['id'], $blog['name'], $blog['price']);
+//    }
+//    else
+//    {
+//        //replace with a more meaningful exception
+//        throw new Exception('A real exception should go here');
+//    }
+//    }
+    
 public static function update($id) {
     $db = Db::getInstance();
     $req = $db->prepare("Update product set name=:name, price=:price where id=:id");
@@ -84,7 +63,7 @@ public static function update($id) {
     $req->bindParam(':name', $name);
     $req->bindParam(':price', $price);
 // set name and price parameters and execute
-    if(isset($_POST['name'])&& $_POST['name']!=""){
+if(isset($_POST['name'])&& $_POST['name']!=""){
         $filteredName = filter_input(INPUT_POST,'name', FILTER_SANITIZE_SPECIAL_CHARS);
     }
     if(isset($_POST['price'])&& $_POST['price']!=""){
@@ -124,8 +103,8 @@ $req->execute();
         $conid= $_POST['Continent'];
         $catid=$_POST['Category'];
         $dp="13/5/19";
-        $lic=20;
-        $pub="True";
+        #$lic=20;
+        #$pub="True";
         $req->bindParam(':BlogID', $bid);
         $req->bindParam(':UserID', $uid);
         $req->bindParam(':Title', $Title);
@@ -134,8 +113,8 @@ $req->execute();
         $req->bindParam(':ContinentID', $conid);
         $req->bindParam(':CategoryID', $catid);
         $req->bindParam(':DatePosted', $dp);
-        $req->bindParam(':LikeCounter', $lic);
-        $req->bindParam(':Published', $pub);
+        #$req->bindParam(':LikeCounter', $lic);
+        #$req->bindParam(':Published', $pub);
 
     $req->execute();
     //upload product image
