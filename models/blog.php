@@ -8,26 +8,54 @@
     public $countryName;
     public $continentName;
     public $categoryName;
-    public $userID;
+    public $username;
+    public $likecounter;
 
 
-    public function __construct($blogID, $title, $content, $userID) {
+    public function __construct($blogID, $title, $content, $countryName, $continentName, $categoryName, $username, $likecounter) {
       $this->blogID    = $blogID;
       $this->title  = $title;
       $this->content = $content;
-//      $this->countryName = $countryName;
-//      $this->continetName = $continetName;
-//      $this->categoryName = $categoryName;
-      $this->userID = $userID;
+      $this->countryName = $countryName;
+      $this->continentName = $continentName;
+      $this->categoryName = $categoryName;
+      $this->username = $username;
+      $this->likecounter=$likecounter;
     }
 
+   
     public static function all() {
+        
+       $sql='SELECT 
+                b.BlogID
+                ,u.Username
+                ,b.Title
+                ,b.Content
+                ,cou.CountryName
+                ,con.ContinentName
+                ,cat.CategoryName
+                ,b.DatePosted
+                ,b.LikeCounter
+
+                FROM `blog` as b
+                INNER JOIN country as cou
+                ON b.CountryID = cou.CountryID
+                INNER JOIN continent as con
+                ON b.ContinentID = con.ContinentID
+                INNER JOIN category as cat
+                ON b.CategoryID = cat.CategoryID
+                INNER JOIN user as u
+                ON b.UserID = u.UserID
+
+
+                WHERE b.Published =1
+                ORDER BY b.DatePosted DESC';
       $list = [];
       $db = Db::getInstance();
-      $req = $db->query('SELECT * FROM Blog');
+      $req = $db->query($sql);
       // we create a list of Product objects from the database results
       foreach($req->fetchAll() as $blog) {
-        $list[] = new Blog($blog['blogID'], $blog['Title'], $blog['content'],$blog['userID']);
+        $list[] = new Blog($blog['BlogID'], $blog['Title'], $blog['Content'], $blog['CountryName'], $blog['ContinentName'], $blog['CategoryName'],$blog['Username'], $blog['LikeCounter']);
       }
       return $list;
     }
