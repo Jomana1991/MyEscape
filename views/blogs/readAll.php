@@ -20,10 +20,9 @@
         echo $blog->content."<br>";
     
     }
-    
-    
-    
+      
     ?> &nbsp; &nbsp;
+    
     <a href='?controller=product&action=read&blogID=<?php echo $blog->blogID; ?>'> Read Blog </a> &nbsp; &nbsp;
     <a href='?controller=product&action=update&blogID=<?php echo $blog->blogID; ?>'> Update Blog </a> &nbsp; &nbsp;
 <!--    Probably only want to be able to delete blogs if they belong to that user - otherwise anyone can delete anyone's blog-->
