@@ -40,10 +40,10 @@ class BlogController {
         
       if($_SERVER['REQUEST_METHOD'] == 'GET'){
           if (!isset($_GET['id']))
-        return call('pages', 'error');
+        return call('pages', 'error');#requires better exception handling
 
-        // we use the given id to get the correct product
-        $product = Product::find($_GET['id']);
+        // we use the given id to get the correct blog for updating
+        $blog= Blog::find($_GET['id']);
       
         require_once('views/blogs/update.php');
         }
@@ -57,12 +57,12 @@ class BlogController {
       }
       
     }
-    public function delete() {
-            Blog::remove($_GET['id']);
-            
-            $blog = Blog::all();
-            require_once('views/blogs/readAll.php');
-      }
+//    public function delete() {
+//            Blog::remove($_GET['id']);
+//            
+//            $blog = Blog::all();
+//            require_once('views/blogs/readAll.php');
+//      }
       
     }
   
