@@ -9,12 +9,12 @@ class BlogController {
     public function read() {
       // we expect a url of form ?controller=posts&action=show&id=x
       // without an id we just redirect to the error page as we need the post id to find it in the database
-      if (!isset($_GET['id']))
+      if (!isset($_GET['BlogID']))
         return call('pages', 'error');
 
       try{
       // we use the given id to get the correct post
-      $blog = Blog::find($_GET['id']);
+      $blog = Blog::find($_GET['BlogID']);
       require_once('views/blogs/read.php');
       }
  catch (Exception $ex){
