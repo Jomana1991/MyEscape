@@ -10,8 +10,8 @@
     echo $blog->username."<br>";
     echo $blog->categoryName."<br>";
     ?> &nbsp; &nbsp;
-<!--    <a href='?controller=product&action=read&blogID= echo $blog->blogID; '> test </a> &nbsp; &nbsp;
-    <a href='?controller=product&action=delete&blogID= echo $blog->blogID; '> </a> &nbsp; &nbsp;
+ <a href='?controller=blog&action=read&BlogID=<?php echo $blog->blogID;?>'> Read full blog </a> &nbsp; &nbsp;
+   <!-- <a href='?controller=product&action=delete&blogID= echo $blog->blogID; '> </a> &nbsp; &nbsp;
     <a href='?controller=product&action=update&content= echo $blog->content; '> </a> &nbsp;
     <a href='?controller=product&action=update&blogID= echo $blog->content; '> </a> &nbsp;
   </p>-->

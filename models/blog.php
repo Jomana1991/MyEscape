@@ -64,12 +64,12 @@
       $db = Db::getInstance();
       //use intval to make sure $id is an integer
       $id = intval($id);
-      $req = $db->prepare('SELECT * FROM blog WHERE id = :id');
+      $req = $db->prepare('SELECT * FROM blog WHERE BlogID = :BlogID');
       //the query was prepared, now replace :id with the actual $id value
-      $req->execute(array('id' => $id));
+      $req->execute(array('BlogID' => $id));
       $blog = $req->fetch();
 if($blog){
-      return new Blog($blog['id'], $blog['name'], $blog['price']);
+      return new Blog($blog['BlogID'], $blog['Title'], $blog['Content'], $blog['CountryID'], $blog['ContinentID'], $blog['CategoryID'],$blog['UserID'], $blog['LikeCounter']);
     }
     else
     {
