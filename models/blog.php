@@ -36,6 +36,7 @@
       }
       return $list;
     }
+<<<<<<< HEAD
     
     
 //    public static function find($id) {
@@ -56,6 +57,25 @@
 //    }
 //    }
     
+=======
+    public static function find($id) {
+      $db = Db::getInstance();
+      //use intval to make sure $id is an integer
+      $id = intval($id);
+      $req = $db->prepare('SELECT * FROM blog WHERE BlogID = :BlogID');
+      //the query was prepared, now replace :id with the actual $id value
+      $req->execute(array('BlogID' => $id));
+      $blog = $req->fetch();
+if($blog){
+      return new Blog($blog['BlogID'], $blog['Title'], $blog['Content'], $blog['CountryID'], $blog['ContinentID'], $blog['CategoryID'],$blog['UserID'], $blog['LikeCounter']);
+    }
+    else
+    {
+        //replace with a more meaningful exception
+        throw new Exception('A real exception should go here');
+    }
+    }
+>>>>>>> master
 public static function update($id) {
     $db = Db::getInstance();
     $req = $db->prepare("Update product set name=:name, price=:price where id=:id");
