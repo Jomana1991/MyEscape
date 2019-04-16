@@ -36,38 +36,42 @@
       }
       return $list;
     }
-<<<<<<< HEAD
-    
-    
-//    public static function find($id) {
-//      $db = Db::getInstance();
-//      //use intval to make sure $id is an integer
-//      $id = intval($id);
-//      $req = $db->prepare('SELECT * FROM blog WHERE id = :id');
-//      //the query was prepared, now replace :id with the actual $id value
-//      $req->execute(array('id' => $id));
-//      $blog = $req->fetch();
-//if($blog){
-//      return new Blog($blog['id'], $blog['name'], $blog['price']);
-//    }
-//    else
-//    {
-//        //replace with a more meaningful exception
-//        throw new Exception('A real exception should go here');
-//    }
-//    }
-    
-=======
+
     public static function find($id) {
       $db = Db::getInstance();
       //use intval to make sure $id is an integer
       $id = intval($id);
-      $req = $db->prepare('SELECT * FROM blog WHERE BlogID = :BlogID');
+      $sqlfind = 'SELECT 
+                b.BlogID
+                ,u.Username
+                ,b.Title
+                ,b.Content
+                ,cou.CountryName
+                ,con.ContinentName
+                ,cat.CategoryName
+                ,b.DatePosted
+                ,b.LikeCounter
+
+                FROM `blog` as b
+                INNER JOIN country as cou
+                ON b.CountryID = cou.CountryID
+                INNER JOIN continent as con
+                ON b.ContinentID = con.ContinentID
+                INNER JOIN category as cat
+                ON b.CategoryID = cat.CategoryID
+                INNER JOIN user as u
+                ON b.UserID = u.UserID
+                
+                WHERE b.BlogID = :BlogID;';
+
+
+
+      $req = $db->prepare($sqlfind);
       //the query was prepared, now replace :id with the actual $id value
       $req->execute(array('BlogID' => $id));
       $blog = $req->fetch();
 if($blog){
-      return new Blog($blog['BlogID'], $blog['Title'], $blog['Content'], $blog['CountryID'], $blog['ContinentID'], $blog['CategoryID'],$blog['UserID'], $blog['LikeCounter']);
+      return new Blog($blog['BlogID'], $blog['Title'], $blog['Content'], $blog['CountryName'], $blog['ContinentName'], $blog['CategoryName'],$blog['Username'], $blog['LikeCounter']);
     }
     else
     {
@@ -75,27 +79,53 @@ if($blog){
         throw new Exception('A real exception should go here');
     }
     }
->>>>>>> master
-public static function update($id) {
+
+public static function modify($id) {
     $db = Db::getInstance();
-    $req = $db->prepare("Update product set name=:name, price=:price where id=:id");
-    $req->bindParam(':id', $id);
-    $req->bindParam(':name', $name);
-    $req->bindParam(':price', $price);
+    $sqlmodify="UPDATE blog SET
+                UserID = (SELECT UserID FROM user WHERE Username = :username) 
+                ,Title = :title
+                , Content = :content
+                , CountryID = (SELECT CountryID FROM country WHERE CountryName = :countryName)
+                , ContinentID = (SELECT ContinentID FROM continent WHERE ContinentName = :continentName)
+                , CategoryID = (SELECT CategoryID FROM category WHERE CategoryName = :categoryName)
+
+                WHERE BlogID=:blogID";
+    
+    $req = $db->prepare($sqlmodify);
+    $req->bindParam(':blogID', $id);
+    $req->bindParam(':username', $username);
+    $req->bindParam(':title', $title);
+    $req->bindParam(':content', $content);
+    $req->bindParam(':countryName', $countryName);
+    $req->bindParam(':continentName', $continentName);
+    $req->bindParam(':categoryName', $categoryName);
+    
 // set name and price parameters and execute
-if(isset($_POST['name'])&& $_POST['name']!=""){
-        $filteredName = filter_input(INPUT_POST,'name', FILTER_SANITIZE_SPECIAL_CHARS);
+if(isset($_POST['username'])&& $_POST['username']!=""){
+        $username = filter_input(INPUT_POST,'username', FILTER_SANITIZE_SPECIAL_CHARS);
     }
-    if(isset($_POST['price'])&& $_POST['price']!=""){
-        $filteredPrice = filter_input(INPUT_POST,'price', FILTER_SANITIZE_SPECIAL_CHARS);
+    if(isset($_POST['countryName'])&& $_POST['countryName']!=""){
+        $countryName = filter_input(INPUT_POST,'countryName', FILTER_SANITIZE_SPECIAL_CHARS);
     }
-$name = $filteredName;
-$price = $filteredPrice;
+    if(isset($_POST['continentName'])&& $_POST['continentName']!=""){
+        $continentName = filter_input(INPUT_POST,'continentName', FILTER_SANITIZE_SPECIAL_CHARS);
+    }
+    if(isset($_POST['categoryName'])&& $_POST['categoryName']!=""){
+        $categoryName = filter_input(INPUT_POST,'categoryName', FILTER_SANITIZE_SPECIAL_CHARS);
+    }
+    if(isset($_POST['title'])&& $_POST['title']!=""){
+        $title = filter_input(INPUT_POST,'title', FILTER_SANITIZE_SPECIAL_CHARS);
+    }
+    if(isset($_POST['content'])&& $_POST['content']!=""){
+        $content = filter_input(INPUT_POST,'content', FILTER_SANITIZE_SPECIAL_CHARS);
+    }
+
 $req->execute();
 //upload product image if it exists
-        if (!empty($_FILES[self::InputKey]['name'])) {
-		Blog::uploadFile($name);
-	}
+//        if (!empty($_FILES[self::InputKey]['name'])) {
+//		Blog::uploadFile($name);
+//	}
     }
     
     public static function add() 
