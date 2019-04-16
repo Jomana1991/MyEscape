@@ -10,7 +10,7 @@
   </head>
   <body>
     <header class="w3-container w3-gray">
-      <a href='/MVC_Skeleton'>Home</a>
+      <a href='?controller=pages&action=home'>Home</a>
       <a href='?controller=blog&action=readAll'>Blogs</a>
       <a href='?controller=blog&action=create'>Add Blog</a>
     </header>
