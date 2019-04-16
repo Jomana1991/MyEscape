@@ -39,20 +39,20 @@ class BlogController {
     public function update() {
         
       if($_SERVER['REQUEST_METHOD'] == 'GET'){
-          if (!isset($_GET['id']))
+          if (!isset($_GET['BlogID']))
         return call('pages', 'error');#requires better exception handling
 
         // we use the given id to get the correct blog for updating
-        $blog= Blog::find($_GET['id']);
+        $blog= Blog::find($_GET['BlogID']);
       
         require_once('views/blogs/update.php');
         }
       else
           { 
-            $id = $_GET['id'];
-            Product::update($id);
+            $id = $_GET['BlogID'];
+            Blog::modify($id);
                         
-            $blog = Product::all();
+            $blogs = Blog::all();
             require_once('views/blogs/readAll.php');
       }
       
