@@ -29,7 +29,7 @@
       $list = [];
       $db = Db::getInstance();
       $req = $db->query('Call findAllPublishedBlogs'); //stored procedure that returns all blogs in reverse chronological order
-      // we create a list of Product objects from the database results
+      
       foreach($req->fetchAll() as $blog) 
           {
         $list[] = new Blog($blog['BlogID'], $blog['Title'], $blog['Content'], $blog['CountryName'], $blog['ContinentName'], $blog['CategoryName'],$blog['Username'], $blog['LikeCounter']);
@@ -197,13 +197,14 @@ public static function uploadFile(string $name) {
 		unlink($tempFile); 
 	}
 }
-public static function remove($id) {
+public static function delete($blogid) {
       $db = Db::getInstance();
       //make sure $id is an integer
-      $id = intval($id);
-      $req = $db->prepare('delete FROM product WHERE id = :id');
+      $blogid = intval($blogid);
+      $stmt = $db->prepare('call deleteBlog(:BlogID)');
+      $stmt->bindParam(':BlogID',$blogid);
       // the query was prepared, now replace :id with the actual $id value
-      $req->execute(array('id' => $id));
+      $stmt->execute();
   }
   
 }
