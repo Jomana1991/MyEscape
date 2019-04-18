@@ -67,6 +67,15 @@
                             <textarea name="Content" id="Content" class="form-control input-lg" placeholder=" Content" tabindex="5" cols="400" rows="10"></textarea>
                       </div>
                        
+            <div>
+                        <input type="hidden" 
+                               name="MAX_FILE_SIZE" 
+                               value="10000000"
+                               />
+
+                        <input type="file" name="myUploader" class="w3-btn w3-pink"  required />
+                    </div>
+
                         <div class="btn-toolbar">
                             <div class="btn-group">
                                 <button class="btn" data-original-title="Bold - Ctrl+B"><i class="icon-bold"></i></button>

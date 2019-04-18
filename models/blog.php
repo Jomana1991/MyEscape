@@ -168,7 +168,6 @@ $req->execute();
 
     $req->execute();
     //upload product image
-   
     Blog::uploadFile($Title);
     }
 const AllowedTypes = ['image/jpeg', 'image/jpg'];
