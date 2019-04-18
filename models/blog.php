@@ -41,32 +41,32 @@
       $db = Db::getInstance();
       //use intval to make sure $id is an integer
       $id = intval($id);
-      $sqlfind = 'SELECT 
-                b.BlogID
-                ,u.Username
-                ,b.Title
-                ,b.Content
-                ,cou.CountryName
-                ,con.ContinentName
-                ,cat.CategoryName
-                ,b.DatePosted
-                ,b.LikeCounter
+//      $sqlfind = 'SELECT 
+//                b.BlogID
+//                ,u.Username
+//                ,b.Title
+//                ,b.Content
+//                ,cou.CountryName
+//                ,con.ContinentName
+//                ,cat.CategoryName
+//                ,b.DatePosted
+//                ,b.LikeCounter
+//
+//                FROM `blog` as b
+//                INNER JOIN country as cou
+//                ON b.CountryID = cou.CountryID
+//                INNER JOIN continent as con
+//                ON b.ContinentID = con.ContinentID
+//                INNER JOIN category as cat
+//                ON b.CategoryID = cat.CategoryID
+//                INNER JOIN user as u
+//                ON b.UserID = u.UserID
+//                
+//                WHERE b.BlogID = :BlogID;';
 
-                FROM `blog` as b
-                INNER JOIN country as cou
-                ON b.CountryID = cou.CountryID
-                INNER JOIN continent as con
-                ON b.ContinentID = con.ContinentID
-                INNER JOIN category as cat
-                ON b.CategoryID = cat.CategoryID
-                INNER JOIN user as u
-                ON b.UserID = u.UserID
-                
-                WHERE b.BlogID = :BlogID;';
 
 
-
-      $req = $db->prepare($sqlfind);
+      $req = $db->prepare("Call findBlogByID(:BlogID)");
       //the query was prepared, now replace :id with the actual $id value
       $req->execute(array('BlogID' => $id));
       $blog = $req->fetch();
@@ -82,17 +82,17 @@ if($blog){
 
 public static function modify($id) {
     $db = Db::getInstance();
-    $sqlmodify="UPDATE blog SET
-                UserID = (SELECT UserID FROM user WHERE Username = :username) 
-                ,Title = :title
-                , Content = :content
-                , CountryID = (SELECT CountryID FROM country WHERE CountryName = :countryName)
-                , ContinentID = (SELECT ContinentID FROM continent WHERE ContinentName = :continentName)
-                , CategoryID = (SELECT CategoryID FROM category WHERE CategoryName = :categoryName)
-
-                WHERE BlogID=:blogID";
+//    $sqlmodify="UPDATE blog SET
+//                UserID = (SELECT UserID FROM user WHERE Username = :username) 
+//                ,Title = :title
+//                , Content = :content
+//                , CountryID = (SELECT CountryID FROM country WHERE CountryName = :countryName)
+//                , ContinentID = (SELECT ContinentID FROM continent WHERE ContinentName = :continentName)
+//                , CategoryID = (SELECT CategoryID FROM category WHERE CategoryName = :categoryName)
+//
+//                WHERE BlogID=:blogID";
     
-    $req = $db->prepare($sqlmodify);
+    $req = $db->prepare("Call updateBlog(:blogID, :username, :title, :content, :countryName, :continentName, :categoryName)");
     $req->bindParam(':blogID', $id);
     $req->bindParam(':username', $username);
     $req->bindParam(':title', $title);
@@ -206,9 +206,11 @@ public static function uploadFile(string $name) {
 public static function delete($blogid) {
       $db = Db::getInstance();
       //make sure $id is an integer
+
       $blogid = intval($blogid);
       $stmt = $db->prepare('call deleteBlog(:BlogID)');
       $stmt->bindParam(':BlogID',$blogid);
+
       // the query was prepared, now replace :id with the actual $id value
       $stmt->execute();
   }
