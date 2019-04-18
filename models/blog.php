@@ -168,7 +168,8 @@ $req->execute();
 
     $req->execute();
     //upload product image
-    //Blog::uploadFile($Title);
+   
+    Blog::uploadFile($Title);
     }
 const AllowedTypes = ['image/jpeg', 'image/jpg'];
 const InputKey = 'myUploader';
@@ -186,8 +187,9 @@ public static function uploadFile(string $name) {
 		trigger_error("Handle File Type Not Allowed: " . $_FILES[self::InputKey]['type']);
 	}
 	$tempFile = $_FILES[self::InputKey]['tmp_name'];
-        $path = "C:/xampp/htdocs/MVC_Skeleton/views/images/";
-	$destinationFile = $path . $name . '.jpeg';
+        $path = "/Applications/XAMPP/xamppfiles/htdocs/MyEscape/views/images/";
+	$destinationFile = $path .$name . '.jpeg';
+       
 	if (!move_uploaded_file($tempFile, $destinationFile)) {
 		trigger_error("Handle Error");
 	}
@@ -196,7 +198,12 @@ public static function uploadFile(string $name) {
 	if (file_exists($tempFile)) {
 		unlink($tempFile); 
 	}
+        
+        // $uploaddb = $db->prepare ( Insert into blogimage(BlogID,ImageName) Values ($destinaionFile,  where 
 }
+
+
+
 public static function delete($blogid) {
       $db = Db::getInstance();
       //make sure $id is an integer
