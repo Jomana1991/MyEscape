@@ -57,12 +57,12 @@ class BlogController {
       }
       
     }
-//    public function delete() {
-//            Blog::remove($_GET['id']);
-//            
-//            $blog = Blog::all();
-//            require_once('views/blogs/readAll.php');
-//      }
+    public function delete() {
+            Blog::delete($_GET['BlogID']);
+            
+            $blogs = Blog::all();
+            require_once('views/blogs/readAll.php');
+      }
       
     }
   

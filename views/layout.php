@@ -12,7 +12,8 @@
     <header class="w3-container w3-gray">
       <a href='?controller=pages&action=home'>Home</a>
       <a href='?controller=blog&action=readAll'>Blogs</a>
-      <a href='?controller=blog&action=create'>Add Blog</a>
+      <a href='?controller=user&action=login'>Login</a>
+      <a href='?controller=user&action=register'>Register</a>
     </header>
 <div class="w3-container w3-pink">
     <?php require_once('routes.php'); ?>
