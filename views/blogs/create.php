@@ -1,3 +1,9 @@
+<?php
+
+session_start();
+$_SESSION['Username'] = $_POST['Username']
+
+?>
 
 <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
@@ -101,6 +107,15 @@
                             <input style=" align: center; background-color: #183149; font-size: 15px; border-radius: 5px; border: none; box-shadow: 0px 8px 15px rgba(0,0,0,0.1); padding-top: 12px; padding-right: 27; padding-bottom: 12; padding-left: 27" type="submit" name="submit" value="SUBMIT" class="btn btn-primary btn-block btn-lg" tabindex="6">
         
                        </div>
+                        
+                        <div class="row">
+                       
+                                <a href='?controller=user&action=readMine&Username=<?php echo $_SESSION['Username']; ?>'> See my blogs </a> &nbsp; &nbsp;
+                                
+                                
+
+
+                        </div>
                 </form>    
             </div>
             </div>
