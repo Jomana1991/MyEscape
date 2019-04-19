@@ -29,15 +29,15 @@ class User {
         $query->bindParam(':Password', $Password);
 
         $query->execute();
-        foreach($query->fetchAll() as $result){
-
-        if (count($result) == 0) {
-            echo 'user not found';
-        } else if (count($result) == 1) {
-//            return new User($result['Username'], $result['Password'], $result['Email']);
-            header('location:?controller=blog&action=create');
+    $results = $query->fetchAll();
+        if ($results) {
+             header('location:?controller=blog&action=create');
+            
+        } else {
+            die ( 'user not found') ;
+            
         }
-    }}
+    }
 
     public static function register() {
         $db = Db::getInstance();

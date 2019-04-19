@@ -1,11 +1,32 @@
 
 
 
-<p>Here is a list of all blogs:</p>
+<?php 
 
-<?php foreach ($blogs as $blog) { ?>
-    <p>
-        <?php
+session_start();
+//if (isset($_GET['searchblog'])) {
+//   $_GET['searchblog'] = $_SESSION ['query'];
+//  header ("location:?controller=blog&action=search&query=".$_SESSION['query']); 
+// 
+//} 
+?>
+ <p>Search for a blog below</p>
+
+ <form action=" " method="POST">
+        <input type="text" name="query" />
+        <input type="submit" value="Search" />
+    </form>
+
+
+
+<p>results</p>
+
+<?php 
+if (isset($_POST['query'])) {
+
+ foreach ($blogs as $blog) { 
+    
+       
         echo $blog->title . "<br>";
 
         echo $blog->countryName . "<br>";
@@ -23,13 +44,7 @@
         }
         ?> &nbsp; &nbsp;
 
-        <a href='?controller=blog&action=read&BlogID=<?php echo $blog->blogID; ?>'> Read Full Blog </a> &nbsp; &nbsp;
-        <a href='?controller=blog&action=update&BlogID=<?php echo $blog->blogID; ?>'> Update Blog </a> &nbsp; &nbsp;
-        <!--    Probably only want to be able to delete blogs if they belong to that user - otherwise anyone can delete anyone's blog-->
-        <a href='?controller=blog&action=delete&BlogID=<?php echo $blog->blogID; ?>'> Delete Blog </a> &nbsp;
-    </p>
+<?php } } else { echo 'please search for blog'; } 
+?>
 
-<?php } ?>
-    
-   
 

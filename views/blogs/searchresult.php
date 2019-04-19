@@ -1,9 +1,10 @@
 
 
+<p>results</p>
 
-<p>Here is a list of all blogs:</p>
-
-<?php foreach ($blogs as $blog) { ?>
+<?php 
+ 
+foreach ($blogs as $blog) { ?>
     <p>
         <?php
         echo $blog->title . "<br>";
@@ -23,13 +24,6 @@
         }
         ?> &nbsp; &nbsp;
 
-        <a href='?controller=blog&action=read&BlogID=<?php echo $blog->blogID; ?>'> Read Full Blog </a> &nbsp; &nbsp;
-        <a href='?controller=blog&action=update&BlogID=<?php echo $blog->blogID; ?>'> Update Blog </a> &nbsp; &nbsp;
-        <!--    Probably only want to be able to delete blogs if they belong to that user - otherwise anyone can delete anyone's blog-->
-        <a href='?controller=blog&action=delete&BlogID=<?php echo $blog->blogID; ?>'> Delete Blog </a> &nbsp;
-    </p>
-
 <?php } ?>
     
-   
 
