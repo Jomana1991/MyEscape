@@ -1,8 +1,9 @@
 <?php
 
 session_start();
-$_SESSION['Username'] = $_POST['Username']
-
+if (!empty($_POST['username'])){
+$_SESSION['username'] = $_POST['username'];
+}
 ?>
 
 <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
@@ -53,24 +54,24 @@ $_SESSION['Username'] = $_POST['Username']
                             <p>Fill in the following form to create a new :</p>
                             <div class="col-xs-12 col-sm-6 col-md-6">
                                 <div class="form-group">
-                                    <input type="text" name="Title" id="Title" class="form-control input-lg" placeholder=" Blog Title" tabindex="1" required>
+                                    <input type="text" name="title" id="title" class="form-control input-lg" placeholder=" Blog Title" tabindex="1" required>
                                     
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-6 col-md-6">
                                 <div class="form-group">
-                                    <input type="text" name="Category" id="Category" class="form-control input-lg" placeholder=" Category" tabindex="2" required>
+                                    <input type="text" name="categoryName" id="category" class="form-control input-lg" placeholder=" Category" tabindex="2" required>
                                 </div>
                             </div>
                         </div>
                             <div class="form-group">
-                                <input type="text" name="Country" id="Country" class="form-control input-lg" placeholder=" Country" tabindex="3">
+                                <input type="text" name="countryName" id="country" class="form-control input-lg" placeholder=" Country" tabindex="3" required>
                             </div>
                         <div class="form-group">
-                                    <input type="text" name="Continent" id="Continent" class="form-control input-lg" placeholder="Continent" tabindex="4">
+                                    <input type="text" name="continentName" id="continent" class="form-control input-lg" placeholder="Continent" tabindex="4" required>
                                 </div>
                       <div class="form-group">
-                            <textarea name="Content" id="Content" class="form-control input-lg" placeholder=" Content" tabindex="5" cols="400" rows="10"></textarea>
+                            <textarea name="content" id="content" class="form-control input-lg" placeholder=" Content" tabindex="5" cols="400" rows="10" required></textarea>
                       </div>
                        
             <div>
@@ -79,7 +80,7 @@ $_SESSION['Username'] = $_POST['Username']
                                value="10000000"
                                />
 
-                        <input type="file" name="myUploader" class="w3-btn w3-pink"  required />
+<!--                        <input type="file" name="blogUploader" class="w3-btn w3-pink"   />-->
                     </div>
 
                         <div class="btn-toolbar">
@@ -110,7 +111,7 @@ $_SESSION['Username'] = $_POST['Username']
                         
                         <div class="row">
                        
-                                <a href='?controller=user&action=readMine&Username=<?php echo $_SESSION['Username']; ?>'> See my blogs </a> &nbsp; &nbsp;
+                                <a href='?controller=user&action=readMine&Username=<?php echo $_SESSION['username']; ?>'> See my blogs </a> &nbsp; &nbsp;
                                 
                                 
 
