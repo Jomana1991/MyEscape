@@ -95,5 +95,24 @@ class User {
       }
       return $list;
     }
+    
+    
+    public static function contactus() {
+        $db = Db::getInstance();
+        $stmt = $db->prepare("INSERT INTO userfeedback (FullName, Email,Comments) VALUES ( :FullName, :Email, :Comments)");
+
+        $fullname = $_POST["fullname"];
+        $email = $_POST["email"];
+        $comments = $_POST["comments"];
+
+        $stmt->bindParam(':FullName', $fullname);
+        $stmt->bindParam(':Email', $email);
+        $stmt->bindParam(':Comments', $comments);
+        
+        $result = $stmt->execute();
+         
+         if ($result ==1 ) { echo "Thanks for the feedback,we will get back to you soon";}
+    }
+    
 
 }
