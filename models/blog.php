@@ -98,7 +98,7 @@ class Blog {
         
     //only upload blog image if one loaded
        if (!empty($_FILES[self::UploadKey]['name'])) {
-                    Blog::uploadFile($title);
+                    Blog::uploadFile($title."_".$username);
         }//need to handle so that if there is an error with image upload, blog content not added to db
 }    
 }
