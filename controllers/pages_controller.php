@@ -10,7 +10,7 @@ class PagesController {
     }
 
     public function aboutus(){
-        require_once('views/blogs/aboutus.php');
+        require_once('views/pages/aboutus.php');
         
     } 
     public function error() {
@@ -18,7 +18,7 @@ class PagesController {
     }
     
      public function contactus(){
-        require_once('views/blogs/contactus.php');
+        require_once('views/users/contactus.php');
         
     } 
 }
