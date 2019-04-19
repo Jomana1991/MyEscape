@@ -62,6 +62,7 @@ class BlogController {
         }
     }
 
+    
     public function delete() {
         Blog::delete($_GET['blogID']);
 
@@ -69,6 +70,7 @@ class BlogController {
         require_once('views/blogs/readAll.php');
     }
 
+    
     public function search() {
 
        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
