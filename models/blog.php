@@ -156,33 +156,24 @@ public static function modify($id) {
         $req->bindParam(':continentName', $continentName);
         $req->bindParam(':categoryName', $categoryName);
 
-    // set name and price parameters and execute
-    if(isset($_POST['username'])&& $_POST['username']!=""){
-            $username = filter_input(INPUT_POST,'username', FILTER_SANITIZE_SPECIAL_CHARS);
+    
+        $blogUpdateDetails = filter_input_array(INPUT_POST);
+                   
+        //asking whether title is empty refers to whether the addform has been submitted yet, if not the query is run
+        if(!empty($_POST['title'])){//loops through Post Superglobal array, sanitising each input item
+        
+            foreach($blogUpdateDetails as $blogDetail => $blogValue) {
+                ${$blogDetail} = Blog::filterInput($blogDetail);
+            }
+        
+     
+            $req->execute();
+            //upload product image if it exists
+                    if (!empty($_FILES[self::UploadKey]['name'])) {
+                        Blog::uploadFile($title."_".$username);
+                    }
         }
-        if(isset($_POST['countryName'])&& $_POST['countryName']!=""){
-            $countryName = filter_input(INPUT_POST,'countryName', FILTER_SANITIZE_SPECIAL_CHARS);
-        }
-        if(isset($_POST['continentName'])&& $_POST['continentName']!=""){
-            $continentName = filter_input(INPUT_POST,'continentName', FILTER_SANITIZE_SPECIAL_CHARS);
-        }
-        if(isset($_POST['categoryName'])&& $_POST['categoryName']!=""){
-            $categoryName = filter_input(INPUT_POST,'categoryName', FILTER_SANITIZE_SPECIAL_CHARS);
-        }
-        if(isset($_POST['title'])&& $_POST['title']!=""){
-            $title = filter_input(INPUT_POST,'title', FILTER_SANITIZE_SPECIAL_CHARS);
-        }
-        if(isset($_POST['content'])&& $_POST['content']!=""){
-            $content = filter_input(INPUT_POST,'content', FILTER_SANITIZE_SPECIAL_CHARS);
-        }
-
-    $req->execute();
-    //upload product image if it exists
-            if (!empty($_FILES[self::UploadKey]['name'])) {
-    		Blog::uploadFile($title."_".$username);
-    }
-        }
-
+}
         
     public static function delete($blogid) {
         $db = Db::getInstance();
