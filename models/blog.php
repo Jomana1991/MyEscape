@@ -178,9 +178,9 @@ public static function modify($id) {
 
     $req->execute();
     //upload product image if it exists
-    //        if (!empty($_FILES[self::InputKey]['name'])) {
-    //		Blog::uploadFile($name);
-    //	}
+            if (!empty($_FILES[self::UploadKey]['name'])) {
+    		Blog::uploadFile($title."_".$username);
+    }
         }
 
         
