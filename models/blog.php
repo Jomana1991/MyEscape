@@ -60,14 +60,12 @@ class Blog {
 
     
     public static function filterInput($blogDetail) {//create a sanitising function for sanitising strings
-            if(isset($_POST["$blogDetail"])&& $_POST["$blogDetail"]!=""){    
-                return filter_input(INPUT_POST,$blogDetail,FILTER_SANITIZE_STRING,FILTER_FLAG_STRIP_HIGH);
+        if(isset($_POST["$blogDetail"])&& $_POST["$blogDetail"]!=""){    
+            return filter_input(INPUT_POST,$blogDetail,FILTER_SANITIZE_STRING,FILTER_FLAG_STRIP_HIGH);
             }
     }
        
-    const AllowedTypes = ['image/jpeg','image/jpg'];
-    const UploadKey = 'blogUploader';
-    
+      
     public static function add() 
     {   session_start();
         $db = Db::getInstance();
@@ -102,7 +100,8 @@ class Blog {
         }//need to handle so that if there is an error with image upload, blog content not added to db
 }    
 }
-    
+    const AllowedTypes = ['image/jpeg','image/jpg'];
+    const UploadKey = 'blogUploader';
         
     
     //die() function calls replaced with trigger_error() calls
