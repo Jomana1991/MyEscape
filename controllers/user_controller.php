@@ -22,7 +22,7 @@ class userController {
 
 public function contactus(){
      if($_SERVER['REQUEST_METHOD'] == 'GET'){
-          require_once('views/blogs/contactus.php');
+          require_once('views/users/contactus.php');
        }
       else { 
             User::contactus();
