@@ -85,7 +85,9 @@ class User {
                 INNER JOIN user as u
                ON b.UserID = u.UserID
                
-               WHERE u.Username = :Username;';
+               WHERE u.Username = :Username
+               ORDER BY b.DatePosted DESC;';
+       
       
       $req = $db->prepare($sqlfindmine);
       
