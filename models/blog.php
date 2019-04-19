@@ -191,12 +191,13 @@ class Blog {
       
              $db = Db::getInstance();
              $list = [];
+             
             if (isset($_POST['query']) && $_POST['query'] != "") {
                 $search = filter_input(INPUT_POST, 'query', FILTER_SANITIZE_SPECIAL_CHARS);
             }
             $likesearch = "%$search%";
 
-            $sqlsearch = $db->prepare( "SELECT 
+            $sqlsearch = "SELECT 
                 b.BlogID
                 ,u.Username
                ,b.Title
@@ -217,32 +218,27 @@ class Blog {
                INNER JOIN user as u
                ON b.UserID = u.UserID
                
-               WHERE (cou.CountryName LIKE :query ) OR (cat.CategoryName LIKE :query) OR (con.ContinentName LIKE :query) OR (b.Title LIKE :query)");
+               WHERE (cou.CountryName LIKE :query ) OR (cat.CategoryName LIKE :query) OR (con.ContinentName LIKE :query) OR (b.Title LIKE :query) OR (b.Content LIKE :query)
+               ORDER BY b.DatePosted DESC;";
+         
+            $db->prepare($sqlsearch);
+            $req->execute(array ('query' => $likesearch));
+            
+            foreach ($req->fetchAll() as $blog) {
+                $list[] = new Blog($blog['BlogID'], $blog['Title'], $blog['Content'], $blog['CountryName'], $blog['ContinentName'], $blog['CategoryName'], $blog['Username'], $blog['LikeCounter']);
+            }
+            
+            return $list;
 
-//            $sqlsearch = "SELECT Title, Country , Category , Continent, Title, from blog
-//                                        where Country = '$search' OR Continent = '$search' OR Category = '$search' OR Title = '$search' ";
-
-          
-//            $db->query($sqlsearch);
-          
-
-           $sqlsearch->execute(array ('query' => $likesearch));
-        foreach ($sqlsearch->fetchAll() as $blog) {
-            $list[] = new Blog($blog['BlogID'], $blog['Title'], $blog['Content'], $blog['CountryName'], $blog['ContinentName'], $blog['CategoryName'], $blog['Username'], $blog['LikeCounter']);
-        }
-        return $list;
-
-
-
-      // the query was prepared, now replace :id with the actual $id value
-      $stmt->execute();
-  }
+}
   
-public function getBlogImageDestination(){
+  
+    public function getBlogImageDestination(){
                 return $this->blogImageDestination;
             }
 
-            public function setBlogImageDestination($newBlogImageDestination){
+            
+    public function setBlogImageDestination($newBlogImageDestination){
                 $this->blogImageDestination=$newBlogImageDestination;
             }
   
