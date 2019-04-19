@@ -1,11 +1,12 @@
 <?php
 class BlogController {
+   
     public function readAll() {
-      // we store all the posts in a variable
       $blogs = Blog::all();
       require_once('views/blogs/readAll.php');
     }
 
+    
     public function read() {
       // we expect a url of form ?controller=posts&action=show&id=x
       // without an id we just redirect to the error page as we need the post id to find it in the database
@@ -17,10 +18,12 @@ class BlogController {
       $blog = Blog::find($_GET['BlogID']);
       require_once('views/blogs/read.php');
       }
- catch (Exception $ex){
-     return call('pages','error');
- }
+      catch (Exception $ex){
+      return call('pages','error');
+      }
     }
+    
+    
     public function create() {
       // we expect a url of form ?controller=products&action=create
       // if it's a GET request display a blank form for creating a new product
@@ -31,11 +34,13 @@ class BlogController {
       else { 
             Blog::add();
              
-            $blogs = Blog::all(); //$products is used within the view
+            $blogs = Blog::all(); 
             require_once('views/blogs/readAll.php');
       }
       
     }
+    
+    
     public function update() {
         
       if($_SERVER['REQUEST_METHOD'] == 'GET'){
