@@ -1,7 +1,7 @@
 
 
 <p>please login below</p>
-<form method='POST' action="?controller=blog&action=create">
+<form method='POST' action=" ">
 <input type="text" name="username" value="" >
 <input type="password" name="Password" value="" >
 
