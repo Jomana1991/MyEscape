@@ -7,7 +7,7 @@
 </p>
 
 <?php
-    $file = 'views/images/' . $blog->title . '.jpeg';
+    $file = 'views/blogImages/' . $blog->title . '.jpeg';
     
     if(file_exists($file)){
         $img = "<img src='$file' width='150' />";
