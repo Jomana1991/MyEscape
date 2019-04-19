@@ -4,15 +4,16 @@ class userController {
     public function login() {
         
          if($_SERVER['REQUEST_METHOD'] == 'GET'){
-             require_once('views/blogs/login.php');
+             require_once('views/users/login.php');
          }
          
          else { 
             User::login();
              
             require_once('views/blogs/create.php');
-             require_once('./models/blog.php');
+            require_once('./models/blog.php');
             $blogs = Blog::add();
+           
       }
  
       
@@ -22,7 +23,7 @@ class userController {
 
     public function register() {
       if($_SERVER['REQUEST_METHOD'] == 'GET'){
-          require_once('views/blogs/register.php');
+          require_once('views/users/register.php');
        }
       else { 
             User::register();
@@ -40,7 +41,7 @@ class userController {
       try{
       // we use the given id to get the correct post
       $blogs = User::readMine($_GET['Username']);
-      require_once('views/blogs/readMine.php');
+      require_once('views/users/readMine.php');
       }
  catch (Exception $ex){
      return call('pages','error');
