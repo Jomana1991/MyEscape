@@ -6,8 +6,8 @@
 
 <?php foreach($blogs as $blog) { ?>
   <p>
-    <?php echo $blog->title ."<br>";
-    
+    <?php 
+    echo "<strong>".$blog->title ."</strong>". "<br>";
     echo $blog->username."<br>";
     echo $blog->categoryName."<br>";
     echo $blog->countryName."<br>";
@@ -16,12 +16,12 @@
     
     //If blog is greater than 150 characters, the content will be shortened to 150 characters, if not the whole content will be echo'd
     if (strlen($blog->content) > 150){ 
-        echo substr($blog->content,0,strpos(wordwrap($blog->content, 150), "\n")).'...'."<br>";
+        echo substr($blog->content,0,strpos(wordwrap($blog->content, 150), "\n")).'...'."<br><br>";
 //        here I am using wordwrap to line break at the nearest word to 150 characters(so you don't get half words),
 //        strpos then returns the position of the first line break, and the content will therefore be shortened to this position by substr
     }   
     else {
-        echo $blog->content."<br>";
+        echo $blog->content."<br><br>";
     
     }
       
