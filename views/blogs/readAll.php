@@ -27,10 +27,10 @@
       
     ?> &nbsp; &nbsp;
     
-    <a href='?controller=blog&action=read&BlogID=<?php echo $blog->blogID; ?>'> Read Full Blog </a> &nbsp; &nbsp;
+    <a href='?controller=blog&action=read&blogID=<?php echo $blog->blogID; ?>'> Read Full Blog </a> &nbsp; &nbsp;
 <!--    The below has been commented out as we only want user's to be able to update/delete their own blogs - not anyone elses.
-<a href='?controller=blog&action=update&BlogID=<?php echo $blog->blogID; ?>'> Update Blog </a> &nbsp; &nbsp;
-    <a href='?controller=blog&action=delete&BlogID=<?php echo $blog->blogID; ?>'> Delete Blog </a> &nbsp;-->
+<a href='?controller=blog&action=update&blogID=<?php echo $blog->blogID; ?>'> Update Blog </a> &nbsp; &nbsp;
+    <a href='?controller=blog&action=delete&blogID=<?php echo $blog->blogID; ?>'> Delete Blog </a> &nbsp;-->
   </p>
 
 
