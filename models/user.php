@@ -18,26 +18,26 @@ class User {
         $db = Db::getInstance();
         $query = $db->prepare("SELECT * FROM user WHERE Username = :Username AND Password = :Password");
 
-        if(isset($_POST['Username'])&& $_POST['Username']!=""){
-        $Username = filter_input(INPUT_POST,'Username', FILTER_SANITIZE_SPECIAL_CHARS);
+        if(isset($_POST['username'])&& $_POST['username']!=""){
+        $username = filter_input(INPUT_POST,'username', FILTER_SANITIZE_SPECIAL_CHARS);
         }
-        if(isset($_POST['Password'])&& $_POST['Password']!=""){
-        $Password = filter_input(INPUT_POST,'Password', FILTER_SANITIZE_SPECIAL_CHARS);
+        if(isset($_POST['password'])&& $_POST['password']!=""){
+        $password = filter_input(INPUT_POST,'password', FILTER_SANITIZE_SPECIAL_CHARS);
         }
         
-        $query->bindParam(':Username', $Username);
-        $query->bindParam(':Password', $Password);
+        $query->bindParam(':Username', $username);
+        $query->bindParam(':Password', $password);
 
         $query->execute();
-        foreach($query->fetchAll() as $result){
-
-        if (count($result) == 0) {
-            echo 'user not found';
-        } else if (count($result) == 1) {
-//            return new User($result['Username'], $result['Password'], $result['Email']);
-            header('location:?controller=blog&action=create');
+        $results = $query->fetchAll();
+        if ($results) {
+             header('location:?controller=blog&action=create');
+            
+        } else {
+            die ( 'user not found') ;
         }
-    }}
+        
+    }
 
     public static function register() {
         $db = Db::getInstance();
