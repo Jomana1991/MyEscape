@@ -143,7 +143,7 @@ class Blog {
             // $uploaddb = $db->prepare ( Insert into blogimage(BlogID,ImageName) Values ($destinaionFile,  where 
     }
     
-public static function modify($id) {
+    public static function modify($id) {
         $db = Db::getInstance();
   
 
@@ -173,7 +173,7 @@ public static function modify($id) {
                         Blog::uploadFile($title."_".$username);
                     }
         }
-}
+    }
         
     public static function delete($blogid) {
         $db = Db::getInstance();
