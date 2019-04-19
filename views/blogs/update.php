@@ -26,22 +26,21 @@
         <label>Content</label>
     </p>
             
-<!-- <input type="hidden" name="MAX_FILE_SIZE" value="10000000" />-->
-<?php 
-//$file = 'views/images/' . $product->name . '.jpeg';
-//if(file_exists($file)){
-//    $img = "<img src='$file' width='150' />";
-//    echo $img;
-//}
-//else
-//{
-//echo "<img src='views/images/standard/_noproductimage.png' width='150' />";
-//}
-//
-//?>
-<!--  <br/>
-  <input type="file" name="myUploader" class="w3-btn w3-pink" />-->
-  <p>
-    <input class="w3-btn w3-gray" type="submit" value="Update Blog">
-    </p>
-</form>
+    <input type="hidden" name="MAX_FILE_SIZE" value="10000000" />
+    
+    <?php 
+        $file = 'views/blogImages/' . $blog->title ."_".$blog->username. '.jpeg';
+
+        if(file_exists($file)){
+            $img = "<img src='$file' width='150' />";
+            echo $img;
+        }
+
+
+    ?>
+    <br/>
+      <input type="file" name="blogUploader" class="w3-btn w3-pink" />
+      <p>
+        <input class="w3-btn w3-gray" type="submit" value="Update Blog">
+        </p>
+    </form>
