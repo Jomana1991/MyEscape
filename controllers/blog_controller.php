@@ -47,8 +47,9 @@ class BlogController {
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             if (!isset($_GET['blogID']))
                 return call('pages', 'error');#requires better exception handling
+            
             // we use the given id to get the correct blog for updating
-            $blog = Blog::find($_GET['BlogID']);
+            $blog = Blog::find($_GET['blogID']);
 
             require_once('views/blogs/update.php');
         }
