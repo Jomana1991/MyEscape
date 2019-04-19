@@ -13,8 +13,7 @@
         $img = "<img src='$file' width='150' />";
         echo $img;
     }
-    else
-    {
+    else{
     return;
     }
 ?>
