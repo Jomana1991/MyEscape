@@ -1,3 +1,6 @@
+  <a href='?controller=pages&action=logout'>logout</a>
+
+
 <p>Here is a list of all blogs:</p>
 
 <?php foreach($blogs as $blog) { ?>
