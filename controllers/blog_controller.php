@@ -12,12 +12,12 @@ class BlogController {
     public function read() {
       // we expect a url of form ?controller=posts&action=show&id=x
       // without an id we just redirect to the error page as we need the post id to find it in the database
-      if (!isset($_GET['BlogID']))
+      if (!isset($_GET['blogID']))
         return call('pages', 'error');
 
       try{
       // we use the given id to get the correct post
-      $blog = Blog::find($_GET['BlogID']);
+      $blog = Blog::find($_GET['blogID']);
       require_once('views/blogs/read.php');
       }
       catch (Exception $ex){
@@ -45,7 +45,7 @@ class BlogController {
     public function update() {
 
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-            if (!isset($_GET['BlogID']))
+            if (!isset($_GET['blogID']))
                 return call('pages', 'error');#requires better exception handling
             // we use the given id to get the correct blog for updating
             $blog = Blog::find($_GET['BlogID']);
@@ -53,7 +53,7 @@ class BlogController {
             require_once('views/blogs/update.php');
         }
         else {
-            $id = $_GET['BlogID'];
+            $id = $_GET['blogID'];
             Blog::modify($id);
 
             $blogs = Blog::all();
@@ -62,7 +62,7 @@ class BlogController {
     }
 
     public function delete() {
-        Blog::delete($_GET['BlogID']);
+        Blog::delete($_GET['blogID']);
 
         $blogs = Blog::all();
         require_once('views/blogs/readAll.php');
