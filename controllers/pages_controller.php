@@ -17,8 +17,12 @@ class PagesController {
       require_once('views/pages/error.php');
     }
     
-     public function contactus(){
+    public function contactus(){
         require_once('views/users/contactus.php');
-        
-    } 
+            } 
+
+    public function logout(){
+        require_once('views/pages/logout.php');        
+            
+    }
 }
