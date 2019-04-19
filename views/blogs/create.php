@@ -82,7 +82,7 @@ $_SESSION['Username'] = $_POST['Username'];
                                value="10000000"
                                />
 
-<!--                        <input type="file" name="blogUploader" class="w3-btn w3-pink"   />-->
+                        <input type="file" name="blogUploader" class="w3-btn w3-pink"   />
                     </div>
 
                         <div class="btn-toolbar">
