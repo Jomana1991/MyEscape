@@ -20,6 +20,17 @@ class userController {
       
 }
 
+public function contactus(){
+     if($_SERVER['REQUEST_METHOD'] == 'GET'){
+          require_once('views/blogs/contactus.php');
+       }
+      else { 
+            User::contactus();
+             
+      }
+    
+}
+
 
     public function register() {
       if($_SERVER['REQUEST_METHOD'] == 'GET'){
@@ -47,4 +58,5 @@ class userController {
      return call('pages','error');
  }
     }
+    
  }

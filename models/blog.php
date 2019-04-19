@@ -1,6 +1,8 @@
 <?php
-  class Blog {
-      
+
+
+class Blog {
+
     // defining the attributes
     public $blogID;
     public $userName;
@@ -12,7 +14,8 @@
     public $username;
     public $likecounter;
     public $blogImageDestination;
-        
+      
+    
     public function __construct($blogID, $title, $content, $countryName, $continentName, $categoryName, $username, $likecounter)
     {
       $this->blogID    = $blogID;
@@ -23,20 +26,18 @@
       $this->categoryName = $categoryName;
       $this->username = $username;
       $this->likecounter=$likecounter;
-      
+    } 
 
-    }
-    public static function all() 
-    {
-      $list = [];
-      $db = Db::getInstance();
-      $req = $db->query('Call findAllPublishedBlogs'); //stored procedure that returns all blogs in reverse chronological order
-      
-      foreach($req->fetchAll() as $blog) 
-          {
-        $list[] = new Blog($blog['BlogID'], $blog['Title'], $blog['Content'], $blog['CountryName'], $blog['ContinentName'], $blog['CategoryName'],$blog['Username'], $blog['LikeCounter']);
-      }
-      return $list;
+    
+    public static function all() {
+        $list = [];
+        $db = Db::getInstance();
+        $req = $db->query('Call findAllPublishedBlogs'); //stored procedure that returns all blogs in reverse chronological order
+
+        foreach ($req->fetchAll() as $blog) {
+            $list[] = new Blog($blog['BlogID'], $blog['Title'], $blog['Content'], $blog['CountryName'], $blog['ContinentName'], $blog['CategoryName'], $blog['Username'], $blog['LikeCounter']);
+        }
+        return $list;
     }
 
     
@@ -183,14 +184,65 @@ public static function modify($id) {
     //	}
         }
 
+        
+    public static function delete($blogid) {
+        $db = Db::getInstance();
+        //make sure $id is an integer
 
-public static function delete($blogid) {
-      $db = Db::getInstance();
-      //make sure $id is an integer
+        $blogid = intval($blogid);
+        $stmt = $db->prepare('call deleteBlog(:BlogID)');
+        $stmt->bindParam(':BlogID', $blogid);
 
-      $blogid = intval($blogid);
-      $stmt = $db->prepare('call deleteBlog(:BlogID)');
-      $stmt->bindParam(':BlogID',$blogid);
+        // the query was prepared, now replace :id with the actual $id value
+        $stmt->execute();
+    }
+
+    public static function search() {
+      
+             $db = Db::getInstance();
+             $list = [];
+            if (isset($_POST['query']) && $_POST['query'] != "") {
+                $search = filter_input(INPUT_POST, 'query', FILTER_SANITIZE_SPECIAL_CHARS);
+            }
+            $likesearch = "%$search%";
+
+            $sqlsearch = $db->prepare( "SELECT 
+                b.BlogID
+                ,u.Username
+               ,b.Title
+               ,b.Content
+               ,cou.CountryName
+              ,con.ContinentName
+              ,cat.CategoryName
+               ,b.DatePosted
+               ,b.LikeCounter
+               
+              FROM `blog` as b
+               INNER JOIN country as cou
+              ON b.CountryID = cou.CountryID
+              INNER JOIN continent as con
+               ON b.ContinentID = con.ContinentID
+               INNER JOIN category as cat
+              ON b.CategoryID = cat.CategoryID
+               INNER JOIN user as u
+               ON b.UserID = u.UserID
+               
+               WHERE (cou.CountryName LIKE :query ) OR (cat.CategoryName LIKE :query) OR (con.ContinentName LIKE :query) OR (b.Title LIKE :query)");
+
+//            $sqlsearch = "SELECT Title, Country , Category , Continent, Title, from blog
+//                                        where Country = '$search' OR Continent = '$search' OR Category = '$search' OR Title = '$search' ";
+
+          
+//            $db->query($sqlsearch);
+          
+
+           $sqlsearch->execute(array ('query' => $likesearch));
+        foreach ($sqlsearch->fetchAll() as $blog) {
+            $list[] = new Blog($blog['BlogID'], $blog['Title'], $blog['Content'], $blog['CountryName'], $blog['ContinentName'], $blog['CategoryName'], $blog['Username'], $blog['LikeCounter']);
+        }
+        return $list;
+
+
 
       // the query was prepared, now replace :id with the actual $id value
       $stmt->execute();
@@ -204,5 +256,8 @@ public function getBlogImageDestination(){
                 $this->blogImageDestination=$newBlogImageDestination;
             }
   
+
+
 }
+
 ?>

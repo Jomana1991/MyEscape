@@ -19,25 +19,28 @@ class User {
         $query = $db->prepare("SELECT * FROM user WHERE Username = :Username AND Password = :Password");
 
         if(isset($_POST['username'])&& $_POST['username']!=""){
-        $username = filter_input(INPUT_POST,'username', FILTER_SANITIZE_SPECIAL_CHARS);
+            $username = filter_input(INPUT_POST,'username', FILTER_SANITIZE_SPECIAL_CHARS);
         }
         if(isset($_POST['password'])&& $_POST['password']!=""){
-        $password = filter_input(INPUT_POST,'password', FILTER_SANITIZE_SPECIAL_CHARS);
+            $password = filter_input(INPUT_POST,'password', FILTER_SANITIZE_SPECIAL_CHARS);
         }
         
         $query->bindParam(':Username', $username);
         $query->bindParam(':Password', $password);
 
         $query->execute();
+
         $results = $query->fetchAll();
+
         if ($results) {
              header('location:?controller=blog&action=create');
             
         } else {
             die ( 'user not found') ;
+
         }
-        
     }
+
 
     public static function register() {
         $db = Db::getInstance();
@@ -95,5 +98,24 @@ class User {
       }
       return $list;
     }
+    
+    
+    public static function contactus() {
+        $db = Db::getInstance();
+        $stmt = $db->prepare("INSERT INTO userfeedback (FullName, Email,Comments) VALUES ( :FullName, :Email, :Comments)");
+
+        $fullname = $_POST["fullname"];
+        $email = $_POST["email"];
+        $comments = $_POST["comments"];
+
+        $stmt->bindParam(':FullName', $fullname);
+        $stmt->bindParam(':Email', $email);
+        $stmt->bindParam(':Comments', $comments);
+        
+        $result = $stmt->execute();
+         
+         if ($result ==1 ) { echo "Thanks for the feedback,we will get back to you soon";}
+    }
+    
 
 }

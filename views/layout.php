@@ -14,9 +14,15 @@
       <a href='?controller=blog&action=readAll'>Blogs</a>
       <a href='?controller=user&action=login'>Login</a>
       <a href='?controller=user&action=register'>Register</a>
+       <a href='?controller=blog&action=search'>search</a>
+      <a href='?controller=pages&action=aboutus'>About Us</a>  
+      <a href='?controller=user&action=contactus'>Contact Us</a>
+
     </header>
+      
 <div class="w3-container w3-pink">
     <?php require_once('routes.php'); ?>
+   
 </div>
 <div class="w3-container w3-gray">
     <footer >

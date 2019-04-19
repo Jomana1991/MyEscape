@@ -1,5 +1,8 @@
 
+
+
 <p>Here is a list of all blogs:</p>
+
 
 <?php foreach($blogs as $blog) { ?>
   <p>
@@ -30,4 +33,8 @@
     <a href='?controller=blog&action=delete&BlogID=<?php echo $blog->blogID; ?>'> Delete Blog </a> &nbsp;-->
   </p>
 
+
 <?php } ?>
+    
+   
+
