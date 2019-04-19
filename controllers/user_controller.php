@@ -46,7 +46,7 @@ public function contactus(){
     }
     
     public function readMine(){
-     if (!isset($_GET['Username']))
+     if (!isset($_GET['Username']))#can we change this to session? then change delete so sends to readmine not read all?
         return call('pages', 'error');
 
       try{
