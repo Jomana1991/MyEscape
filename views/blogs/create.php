@@ -5,7 +5,7 @@ if (isset($_POST['username'])) {
 $_SESSION['username'] = $_POST['username'];
 }
  $db = Db::getInstance();
- $stmt = $db-> prepare("select CategoryID from category");
+ $stmt = $db-> prepare("select CategoryName from category");
 
  $stmt->execute();
  $result =$stmt->fetchAll(PDO::FETCH_ASSOC);       
@@ -46,7 +46,7 @@ $_SESSION['username'] = $_POST['username'];
             <div class="col-sm-4">
                 <br>
                 <h2 align="center"><b>               
-                    <a href='?controller=user&action=readMine&Username=<?php echo $_SESSION['username']; ?>'>See my blogs</a> &nbsp; &nbsp;
+                    <a href='?controller=user&action=readMine&username=<?php echo $_SESSION['username']; ?>'>See my blogs</a> &nbsp; &nbsp;
                 </b></h2>
             </div>
             <div class="col-sm-4">    
@@ -70,10 +70,10 @@ $_SESSION['username'] = $_POST['username'];
                                 </div> -->
                                 <div>
                                     
-                                    <select name = "categorylist">
-                                        <option>-- Select Category --</option>
+                                    <select name = "categoryName">
+                                        
                                         <?php foreach($result as $row)
-                                         { echo '<option value ="'.$row['CategoryID'].'</option>';
+                                         { echo '<option value ="'.$row['CategoryName'].'">'.$row['CategoryName'].'</option>';
                                              
                                         
                                          }?>
