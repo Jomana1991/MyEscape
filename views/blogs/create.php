@@ -4,6 +4,11 @@ session_start();
 if (isset($_POST['Username'])) {
 $_SESSION['Username'] = $_POST['Username'];
 }
+ $db = Db::getInstance();
+ $stmt = $db-> prepare("select CategoryID from category");
+
+ $stmt->execute();
+ $result =$stmt->fetchAll(PDO::FETCH_ASSOC);       
 ?>
   <a href='?controller=pages&action=logout'>logout</a>
 
@@ -11,7 +16,6 @@ $_SESSION['Username'] = $_POST['Username'];
 <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
-
 
 <html>
     <head>
@@ -31,14 +35,13 @@ $_SESSION['Username'] = $_POST['Username'];
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
-        <link href="librarystyling.css" rel="stylesheet" type="text/css"> 
-        <script src="checkForm.js" type="text/javascript"></script>  <!-- Added java script file to get call to the function checkPassword-->
+        
+        
     </head>
     <body> 
         
         <div class="row">
-            
-            
+                        
             <div class="col-sm-4">  
             </div>
             <div class="col-sm-4">    
@@ -47,10 +50,7 @@ $_SESSION['Username'] = $_POST['Username'];
      
                     <br>
                      <h2 align="center"><b>New Blog Post</b></h2>
-                        <hr class="colorgraph">
-                        
-                        
-                        
+                        <hr class="colorgraph">                                                                       
                         <div class="row">
                             <p>Fill in the following form to create a new :</p>
                             <div class="col-xs-12 col-sm-6 col-md-6">
@@ -60,8 +60,21 @@ $_SESSION['Username'] = $_POST['Username'];
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-6 col-md-6">
-                                <div class="form-group">
+                               <!-- <div class="form-group">
                                     <input type="text" name="categoryName" id="category" class="form-control input-lg" placeholder=" Category" tabindex="2" required>
+                                </div> -->
+                                <div>
+                                    
+                                    <select name = "categorylist">
+                                        <option>-- Select Category --</option>
+                                        <?php foreach($result as $row)
+                                         { echo '<option value ="'.$row['CategoryID'].'</option>';
+                                             
+                                        
+                                         }?>
+                                        
+                                    </select>
+                                   
                                 </div>
                             </div>
                         </div>
@@ -81,7 +94,7 @@ $_SESSION['Username'] = $_POST['Username'];
                                value="10000000"
                                />
 
-                        <input type="file" name="blogUploader" class="w3-btn w3-pink"   />
+                        <input type="file" name="blogUploader" class="w3-btn w3-pink" />
                     </div>
 
                         <div class="btn-toolbar">
