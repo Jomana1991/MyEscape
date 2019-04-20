@@ -14,8 +14,17 @@
       <a href='?controller=pages&action=aboutus'>About Us</a>  
       <a href='?controller=blog&action=readAll'>Blogs</a>
       <a href='?controller=blog&action=search'>Search</a>
-      <a href='?controller=user&action=login'>Login</a>
-      <a href='?controller=user&action=register'>Register</a>
+      <?php
+      session_start();
+      if (empty($_SESSION['username'])){
+        echo "<a href='?controller=user&action=login'>Login</a> ";
+        echo "<a href='?controller=user&action=register'>Register</a> ";
+      }
+      else{
+        echo "<a href='?controller=blog&action=create'>Profile Page</a> ";
+        echo "<a href='?controller=pages&action=logout'>Logout</a> ";
+      }
+      ?>
       <a href='?controller=user&action=contactus'>Contact Us</a>
       
 
