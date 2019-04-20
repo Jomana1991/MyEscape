@@ -8,6 +8,7 @@
             <file>file:/Applications/XAMPP/xamppfiles/htdocs/MyEscape/models/blog.php</file>
             <file>file:/Applications/XAMPP/xamppfiles/htdocs/MyEscape/views/blogs/readAll.php</file>
             <file>file:/Applications/XAMPP/xamppfiles/htdocs/MyEscape/models/user.php</file>
+            <file>file:/Applications/XAMPP/xamppfiles/htdocs/MyEscape/connection.php</file>
         </group>
     </open-files>
 </project-private>
