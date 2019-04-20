@@ -69,6 +69,9 @@ class Blog {
     public static function add() 
     {   session_start();
         $db = Db::getInstance();
+     //
+        $stmt = $db-> prepare("select CategoryID, CategoryName from category order by CategoryID");
+        $result =$stmt->fetchAll();
         $req = $db->prepare( "Call addBlog(:username, :title, :content, :countryName, :continentName, :categoryName)"); 
             // sanitize input, set parameters and execute
         
@@ -197,7 +200,7 @@ class Blog {
             }
             $likesearch = "%$search%";
 
-            $sqlsearch = "SELECT 
+            $sqlsearch =   $db->prepare("SELECT 
                 b.BlogID
                 ,u.Username
                ,b.Title
@@ -219,12 +222,12 @@ class Blog {
                ON b.UserID = u.UserID
                
                WHERE (cou.CountryName LIKE :query ) OR (cat.CategoryName LIKE :query) OR (con.ContinentName LIKE :query) OR (b.Title LIKE :query) OR (b.Content LIKE :query)
-               ORDER BY b.DatePosted DESC;";
+               ORDER BY b.DatePosted DESC;");
          
-            $db->prepare($sqlsearch);
-            $req->execute(array ('query' => $likesearch));
+          
+            $sqlsearch->execute(array ('query' => $likesearch));
             
-            foreach ($req->fetchAll() as $blog) {
+            foreach ($sqlsearch->fetchAll() as $blog) {
                 $list[] = new Blog($blog['BlogID'], $blog['Title'], $blog['Content'], $blog['CountryName'], $blog['ContinentName'], $blog['CategoryName'], $blog['Username'], $blog['LikeCounter']);
             }
             
