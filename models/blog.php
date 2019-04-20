@@ -3,6 +3,7 @@
 
 class Blog {
 
+    
     // defining the attributes
     public $blogID;
     public $userName;
