@@ -52,12 +52,13 @@ public function contactus(){
     }
     
     public function readMine(){
-     if (!isset($_GET['Username']))#can we change this to session? then change delete so sends to readmine not read all?
+     if (!isset($_GET['username']))#change delete so sends to readmine not read all?
         return call('pages', 'error');
 
       try{
       // we use the given id to get the correct post
-      $blogs = User::readMine($_GET['Username']);
+      $blogs = User::readMine($_GET['username']);
+      #require_once('./models/user.php'); //did this when trying to get create to redirect to readMine not readAll
       require_once('views/users/readMine.php');
       }
  catch (Exception $ex){
