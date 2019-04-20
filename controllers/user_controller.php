@@ -2,7 +2,7 @@
 
 class userController {
     public function login() {
-        session_start();
+        #session_start();//removed as now in layout
         if($_SERVER['REQUEST_METHOD'] == 'GET'){
              
             if (!empty($_SESSION['username'])) {
