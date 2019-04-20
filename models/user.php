@@ -44,20 +44,42 @@ class User {
 
     public static function register() {
         $db = Db::getInstance();
+        $Username = $_POST["Username"];
+        $password = $_POST['Password'];
+        $Email = $_POST["Email"];
+        $sql_u = $db->prepare("SELECT * FROM user where Username='$Username'");
+        $sql_e = $db->prepare("SELECT * FROM user where Email = '$Email'");
+        $res_u = $sql_u->execute();
+        $res_e = $sql_e->execute();
+     
+  	if ($sql_u->fetchColumn()> 0) {
+  	   die("Sorry... username already taken"); 
+         
+        }
+        elseif ($sql_e->fetchColumn() > 0) {
+        die("Sorry... email is already taken")  ;    
+        
+        }
+        else {
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
         $rej = $db->prepare("INSERT INTO user (Username, Email, Password) VALUES ( :Username, :Email, :Password)");
 
-        $Username = $_POST["Username"];
-        $Password = $_POST["Password"];
-        $Email = $_POST["Email"];
+       // $Username = $_POST["Username"];
+        //$Password = $_POST["Password"];
+        //$Email = $_POST["Email"];
 
         $rej->bindParam(':Username', $Username);
-        $rej->bindParam(':Password', $Password);
+        $rej->bindParam(':Password', $hashed_password);
         $rej->bindParam(':Email', $Email);
         
         $result = $rej->execute();
          
-         if ($result ==1 ) { header('location:?controller=user&action=login');}
+         if ($result ==1 ) { 
+             echo "Please enter the login details";
+             header('location:?controller=user&action=login');}
+            }
     }
+    
     
     public static function readMine($Username) 
     {
