@@ -3,7 +3,7 @@
 
 <?php 
 
-session_start();
+#session_start();//removed as now in layout
 //if (isset($_GET['searchblog'])) {
 //   $_GET['searchblog'] = $_SESSION ['query'];
 //  header ("location:?controller=blog&action=search&query=".$_SESSION['query']); 
