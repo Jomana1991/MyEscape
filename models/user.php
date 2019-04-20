@@ -41,7 +41,6 @@ class User {
         }
     }
 
-
     public static function register() {
         $db = Db::getInstance();
         $Username = $_POST["Username"];
@@ -63,10 +62,7 @@ class User {
         else {
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
         $rej = $db->prepare("INSERT INTO user (Username, Email, Password) VALUES ( :Username, :Email, :Password)");
-
-       // $Username = $_POST["Username"];
-        //$Password = $_POST["Password"];
-        //$Email = $_POST["Email"];
+    
 
         $rej->bindParam(':Username', $Username);
         $rej->bindParam(':Password', $hashed_password);
