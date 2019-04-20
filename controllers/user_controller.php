@@ -2,11 +2,17 @@
 
 class userController {
     public function login() {
-        
-         if($_SERVER['REQUEST_METHOD'] == 'GET'){
-             require_once('views/users/login.php');
-         }
-         
+        session_start();
+        if($_SERVER['REQUEST_METHOD'] == 'GET'){
+             
+            if (!empty($_SESSION['username'])) {
+            // if logged in can skip login page and go straight to create blog page
+            header('location:?controller=blog&action=create');
+            }        
+            else{
+                 require_once('views/users/login.php');
+            }
+        } 
          else { 
             User::login();
              
