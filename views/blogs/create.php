@@ -1,8 +1,8 @@
 <?php
 
 session_start();
-if (isset($_POST['Username'])) {
-$_SESSION['Username'] = $_POST['Username'];
+if (isset($_POST['username'])) {
+$_SESSION['username'] = $_POST['username'];
 }
  $db = Db::getInstance();
  $stmt = $db-> prepare("select CategoryID from category");
@@ -39,10 +39,15 @@ $_SESSION['Username'] = $_POST['Username'];
         
     </head>
     <body> 
-        
+       <div class="container-fluid">
+                
         <div class="row">
                         
-            <div class="col-sm-4">  
+            <div class="col-sm-4">
+                <br>
+                <h2 align="center"><b>               
+                    <a href='?controller=user&action=readMine&Username=<?php echo $_SESSION['username']; ?>'>See my blogs</a> &nbsp; &nbsp;
+                </b></h2>
             </div>
             <div class="col-sm-4">    
               
@@ -123,15 +128,10 @@ $_SESSION['Username'] = $_POST['Username'];
         
                        </div>
                         
-                        <div class="row">
-                       
-                                <a href='?controller=user&action=readMine&Username=<?php echo $_SESSION['username']; ?>'> See my blogs </a> &nbsp; &nbsp;
-                                
-                                
-
-
-                        </div>
+                        
                 </form>    
             </div>
             </div>
+           
         </div> <!-- row-->
+    </div>
