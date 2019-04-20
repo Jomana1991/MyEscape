@@ -1,6 +1,6 @@
 <?php
 
-session_start();
+#session_start();//removed as now in layout
 if (isset($_POST['username'])) {
 $_SESSION['username'] = $_POST['username'];
 }
@@ -10,7 +10,7 @@ $_SESSION['username'] = $_POST['username'];
  $stmt->execute();
  $result =$stmt->fetchAll(PDO::FETCH_ASSOC);       
 ?>
-  <a href='?controller=pages&action=logout'>logout</a>
+  <!--no longer needed - flexible navbar  <a href='?controller=pages&action=logout'>logout</a>-->
 
 <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
