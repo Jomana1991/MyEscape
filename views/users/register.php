@@ -13,7 +13,7 @@
     <input type="password" id="Password" name="Password" placeholder="Password" value="" tabindex="3" required >
     <input type="password" id="ConfirmPassword" name="ConfirmPassword" id="password_confirmation" placeholder="Confirm Password" tabindex="4" required>
     <input type="submit" value="Go to login" tabindex="5"/>
-    <a href="login.php"> Already registered? <br> Click here to Login</a>
+    <a href='?controller=user&action=login'> Already registered? <br> Click here to Login</a>
     <!-- Comment-->
 </form>
 
