@@ -36,7 +36,9 @@ class User {
              header('location:?controller=blog&action=create');
             
         } else {
-            die ( 'user not found') ;
+            $message = "Username and/or Password are incorrect.\\nPlease try again.";
+            echo '<script type="text/javascript">alert("'.$message.'");history.go(-1);</script>';
+            #die();
 
         }
     }
