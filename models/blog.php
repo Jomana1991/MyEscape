@@ -223,8 +223,25 @@ class Blog {
                 $this->blogImageDestination=$newBlogImageDestination;
             }
   
+    
+    public static function like($id) {
+        $db = Db::getInstance();
+  
 
+        $req = $db->prepare("Call addLikeCounter(:blogID)");
+        $req->bindParam(':blogID', $id); 
+        $req->execute();
+    }       
+        
 
+    public static function dislike($id) {
+        $db = Db::getInstance();
+  
+
+        $req = $db->prepare("Call subtractLikeCounter(:blogID)");
+        $req->bindParam(':blogID', $id); 
+        $req->execute();
+    }   
 }
 
 ?>

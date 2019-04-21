@@ -85,6 +85,37 @@ class BlogController {
             }
         }
     }
+    
+    
+    public function likeBlog() {
+        
+        if (!isset($_GET['blogID']))
+            return call('pages', 'error');
+
+        try {
+            Blog::like($_GET['blogID']);
+            $blog = Blog::find($_GET['blogID']);
+            require_once('views/blogs/read.php');#change to ajax?
+            
+        } catch (Exception $ex) {
+            return call('pages', 'error');
+        }       
+    }
+    
+    
+    public function dislikeBlog() {
+       if (!isset($_GET['blogID']))
+            return call('pages', 'error');
+
+        try {
+            Blog::dislike($_GET['blogID']);
+            $blog = Blog::find($_GET['blogID']);
+            require_once('views/blogs/read.php');#change to ajax?
+            
+        } catch (Exception $ex) {
+            return call('pages', 'error');
+        }   
+    }
 }
 
 ?>
