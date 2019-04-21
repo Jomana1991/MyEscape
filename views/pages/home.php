@@ -1,4 +1,9 @@
-<p>Hello there <?php echo $first_name . ' ' . $last_name; ?>!<p>
-<p>The above data is present to demonstrate the utilisation of variables 
-populated earlier within the page processing</p>
-<p>This is the home page of the MVC Skeleton Application</p>
+<H1>My Escape </H1>
+<p>Explore. Travel. Share</p>
+<?php 
+    #session_start();//removed as now in layout
+    if (!empty($_SESSION['username'])){
+        echo '<p>Hi '.$_SESSION['username'].' , you are still logged in - want to visit your '
+                . "<a href='?controller=blog&action=create'>profile page </a>?</p>";
+    }
+?>
