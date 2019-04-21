@@ -1,4 +1,4 @@
-  <a href='?controller=pages&action=logout'>logout</a>
+<!--no longer needed - flexible navbar  <a href='?controller=pages&action=logout'>logout</a>-->
 
 
 <p>Here is a list of all blogs:</p>

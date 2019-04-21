@@ -35,8 +35,11 @@ class BlogController {
         } else {
             Blog::add();
 
-            $blogs = Blog::all(); 
+            #Can't get this to work
+            #$blogs = User::readMine($_GET['username']);
+            #require_once('views/users/readMine.php'); 
 
+             $blogs = Blog::all(); 
             require_once('views/blogs/readAll.php');
         }
     }

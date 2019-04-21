@@ -1,16 +1,16 @@
 <?php
 
-session_start();
-if (isset($_POST['Username'])) {
-$_SESSION['Username'] = $_POST['Username'];
+#session_start();//removed as now in layout
+if (isset($_POST['username'])) {
+$_SESSION['username'] = $_POST['username'];
 }
  $db = Db::getInstance();
- $stmt = $db-> prepare("select CategoryID from category");
+ $stmt = $db-> prepare("select CategoryName from category");
 
  $stmt->execute();
  $result =$stmt->fetchAll(PDO::FETCH_ASSOC);       
 ?>
-  <a href='?controller=pages&action=logout'>logout</a>
+  <!--no longer needed - flexible navbar  <a href='?controller=pages&action=logout'>logout</a>-->
 
 <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
@@ -39,10 +39,15 @@ $_SESSION['Username'] = $_POST['Username'];
         
     </head>
     <body> 
-        
+       <div class="container-fluid">
+                
         <div class="row">
                         
-            <div class="col-sm-4">  
+            <div class="col-sm-4">
+                <br>
+                <h2 align="center"><b>               
+                    <a href='?controller=user&action=readMine&username=<?php echo $_SESSION['username']; ?>'>See my blogs</a> &nbsp; &nbsp;
+                </b></h2>
             </div>
             <div class="col-sm-4">    
               
@@ -65,11 +70,11 @@ $_SESSION['Username'] = $_POST['Username'];
                                 </div> -->
                                 <div>
                                     
-                                    <select name = "categorylist">
+
+                                    <select name = "categoryName">
                                         
                                         <?php foreach($result as $row)
-                                         { echo '<option value ="'.$row['CategoryID'].'">'.$row['categoryID'].'</option>';
-                                             
+                                         { echo '<option value ="'.$row['CategoryName'].'">'.$row['CategoryName'].'</option>';
                                         
                                          }?>
                                         
@@ -123,15 +128,10 @@ $_SESSION['Username'] = $_POST['Username'];
         
                        </div>
                         
-                        <div class="row">
-                       
-                                <a href='?controller=user&action=readMine&Username=<?php echo $_SESSION['username']; ?>'> See my blogs </a> &nbsp; &nbsp;
-                                
-                                
-
-
-                        </div>
+                        
                 </form>    
             </div>
             </div>
+           
         </div> <!-- row-->
+    </div>
