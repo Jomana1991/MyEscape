@@ -26,7 +26,7 @@ $result_cou = $stmt_cou->fetchAll(PDO::FETCH_ASSOC);
     <head>
         <meta charset="UTF-8">
         <title>Add New blog post</title>
-
+        <script src="//cdn.ckeditor.com/4.11.4/standard/ckeditor.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
@@ -51,7 +51,7 @@ $result_cou = $stmt_cou->fetchAll(PDO::FETCH_ASSOC);
                 <div class="col-sm-4">
                     <br>
                     <h2 align="center"><b>               
-                            <a href='?controller=user&action=readMine&username=<?php echo $_SESSION['username']; ?>'>See my blogs</a> &nbsp; &nbsp;
+                        <a href='?controller=user&action=readMine&username=<?php echo $_SESSION['username']; ?>'>See my blogs</a> &nbsp; &nbsp;
                         </b></h2>
                 </div>
                 <div class="col-sm-4">    
@@ -62,39 +62,34 @@ $result_cou = $stmt_cou->fetchAll(PDO::FETCH_ASSOC);
                         <h2 align="center"><b>New Blog Post</b></h2>
                         <hr class="colorgraph">                                                                       
                         <div class="row">
-                            <p>Fill in the following form to create a new :</p>
+                            <p><b>Fill in the following form to write a new blog :</b></p>
                             <div class="col-xs-12 col-sm-6 col-md-6">
-                                <div class="form-group">
+                                <div><lable> Title</lable>
                                     <input type="text" name="title" id="title" autofocus="" class="form-control input-lg" placeholder=" Blog Title" tabindex="1" required>
 
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-6 col-md-6">
-                                <!-- <div class="form-group">
-                                     <input type="text" name="categoryName" id="category" class="form-control input-lg" placeholder=" Category" tabindex="2" required>
-                                 </div> -->
-                                <div>
-                                   
-
+                               
+                                <div><lable> Select Category</lable>
                                     <select name = "categoryName" tabindex=" ">
-
-<?php
-foreach ($result as $row) {
-    echo '<option value ="' . $row['CategoryName'] . '">' . $row['CategoryName'] . '</option>';
-}
-?>
+                                      
+                                        <?php
+                                        foreach ($result as $row) {
+                                            echo '<option value ="' . $row['CategoryName'] . '">' . $row['CategoryName'] . '</option>';
+                                        }
+                                        ?>
 
                                     </select>
 
                                 </div>
                             </div>
                         </div>
-                        <!--  <div class="form-group">
-                              <input type="text" name="countryName" id="country" class="form-control input-lg" placeholder=" Country" tabindex="3" required>
-                          </div>  -->
+                        
                         <div class="row">
                             <div class="col-xs-12 col-sm-6 col-md-6">
                                 <div class="form-group">
+                                    <lable> Select Country</lable>
                                     <select name = "countryName" tabindex="3" >
 
                                         <?php
@@ -107,12 +102,10 @@ foreach ($result as $row) {
 
                                 </div>
                             </div>
-                            <!--   <div class="form-group">
-                                           <input type="text" name="continentName" id="continent" class="form-control input-lg" placeholder="Continent" tabindex="4" required>
-                                       </div>      -->
-
+                          
                             <div class="col-xs-12 col-sm-6 col-md-6">
                                 <div class="form-group">
+                                    <lable> Select Continent</lable>
                                     <select name = "continentName" tabindex="4">
 
                                         <?php
@@ -125,11 +118,12 @@ foreach ($result as $row) {
                                 </div>
                             </div>
                         </div>
+                
                         <br>
-                        <div class="form-group">
-                            <textarea name="content" id="content" class="form-control input-lg" placeholder=" Content" tabindex="5" cols="400" rows="10" required></textarea>
+                        <div><lable>Write content</lable>
+                            <textarea name="content" id="content" class="form-control input-lg" placeholder=" Content" tabindex="5" cols="100" rows="10" required></textarea>
                         </div>
-
+                        <br>
                         <div>
                             <input type="hidden" 
                                    name="MAX_FILE_SIZE" 
@@ -137,28 +131,8 @@ foreach ($result as $row) {
                                    />
 
                             <input type="file" name="blogUploader" class="w3-btn w3-pink" />
-                        </div>
-
-                        <div class="btn-toolbar">
-                            <div class="btn-group">
-                                <button class="btn" data-original-title="Bold - Ctrl+B"><i class="icon-bold"></i></button>
-                                <button class="btn" data-original-title="Italic - Ctrl+I"><i class="icon-italic"></i></button>
-                                <button class="btn" data-original-title="List"><i class="icon-list"></i></button>
-                                <button class="btn" data-original-title="Img"><i class="icon-picture"></i></button>
-                                <button class="btn" data-original-title="URL"><i class="icon-arrow-right"></i></button>
-                            </div>
-                            <div class="btn-group">
-                                <button class="btn" data-original-title="Align Right"><i class="icon-align-right"></i></button>
-                                <button class="btn" data-original-title="Align Center"><i class="icon-align-center"></i></button>
-                                <button class="btn" data-original-title="Align Left"><i class="icon-align-left"></i></button>
-                            </div>
-                            <div class="btn-group">
-                                <button class="btn" data-original-title="Preview"><i class="icon-eye-open"></i></button>
-                                <button class="btn" data-original-title="Save"><i class="icon-ok"></i></button>
-                                <button class="btn" data-original-title="Cancel"><i class="icon-trash"></i></button>
-                            </div>
-                        </div>
-
+                        </div>                   
+                        <br>
                         <div class="form-group"> 
 
                             <input style=" align: center; background-color: #183149; font-size: 15px; border-radius: 5px; border: none; box-shadow: 0px 8px 15px rgba(0,0,0,0.1); padding-top: 12px; padding-right: 27; padding-bottom: 12; padding-left: 27" type="submit" name="submit" value="SUBMIT" class="btn btn-primary btn-block btn-lg" tabindex="6">
@@ -166,9 +140,13 @@ foreach ($result as $row) {
                         </div>
 
 
-                    </form>    
-                </div>
+                    </form>  
+                    <script>
+                        CKEDITOR.replace( "content" );
+                </script>
+               </div>
             </div>
 
         </div> <!-- row-->
-    </div>
+    
+</html>
