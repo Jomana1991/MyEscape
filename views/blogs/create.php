@@ -6,9 +6,16 @@ $_SESSION['username'] = $_POST['username'];
 }
  $db = Db::getInstance();
  $stmt = $db-> prepare("select CategoryName from category");
+ $stmt_con = $db-> prepare("select ContinentName from continent");
+ $stmt_cou = $db-> prepare("select CountryName from country");
 
  $stmt->execute();
- $result =$stmt->fetchAll(PDO::FETCH_ASSOC);       
+ $stmt_con->execute();
+ $stmt_cou->execute();
+ $result =$stmt->fetchAll(PDO::FETCH_ASSOC); 
+ $result_con =$stmt_con->fetchAll(PDO::FETCH_ASSOC); 
+  $result_cou =$stmt_cou->fetchAll(PDO::FETCH_ASSOC); 
+ 
 ?>
   <!--no longer needed - flexible navbar  <a href='?controller=pages&action=logout'>logout</a>-->
 
@@ -60,7 +67,7 @@ $_SESSION['username'] = $_POST['username'];
                             <p>Fill in the following form to create a new :</p>
                             <div class="col-xs-12 col-sm-6 col-md-6">
                                 <div class="form-group">
-                                    <input type="text" name="title" id="title" class="form-control input-lg" placeholder=" Blog Title" tabindex="1" required>
+                                    <input type="text" name="title" id="title" autofocus="" class="form-control input-lg" placeholder=" Blog Title" tabindex="1" required>
                                     
                                 </div>
                             </div>
@@ -69,12 +76,10 @@ $_SESSION['username'] = $_POST['username'];
                                     <input type="text" name="categoryName" id="category" class="form-control input-lg" placeholder=" Category" tabindex="2" required>
                                 </div> -->
                                 <div>
-                                    
-                                    <select name = "categoryName">
+                                    <select name = "categoryName" tabindex="">
                                         
                                         <?php foreach($result as $row)
                                          { echo '<option value ="'.$row['CategoryName'].'">'.$row['CategoryName'].'</option>';
-                                             
                                         
                                          }?>
                                         
@@ -83,12 +88,41 @@ $_SESSION['username'] = $_POST['username'];
                                 </div>
                             </div>
                         </div>
-                            <div class="form-group">
+                          <!--  <div class="form-group">
                                 <input type="text" name="countryName" id="country" class="form-control input-lg" placeholder=" Country" tabindex="3" required>
-                            </div>
-                        <div class="form-group">
-                                    <input type="text" name="continentName" id="continent" class="form-control input-lg" placeholder="Continent" tabindex="4" required>
+                            </div>  -->
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <select name = "countryName" tabindex="3">
+
+                                        <?php foreach($result_cou as $row)
+                                         { echo '<option value ="'.$row['CountryName'].'">'.$row['CountryName'].'</option>';
+
+                                         }?>
+
+                                    </select>
+
                                 </div>
+                                </div>
+                     <!--   <div class="form-group">
+                                    <input type="text" name="continentName" id="continent" class="form-control input-lg" placeholder="Continent" tabindex="4" required>
+                                </div>      -->
+                          
+                                <div class="col-xs-12 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <select name = "continentName" tabindex="4">
+                                        
+                                        <?php foreach($result_con as $row)
+                                         { echo '<option value ="'.$row['ContinentName'].'">'.$row['ContinentName'].'</option>';
+                                        
+                                         }?>
+                                        
+                                    </select>
+                                </div>
+                                </div>
+                            </div>
+                          <br>
                       <div class="form-group">
                             <textarea name="content" id="content" class="form-control input-lg" placeholder=" Content" tabindex="5" cols="400" rows="10" required></textarea>
                       </div>

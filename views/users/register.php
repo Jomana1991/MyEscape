@@ -2,7 +2,7 @@
 <p>Please register below</p>
 
 <form method='POST' id="RegForm" name="RegForm" action="" onsubmit="return checkPassword()">
-    <input type="text" id="Username" name="Username" placeholder="Username" value="" tabindex="1" required >
+    <input type="text" id="Username" name="Username" autofocus="" placeholder="Username" value="" tabindex="1" required >
         <?php if (isset($name_error)): ?>
             <span><?php echo $name_error; ?></span>
         <?php endif ?>
@@ -10,7 +10,7 @@
     <input type="email" id="Email" name="Email" placeholder="Email" value="" tabindex="2" required >
     
              
-    <input type="password" id="Password" name="Password" placeholder="Password" value="" tabindex="3" required >
+    <input type="password" id="Password"  name="Password" placeholder="Password" value="" pattern="^[a-zA-Z]\w{3,14}$" tabindex="3" required >
     <input type="password" id="ConfirmPassword" name="ConfirmPassword" id="password_confirmation" placeholder="Confirm Password" tabindex="4" required>
     <input type="submit" value="Go to login" tabindex="5"/>
     <a href='?controller=user&action=login'> Already registered? <br> Click here to Login</a>
