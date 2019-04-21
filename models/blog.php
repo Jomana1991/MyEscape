@@ -67,7 +67,7 @@ class Blog {
        
       
     public static function add() 
-    {   session_start();
+    { 
         $db = Db::getInstance();
      //
         $stmt = $db-> prepare("select CategoryID, CategoryName from category order by CategoryID");
@@ -203,8 +203,6 @@ class Blog {
             $sqlsearch =   $db->prepare("Call searchBlog (:query)");
          
             $sqlsearch->execute(array ('query' => $likesearch));
-            
-            
             
             foreach ($sqlsearch->fetchAll() as $blog) {
                 $list[] = new Blog($blog['BlogID'], $blog['Title'], $blog['Content'], $blog['CountryName'], $blog['ContinentName'], $blog['CategoryName'], $blog['Username'], $blog['LikeCounter']);

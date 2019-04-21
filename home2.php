@@ -36,10 +36,11 @@
             }
 
             .nav-main h1 {
-                padding-left:550px;
+                padding-left:600px;
                 color: #28536B;
                 font-family: brush script MT;
                 font-size: 60px;
+                float:top;
             }
 
             .btn-toggle-nav {
@@ -164,7 +165,7 @@
                 image.css("background-image", "url(" + images[count++] + ")");
 
                 setInterval(function () {
-                    image.fadeOut(3000, function () {
+                    image.fadeOut(2000, function () {
                         image.css("background-image", "url(" + images[count++] + ")");
                         image.fadeIn(2000);
                     });
@@ -172,7 +173,7 @@
                     {
                         count = 0;
                     }
-                }, 5000);
+                }, 4000);
 
             });
 

@@ -28,15 +28,16 @@ class BlogController {
         // else it's a POST so add to the database and redirect to readAll action
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             require_once('views/blogs/create.php');
+            
         } else {
             Blog::add();
 
             #Can't get this to work
             #$blogs = User::readMine($_GET['username']);
-            #require_once('views/users/readMine.php'); 
+            require_once('./models/user.php'); 
 
-            $blogs = Blog::all();
-            require_once('views/blogs/readAll.php');
+            $blogs = User::readMine($_SESSION['username']);
+            require_once('views/users/readMine.php');
         }
     }
 
