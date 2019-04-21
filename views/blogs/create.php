@@ -55,7 +55,7 @@ $_SESSION['Username'] = $_POST['Username'];
                             <p>Fill in the following form to create a new :</p>
                             <div class="col-xs-12 col-sm-6 col-md-6">
                                 <div class="form-group">
-                                    <input type="text" name="title" id="title" class="form-control input-lg" placeholder=" Blog Title" tabindex="1" required>
+                                    <input type="text" name="title" id="title" autofocus="" class="form-control input-lg" placeholder=" Blog Title" tabindex="1" required>
                                     
                                 </div>
                             </div>
@@ -66,9 +66,9 @@ $_SESSION['Username'] = $_POST['Username'];
                                 <div>
                                     
                                     <select name = "categorylist">
-                                        <option>-- Select Category --</option>
+                                        
                                         <?php foreach($result as $row)
-                                         { echo '<option value ="'.$row['CategoryID'].'</option>';
+                                         { echo '<option value ="'.$row['CategoryID'].'">'.$row['categoryID'].'</option>';
                                              
                                         
                                          }?>
