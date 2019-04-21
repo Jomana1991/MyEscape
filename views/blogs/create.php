@@ -88,7 +88,7 @@ $result_cou = $stmt_cou->fetchAll(PDO::FETCH_ASSOC);
                         
                         <div class="row">
                             <div class="col-xs-12 col-sm-6 col-md-6">
-                                <div class="form-group">
+                                <div class="form-group"><br>
                                     <lable> Select Country</lable>
                                     <select name = "countryName" tabindex="3" >
 
@@ -104,7 +104,7 @@ $result_cou = $stmt_cou->fetchAll(PDO::FETCH_ASSOC);
                             </div>
                           
                             <div class="col-xs-12 col-sm-6 col-md-6">
-                                <div class="form-group">
+                                <div class="form-group"><br>
                                     <lable> Select Continent</lable>
                                     <select name = "continentName" tabindex="4">
 
