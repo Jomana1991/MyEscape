@@ -200,38 +200,18 @@ class Blog {
             }
             $likesearch = "%$search%";
 
-            $sqlsearch =   $db->prepare("SELECT 
-                b.BlogID
-                ,u.Username
-               ,b.Title
-               ,b.Content
-               ,cou.CountryName
-              ,con.ContinentName
-              ,cat.CategoryName
-               ,b.DatePosted
-               ,b.LikeCounter
-               
-              FROM `blog` as b
-               INNER JOIN country as cou
-              ON b.CountryID = cou.CountryID
-              INNER JOIN continent as con
-               ON b.ContinentID = con.ContinentID
-               INNER JOIN category as cat
-              ON b.CategoryID = cat.CategoryID
-               INNER JOIN user as u
-               ON b.UserID = u.UserID
-               
-               WHERE (cou.CountryName LIKE :query ) OR (cat.CategoryName LIKE :query) OR (con.ContinentName LIKE :query) OR (b.Title LIKE :query) OR (b.Content LIKE :query)
-               ORDER BY b.DatePosted DESC;");
+            $sqlsearch =   $db->prepare("Call searchBlog (:query)");
          
-          
             $sqlsearch->execute(array ('query' => $likesearch));
+            
+            
             
             foreach ($sqlsearch->fetchAll() as $blog) {
                 $list[] = new Blog($blog['BlogID'], $blog['Title'], $blog['Content'], $blog['CountryName'], $blog['ContinentName'], $blog['CategoryName'], $blog['Username'], $blog['LikeCounter']);
             }
             
-            return $list;
+            return $list; 
+           
 
 }
   
