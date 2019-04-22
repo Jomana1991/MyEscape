@@ -25,6 +25,7 @@ $result_cou = $stmt_cou->fetchAll(PDO::FETCH_ASSOC);
 <html>
     <head>
         <meta charset="UTF-8">
+        <script src="https://cdn.ckeditor.com/4.11.4/standard/ckeditor.js"></script>
         <title>Add New blog post</title>
         <!-- (text) ck editor library 
         <script src="//cdn.ckeditor.com/4.11.4/standard/ckeditor.js"></script>  -->
@@ -142,9 +143,9 @@ $result_cou = $stmt_cou->fetchAll(PDO::FETCH_ASSOC);
 
 
                     </form>  
-                  <!--  <script>
+                    <script>
                         CKEDITOR.replace( "content" );
-                </script>  -->
+                </script>  
                </div>
             </div>
 
