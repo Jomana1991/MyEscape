@@ -210,7 +210,6 @@ class Blog {
             
             return $list; 
            
-
 }
   
   
@@ -236,8 +235,7 @@ class Blog {
 
     public static function dislike($id) {
         $db = Db::getInstance();
-  
-
+ 
         $req = $db->prepare("Call subtractLikeCounter(:blogID)");
         $req->bindParam(':blogID', $id); 
         $req->execute();
