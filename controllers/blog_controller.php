@@ -94,8 +94,11 @@ class BlogController {
 
         try {
             Blog::like($_GET['blogID']);
-            $blog = Blog::find($_GET['blogID']);
-            require_once('views/blogs/read.php');#change to ajax?
+            echo "Score: ".Blog::counter($_GET['blogID']);
+           
+            //Non-AJAX way
+            #$blog = Blog::find($_GET['blogID']);
+            #require_once('views/blogs/read.php');
             
         } catch (Exception $ex) {
             return call('pages', 'error');
@@ -109,8 +112,11 @@ class BlogController {
 
         try {
             Blog::dislike($_GET['blogID']);
-            $blog = Blog::find($_GET['blogID']);
-            require_once('views/blogs/read.php');#change to ajax?
+            echo "Score: ".Blog::counter($_GET['blogID']);
+            
+             //Non-AJAX way
+            #$blog = Blog::find($_GET['blogID']);
+            #require_once('views/blogs/read.php');
             
         } catch (Exception $ex) {
             return call('pages', 'error');
