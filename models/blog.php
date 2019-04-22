@@ -192,8 +192,6 @@ class Blog {
 
     public static function search() {
 
-
-      
              $db = Db::getInstance();
              $list = [];
              
@@ -221,22 +219,29 @@ class Blog {
     
     public function addComment ($blogid) {
         
+        
         $db = Db::getInstance();
-       
-            $Content = $_POST['Content'];
-            $senderName = $_POST['senderName'];
-
-            if ($Content != '') {
+        
+            
+         if (isset($_POST['Content']) && $_POST['Content'] != "") {
+                $Content = filter_input(INPUT_POST, 'Content', FILTER_SANITIZE_SPECIAL_CHARS);
+            }
+             if (isset($_POST['senderName']) && $_POST['senderName'] != "") {
+                $senderName = filter_input(INPUT_POST, 'senderName', FILTER_SANITIZE_SPECIAL_CHARS);
+            }
+            
                 $sql = $db->prepare( "INSERT INTO comment (BlogID, Content, senderName) VALUES (:BlogID, :Content, :senderName)");
                   $sql->bindParam(':BlogID', $blogid);
                    $sql->bindParam(':Content', $Content);
                       $sql->bindParam(':senderName', $senderName);
                 
-                execute($sql);
+               $sql->execute();
+                
                 if ($sql) {
-                    header('header:?controller=blog&action=read&blogID=' . $BlogID);
+                    header('header:?controller=blog&action=read&blogID='.$blogid);
                 }
-            }
+            
+        
     }
 
             
