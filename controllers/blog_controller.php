@@ -62,9 +62,10 @@ class BlogController {
 
     public function delete() {
         Blog::delete($_GET['blogID']);
-
-        $blogs = Blog::all();
-        require_once('views/blogs/readAll.php');
+       
+        require_once('./models/user.php'); 
+        $blogs = User::readMine($_SESSION['username']);
+        require_once('views/users/readMine.php');
     }
 
     public function search() {
