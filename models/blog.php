@@ -64,8 +64,12 @@ class Blog {
      
     }
 
-    public static function add() {
-        session_start();
+
+       
+      
+    public static function add() 
+    { 
+
         $db = Db::getInstance();
         //
         $stmt = $db->prepare("select CategoryID, CategoryName from category order by CategoryID");
@@ -188,35 +192,32 @@ class Blog {
 
     public static function search() {
 
-        $db = Db::getInstance();
-        $list = [];
 
-        if (isset($_POST['query']) && $_POST['query'] != "") {
-            $search = filter_input(INPUT_POST, 'query', FILTER_SANITIZE_SPECIAL_CHARS);
-        }
-        $likesearch = "%$search%";
+      
+             $db = Db::getInstance();
+             $list = [];
+             
+            if (isset($_POST['query']) && $_POST['query'] != "") {
+                $search = filter_input(INPUT_POST, 'query', FILTER_SANITIZE_SPECIAL_CHARS);
+            }
+            $likesearch = "%$search%";
 
-        $sqlsearch = $db->prepare("Call searchBlog (:query)");
-
-        $sqlsearch->execute(array('query' => $likesearch));
-
-
-
-        foreach ($sqlsearch->fetchAll() as $blog) {
-            $list[] = new Blog($blog['BlogID'], $blog['Title'], $blog['Content'], $blog['CountryName'], $blog['ContinentName'], $blog['CategoryName'], $blog['Username'], $blog['LikeCounter']);
-        }
-
-        return $list;
-    }
-
+            $sqlsearch =   $db->prepare("Call searchBlog (:query)");
+         
+            $sqlsearch->execute(array ('query' => $likesearch));
+            
+            foreach ($sqlsearch->fetchAll() as $blog) {
+                $list[] = new Blog($blog['BlogID'], $blog['Title'], $blog['Content'], $blog['CountryName'], $blog['ContinentName'], $blog['CategoryName'], $blog['Username'], $blog['LikeCounter']);
+            }
+            
+            return $list; 
+           
+}
     public function getBlogImageDestination() {
         return $this->blogImageDestination;
     }
 
-    public function setBlogImageDestination($newBlogImageDestination) {
-        $this->blogImageDestination = $newBlogImageDestination;
-    }
-    
+   
     
     public function addComment ($blogid) {
         
@@ -237,6 +238,32 @@ class Blog {
                 }
             }
     }
+
+            
+    public function setBlogImageDestination($newBlogImageDestination){
+                $this->blogImageDestination=$newBlogImageDestination;
+            }
+  
+    
+    public static function like($id) {
+        $db = Db::getInstance();
+  
+
+        $req = $db->prepare("Call addLikeCounter(:blogID)");
+        $req->bindParam(':blogID', $id); 
+        $req->execute();
+    }       
+        
+
+    public static function dislike($id) {
+        $db = Db::getInstance();
+  
+
+        $req = $db->prepare("Call subtractLikeCounter(:blogID)");
+        $req->bindParam(':blogID', $id); 
+        $req->execute();
+    }   
+
 }
 
 ?>
