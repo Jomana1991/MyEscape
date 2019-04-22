@@ -17,9 +17,32 @@ class BlogController {
             // we use the given id to get the correct post
             $blog = Blog::find($_GET['blogID']);
             require_once('views/blogs/read.php');
+            
+            
+            
         } catch (Exception $ex) {
             return call('pages', 'error');
         }
+    }
+    
+    public function addComment () {
+          if (isset($_GET['blogID'])) {
+           
+
+        try {
+            $blogid = $_GET['blogID'];
+            // we use the given id to get the correct post
+            $blog = Blog::addComment($blogid);
+            require_once('views/blogs/read.php');
+            
+            
+            
+        } catch (Exception $ex) {
+            return call('pages', 'error');
+        }
+        
+        
+    }
     }
 
     public function create() {
