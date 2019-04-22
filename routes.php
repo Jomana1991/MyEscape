@@ -27,7 +27,7 @@
 
 $controllers = array('pages' => ['home', 'error', 'aboutus','logout'],
                     'blog' => ['readAll','read','create','update','delete', 'search', 'likeBlog', 'dislikeBlog'],
-                    'user' => ['login', 'register','readMine', 'contactus']
+                    'user' => ['login', 'register','readMine', 'changePassword', 'contactus']
 
                     );
 
