@@ -37,10 +37,12 @@ class User {
                  header('location:?controller=blog&action=create');
 
             } 
+            else {
                 $message = "Username and/or password are incorrect.\\nPlease try again.";
+        
                 echo '<script type="text/javascript">alert("'.$message.'");history.go(-1);</script>';
-                #die();
-            }
+                die();
+            }}
         
     
 
