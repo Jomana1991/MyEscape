@@ -242,6 +242,23 @@ class Blog {
         $req->bindParam(':blogID', $id); 
         $req->execute();
     }   
+    
+    
+     public static function counter($id) {
+      $db = Db::getInstance();
+      
+      $id = intval($id);//use intval to make sure $id is an integer
+      $req = $db->prepare("Call findBlogByID(:blogID)");
+      $req->execute(array('blogID' => $id));
+      $blog = $req->fetch();
+      
+      if($blog){
+              return ($blog['LikeCounter']);
+      }
+      else{
+            throw new Exception('A real exception should go here'); //replace with a more meaningful exception
+      }
+    } 
 }
 
 ?>
