@@ -13,8 +13,21 @@
         $img = "<img src='$file' width='150' />";
         echo $img;
     }
-    else{
-    return;
-    }
+    
 ?>
+&nbsp;
+<br><br>
 
+<p>
+    <a href='?controller=blog&action=likeBlog&blogID=<?php echo $blog->blogID; ?>' class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-thumbs-up"></span> Like
+    </a>
+    <a href='?controller=blog&action=dislikeBlog&blogID=<?php echo $blog->blogID; ?>' class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-thumbs-down"></span> Dislike
+    </a>
+    <br>
+    <span class="badge">Score: <?php echo $blog->likecounter; ?> </span>
+    <br>
+</p>
+
+&nbsp; 
