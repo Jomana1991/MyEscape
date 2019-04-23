@@ -116,6 +116,20 @@ class BlogController {
             return call('pages', 'error');
         }   
     }
-}
 
+public function viewBlog() {
+        
+        if (!isset($_GET['blogID']))
+            return call('pages', 'error');
+
+        try {
+            Blog::view($_GET['blogID']);
+            $blog = Blog::find($_GET['blogID']);
+            require_once('views/blogs/read.php');#change to ajax?
+            
+        } catch (Exception $ex) {
+            return call('pages', 'error');
+        }       
+    }
+}
 ?>
