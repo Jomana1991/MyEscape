@@ -3,17 +3,13 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-/*#message {
+#message {
   display:none;
  
   position: relative;
   
 }
 
-#message p {
-  padding: 10px 35px;
-  font-size: 18px;
-}*/
 </style>
 </head>
 <body>
@@ -21,12 +17,11 @@
 
 <form method='POST' id="RegForm" name="RegForm" action="" onsubmit="return checkPassword()">
     <input type="text" id="Username" name="Username" autofocus="" placeholder="Username" value="" tabindex="1" required >
-        
-                
+                        
     <input type="email" id="Email" name="Email" placeholder="Email" value="" tabindex="2" required >
     
              
-    <input type="password" id="Password" style="display:none" name="Password" placeholder="Password" value="" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,}" tabindex="3" required >
+    <input type="password" id="Password" name="Password" placeholder="Password" value="" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,}" tabindex="3" required >
     <input type="password" id="ConfirmPassword" name="ConfirmPassword" id="password_confirmation" placeholder="Confirm Password" tabindex="4" required>
     <input type="submit" value="Go to login" tabindex="5"/>
     <a href='?controller=user&action=login'> Existing user login? <br> Click here to Login</a>
@@ -38,6 +33,7 @@
 
 
 <script>
+ 
 var myInput = document.getElementById("Password");
 
 // When the user clicks on the password field, show the message box
