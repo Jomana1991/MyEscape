@@ -11,11 +11,12 @@
             <file>file:/Applications/XAMPP/xamppfiles/htdocs/MyEscape/views/layout.php</file>
             <file>file:/Applications/XAMPP/xamppfiles/htdocs/MyEscape/views/users/readMine.php</file>
             <file>file:/Applications/XAMPP/xamppfiles/htdocs/MyEscape/index.php</file>
-            <file>file:/Applications/XAMPP/xamppfiles/htdocs/MyEscape/views/users/password.js</file>
             <file>file:/Applications/XAMPP/xamppfiles/htdocs/MyEscape/home2.php</file>
+            <file>file:/Applications/XAMPP/xamppfiles/htdocs/MyEscape/views/blogs/fetchcomment.php</file>
             <file>file:/Applications/XAMPP/xamppfiles/htdocs/MyEscape/views/blogs/read.php</file>
             <file>file:/Applications/XAMPP/xamppfiles/htdocs/MyEscape/controllers/blog_controller.php</file>
             <file>file:/Applications/XAMPP/xamppfiles/htdocs/MyEscape/views/blogs/readAll.php</file>
+            <file>file:/Applications/XAMPP/xamppfiles/htdocs/MyEscape/views/blogs/addcomment.php</file>
             <file>file:/Applications/XAMPP/xamppfiles/htdocs/MyEscape/views/users/register.php</file>
             <file>file:/Applications/XAMPP/xamppfiles/htdocs/MyEscape/models/user.php</file>
             <file>file:/Applications/XAMPP/xamppfiles/htdocs/MyEscape/controllers/pages_controller.php</file>
