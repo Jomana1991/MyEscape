@@ -14,9 +14,10 @@ class Blog {
     public $username;
     public $likecounter;
     public $blogImageDestination;
+    public $viewcounter;
       
     
-    public function __construct($blogID, $title, $content, $countryName, $continentName, $categoryName, $username, $likecounter)
+    public function __construct($blogID, $title, $content, $countryName, $continentName, $categoryName, $username, $likecounter, $viewcounter)
     {
       $this->blogID    = $blogID;
       $this->title    = $title;
@@ -26,8 +27,8 @@ class Blog {
       $this->categoryName = $categoryName;
       $this->username = $username;
       $this->likecounter=$likecounter;
+      $this->viewcounter=$viewcounter;
     } 
-
     
     public static function all() {
         $list = [];
@@ -35,11 +36,10 @@ class Blog {
         $req = $db->query('Call findAllPublishedBlogs'); //stored procedure that returns all blogs in reverse chronological order
 
         foreach ($req->fetchAll() as $blog) {
-            $list[] = new Blog($blog['BlogID'], $blog['Title'], $blog['Content'], $blog['CountryName'], $blog['ContinentName'], $blog['CategoryName'], $blog['Username'], $blog['LikeCounter']);
+            $list[] = new Blog($blog['BlogID'], $blog['Title'], $blog['Content'], $blog['CountryName'], $blog['ContinentName'], $blog['CategoryName'], $blog['Username'], $blog['LikeCounter'], $blog['ViewCounter']);
         }
         return $list;
     }
-
     
     public static function find($id) {
       $db = Db::getInstance();
@@ -51,7 +51,7 @@ class Blog {
       $blog = $req->fetch();
       
       if($blog){
-              return new Blog($blog['BlogID'], $blog['Title'], $blog['Content'], $blog['CountryName'], $blog['ContinentName'], $blog['CategoryName'],$blog['Username'], $blog['LikeCounter']);
+              return new Blog($blog['BlogID'], $blog['Title'], $blog['Content'], $blog['CountryName'], $blog['ContinentName'], $blog['CategoryName'],$blog['Username'], $blog['LikeCounter'],$blog['ViewCounter']);
       }
       else{
             throw new Exception('A real exception should go here'); //replace with a more meaningful exception
@@ -59,13 +59,15 @@ class Blog {
     }
 
     
-    public static function filterInput($blogDetail) {//create a sanitising function for sanitising strings
-        if(isset($_POST["$blogDetail"])&& $_POST["$blogDetail"]!=""){    
+    public static function filterInput($blogDetail) 
+    {//create a sanitising function for sanitising strings
+        if(isset($_POST["$blogDetail"])&& $_POST["$blogDetail"]!="")
+        {   
+                        
             return filter_input(INPUT_POST,$blogDetail,FILTER_SANITIZE_STRING,FILTER_FLAG_STRIP_HIGH);
-            }
+        }
     }
-       
-      
+             
     public static function add() 
     { 
         $db = Db::getInstance();
@@ -80,9 +82,18 @@ class Blog {
         //asking whether title is empty refers to whether the addform has been submitted yet, if not the query is run
         //I could ask whether the general $_POST array is empty as it's not - it contains the username and password from the login page
         if(!empty($_POST['title'])){//loops through Post Superglobal array, sanitising each input item
-        
-            foreach($blogDetails as $blogDetail => $blogValue) {
-                ${$blogDetail} = Blog::filterInput($blogDetail);
+            
+            foreach($blogDetails as $blogDetail => $blogValue) 
+            {
+                //filter all except blog contents
+                if($blogDetail == 'content')
+                {
+                    ${$blogDetail} = $_POST["$blogDetail"];
+                }
+                else        
+                {
+                    ${$blogDetail} = Blog::filterInput($blogDetail);
+                }
             }
                 
             $username=$_SESSION['username'];
@@ -110,8 +121,7 @@ class Blog {
     //die() function calls replaced with trigger_error() calls
     //replace with structured exception handling
     public static function uploadFile(string $name) {
-        
-         
+                 
             if ($_FILES[self::UploadKey]['error'] == (1||2)) {  
                 trigger_error("File too big!");
                 die();
@@ -239,7 +249,19 @@ class Blog {
         $req = $db->prepare("Call subtractLikeCounter(:blogID)");
         $req->bindParam(':blogID', $id); 
         $req->execute();
-    }   
+    }
+    
+    
+ public static function view($id) {
+        $db = Db::getInstance();
+  
+
+        $req = $db->prepare("Call addViewCounter(:blogID)");
+        $req->bindParam(':blogID', $id); 
+        $req->execute();
+    }       
+    
+    
 }
 
 ?>
