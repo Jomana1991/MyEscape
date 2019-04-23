@@ -39,7 +39,7 @@ class User {
             } 
                 $message = "Username and/or password are incorrect.\\nPlease try again.";
                 echo '<script type="text/javascript">alert("'.$message.'");history.go(-1);</script>';
-                #die();
+                die();
             }
         
     
