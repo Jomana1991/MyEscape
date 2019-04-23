@@ -145,7 +145,8 @@ $result_cou = $stmt_cou->fetchAll(PDO::FETCH_ASSOC);
                     </form>  
                     <script>
                         CKEDITOR.replace( "content" );
-                </script>  
+                        
+                    </script>  
                </div>
             </div>
 
