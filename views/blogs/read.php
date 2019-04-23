@@ -56,16 +56,7 @@ $_SESSION ['blogID'] = $_GET ['blogID'];
     <br>
 </p>
 
-<<<<<<< HEAD
-&nbsp; 
 
-  <p>No of views :
-    <?php echo $blog->blogID; ?>
-          <span ></span>
-          <br>
-       <span> <?php echo $blog->viewcounter; ?> </span>    
-  </p>
-=======
        <br />
         <br />
 
@@ -97,4 +88,13 @@ $_SESSION ['blogID'] = $_GET ['blogID'];
 </html>
 
 &nbsp; 
->>>>>>> master
+
+&nbsp; 
+
+  <p>No of views :
+    <?php echo $blog->blogID; ?>
+          <span ></span>
+          <br>
+       <span> <?php echo $blog->viewcounter; ?> </span>    
+  </p>
+
