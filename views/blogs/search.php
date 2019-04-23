@@ -1,6 +1,4 @@
 
-
-
 <?php
 #session_start();//removed as now in layout
 //if (isset($_GET['searchblog'])) {
@@ -15,10 +13,6 @@
     <input type="text" name="query" />
     <input type="submit" value="Search" />
 </form>
-
-
-
-
 
 <?php
 if (isset($_POST['query'])) {
