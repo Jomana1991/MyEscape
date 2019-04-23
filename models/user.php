@@ -55,7 +55,7 @@ class User {
         $res_e = $sql_e->execute();
      
   	if ($sql_u->fetchColumn()> 0) {
-  	   die("Sorry... username already taken"); 
+  	   die("Sorry... username already taken"."Try differnt username". "<a href='?controller=user&action=register'>Register</a> "); 
          
         }
         elseif ($sql_e->fetchColumn() > 0) {
@@ -78,8 +78,7 @@ class User {
              header('location:?controller=user&action=login');}
             }
     }
-    
-    
+       
     public static function readMine($Username) 
     {
       $list = [];
