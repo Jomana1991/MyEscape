@@ -4,20 +4,29 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
 <<<<<<< HEAD
+<<<<<<< HEAD
             <file>file:/Applications/XAMPP/xamppfiles/htdocs/MyEscape/models/comment.php</file>
 =======
             <file>file:/Applications/XAMPP/xamppfiles/htdocs/MyEscape/controllers/user_controller.php</file>
 >>>>>>> parent of 530db35... can post and see comments
+=======
+            <file>file:/Applications/XAMPP/xamppfiles/htdocs/MyEscape/views/blogs/search.php</file>
+>>>>>>> parent of d7462c3... testing commit
             <file>file:/Applications/XAMPP/xamppfiles/htdocs/MyEscape/views/blogs/create.php</file>
             <file>file:/Applications/XAMPP/xamppfiles/htdocs/MyEscape/models/blog.php</file>
 <<<<<<< HEAD
             <file>file:/Applications/XAMPP/xamppfiles/htdocs/MyEscape/controllers/blog_controller.php</file>
+<<<<<<< HEAD
             <file>file:/Applications/XAMPP/xamppfiles/htdocs/MyEscape/views/users/register.php</file>
             <file>file:/Applications/XAMPP/xamppfiles/htdocs/MyEscape/views/users/login.php</file>
 =======
             <file>file:/Applications/XAMPP/xamppfiles/htdocs/MyEscape/views/blogs/readAll.php</file>
             <file>file:/Applications/XAMPP/xamppfiles/htdocs/MyEscape/models/user.php</file>
 >>>>>>> parent of 530db35... can post and see comments
+=======
+            <file>file:/Applications/XAMPP/xamppfiles/htdocs/MyEscape/views/blogs/update.php</file>
+            <file>file:/Applications/XAMPP/xamppfiles/htdocs/MyEscape/views/layout.php</file>
+>>>>>>> parent of d7462c3... testing commit
         </group>
     </open-files>
 </project-private>
