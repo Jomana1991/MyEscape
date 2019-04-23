@@ -91,10 +91,7 @@ $_SESSION ['blogID'] = $_GET ['blogID'];
 
 &nbsp; 
 
-  <p>No of views :
-    <?php echo $blog->blogID; ?>
-          <span ></span>
-          <br>
+  <p>No of views :   
        <span> <?php echo $blog->viewcounter; ?> </span>    
   </p>
 
