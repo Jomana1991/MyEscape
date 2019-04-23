@@ -149,7 +149,8 @@ public function viewBlog() {
             return call('pages', 'error');
 
         try {
-            Blog::view($_GET['blogID']);
+           
+            Blog::incrementViewCount($_GET['blogID']);
             $blog = Blog::find($_GET['blogID']);
             require_once('views/blogs/read.php');#change to ajax?
             
