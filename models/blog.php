@@ -31,19 +31,6 @@ class Blog {
     } 
     
 
-
-    public function __construct($blogID, $title, $content, $countryName, $continentName, $categoryName, $username, $likecounter) {
-        $this->blogID = $blogID;
-        $this->title = $title;
-        $this->content = $content;
-        $this->countryName = $countryName;
-        $this->continentName = $continentName;
-        $this->categoryName = $categoryName;
-        $this->username = $username;
-        $this->likecounter = $likecounter;
-    }
-
->>>>>>> master
     public static function all() {
         $list = [];
         $db = Db::getInstance();
@@ -54,7 +41,7 @@ class Blog {
         }
         return $list;
     }
-<<<<<<< HEAD
+
     
     public static function find($id) {
       $db = Db::getInstance();
@@ -69,29 +56,11 @@ class Blog {
               return new Blog($blog['BlogID'], $blog['Title'], $blog['Content'], $blog['CountryName'], $blog['ContinentName'], $blog['CategoryName'],$blog['Username'], $blog['LikeCounter'],$blog['ViewCounter']);
       }
       else{
-=======
-
-    public static function find($id) {
-       
-        $db = Db::getInstance();
-
-        $id = intval($id); //use intval to make sure $id is an integer
-        $req = $db->prepare("Call findBlogByID(:blogID)");
-        //the query was prepared, now replace :id with the actual $id value
-        $req->execute(array('blogID' => $id));
-        $blog = $req->fetch();
-
-        if ($blog) {
-            return new Blog($blog['BlogID'], $blog['Title'], $blog['Content'], $blog['CountryName'], $blog['ContinentName'], $blog['CategoryName'], $blog['Username'], $blog['LikeCounter']);
-        } else {
->>>>>>> master
-            throw new Exception('A real exception should go here'); //replace with a more meaningful exception
+          throw new Exception('A real exception should go here'); //replace with a more meaningful exception
         }
-        
-        
+                
     }
 
-<<<<<<< HEAD
     
     public static function filterInput($blogDetail) 
     {//create a sanitising function for sanitising strings
@@ -102,20 +71,12 @@ class Blog {
         }
     }
              
-=======
-    public static function filterInput($blogDetail) {//create a sanitising function for sanitising strings
-        if (isset($_POST["$blogDetail"]) && $_POST["$blogDetail"] != "") {
-            return filter_input(INPUT_POST, $blogDetail, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
-        }
 
-        
-     
-    }
 
 
        
       
->>>>>>> master
+
     public static function add() 
     { 
 
@@ -130,8 +91,10 @@ class Blog {
 
         //asking whether title is empty refers to whether the addform has been submitted yet, if not the query is run
         //I could ask whether the general $_POST array is empty as it's not - it contains the username and password from the login page
-<<<<<<< HEAD
-        if(!empty($_POST['title'])){//loops through Post Superglobal array, sanitising each input item
+
+        if(!empty($_POST['title']))
+        {//loops through Post Superglobal array, sanitising each input item
+        
             
             foreach($blogDetails as $blogDetail => $blogValue) 
             {
@@ -143,48 +106,42 @@ class Blog {
                 else        
                 {
                     ${$blogDetail} = Blog::filterInput($blogDetail);
+                
                 }
-=======
-        if (!empty($_POST['title'])) {//loops through Post Superglobal array, sanitising each input item
-            foreach ($blogDetails as $blogDetail => $blogValue) {
-                ${$blogDetail} = Blog::filterInput($blogDetail);
->>>>>>> master
-            }
+                $username = $_SESSION['username'];
 
-            $username = $_SESSION['username'];
+                $req->bindParam(':username', $username);
+                $req->bindParam(':title', $title);
+                $req->bindParam(':content', $content);
+                $req->bindParam(':countryName', $countryName);
+                $req->bindParam(':continentName', $continentName);
+                $req->bindParam(':categoryName', $categoryName);
 
-            $req->bindParam(':username', $username);
-            $req->bindParam(':title', $title);
-            $req->bindParam(':content', $content);
-            $req->bindParam(':countryName', $countryName);
-            $req->bindParam(':continentName', $continentName);
-            $req->bindParam(':categoryName', $categoryName);
-
-            $req->execute();
+                $req->execute();
 
 
-            //only upload blog image if one loaded
-            if (!empty($_FILES[self::UploadKey]['name'])) {
-                Blog::uploadFile($title . "_" . $username);
-            }//need to handle so that if there is an error with image upload, blog content not added to db
-        }
-    }
+                //only upload blog image if one loaded
+                if (!empty($_FILES[self::UploadKey]['name'])) 
+                {
 
-    const AllowedTypes = ['image/jpeg', 'image/jpg'];
+                    Blog::uploadFile($title . "_" . $username);
+                }//need to handle so that if there is an error with image upload, blog content not added to db
+
+            }//for
+        }//if
+    }//add   
+    const AllowedTypes = ['image/jpeg','image/jpg'];
     const UploadKey = 'blogUploader';
 
     //die() function calls replaced with trigger_error() calls
     //replace with structured exception handling
-    public static function uploadFile(string $name) {
-<<<<<<< HEAD
+    public static function uploadFile(string $name) 
+    {
                  
             if ($_FILES[self::UploadKey]['error'] == (1||2)) {  
                 trigger_error("File too big!");
                 die();
             }
-=======
->>>>>>> master
-
 
         if ($_FILES[self::UploadKey]['error'] == (1 || 2)) {
             trigger_error("File too big!");
@@ -223,7 +180,6 @@ class Blog {
     public static function modify($id) {
         $db = Db::getInstance();
 
-
         $req = $db->prepare("Call updateBlog(:blogID, :username, :title, :content, :countryName, :continentName, :categoryName)");
         $req->bindParam(':blogID', $id);
         $req->bindParam(':username', $username);
@@ -241,7 +197,6 @@ class Blog {
             foreach ($blogUpdateDetails as $blogDetail => $blogValue) {
                 ${$blogDetail} = Blog::filterInput($blogDetail);
             }
-
 
             $req->execute();
             //upload product image if it exists
@@ -282,14 +237,13 @@ class Blog {
             }
             
             return $list; 
+    }
            
-}
-    public function getBlogImageDestination() {
+    public function getBlogImageDestination() 
+    {
         return $this->blogImageDestination;
     }
 
-   
-    
     public function addComment ($blogid) {
         
         
@@ -313,7 +267,7 @@ class Blog {
                 if ($sql) {
                     header('header:?controller=blog&action=read&blogID='.$blogid);
                 }
-            
+           
         
     }
 
@@ -349,6 +303,7 @@ class Blog {
         $req = $db->prepare("Call addViewCounter(:blogID)");
         $req->bindParam(':blogID', $id); 
         $req->execute();
+ }
 
-
-?>
+ 
+}//Blog
