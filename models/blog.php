@@ -13,7 +13,7 @@ class Blog {
     public $username;
     public $likecounter;
     public $blogImageDestination;
-<<<<<<< HEAD
+
     public $viewcounter;
       
     
@@ -30,7 +30,7 @@ class Blog {
       $this->viewcounter=$viewcounter;
     } 
     
-=======
+
 
     public function __construct($blogID, $title, $content, $countryName, $continentName, $categoryName, $username, $likecounter) {
         $this->blogID = $blogID;
@@ -349,14 +349,6 @@ class Blog {
         $req = $db->prepare("Call addViewCounter(:blogID)");
         $req->bindParam(':blogID', $id); 
         $req->execute();
-<<<<<<< HEAD
-    }       
-    
-    
-=======
-    }   
 
->>>>>>> master
-}
 
 ?>
