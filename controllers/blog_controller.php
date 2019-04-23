@@ -141,11 +141,7 @@ class BlogController {
             return call('pages', 'error');
         }
     }
-<<<<<<< HEAD
-=======
 
-}
->>>>>>> master
 
 public function viewBlog() {
         
