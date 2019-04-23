@@ -39,7 +39,7 @@ class User {
             } 
                 $message = "Username and/or password are incorrect.\\nPlease try again.";
                 echo '<script type="text/javascript">alert("'.$message.'");history.go(-1);</script>';
-                #die();
+                die();
             }
         
     
@@ -85,30 +85,7 @@ class User {
       $list = [];
       $db = Db::getInstance();
       
-       $sqlfindmine= 'SELECT 
-               b.BlogID
-               ,u.Username
-               ,b.Title
-               ,b.Content
-                ,cou.CountryName
-                ,con.ContinentName
-                ,cat.CategoryName
-                ,b.DatePosted
-               ,b.LikeCounter
-               
-                FROM `blog` as b
-               INNER JOIN country as cou
-               ON b.CountryID = cou.CountryID
-              INNER JOIN continent as con
-               ON b.ContinentID = con.ContinentID
-               INNER JOIN category as cat
-               ON b.CategoryID = cat.CategoryID
-                INNER JOIN user as u
-               ON b.UserID = u.UserID
-               
-               WHERE u.Username = :Username
-               ORDER BY b.DatePosted DESC;';
-       
+       $sqlfindmine= "Call readMyBlogs (:Username)";
       
       $req = $db->prepare($sqlfindmine);
       
