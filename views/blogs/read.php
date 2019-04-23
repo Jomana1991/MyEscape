@@ -31,16 +31,7 @@ $_SESSION ['blogID'] = $_GET ['blogID'];
             echo '';
         }
         ?>
- <?php
-
-    $file = 'views/blogImages/' . $blog->title ."_".$blog->username. '.jpeg';
-    
-    if(file_exists($file)){
-        $img = "<img src='$file' width='150' />";
-        echo $img;
-    }
-    
-?>
+ 
 &nbsp;
 <br><br>
 
@@ -54,8 +45,8 @@ $_SESSION ['blogID'] = $_GET ['blogID'];
     </a>
 
     <br>
-<p id="counter"><span class="badge" ></span></p>
-<!--    <p id="counter"></p>-->
+
+<p id="counter" class="badge"></p>
     <br>
 
 
