@@ -21,9 +21,7 @@ class userController {
             $blogs = Blog::add();
            
       }
- 
-      
-      
+    
 }
 
 public function contactus(){
