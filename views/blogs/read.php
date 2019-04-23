@@ -32,4 +32,9 @@
 
 &nbsp; 
 
-  
+  <p>No of views :
+    <?php echo $blog->blogID; ?>
+          <span ></span>
+          <br>
+       <span> <?php echo $blog->viewcounter; ?> </span>    
+  </p>
