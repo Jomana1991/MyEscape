@@ -66,7 +66,6 @@ class User {
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
         $rej = $db->prepare("INSERT INTO user (Username, Email, Password) VALUES ( :Username, :Email, :Password)");
     
-
         $rej->bindParam(':Username', $Username);
         $rej->bindParam(':Password', $hashed_password);
         $rej->bindParam(':Email', $Email);
