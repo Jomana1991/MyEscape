@@ -1,5 +1,7 @@
+<?php
 
 
+?>
 
 <p>Here is a list of all blogs:</p>
 

@@ -2,6 +2,7 @@
 #session_start();//removed as now in layout
 if (isset($_POST['username'])) {
     $_SESSION['username'] = $_POST['username'];
+    
 }
 $db = Db::getInstance();
 $stmt = $db->prepare("select CategoryName from category");
