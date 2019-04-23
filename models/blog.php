@@ -40,6 +40,10 @@ class Blog {
             $list[] = new Blog($blog['BlogID'], $blog['Title'], $blog['Content'], $blog['CountryName'], $blog['ContinentName'], $blog['CategoryName'], $blog['Username'], $blog['LikeCounter'], $blog['ViewCounter']);
         }
         return $list;
+        /*
+        if (isset($_GET['BlogID'])) {
+                    header('header:?controller=blog&action=viewBlog &blogID='.$blogid);
+                }*/
     }
 
     
@@ -71,11 +75,6 @@ class Blog {
         }
     }
              
-
-
-
-       
-      
 
     public static function add() 
     { 
@@ -267,8 +266,7 @@ class Blog {
                 if ($sql) {
                     header('header:?controller=blog&action=read&blogID='.$blogid);
                 }
-           
-        
+                   
     }
 
             
@@ -296,11 +294,11 @@ class Blog {
     }
     
     
- public static function view($id) {
+    public static function incrementViewCount($id) {
         $db = Db::getInstance();
   
-
         $req = $db->prepare("Call addViewCounter(:blogID)");
+        
         $req->bindParam(':blogID', $id); 
         $req->execute();
  }
