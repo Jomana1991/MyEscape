@@ -112,7 +112,7 @@ class User {
     
     
     public static function readMine($username) 
-    {
+    {        
       $list = [];
       $db = Db::getInstance();
 
@@ -125,7 +125,7 @@ class User {
 
             require_once('blog.php');
 
-            $req->execute(array('Username' => $username));
+            $req->execute(array(':username' => $username));
             foreach($req->fetchAll() as $blog) 
                 {
               $list[] = new Blog($blog['BlogID'], $blog['Title'], $blog['Content'], $blog['CountryName'], $blog['ContinentName'], $blog['CategoryName'],$blog['Username'], $blog['LikeCounter']);
@@ -133,7 +133,8 @@ class User {
             return $list;
        }
        catch(PDOException $e){
-           $e->getMessage();
+           $e->getMessage();           
+           
            // log this exception somewhere
            throw  new Exception();
        }
@@ -181,7 +182,8 @@ class User {
     public static function modify() {
         $db = Db::getInstance();
 
-        if(!is_null($db){
+        if(!is_null($db))
+        {
         try{
         $req = $db->prepare("Call updatePassword(:username, :newPassword);");
         $req->bindParam(':username', $username);
@@ -211,7 +213,7 @@ class User {
     
     public static function confirmUserExists() {
         $db = Db::getInstance();
-        if(!is_null($db){
+        if(!is_null($db)){
         try{
         $req = $db->prepare("Call confirmUserExists(:username);");
         $req->bindParam(':username', $username);        

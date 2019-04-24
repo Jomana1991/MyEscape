@@ -70,7 +70,7 @@ class userController {
       #require_once('./models/user.php'); //did this when trying to get create to redirect to readMine not readAll
       require_once('views/users/readMine.php');
       }
-        catch (Exception $ex){
+        catch (Exception $ex){                      
             return call('pages','error');
         }
     }
