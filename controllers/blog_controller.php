@@ -19,6 +19,7 @@ public function read() {
             try {
                 // we use the given id to get the correct post
                 $blogid = $_GET['blogID'];
+                Blog::incrementViewCount($blogid);
                 $blog = Blog::find($_GET['blogID']);
 
 
@@ -178,7 +179,6 @@ public function viewBlog() {
 
         try {
            
-            Blog::incrementViewCount($_GET['blogID']);
             $blog = Blog::find($_GET['blogID']);
             require_once('views/blogs/read.php');
             
