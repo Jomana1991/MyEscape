@@ -7,12 +7,30 @@
 // 
 //} 
 ?>
+
+<html>
+    <head>
+        <title> </title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    </head>
+    <body>
 <p>Search for a blog below</p>
 
 <form action=" " method="POST">
-    <input type="text" name="query" />
+    <input type="text" id="query" name="query" placeholder="Enter your search here"/>
     <input type="submit" value="Search" />
 </form>
+
+
+<div class="result">
+    
+</div>
+
+
+
+
 
 <?php
 if (isset($_POST['query'])) {
@@ -44,8 +62,40 @@ if (isset($_POST['query'])) {
         echo " ";
     }
 }
+
+
+
+
 ?> 
 &nbsp; &nbsp;
+<!--
+<script>
+$(document).ready(function(){
+    $('#query').keyup(function(){
+        var txt = $(this).val();
+        if (txt != '')
+        {
+            
+            
+        }
+        else {
+            $('.result').html ('');
+            $.ajax({
+                url:"?controller=blog&action=search.php",
+                method:"post",
+                data:{search:txt},
+                datatype:"text",
+                success:function(data)
+                {
+                    $('.result').html(data);
+                }
+            });
+        }
+    });
+});
 
+</script>-->
 
+    </body>
+</html>
 
