@@ -47,6 +47,7 @@ class User {
                 echo '<script type="text/javascript">alert("'.$message.'");history.go(-1);</script>';
                 die();
             }
+            }
 
             catch(PDOException $e){
                 $e->getMessage();
@@ -57,6 +58,7 @@ class User {
               // log this exception somewhere
             }           
          }
+            
 
     }
         
@@ -98,28 +100,9 @@ class User {
          
          if ($result ==1 ) { 
              echo "Please enter the login details";
-             header('location:?controller=user&action=login');}
-
+             header('location:?controller=user&action=login');}            
+            
             }
-            elseif ($sql_e->fetchColumn() > 0) {
-            die("Sorry... email is already taken")  ;    
-
-            }
-            else {
-            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-            $rej = $db->prepare("INSERT INTO user (Username, Email, Password) VALUES ( :Username, :Email, :Password)");
-
-
-            $rej->bindParam(':Username', $Username);
-            $rej->bindParam(':Password', $hashed_password);
-            $rej->bindParam(':Email', $Email);
-
-            $result = $rej->execute();
-
-             if ($result ==1 ) { 
-                 echo "Please enter the login details";
-                 header('location:?controller=user&action=login');}
-                }
             }
             catch(PDOException $e){
                 $e->getMessage();
@@ -147,7 +130,7 @@ class User {
 
             require_once('blog.php');
 
-            $req->execute(array('Username' => $Username));
+            $req->execute(array('Username' => $username));
             foreach($req->fetchAll() as $blog) 
                 {
               $list[] = new Blog($blog['BlogID'], $blog['Title'], $blog['Content'], $blog['CountryName'], $blog['ContinentName'], $blog['CategoryName'],$blog['Username'], $blog['LikeCounter']);
@@ -164,6 +147,7 @@ class User {
        }
 
       
+    }
     }
     
     
@@ -193,6 +177,7 @@ class User {
             $ex->getMessage();
             // log this exception somewhere
         }
+    }
     }
     
 
