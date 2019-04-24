@@ -28,31 +28,51 @@ class Blog {
     public static function all() {
         $list = [];
         $db = Db::getInstance();
+        if(!is_null($db)){
+            try{
         $req = $db->query('Call findAllPublishedBlogs'); //stored procedure that returns all blogs in reverse chronological order
 
         foreach ($req->fetchAll() as $blog) {
             $list[] = new Blog($blog['BlogID'], $blog['Title'], $blog['Content'], $blog['CountryName'], $blog['ContinentName'], $blog['CategoryName'], $blog['Username'], $blog['LikeCounter']);
         }
+            }  catch(PDOException $e){
+                $e->getMessage();
+                // log this exception somewhere
+            }
+            catch(Exception $ex){
+              $ex->getMessage();  
+              // log this exception somewhere
+            }           
         return $list;
+            
+    }
     }
 
+    
     public static function find($id) {
-       
-        $db = Db::getInstance();
-
-        $id = intval($id); //use intval to make sure $id is an integer
-        $req = $db->prepare("Call findBlogByID(:blogID)");
-        //the query was prepared, now replace :id with the actual $id value
-        $req->execute(array('blogID' => $id));
-        $blog = $req->fetch();
-
-        if ($blog) {
-            return new Blog($blog['BlogID'], $blog['Title'], $blog['Content'], $blog['CountryName'], $blog['ContinentName'], $blog['CategoryName'], $blog['Username'], $blog['LikeCounter']);
-        } else {
-            throw new Exception('A real exception should go here'); //replace with a more meaningful exception
-        }
-        
-        
+      $db = Db::getInstance();
+      if(!is_null($db)){
+          try{
+      
+      $id = intval($id);//use intval to make sure $id is an integer
+      $req = $db->prepare("Call findBlogByID(:blogID)");
+      //the query was prepared, now replace :id with the actual $id value
+      $req->execute(array('blogID' => $id));
+      $blog = $req->fetch();
+      
+      if($blog){
+              return new Blog($blog['BlogID'], $blog['Title'], $blog['Content'], $blog['CountryName'], $blog['ContinentName'], $blog['CategoryName'],$blog['Username'], $blog['LikeCounter']);
+      }
+      
+          } catch(PDOException $e){
+                $e->getMessage();
+                // log this exception somewhere
+            }
+            catch(Exception $ex){
+              $ex->getMessage();  
+              // log this exception somewhere
+            }           
+      }
     }
 
     public static function filterInput($blogDetail) {//create a sanitising function for sanitising strings
@@ -71,11 +91,15 @@ class Blog {
     { 
 
         $db = Db::getInstance();
-        //
-        $stmt = $db->prepare("select CategoryID, CategoryName from category order by CategoryID");
-        $result = $stmt->fetchAll();
-        $req = $db->prepare("Call addBlog(:username, :title, :content, :countryName, :continentName, :categoryName)");
-        // sanitize input, set parameters and execute
+
+        if(!is_null($db)){
+            try {
+     //
+        $stmt = $db-> prepare("select CategoryID, CategoryName from category order by CategoryID");
+        $result =$stmt->fetchAll();
+        $req = $db->prepare( "Call addBlog(:username, :title, :content, :countryName, :continentName, :categoryName)"); 
+            // sanitize input, set parameters and execute
+        
 
         $blogDetails = filter_input_array(INPUT_POST);
 
@@ -97,15 +121,26 @@ class Blog {
 
             $req->execute();
 
-
-            //only upload blog image if one loaded
-            if (!empty($_FILES[self::UploadKey]['name'])) {
-                Blog::uploadFile($title . "_" . $username);
-            }//need to handle so that if there is an error with image upload, blog content not added to db
         }
-    }
+            }
+        catch(PDOException $e){
+                $e->getMessage();
+                // log this exception somewhere
+            }
+            catch(Exception $ex){
+              $ex->getMessage();  
+              // log this exception somewhere
+            }           
+        
+    //only upload blog image if one loaded
+       if (!empty($_FILES[self::UploadKey]['name'])) {
+                    Blog::uploadFile($title."_".$username);
+        }//need to handle so that if there is an error with image upload, blog content not added to db
+        }   
+        }
 
-    const AllowedTypes = ['image/jpeg', 'image/jpg'];
+    const AllowedTypes = ['image/jpeg','image/jpg'];
+
     const UploadKey = 'blogUploader';
 
     //die() function calls replaced with trigger_error() calls
@@ -150,6 +185,9 @@ class Blog {
     public static function modify($id) {
         $db = Db::getInstance();
 
+        if(!is_null($db)){
+  try{
+
 
         $req = $db->prepare("Call updateBlog(:blogID, :username, :title, :content, :countryName, :continentName, :categoryName)");
         $req->bindParam(':blogID', $id);
@@ -171,16 +209,31 @@ class Blog {
 
 
             $req->execute();
+        }
+  }
+        catch(PDOException $e){
+                $e->getMessage();
+                // log this exception somewhere
+            }
+            catch(Exception $ex){
+              $ex->getMessage();  
+              // log this exception somewhere
+            }           
             //upload product image if it exists
             if (!empty($_FILES[self::UploadKey]['name'])) {
                 Blog::uploadFile($title . "_" . $username);
             }
         }
-    }
+
+        }
+    
+        
 
     public static function delete($blogid) {
         $db = Db::getInstance();
         //make sure $id is an integer
+        if(!is_null($db)){
+            try{
 
         $blogid = intval($blogid);
         $stmt = $db->prepare('call deleteBlog(:BlogID)');
@@ -188,17 +241,29 @@ class Blog {
 
         // the query was prepared, now replace :id with the actual $id value
         $stmt->execute();
+        
+        }catch(PDOException $e){
+                $e->getMessage();
+                // log this exception somewhere
+            }
+            catch(Exception $ex){
+              $ex->getMessage();  
+              // log this exception somewhere
+            }
+    }
     }
 
     public static function search() {
 
              $db = Db::getInstance();
+             if(!is_null($db)){
              $list = [];
              
             if (isset($_POST['query']) && $_POST['query'] != "") {
                 $search = filter_input(INPUT_POST, 'query', FILTER_SANITIZE_SPECIAL_CHARS);
             }
             $likesearch = "%$search%";
+            try{
 
             $sqlsearch =   $db->prepare("Call searchBlog (:query)");
          
@@ -207,8 +272,17 @@ class Blog {
             foreach ($sqlsearch->fetchAll() as $blog) {
                 $list[] = new Blog($blog['BlogID'], $blog['Title'], $blog['Content'], $blog['CountryName'], $blog['ContinentName'], $blog['CategoryName'], $blog['Username'], $blog['LikeCounter']);
             }
+            }catch(PDOException $e){
+                $e->getMessage();
+                // log this exception somewhere
+            }
+            catch(Exception $ex){
+              $ex->getMessage();  
+              // log this exception somewhere
+            }           
             
             return $list; 
+             }
            
 }
     public function getBlogImageDestination() {
