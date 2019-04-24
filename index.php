@@ -15,8 +15,14 @@
         $controller = 'pages';
         $action     = 'home';
   }
-
-    require_once('views/layout.php');
+    
+  if (isset($_GET['action']) && ($_GET['action'] != ('likeBlog' || 'dislikeBlog'))) {
+        require_once('views/layout.php');
+  }
+  else {require_once('routes.php');      
+  }
+  
+    
         ?>
     </body>
 </html>
