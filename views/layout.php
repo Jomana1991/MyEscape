@@ -1,7 +1,9 @@
 <html>
   <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    
+    
 <!--<link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico|Pangolin" >
@@ -39,5 +41,9 @@
         Copyright &COPY; <?= date('Y'); ?>
     </footer>
 </div>
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<!--  <script src="jsFunctions.js" type="text/javascript"></script>-->
   </body>
 </html>

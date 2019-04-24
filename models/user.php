@@ -2,24 +2,26 @@
 
 class User {
 
-    public $Username;
-    public $Password;
-    public $Email;
+    public $username;
+    public $password;
+    public $email;
 
-    public function __construct($Username, $Password, $Email) {
+    public function __construct($username, $password, $email) {
 
-        $this->Username = $Username;
-        $this->Password = $Password;
+        $this->username = $username;
+        $this->password = $Password;
 
-        $this->Email = $Email;
+        $this->email = $Email;
     }
 
     public static function login() {//add in santisation for email
                
             $db = Db::getInstance();
+
             if(!is_null($db)){
             try{
             $query = $db->prepare("SELECT * FROM user WHERE Username = :Username AND Password = :Password");
+
 
             if(isset($_POST['username'])&& $_POST['username']!=""){
                 $username = filter_input(INPUT_POST,'username', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -28,8 +30,8 @@ class User {
                 $password = filter_input(INPUT_POST,'password', FILTER_SANITIZE_SPECIAL_CHARS);
             }
 
-            $query->bindParam(':Username', $username);
-            $query->bindParam(':Password', $password);
+            $query->bindParam(':username', $username);
+            $query->bindParam(':password', $password);
 
             $query->execute();
 
@@ -39,10 +41,13 @@ class User {
                  header('location:?controller=blog&action=create');
 
             } 
+            else {
                 $message = "Username and/or password are incorrect.\\nPlease try again.";
+        
                 echo '<script type="text/javascript">alert("'.$message.'");history.go(-1);</script>';
-                #die();
+                die();
             }
+
             catch(PDOException $e){
                 $e->getMessage();
                 // log this exception somewhere
@@ -52,25 +57,48 @@ class User {
               // log this exception somewhere
             }           
          }
+
     }
         
     
 
     public static function register() {
         $db = Db::getInstance();
+
         if(!is_null($db))
         {
             try{
-            $Username = $_POST["Username"];
-            $password = $_POST['Password'];
-            $Email = $_POST["Email"];
-            $sql_u = $db->prepare("SELECT * FROM user where Username='$Username'");
-            $sql_e = $db->prepare("SELECT * FROM user where Email = '$Email'");
-            $res_u = $sql_u->execute();
-            $res_e = $sql_e->execute();
+            
+        $username = $_POST["username"];
+        $password = $_POST['password'];
+        $email = $_POST["email"];
+        $sql_u = $db->prepare("SELECT * FROM user where Username='$username'");
+        $sql_e = $db->prepare("SELECT * FROM user where Email = '$email'");
+        $res_u = $sql_u->execute();
+        $res_e = $sql_e->execute();
+     
+  	if ($sql_u->fetchColumn()> 0) {
+  	   die("Sorry... username already taken"); 
+         
+        }
+        elseif ($sql_e->fetchColumn() > 0) {
+        die("Sorry... email is already taken")  ;    
+        
+        }
+        else {
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+        $rej = $db->prepare("INSERT INTO user (Username, Email, Password) VALUES ( :username, :email, :password)");
+    
 
-            if ($sql_u->fetchColumn()> 0) {
-               die("Sorry... username already taken"); 
+        $rej->bindParam(':username', $username);
+        $rej->bindParam(':password', $hashed_password);
+        $rej->bindParam(':email', $email);
+        
+        $result = $rej->execute();
+         
+         if ($result ==1 ) { 
+             echo "Please enter the login details";
+             header('location:?controller=user&action=login');}
 
             }
             elseif ($sql_e->fetchColumn() > 0) {
@@ -105,35 +133,14 @@ class User {
     }
     
     
-    public static function readMine($Username) 
+    public static function readMine($username) 
     {
       $list = [];
       $db = Db::getInstance();
+
       if(!is_null($db)){      
        try{   
-            $sqlfindmine= 'SELECT 
-               b.BlogID
-               ,u.Username
-               ,b.Title
-               ,b.Content
-                ,cou.CountryName
-                ,con.ContinentName
-                ,cat.CategoryName
-                ,b.DatePosted
-               ,b.LikeCounter
-               
-                FROM `blog` as b
-               INNER JOIN country as cou
-               ON b.CountryID = cou.CountryID
-              INNER JOIN continent as con
-               ON b.ContinentID = con.ContinentID
-               INNER JOIN category as cat
-               ON b.CategoryID = cat.CategoryID
-                INNER JOIN user as u
-               ON b.UserID = u.UserID
-               
-               WHERE u.Username = :Username
-               ORDER BY b.DatePosted DESC;';
+            $sqlfindmine= "Call readMyBlogs (:username)";
        
       
             $req = $db->prepare($sqlfindmine);
@@ -155,7 +162,8 @@ class User {
            $ex->getMessage();
            // log this exception somewhere
        }
-      }
+
+      
     }
     
     
@@ -187,5 +195,63 @@ class User {
         }
     }
     
+
+    
+    public static function filterInput($userDetail) {//create a sanitising function for sanitising strings
+        if (isset($_POST["$userDetail"]) && $_POST["$userDetail"] != "") {
+            return filter_input(INPUT_POST, $userDetail, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
+        }
+
     }
+    
+    
+    public static function modify() {
+        $db = Db::getInstance();
+
+
+        $req = $db->prepare("Call updatePassword(:username, :newPassword);");
+        $req->bindParam(':username', $username);
+        $req->bindParam(':newPassword', $newPassword);
+        
+
+        $passwordUpdateDetails = filter_input_array(INPUT_POST);
+
+        //asking whether title is empty refers to whether the addform has been submitted yet, if not the query is run
+        if (!empty($_POST['username'])) {//loops through Post Superglobal array, sanitising each input item
+            foreach ($passwordUpdateDetails as $formDetail => $formValue) {
+                ${$formDetail} = User::filterInput($formDetail);
+            }
+
+
+            $req->execute();
+            
+        }
+    }
+    
+    public static function confirmUserExists() {
+        $db = Db::getInstance();
+
+        $req = $db->prepare("Call confirmUserExists(:username);");
+        $req->bindParam(':username', $username);        
+
+        $passwordUpdateDetails = filter_input_array(INPUT_POST);
+
+        //asking whether title is empty refers to whether the addform has been submitted yet, if not the query is run
+        if (!empty($_POST['username'])) {//loops through Post Superglobal array, sanitising each input item
+            foreach ($passwordUpdateDetails as $formDetail => $formValue) {
+                ${$formDetail} = User::filterInput($formDetail);
+            }
+
+            $req->execute();
+            $user = $req->fetch();
+            
+             if($user){
+              return true;
+      }
+            else{
+            throw new Exception('A real exception should go here'); //replace with a more meaningful exception
+            }
+        }
+    }
+
 }
