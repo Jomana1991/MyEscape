@@ -217,31 +217,54 @@ class Blog {
 
    
     
-    public function addComment ($blogid) {
-        
-        
+
+public function addComment($blogid,$username) {
+
+
         $db = Db::getInstance();
         
-            
-         if (isset($_POST['Content']) && $_POST['Content'] != "") {
+        
+        if (!empty($username)) {
+
+           
+            if (isset($_POST['Content']) && $_POST['Content'] != "") {
                 $Content = filter_input(INPUT_POST, 'Content', FILTER_SANITIZE_SPECIAL_CHARS);
             }
-             if (isset($_POST['senderName']) && $_POST['senderName'] != "") {
+            if (isset($_POST['senderName']) && $_POST['senderName'] != "") {
                 $senderName = filter_input(INPUT_POST, 'senderName', FILTER_SANITIZE_SPECIAL_CHARS);
             }
-            
-                $sql = $db->prepare( "INSERT INTO comment (BlogID, Content, senderName) VALUES (:BlogID, :Content, :senderName)");
-                  $sql->bindParam(':BlogID', $blogid);
-                   $sql->bindParam(':Content', $Content);
-                      $sql->bindParam(':senderName', $senderName);
-                
-               $sql->execute();
-                
-                if ($sql) {
-                    header('header:?controller=blog&action=read&blogID='.$blogid);
-                }
-            
-        
+
+            $sql = $db->prepare("CALL addComment(:Username, :BlogID, :Content, :senderName)");
+             $sql->bindParam(':Username', $username);
+            $sql->bindParam(':BlogID', $blogid);
+            $sql->bindParam(':Content', $Content);
+            $sql->bindParam(':senderName', $senderName);
+           
+
+            $sql->execute();
+
+            if ($sql) {
+                header('header:?controller=blog&action=read&blogID=' . $blogid);
+            }
+        } else {
+        if (isset($_POST['Content']) && $_POST['Content'] != "") {
+            $Content = filter_input(INPUT_POST, 'Content', FILTER_SANITIZE_SPECIAL_CHARS);
+        }
+        if (isset($_POST['senderName']) && $_POST['senderName'] != "") {
+            $senderName = filter_input(INPUT_POST, 'senderName', FILTER_SANITIZE_SPECIAL_CHARS);
+        }
+
+        $sql = $db->prepare("INSERT INTO comment (BlogID, Content, senderName) VALUES (:BlogID, :Content, :senderName)");
+        $sql->bindParam(':BlogID', $blogid);
+        $sql->bindParam(':Content', $Content);
+        $sql->bindParam(':senderName', $senderName);
+
+        $sql->execute();
+
+        if ($sql) {
+            header('header:?controller=blog&action=read&blogID=' . $blogid);
+        }
+    }
     }
 
             

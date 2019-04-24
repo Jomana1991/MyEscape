@@ -68,16 +68,16 @@ $_SESSION ['blogID'] = $_GET ['blogID'];
         <br />
 
         <div class="row">
-            <div class="col-lg-4">
+            <div class="col-lg-4"> </div>
                 <div class="col-lg-6">
                     <form class="form-horizontal" method="POST" action=" " >
                         <div>
                             <label class="col-lg-5 control-label">Add Comment </label> 
                             <br />
                             <div class="col-lg-9">
-                                <textarea class="form-control" rows="2" cols="5" name="senderName" placeholder="Enter your name">  </textarea>
+                                <textarea class="form-control" rows="2" cols="5" name="senderName" placeholder="Enter your name" required ></textarea>
                                 <br />
-                                <textarea class="form-control" rows="5" cols="10" name="Content" placeholder="comment">  </textarea>
+                                <textarea class="form-control" rows="5" cols="10" name="Content" placeholder="comment" required></textarea>
                             </div>
                         </div>
                         <br />
@@ -86,9 +86,18 @@ $_SESSION ['blogID'] = $_GET ['blogID'];
                     </form>  
 
                 </div> 
-
-            </div>
-
+        </div>
+        
+         <div class="row">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-6">
+                <h1> All comments</h1>
+                <?php foreach($comments as $comment) { ?>
+                <p>    <?php echo $comment->Content; ?> </p>
+                <p> Posted by:   <?php echo $comment->senderName; ?> </p>
+                <hr>
+             <?php   }?>
+            </div> 
         </div>
 
     </body>
