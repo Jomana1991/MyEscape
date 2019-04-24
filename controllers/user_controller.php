@@ -21,21 +21,18 @@ class userController {
             $blogs = Blog::add();
            
       }
- 
-      
-      
-}
+    }
 
-public function contactus(){
-     if($_SERVER['REQUEST_METHOD'] == 'GET'){
-          require_once('views/users/contactus.php');
-       }
-      else { 
-            User::contactus();
-             
-      }
-    
-}
+    public function contactus(){
+         if($_SERVER['REQUEST_METHOD'] == 'GET'){
+              require_once('views/users/contactus.php');
+           }
+          else { 
+                User::contactus();
+
+          }
+
+    }
 
 
     public function register() {
@@ -46,7 +43,7 @@ public function contactus(){
             User::register();
              
 //            $blogs = User::login(); 
-//            require_once('views/blogs/login.php');
+//            require_once('views/users/login.php');
       }
       
     }
@@ -61,9 +58,38 @@ public function contactus(){
       #require_once('./models/user.php'); //did this when trying to get create to redirect to readMine not readAll
       require_once('views/users/readMine.php');
       }
- catch (Exception $ex){
-     return call('pages','error');
- }
+        catch (Exception $ex){
+            return call('pages','error');
+        }
+    }
+    
+    
+    
+    
+    public function changePassword() {
+        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+            
+            require_once('views/users/changePassword.php');
+        }       
+            else{
+
+                if (User::confirmUserExists()){
+                    try{ User::modify();
+
+                    require_once('views/users/login.php');
+                    }
+                    catch (Exception $ex){
+                    return call('pages','error');
+                    }
+                }
+                
+                else{
+                    $message = "Username does not exist.";
+        
+                    echo '<script type="text/javascript">alert("'.$message.'");history.go(-1);</script>';
+                }
+        }
+      
     }
     
  }

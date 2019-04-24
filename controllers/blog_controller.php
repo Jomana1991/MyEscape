@@ -10,40 +10,47 @@ class BlogController {
     public function read() {
         // we expect a url of form ?controller=posts&action=show&id=x
         // without an id we just redirect to the error page as we need the post id to find it in the database
-        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-            if (!isset($_GET['blogID']))
-                return call('pages', 'error');
+         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+        if (!isset($_GET['blogID']))
+            return call('pages', 'error');
 
-            try {
-                // we use the given id to get the correct post
-                $blogid = $_GET['blogID'];
-                $blog = Blog::find($_GET['blogID']);
-
-
-                require_once './models/comment.php';
-                $comments = Comment::fetchComment($blogid);
-                require_once('views/blogs/read.php');
-                
-            } catch (Exception $ex) {
-                return call('pages', 'error');
-            }
-        } else {
-            if (!empty($_SESSION['username'])){
-            $username = $_SESSION['username'];
-            }
-            else 
-            { $username = ' ';}
-            $blogid = $_GET['blogID'];
-            Blog::addComment($blogid,$username);
-
-            $blog = Blog::find($blogid);
-
-            require_once './models/comment.php';
-            $comments = Comment::fetchComment($blogid);
+        try {
+            // we use the given id to get the correct post
+            $blog = Blog::find($_GET['blogID']);
             require_once('views/blogs/read.php');
+        } catch (Exception $ex) {
+            return call('pages', 'error');
+        }
+         }
+        else {
+             $blogid = $_GET['blogID'];
+            Blog::addComment($blogid);
+
+         $blog = Blog::find($blogid);
+
+           require_once('views/blogs/read.php');
+            
         }
     }
-    
+
+    public function addComment() {
+         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+            if (!isset($_GET['blogID']))
+                return call('pages', 'error');#requires better exception handling
+            // we use the given id to get the correct blog for updating
+            $blog = Blog::find($_GET['blogID']);
+
+     require_once('views/blogs/find.php');
+        }
+        else {
+            $blogid = $_GET['blogID'];
+            Blog::addComment($blogid);
+
+         $blog = Blog::find($blogid);
+
+           require_once('views/blogs/find.php');
+        }
+    }
 
     public function create() {
         // we expect a url of form ?controller=products&action=create
@@ -115,8 +122,15 @@ class BlogController {
 
         try {
             Blog::like($_GET['blogID']);
-            $blog = Blog::find($_GET['blogID']);
-            require_once('views/blogs/read.php'); #change to ajax?
+
+            echo "Score: ".Blog::counter($_GET['blogID']);
+           
+            //Non-AJAX way
+            #$blog = Blog::find($_GET['blogID']);
+            #require_once('views/blogs/read.php');
+            
+
+
         } catch (Exception $ex) {
             return call('pages', 'error');
         }
@@ -128,8 +142,15 @@ class BlogController {
 
         try {
             Blog::dislike($_GET['blogID']);
-            $blog = Blog::find($_GET['blogID']);
-            require_once('views/blogs/read.php'); #change to ajax?
+
+            echo "Score: ".Blog::counter($_GET['blogID']);
+            
+             //Non-AJAX way
+            #$blog = Blog::find($_GET['blogID']);
+            #require_once('views/blogs/read.php');
+            
+
+
         } catch (Exception $ex) {
             return call('pages', 'error');
         }

@@ -1,5 +1,7 @@
 <?php
 
+//session_start();
+$_SESSION ['blogID'] = $_GET ['blogID'];
 
 ?>
 <html>
@@ -13,97 +15,113 @@
 
 
         <h2>
-<?php echo $blog->title . "<br>"; ?>
+            <?php echo $blog->title . "<br>"; ?>
         </h2>
         <p>
-<?php echo $blog->content; ?>
+            <?php echo $blog->content; ?>
         </p>
 
-<?php
-$file = 'views/blogImages/' . $blog->title . "_" . $blog->username . '.jpeg';
-
-if (file_exists($file)) {
-    $img = "<img src='$file' width='150' />";
-    echo $img;
-} else {
-    echo '';
-}
-?>
         <?php
         $file = 'views/blogImages/' . $blog->title . "_" . $blog->username . '.jpeg';
 
         if (file_exists($file)) {
             $img = "<img src='$file' width='150' />";
             echo $img;
+        } else {
+            echo '';
         }
         ?>
-        &nbsp;
-        <br><br>
+ 
+&nbsp;
+<br><br>
 
-        <p>
-            <a href='?controller=blog&action=likeBlog&blogID=<?php echo $blog->blogID; ?>' class="btn btn-default btn-sm">
-                <span class="glyphicon glyphicon-thumbs-up"></span> Like
-            </a>
-            <a href='?controller=blog&action=dislikeBlog&blogID=<?php echo $blog->blogID; ?>' class="btn btn-default btn-sm">
-                <span class="glyphicon glyphicon-thumbs-down"></span> Dislike
-            </a>
-            <br>
-            <span class="badge">Score: <?php echo $blog->likecounter; ?> </span>
-            <br>
-        </p>
+<!--Attempting AJAX-->
 
-        <br />
+    <a class="btn btn-default btn-sm" id="thumb-button" onclick="addLikeCounter(<?php echo $blog->blogID;?>)">
+          <span class="glyphicon glyphicon-thumbs-up" ></span> Like
+    </a>
+    <a class="btn btn-default btn-sm" id="thumb-button" onclick="subtractLikeCounter(<?php echo $blog->blogID;?>)">
+          <span class="glyphicon glyphicon-thumbs-down" ></span> Dislike
+    </a>
+
+    <br>
+
+<p id="counter" class="badge"></p>
+    <br>
+
+
+<!--Non AJAX way-->
+<!--<p>
+    <a href='?controller=blog&action=likeBlog&blogID=<?php echo $blog->blogID; ?>' class="btn btn-default btn-sm" id="thumb-button" onClick="disableButton()">
+          <span class="glyphicon glyphicon-thumbs-up"></span> Like
+    </a>
+    <a href='?controller=blog&action=dislikeBlog&blogID=<?php echo $blog->blogID; ?>' class="btn btn-default btn-sm" id="thumb-button" onClick="disableButton()">
+          <span class="glyphicon glyphicon-thumbs-down"></span> Dislike
+    </a>
+    <br>
+    <span class="badge" id="counter">Score: <?php echo $blog->likecounter; ?></span>
+    <br>
+</p>-->
+
+
+       <br />
         <br />
 
         <div class="row">
-            <div class="col-lg-4"></div>
-            <div class="col-lg-6">
-                <form class="form-horizontal" method="POST" action=" " >
-                    <div>
-                        <label class="col-lg-5 control-label">Add Comment </label> 
-                        <br />
-                        <div class="col-lg-9">
-                            <input class="form-control"  name="senderName" placeholder="Enter your name" required> 
+            <div class="col-lg-4">
+                <div class="col-lg-6">
+                    <form class="form-horizontal" method="POST" action=" " >
+                        <div>
+                            <label class="col-lg-5 control-label">Add Comment </label> 
                             <br />
-                            <textarea required class="form-control" rows="5" cols="10" name="Content" placeholder=" Enter your comment" ></textarea>
+                            <div class="col-lg-9">
+                                <textarea class="form-control" rows="2" cols="5" name="senderName" placeholder="Enter your name">  </textarea>
+                                <br />
+                                <textarea class="form-control" rows="5" cols="10" name="Content" placeholder="comment">  </textarea>
+                            </div>
                         </div>
-                    </div>
-                    <br />
-                    <input type="submit" name="postcomment" value="comment" class="btn btn-primary">
+                        <br />
+                        <input type="submit" name="postcomment" value="comment" class="btn btn-primary">
 
-                </form>  
+                    </form>  
 
-            </div> 
+                </div> 
+
+            </div>
+
         </div>
-        <div class="row">
-            <div class="col-lg-4"></div>
-            <div class="col-lg-6">
-                <h1> All comments</h1>
-                <?php foreach($comments as $comment) { ?>
-                <p>    <?php echo $comment->Content; ?> </p>
-                <p> Posted by:   <?php echo $comment->senderName; ?> </p>
-                <hr>
-             <?php   }?>
-            </div> 
-        </div>
-        
-<!--        <script type="text/javascript">
-        $(function() {
-            setInterval(function() {
-                $.ajax({
-                    url:'read.php',
-                    success:function(res){
-                        $('.').html(res);
-                    }
-                })
-                
-            }, 5000);
-            
-            
-        })
-        
-    </script>-->
+
     </body>
 </html>
 
 &nbsp; 
+
+
+<script>
+    function addLikeCounter(blogID) {
+    var xhttp; //new variable
+    xhttp = new XMLHttpRequest ();//create XHR object
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200){//when XHR object is ready
+                    document.getElementById("counter").innerHTML = this.responseText;//how to deal with server response
+                                                       }
+                               };//end of readystate change function
+    
+    xhttp.open("GET","index.php?controller=blog&action=likeBlog&blogID="+blogID,true);
+    xhttp.send();
+                        }
+                        
+    function subtractLikeCounter(blogID) {
+    var xhttp; //new variable
+    xhttp = new XMLHttpRequest ();//create XHR object
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200){//when XHR object is ready
+                    document.getElementById("counter").innerHTML = this.responseText;//how to deal with server response
+                                                       }
+                               };//end of readystate change function
+    
+    xhttp.open("GET","index.php?controller=blog&action=dislikeBlog&blogID="+blogID,true);
+    xhttp.send();
+                        }
+</script>
+<!--<script src="../jsFunctions.js" type="text/javascript"></script>-->
