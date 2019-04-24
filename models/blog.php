@@ -243,30 +243,58 @@ class Blog {
         return $this->blogImageDestination;
     }
 
-    public function addComment ($blogid) {
-        
-        
+
+   
+    
+
+public function addComment($blogid,$username) {
+
         $db = Db::getInstance();
         
-            
-         if (isset($_POST['Content']) && $_POST['Content'] != "") {
+        
+        if (!empty($username)) {
+
+           
+            if (isset($_POST['Content']) && $_POST['Content'] != "") {
                 $Content = filter_input(INPUT_POST, 'Content', FILTER_SANITIZE_SPECIAL_CHARS);
             }
-             if (isset($_POST['senderName']) && $_POST['senderName'] != "") {
+            if (isset($_POST['senderName']) && $_POST['senderName'] != "") {
                 $senderName = filter_input(INPUT_POST, 'senderName', FILTER_SANITIZE_SPECIAL_CHARS);
             }
-            
-                $sql = $db->prepare( "INSERT INTO comment (BlogID, Content, senderName) VALUES (:BlogID, :Content, :senderName)");
-                  $sql->bindParam(':BlogID', $blogid);
-                   $sql->bindParam(':Content', $Content);
-                      $sql->bindParam(':senderName', $senderName);
-                
-               $sql->execute();
-                
-                if ($sql) {
-                    header('header:?controller=blog&action=read&blogID='.$blogid);
-                }
-                   
+
+
+            $sql = $db->prepare("CALL addComment(:Username, :BlogID, :Content, :senderName)");
+             $sql->bindParam(':Username', $username);
+            $sql->bindParam(':BlogID', $blogid);
+            $sql->bindParam(':Content', $Content);
+            $sql->bindParam(':senderName', $senderName);
+           
+
+            $sql->execute();
+
+            if ($sql) {
+                header('header:?controller=blog&action=read&blogID=' . $blogid);
+            }
+        } else {
+        if (isset($_POST['Content']) && $_POST['Content'] != "") {
+            $Content = filter_input(INPUT_POST, 'Content', FILTER_SANITIZE_SPECIAL_CHARS);
+        }
+        if (isset($_POST['senderName']) && $_POST['senderName'] != "") {
+            $senderName = filter_input(INPUT_POST, 'senderName', FILTER_SANITIZE_SPECIAL_CHARS);
+        }
+
+        $sql = $db->prepare("INSERT INTO comment (BlogID, Content, senderName) VALUES (:BlogID, :Content, :senderName)");
+        $sql->bindParam(':BlogID', $blogid);
+        $sql->bindParam(':Content', $Content);
+        $sql->bindParam(':senderName', $senderName);
+
+        $sql->execute();
+
+        if ($sql) {
+            header('header:?controller=blog&action=read&blogID=' . $blogid);
+        }
+    }
+
     }
 
             
@@ -291,6 +319,7 @@ class Blog {
         $req = $db->prepare("Call subtractLikeCounter(:blogID)");
         $req->bindParam(':blogID', $id); 
         $req->execute();
+
     }
     
     
@@ -302,6 +331,26 @@ class Blog {
         $req->bindParam(':blogID', $id); 
         $req->execute();
  }
+
+      
+
+    
+    
+     public static function counter($id) {
+      $db = Db::getInstance();
+      
+      $id = intval($id);//use intval to make sure $id is an integer
+      $req = $db->prepare("Call findBlogByID(:blogID)");
+      $req->execute(array('blogID' => $id));
+      $blog = $req->fetch();
+      
+      if($blog){
+              return ($blog['LikeCounter']);
+      }
+      else{
+            throw new Exception('A real exception should go here'); //replace with a more meaningful exception
+      }
+    } 
 
  
 }//Blog
