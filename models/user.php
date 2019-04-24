@@ -25,10 +25,10 @@ class User {
             if(isset($_POST['password'])&& $_POST['password']!=""){
                 $password = filter_input(INPUT_POST,'password', FILTER_SANITIZE_SPECIAL_CHARS);
             }
-
+             $hashed_password = password_hash($password, PASSWORD_DEFAULT);
             $query->bindParam(':Username', $username);
-            $query->bindParam(':Password', $password);
-
+            //$query->bindParam(':Password', $password);
+             $query->bindParam(':Password', $hashed_password );
             $query->execute();
 
             $results = $query->fetchAll();
