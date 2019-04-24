@@ -17,6 +17,8 @@ class User {
     public static function login() {//add in santisation for email
                
             $db = Db::getInstance();
+            if(!is_null($db)){
+            try{
             $query = $db->prepare("SELECT * FROM user WHERE Username = :Username AND Password = :Password");
 
             if(isset($_POST['username'])&& $_POST['username']!=""){
@@ -41,42 +43,65 @@ class User {
                 echo '<script type="text/javascript">alert("'.$message.'");history.go(-1);</script>';
                 #die();
             }
+            catch(PDOException $e){
+                $e->getMessage();
+                // log this exception somewhere
+            }
+            catch(Exception $ex){
+              $ex->getMessage();  
+              // log this exception somewhere
+            }           
+         }
+    }
         
     
 
     public static function register() {
         $db = Db::getInstance();
-        $Username = $_POST["Username"];
-        $password = $_POST['Password'];
-        $Email = $_POST["Email"];
-        $sql_u = $db->prepare("SELECT * FROM user where Username='$Username'");
-        $sql_e = $db->prepare("SELECT * FROM user where Email = '$Email'");
-        $res_u = $sql_u->execute();
-        $res_e = $sql_e->execute();
-     
-  	if ($sql_u->fetchColumn()> 0) {
-  	   die("Sorry... username already taken"); 
-         
-        }
-        elseif ($sql_e->fetchColumn() > 0) {
-        die("Sorry... email is already taken")  ;    
-        
-        }
-        else {
-        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-        $rej = $db->prepare("INSERT INTO user (Username, Email, Password) VALUES ( :Username, :Email, :Password)");
-    
+        if(!is_null($db))
+        {
+            try{
+            $Username = $_POST["Username"];
+            $password = $_POST['Password'];
+            $Email = $_POST["Email"];
+            $sql_u = $db->prepare("SELECT * FROM user where Username='$Username'");
+            $sql_e = $db->prepare("SELECT * FROM user where Email = '$Email'");
+            $res_u = $sql_u->execute();
+            $res_e = $sql_e->execute();
 
-        $rej->bindParam(':Username', $Username);
-        $rej->bindParam(':Password', $hashed_password);
-        $rej->bindParam(':Email', $Email);
-        
-        $result = $rej->execute();
-         
-         if ($result ==1 ) { 
-             echo "Please enter the login details";
-             header('location:?controller=user&action=login');}
+            if ($sql_u->fetchColumn()> 0) {
+               die("Sorry... username already taken"); 
+
             }
+            elseif ($sql_e->fetchColumn() > 0) {
+            die("Sorry... email is already taken")  ;    
+
+            }
+            else {
+            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+            $rej = $db->prepare("INSERT INTO user (Username, Email, Password) VALUES ( :Username, :Email, :Password)");
+
+
+            $rej->bindParam(':Username', $Username);
+            $rej->bindParam(':Password', $hashed_password);
+            $rej->bindParam(':Email', $Email);
+
+            $result = $rej->execute();
+
+             if ($result ==1 ) { 
+                 echo "Please enter the login details";
+                 header('location:?controller=user&action=login');}
+                }
+            }
+            catch(PDOException $e){
+                $e->getMessage();
+                // log this exception somewhere
+            }
+            catch(Exception $ex){
+                $ex->getMessage();
+                // log this exception somewhere
+            }
+        }
     }
     
     
@@ -84,8 +109,9 @@ class User {
     {
       $list = [];
       $db = Db::getInstance();
-      
-       $sqlfindmine= 'SELECT 
+      if(!is_null($db)){      
+       try{   
+            $sqlfindmine= 'SELECT 
                b.BlogID
                ,u.Username
                ,b.Title
@@ -110,35 +136,56 @@ class User {
                ORDER BY b.DatePosted DESC;';
        
       
-      $req = $db->prepare($sqlfindmine);
-      
-      require_once('blog.php');
-      
-      $req->execute(array('Username' => $Username));
-      foreach($req->fetchAll() as $blog) 
-          {
-        $list[] = new Blog($blog['BlogID'], $blog['Title'], $blog['Content'], $blog['CountryName'], $blog['ContinentName'], $blog['CategoryName'],$blog['Username'], $blog['LikeCounter']);
+            $req = $db->prepare($sqlfindmine);
+
+            require_once('blog.php');
+
+            $req->execute(array('Username' => $Username));
+            foreach($req->fetchAll() as $blog) 
+                {
+              $list[] = new Blog($blog['BlogID'], $blog['Title'], $blog['Content'], $blog['CountryName'], $blog['ContinentName'], $blog['CategoryName'],$blog['Username'], $blog['LikeCounter']);
+            }
+            return $list;
+       }
+       catch(PDOException $e){
+           $e->getMessage();
+           // log this exception somewhere
+       }
+       catch(Exception $ex){
+           $ex->getMessage();
+           // log this exception somewhere
+       }
       }
-      return $list;
     }
     
     
     public static function contactus() {
         $db = Db::getInstance();
-        $stmt = $db->prepare("INSERT INTO userfeedback (FullName, Email,Comments) VALUES ( :FullName, :Email, :Comments)");
+        if(!is_null($db)){
+        try{    
+            $stmt = $db->prepare("INSERT INTO userfeedback (FullName, Email,Comments) VALUES ( :FullName, :Email, :Comments)");
 
-        $fullname = $_POST["fullname"];
-        $email = $_POST["email"];
-        $comments = $_POST["comments"];
+            $fullname = $_POST["fullname"];
+            $email = $_POST["email"];
+            $comments = $_POST["comments"];
 
-        $stmt->bindParam(':FullName', $fullname);
-        $stmt->bindParam(':Email', $email);
-        $stmt->bindParam(':Comments', $comments);
-        
-        $result = $stmt->execute();
-         
-         if ($result ==1 ) { echo "Thanks for the feedback,we will get back to you soon";}
+            $stmt->bindParam(':FullName', $fullname);
+            $stmt->bindParam(':Email', $email);
+            $stmt->bindParam(':Comments', $comments);
+
+            $result = $stmt->execute();
+
+             if ($result ==1 ) { echo "Thanks for the feedback,we will get back to you soon";}
+        }
+        catch(PDOException $e){
+            $e->getMessage();
+            // log this exception somewhere
+        }
+        catch(Exception $ex){
+            $ex->getMessage();
+            // log this exception somewhere
+        }
     }
     
-
+    }
 }
