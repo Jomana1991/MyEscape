@@ -35,7 +35,7 @@ class Blog {
         $list = [];
         $db = Db::getInstance();
         $req = $db->query('Call findAllPublishedBlogs'); //stored procedure that returns all blogs in reverse chronological order
-
+       
         foreach ($req->fetchAll() as $blog) {
             $list[] = new Blog($blog['BlogID'], $blog['Title'], $blog['Content'], $blog['CountryName'], $blog['ContinentName'], $blog['CategoryName'], $blog['Username'], $blog['LikeCounter'], $blog['ViewCounter']);
         }
@@ -232,7 +232,7 @@ class Blog {
             $sqlsearch->execute(array ('query' => $likesearch));
             
             foreach ($sqlsearch->fetchAll() as $blog) {
-                $list[] = new Blog($blog['BlogID'], $blog['Title'], $blog['Content'], $blog['CountryName'], $blog['ContinentName'], $blog['CategoryName'], $blog['Username'], $blog['LikeCounter']);
+                $list[] = new Blog($blog['BlogID'], $blog['Title'], $blog['Content'], $blog['CountryName'], $blog['ContinentName'], $blog['CategoryName'], $blog['Username'], $blog['LikeCounter'],$blog['ViewCounter']);
             }
             
             return $list; 
