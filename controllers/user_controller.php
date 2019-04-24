@@ -3,6 +3,7 @@
 class userController {
     public function login() {
         #session_start();//removed as now in layout
+        try{
         if($_SERVER['REQUEST_METHOD'] == 'GET'){
              
             if (!empty($_SESSION['username'])) {
@@ -21,9 +22,13 @@ class userController {
             $blogs = Blog::add();
            
       }
+      } catch (Exception $ex) {
+                return call('pages', 'error');
+            }
     }
 
     public function contactus(){
+        try{
          if($_SERVER['REQUEST_METHOD'] == 'GET'){
               require_once('views/users/contactus.php');
            }
@@ -31,11 +36,15 @@ class userController {
                 User::contactus();
 
           }
+          } catch (Exception $ex) {
+                return call('pages', 'error');
+            }
 
     }
 
 
     public function register() {
+        try{
       if($_SERVER['REQUEST_METHOD'] == 'GET'){
           require_once('views/users/register.php');
        }
@@ -45,6 +54,9 @@ class userController {
 //            $blogs = User::login(); 
 //            require_once('views/users/login.php');
       }
+      } catch (Exception $ex) {
+                return call('pages', 'error');
+            }
       
     }
     
@@ -58,7 +70,7 @@ class userController {
       #require_once('./models/user.php'); //did this when trying to get create to redirect to readMine not readAll
       require_once('views/users/readMine.php');
       }
-        catch (Exception $ex){
+        catch (Exception $ex){                      
             return call('pages','error');
         }
     }
@@ -67,6 +79,7 @@ class userController {
     
     
     public function changePassword() {
+        try{
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             
             require_once('views/users/changePassword.php');
@@ -89,6 +102,9 @@ class userController {
                     echo '<script type="text/javascript">alert("'.$message.'");history.go(-1);</script>';
                 }
         }
+        } catch (Exception $ex) {
+                return call('pages', 'error');
+            }
       
     }
     

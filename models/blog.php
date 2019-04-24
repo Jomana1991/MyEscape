@@ -30,6 +30,7 @@ class Blog {
         $db = Db::getInstance();
         if(!is_null($db)){
             try{
+               
         $req = $db->query('Call findAllPublishedBlogs'); //stored procedure that returns all blogs in reverse chronological order
 
         foreach ($req->fetchAll() as $blog) {
@@ -37,12 +38,10 @@ class Blog {
         }
             }  catch(PDOException $e){
                 $e->getMessage();
+                throw new Exception(); 
                 // log this exception somewhere
-            }
-            catch(Exception $ex){
-              $ex->getMessage();  
-              // log this exception somewhere
-            }           
+            }  
+            
         return $list;
             
     }
@@ -66,12 +65,10 @@ class Blog {
       
           } catch(PDOException $e){
                 $e->getMessage();
+                
                 // log this exception somewhere
-            }
-            catch(Exception $ex){
-              $ex->getMessage();  
-              // log this exception somewhere
-            }           
+                throw new Exception(); 
+            }                     
       }
     }
 
@@ -126,11 +123,9 @@ class Blog {
         catch(PDOException $e){
                 $e->getMessage();
                 // log this exception somewhere
+                throw new Exception(); 
             }
-            catch(Exception $ex){
-              $ex->getMessage();  
-              // log this exception somewhere
-            }           
+                      
         
     //only upload blog image if one loaded
        if (!empty($_FILES[self::UploadKey]['name'])) {
@@ -214,11 +209,9 @@ class Blog {
         catch(PDOException $e){
                 $e->getMessage();
                 // log this exception somewhere
+                throw new Exception(); 
             }
-            catch(Exception $ex){
-              $ex->getMessage();  
-              // log this exception somewhere
-            }           
+                    
             //upload product image if it exists
             if (!empty($_FILES[self::UploadKey]['name'])) {
                 Blog::uploadFile($title . "_" . $username);
@@ -245,11 +238,9 @@ class Blog {
         }catch(PDOException $e){
                 $e->getMessage();
                 // log this exception somewhere
+                throw new Exception(); 
             }
-            catch(Exception $ex){
-              $ex->getMessage();  
-              // log this exception somewhere
-            }
+            
     }
     }
 
@@ -275,12 +266,9 @@ class Blog {
             }catch(PDOException $e){
                 $e->getMessage();
                 // log this exception somewhere
+                throw new Exception(); 
             }
-            catch(Exception $ex){
-              $ex->getMessage();  
-              // log this exception somewhere
-            }           
-            
+                        
             return $list; 
              }
            
@@ -296,8 +284,8 @@ public function addComment($blogid,$username) {
 
 
         $db = Db::getInstance();
-        
-        
+        if(!is_null($db)){
+        try{
         if (!empty($username)) {
 
            
@@ -339,6 +327,13 @@ public function addComment($blogid,$username) {
             header('header:?controller=blog&action=read&blogID=' . $blogid);
         }
     }
+        }
+        catch(PDOException $e){
+            $e->getMessage();
+                // log this exception somewhere
+            throw new Exception(); 
+        }
+        }
     }
 
             
@@ -350,27 +345,44 @@ public function addComment($blogid,$username) {
     public static function like($id) {
         $db = Db::getInstance();
   
-
+        if(!is_null($db)){
+            try{
         $req = $db->prepare("Call addLikeCounter(:blogID)");
         $req->bindParam(':blogID', $id); 
         $req->execute();
+            }
+            catch(PDOException $e){
+                $e->getMessage();
+                // log this exception somewhere
+            throw new Exception(); 
+            }
+        }
     }       
         
 
     public static function dislike($id) {
         $db = Db::getInstance();
   
-
+        if(!is_null($db)){
+            try{
         $req = $db->prepare("Call subtractLikeCounter(:blogID)");
         $req->bindParam(':blogID', $id); 
         $req->execute();
+        }
+            catch(PDOException $e){
+                $e->getMessage();
+                // log this exception somewhere
+            throw new Exception(); 
+            }
+        }
     }   
 
     
     
      public static function counter($id) {
       $db = Db::getInstance();
-      
+      if(!is_null($db)){
+            try{
       $id = intval($id);//use intval to make sure $id is an integer
       $req = $db->prepare("Call findBlogByID(:blogID)");
       $req->execute(array('blogID' => $id));
@@ -382,6 +394,13 @@ public function addComment($blogid,$username) {
       else{
             throw new Exception('A real exception should go here'); //replace with a more meaningful exception
       }
+      }
+            catch(PDOException $e){
+                $e->getMessage();
+                // log this exception somewhere
+            throw new Exception(); 
+            }
+        }
     } 
 
 }

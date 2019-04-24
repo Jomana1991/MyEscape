@@ -52,11 +52,8 @@ class User {
             catch(PDOException $e){
                 $e->getMessage();
                 // log this exception somewhere
-            }
-            catch(Exception $ex){
-              $ex->getMessage();  
-              // log this exception somewhere
-            }           
+                throw  new Exception();
+            }                     
          }
             
 
@@ -107,17 +104,15 @@ class User {
             catch(PDOException $e){
                 $e->getMessage();
                 // log this exception somewhere
+                throw  new Exception();
             }
-            catch(Exception $ex){
-                $ex->getMessage();
-                // log this exception somewhere
-            }
+            
         }
     }
     
     
     public static function readMine($username) 
-    {
+    {        
       $list = [];
       $db = Db::getInstance();
 
@@ -130,7 +125,7 @@ class User {
 
             require_once('blog.php');
 
-            $req->execute(array('Username' => $username));
+            $req->execute(array(':username' => $username));
             foreach($req->fetchAll() as $blog) 
                 {
               $list[] = new Blog($blog['BlogID'], $blog['Title'], $blog['Content'], $blog['CountryName'], $blog['ContinentName'], $blog['CategoryName'],$blog['Username'], $blog['LikeCounter']);
@@ -138,15 +133,12 @@ class User {
             return $list;
        }
        catch(PDOException $e){
-           $e->getMessage();
+           $e->getMessage();           
+           
            // log this exception somewhere
+           throw  new Exception();
        }
-       catch(Exception $ex){
-           $ex->getMessage();
-           // log this exception somewhere
-       }
-
-      
+             
     }
     }
     
@@ -172,11 +164,8 @@ class User {
         catch(PDOException $e){
             $e->getMessage();
             // log this exception somewhere
-        }
-        catch(Exception $ex){
-            $ex->getMessage();
-            // log this exception somewhere
-        }
+            throw  new Exception();
+        }        
     }
     }
     
@@ -193,7 +182,9 @@ class User {
     public static function modify() {
         $db = Db::getInstance();
 
-
+        if(!is_null($db))
+        {
+        try{
         $req = $db->prepare("Call updatePassword(:username, :newPassword);");
         $req->bindParam(':username', $username);
         $req->bindParam(':newPassword', $newPassword);
@@ -211,11 +202,19 @@ class User {
             $req->execute();
             
         }
+        }
+        catch (PDOException $e){
+            $e->getMessage();
+            // log this exception somewhere
+            throw  new Exception();
+        }
+        }
     }
     
     public static function confirmUserExists() {
         $db = Db::getInstance();
-
+        if(!is_null($db)){
+        try{
         $req = $db->prepare("Call confirmUserExists(:username);");
         $req->bindParam(':username', $username);        
 
@@ -236,6 +235,13 @@ class User {
             else{
             throw new Exception('A real exception should go here'); //replace with a more meaningful exception
             }
+        }
+        }
+        catch (PDOException $e){
+            $e->getMessage();
+            // log this exception somewhere
+            throw  new Exception();
+        }
         }
     }
 
