@@ -4,10 +4,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     
     
-<!--<link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico|Pangolin" >
-<!--<link rel="stylesheet" href="views/css/styles.css"> -->
+
 <title>Blogs</title>
   </head>
   <body>
