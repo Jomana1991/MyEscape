@@ -1,11 +1,9 @@
 <html>
   <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     
-    
-
-<title>Blogs</title>
+    <title>MyEscape</title>
   </head>
   <body>
     <header class="w3-container w3-gray">
