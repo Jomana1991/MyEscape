@@ -2,6 +2,21 @@
   <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<!--        <link href="css/styles-general.css" rel="stylesheet" type="text/css"/>-->
+<!--<style>
+    body {
+  background-color: #F6F4D2;
+}
+
+/*h1 {
+  color: blue;
+}*/
+
+p {
+  color: #001D4A;
+  font-family: 14px 'Roboto', sans-serif;
+}
+</style>-->
     
     <title>MyEscape</title>
   </head>
