@@ -1,3 +1,5 @@
+<link href="css/styles-general.css" rel="stylesheet" type="text/css"/>
+    
 <h1>My Escape</h1>
 <h3>Hey.. we are ADFJ</h3> 
 <p> We are 'My Escape', a global travel community created to inspire and connect travellers around the world.
