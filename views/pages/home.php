@@ -1,4 +1,4 @@
-<H1>My Escape </H1>
+<H1>MyEscape </H1>
 <p>Explore. Travel. Share</p>
 <?php 
     #session_start();//removed as now in layout
