@@ -223,7 +223,7 @@
              
             </style>
     </head>
-    <body>
+    <body style="background-color: #fff">
         <header>
 
         </header>
