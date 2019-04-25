@@ -16,6 +16,7 @@
                 $action     = 'home';
             }
 
+            
           #require_once('views/layout.php')
             
             $thumbButtons = ['likeBlog', 'dislikeBlog'];
