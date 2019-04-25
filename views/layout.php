@@ -4,18 +4,30 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <!--        <link href="css/styles-general.css" rel="stylesheet" type="text/css"/>-->
 <style>
-    @import url('https://fonts.googleapis.com/css?family=Oswald|Roboto');
-    body {
+    @import url('https://fonts.googleapis.com/css?family=Cinzel+Decorative|Sacramento|Oswald|Roboto');
+ body {
   background-color: #F6F4D2;
 }
 
-/*h1 {
-  color: blue;
-}*/
+h2 {
+  color: #395C6B;
+  font: 72px 'Sacramento', cursive;
+/*  font-weight: bold;*/
+}
+
+h3 {
+  color: #001D4A;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+}
 
 p {
   color: #001D4A;
-  font: 14px 'Roboto', sans-serif;
+  font: 16px 'Roboto', sans-serif;
+}
+
+.avatar {
+  border-radius: 50%;
 }
 </style>
     
