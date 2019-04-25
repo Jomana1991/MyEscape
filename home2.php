@@ -324,6 +324,7 @@
 
         </header>
 
+
         <!--        <nav class="nav-main">
                     <div class="btn-toggle-nav" onclick=" toggleNav()" > </div>
         
@@ -342,6 +343,7 @@
                         <li><a href="#">Contact Us</a></li>
                     </ul>   
                 </aside>-->
+
         <div class="fader">
 
         </div>
