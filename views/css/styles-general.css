@@ -1,0 +1,28 @@
+
+@import url('https://fonts.googleapis.com/css?family=Oswald|Roboto');
+
+/*COLOUR PALETTE
+black - #001D4A
+navy - #395C6B
+dark orange - E88D67
+light orange - #EABE7C
+pale yellow - #F6F4D2
+
+FONTS
+font-family: 'Roboto', sans-serif;
+font-family: 'Oswald', sans-serif;
+*/
+
+body {
+  background-color: #F6F4D2;
+}
+
+/*h1 {
+  color: blue;
+}*/
+
+p {
+  color: #001D4A;
+  font-family: 14px 'Roboto', sans-serif;
+}
+
