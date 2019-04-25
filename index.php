@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>My Escape</title>
+        <title>MyEscape</title>
     </head>
     <body>
         <?php
@@ -17,8 +17,10 @@
             }
 
           #require_once('views/layout.php')
+            
+            $thumbButtons = ['likeBlog', 'dislikeBlog'];
 
-            if ((isset($_GET['action'])) && (($_GET['action'] == ('likeBlog' || 'dislikeBlog')))) {
+            if (in_array($action, $thumbButtons)) {
                   require_once('routes.php'); 
             }
             else {
