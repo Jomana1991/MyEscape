@@ -34,10 +34,16 @@ class userController {
              
            
       }
+
+
       } catch (Exception $ex) {
                 return call('pages', 'error');
             }
+
     }
+
+    
+
 
     public function contactus(){
         try{

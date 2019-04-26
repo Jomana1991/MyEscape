@@ -25,8 +25,7 @@
       
     ?>
     &nbsp; &nbsp;
-  
-    
+ 
     <a href='?controller=blog&action=read&blogID=<?php echo $blog->blogID; ?>'> Read Full Blog </a> &nbsp; &nbsp;
     <a href='?controller=blog&action=update&blogID=<?php echo $blog->blogID; ?>'> Update Blog </a> &nbsp; &nbsp;
     <a href='?controller=blog&action=delete&blogID=<?php echo $blog->blogID; ?>' onclick="return confirm('Are you sure you want to delete this blog?')"> Delete Blog </a> &nbsp;

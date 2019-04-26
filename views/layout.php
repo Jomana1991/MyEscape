@@ -8,11 +8,9 @@
     body {
   background-color: #F6F4D2;
 }
-
 /*h1 {
   color: blue;
 }*/
-
 p {
   color: #001D4A;
   font: 14px 'Roboto', sans-serif;

@@ -141,6 +141,7 @@
         <script>
 
 
+
             $(document).ready(function () {
                 $('#query').keyup(function () {
                     var txt = $(this).val();
@@ -167,6 +168,7 @@
 
             $(".search").click(function () {
                 if ($(".search").css("width") == "100px")
+
                 {
                     $(".bar").animate({
                         height: "0px",

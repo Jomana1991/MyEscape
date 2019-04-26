@@ -1,10 +1,3 @@
-<?php
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-?>
 <html>
     <head>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -14,19 +7,16 @@
             <style>
                 @import url('https://fonts.googleapis.com/css?family=Courgette');
                 @import url('https://fonts.googleapis.com/css?family=Oswald');
-
                 .fader {
                     position: absolute;
                     height: 100%;
                     width:100%;
                     left: 0;
-
                     background-repeat: no-repeat;
                     background-position: center;
                     background-size: 100%;
                     opacity: 0.35;
                 }
-
                 .landing-text {
                     margin-top: 100px;
                     text-align: center;
@@ -36,13 +26,10 @@
                     color: #001d4a;
                     font-family: 'Oswald', sans-serif;
                 }
-
                 .landing-text h1{
                     font-size: 500%;
                     font-weight: 700;
-
                 }
-
                 .inspiration {
                     height: 100%;
                     width:100%;
@@ -52,7 +39,6 @@
                     margin-top: 650px;
                     left: 0;
                 }
-
                 #changeText {
                     font-size: 500%;
                     font-weight:700; 
@@ -61,7 +47,6 @@
                     font-family: 'Courgette', cursive; 
                     margin-top: 300px;
                 }
-
                 .button {
                     background-color: #e88d67;
                     border: none;
@@ -101,7 +86,6 @@
                     height: 100%;
                     width: 100%;
                 }
-
                 span.b {
                     display: inline-block;
                     width: 300px;
@@ -114,9 +98,7 @@
                     font-family: 'Oswald', sans-serif;
                     text-align:  center;
                     position: absolute;
-
                 }
-
                 span.a {
                     display: inline-block;
                     width: 300px;
@@ -129,7 +111,6 @@
                     font-family: 'Oswald', sans-serif;
                     text-align:  center;
                     position: absolute;
-
                 }
                 span.c {
                     display: inline-block;
@@ -143,7 +124,6 @@
                     font-family: 'Courgette', cursive; 
                     text-align:  center;
                     position: absolute;
-
                 }
                 /*html, body {
                   background: #333;
@@ -151,7 +131,6 @@
                   overflow: hidden;
                   text-align: center;
                 }*/
-
                 .search-wrapper {
                     height: 60px;
                     margin-top: 490px;
@@ -161,9 +140,7 @@
                     transform: translateY(-40%);
                     width: 320px;
                     text-align: center;
-
                 }
-
                 .search-wrapper a {
                     all: unset                    
                 }
@@ -171,7 +148,6 @@
                 .aboutus-wrapper a {
                     all: unset                    
                 }
-
                 .shape {
                     fill: transparent;
                     stroke-dasharray: 140 540;
@@ -179,7 +155,6 @@
                     stroke-width: 8px;
                     stroke: #fff;
                 }
-
                 .text {
                     color: #fff;
                     font-family: 'Roboto Condensed';
@@ -189,7 +164,6 @@
                     position: relative;
                     top: -48px;
                 }
-
                 @keyframes draw {
                     0% {
                         stroke-dasharray: 140 540;
@@ -202,12 +176,10 @@
                         stroke-width: 2px;
                     }
                 }
-
                 .aboutus-wrapper:hover .shape,  .search-wrapper:hover .shape {
                     -webkit-animation: 0.5s draw linear forwards;
                     animation: 0.5s draw linear forwards;
                 }
-
                 .aboutus-wrapper {
                     height: 60px;
                     margin-top: 490px;
@@ -218,7 +190,6 @@
                     width: 320px;
                     text-align: center;
                 }
-
                 /*            .nav-main {
                                 position: fixed;
                                 top: 0;
@@ -255,7 +226,6 @@
                             .btn-toggle-nav:hover {
                                 opacity: 0.3;
                             }*/
-
                 /*            .nav-main ul {
                                 display: flex;
                                 flex-wrap: wrap;
@@ -316,7 +286,6 @@
                                 white-space: nowrap;
                                 transition: all 0.3s ease-in-out;
                             }*/
-
             </style>
     </head>
     <body>
@@ -381,16 +350,11 @@
         </div>
 
         <script>
-
-
             $(document).ready(function () {
-
                 var count = 0;
                 var images = ["img/share.jpg", "img/desert.jpg", "img/forest1.jpg", "img/baloons2.jpg", "img/airplane.jpg", "img/sea.jpg"];
                 var image = $(".fader");
-
                 image.css("background-image", "url(" + images[count++] + ")");
-
                 setInterval(function () {
                     image.fadeOut(500, function () {
                         image.css("background-image", "url(" + images[count++] + ")");
@@ -401,9 +365,7 @@
                         count = 0;
                     }
                 }, 5000);
-
             });
-
             $(document).ready(function () {
                 $(".c").hover(function () {
                     $(this).toggleClass("highLight");
@@ -414,8 +376,6 @@
                     $(this).html("Travel quote of the day");
                 });
             })
-
-
 //            let toggleNavStatus = false;
 //
 //            let toggleNav = function () {
@@ -464,7 +424,6 @@
 //                    // clearInterval(inst); // uncomment this if you want to stop refreshing after one cycle
 //                }
 //            }
-
 //            $(document).ready(function () {
 //                $(".btn-toggle-nav").click(function () {
 //                    $(".nav-sidebar").toggle(1000);
@@ -472,7 +431,6 @@
 //                });
 //
 //            });
-
         </script>
 
     </body>
