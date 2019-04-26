@@ -31,8 +31,8 @@ p {
           <?php
           session_start();
           if (empty($_SESSION['username'])){
-            echo "<a href='?controller=user&action=login'>Login</a> ";
-            echo "<a href='?controller=user&action=register'>Register</a> ";
+            echo "<a href='?controller=user&action=login'>Login|Register</a> ";
+            
           }
           else{
             echo "<a href='?controller=blog&action=create'>Profile Page</a> ";
@@ -46,6 +46,7 @@ p {
 
     <div class="w3-container w3-pink">
         <?php require_once('routes.php'); ?>
+
 
     </div>
     <div class="w3-container w3-gray">

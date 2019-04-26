@@ -20,7 +20,7 @@ class User {
 
             if(!is_null($db)){
             try{
-            $query = $db->prepare("SELECT * FROM user WHERE Username = :Username AND Password = :Password");
+            $query = $db->prepare("SELECT * FROM user WHERE Username = :username AND Password = :password");
 
 
             if(isset($_POST['username'])&& $_POST['username']!=""){
@@ -48,8 +48,7 @@ class User {
                 die();
             }
             }
-
-            catch(PDOException $e){
+            catch(PDOException $e){              
                 $e->getMessage();
                 // log this exception somewhere
                 throw  new Exception();
