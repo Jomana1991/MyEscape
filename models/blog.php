@@ -13,7 +13,6 @@ class Blog {
     public $username;
     public $likecounter;
     public $blogImageDestination;
-
     public $viewcounter;
       
     
