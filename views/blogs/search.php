@@ -50,6 +50,9 @@
                 width: 100vw;
                 height: 50vh;
                 background: linear-gradient(to right, #EABE7C, #E88D67);
+                  border-radius: 80px;
+                border: 10px solid white;
+
             }
             .input {
                 display:none;
@@ -105,7 +108,7 @@
                 <div class="bar"></div>
             </div>
             <input name="query" id="query" type="text" class="input" autofocus>
-            <hr>
+            
         </div>  
         <!--<p>Search for a blog below</p>
         
