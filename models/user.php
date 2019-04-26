@@ -17,30 +17,32 @@ class User {
     public static function login() {//add in santisation for email
                
             $db = Db::getInstance();
-            $query = $db->prepare("SELECT * FROM user WHERE Username = :username AND Password = :password");
-
-            if(isset($_POST['username'])&& $_POST['username']!=""){
+            $query = $db->prepare("SELECT * FROM user WHERE Username = :username ");
+            $username="";
+            $password="";
+            if(isset($_POST['username'])&& $_POST['username']!="")
+            {
                 $username = filter_input(INPUT_POST,'username', FILTER_SANITIZE_SPECIAL_CHARS);
             }
-            if(isset($_POST['password'])&& $_POST['password']!=""){
+            
+            if(isset($_POST['password'])&& $_POST['password']!="")
+            {
                 $password = filter_input(INPUT_POST,'password', FILTER_SANITIZE_SPECIAL_CHARS);
             }
 
-
             $query->bindParam(':username', $username);
-            $query->bindParam(':password', $password);
-
             $query->execute();
+            
+            $results = $query->fetch();
+            print_r($results);
 
-            $results = $query->fetchAll();
-
-            if ($results) {
-                 header('location:?controller=blog&action=create');
-
+            if ($results  && password_verify($password, $results['Password']))
+            {
+                header('location:?controller=blog&action=create');
             } 
-            else {
+            else 
+            {
                 $message = "Username and/or password are incorrect.\\nPlease try again.";
-        
                 echo '<script type="text/javascript">alert("'.$message.'");history.go(-1);</script>';
                 die();
             }
@@ -50,9 +52,18 @@ class User {
 
     public static function register() {
         $db = Db::getInstance();
-        $username = $_POST["username"];
-        $password = $_POST['password'];
-        $email = $_POST["email"];
+        
+        if(isset($_POST['Username'])&& $_POST['Username']!=""){
+            $username = filter_input(INPUT_POST,'Username', FILTER_SANITIZE_SPECIAL_CHARS);
+        }
+        if(isset($_POST['Password'])&& $_POST['Password']!=""){
+            $password = filter_input(INPUT_POST,'Password', FILTER_SANITIZE_SPECIAL_CHARS);
+        }
+
+        
+        $username = $_POST["Username"];
+        $password = $_POST['Password'];
+        $email = $_POST["Email"];
         $sql_u = $db->prepare("SELECT * FROM user where Username='$username'");
         $sql_e = $db->prepare("SELECT * FROM user where Email = '$email'");
         $res_u = $sql_u->execute();
