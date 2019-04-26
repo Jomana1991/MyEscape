@@ -1,9 +1,5 @@
 <?php
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 ?>
 <html>
     <head>
@@ -27,7 +23,7 @@
                 left:0;
                 width:100%;
                 height:60px;
-                background-color: #EDDEA4;
+                background-color:  #F5853F;
                 float: left;
                 display: flex;
                 flex-wrap: wrap;
@@ -46,7 +42,7 @@
             .btn-toggle-nav {
                 width:60px;
                 height:100%;
-                background-color: #EDDEA4;
+                background-color: #F5853F;
                 background-image: url(img/menu.png);
                 background-repeat: no-repeat;
                 background-size: 50%;
@@ -78,17 +74,16 @@
                 font-family: arial;
                 font-size:16px;
 
-            }
-            
+            }            
 
             .nav-sidebar {
                 position: fixed;
                 left:0;
                 bottom:0;
                 width: 0;
-                height: 620px;
+                height: 750px;
                 padding: 0 0px;
-                background-color: #EDDEA4;  
+                background-color: #F5853F;
                 z-index:1000;
                 transition: all 0.3s ease-in-out;
 
@@ -120,18 +115,94 @@
 
                 transition: all 0.3s ease-in-out;
             }
+                        
+.footer-widget 
+{ 
+    padding-left: 100px;
+    padding-bottom: 50px; 
+}
+.footer-title 
+{ 
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 20px; 
+  font-weight: 600;
+  margin-bottom: 44px; 
+  color: #fff; 
+}
+.footer-widget ul li a 
+{ 
+  font-family: 'Ubuntu', sans-serif;  
+  text-transform: capitalize; 
+  font-size: 14px; 
+  color: #636e74; 
+  display: block; 
+  font-weight: 600; 
+}
+.footer-widget ul li a:hover
+{ 
+    color: #ffff; 
+}
+.footer 
+{ 
+  font-family: 'Ubuntu', sans-serif;
+  background-color: #BB9F06;
+  padding-top: 10px; 
+  padding-left: 80px;
+  color: #636e74; 
+  font-weight: 400;
+  font-size: 14px; 
+  position: absolute;
+  bottom: 0;
+  width: 100%
+}
+.footer-line 
+{ 
+    border-color: #152e3d;
+}
+.footer-widget 
+{ 
+    padding-bottom: 50px; 
+}
+.footer-title 
+{
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 44px; 
+    color: #fff; 
+}
+.tiny-footer 
+{ 
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 14px;
+    padding: 14px 0px;
+    font-weight: 600; 
+    background-color: transparent;
+    border-top: 1px solid #152e3d;
+    color: #888d90; 
+    line-height: 1;
+}
+#page-container {
+  position: relative;
+  min-height: 100vh;
+}
+#content-wrap {
+padding-bottom: 2.5rem;    /* Footer height */
+}
 
         </style>
     </head>
     <body>
+   
+       
+           
         <header>
-
-        </header>
 
         <nav class="nav-main">
             <div class="btn-toggle-nav" onclick=" toggleNav()" > </div>
 
             <ul>
+                
                 <li><a href="#">Register</a></li> 
                 <li>  <a href="#">Login</a></li> 
             </ul> 
@@ -139,7 +210,7 @@
                 <h1> My Escape </h1>
             </div>
         </nav>
-
+        </header>
         <aside class="nav-sidebar" >
             <ul>
                 <li><a href="#">Home</a></li>
@@ -148,10 +219,7 @@
                 <li><a href="#">Contact Us</a></li>
             </ul>   
         </aside>
-
-        <div class="fader">
-        </div>
-
+    
 
         <script>
 
