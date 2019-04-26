@@ -19,8 +19,8 @@
       <?php
       session_start();
       if (empty($_SESSION['username'])){
-        echo "<a href='?controller=user&action=login'>Login</a> ";
-        echo "<a href='?controller=user&action=register'>Register</a> ";
+        echo "<a href='?controller=user&action=login'>Login|Register</a> ";
+        //echo "<a href='?controller=user&action=register'>Register</a> ";
       }
       else{
         echo "<a href='?controller=blog&action=create'>Profile Page</a> ";
