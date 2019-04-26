@@ -3,6 +3,8 @@
 class userController {
     public function login() {
         #session_start();//removed as now in layout
+        try{
+            
         if($_SERVER['REQUEST_METHOD'] == 'GET'){
              
             if (!empty($_SESSION['username'])) {
@@ -10,25 +12,41 @@ class userController {
             header('location:?controller=blog&action=create');
             }        
             else{
-                 require_once('views/users/login.php');
+                
+                 require_once('views/users/login_register.php');
             }
         } 
          else { 
+             
+             if(isset($_POST['loginsubmit'])){
+             
             User::login();
              
             require_once('views/blogs/create.php');
             require_once('./models/blog.php');
             $blogs = Blog::add();
+             }
+             if(isset($_POST['registersubmit'])){
+             
+                 User::register();
+                 
+             }
+             
            
       }
 
-    
+
+      } catch (Exception $ex) {
+                return call('pages', 'error');
+            }
+
     }
 
     
 
 
     public function contactus(){
+        try{
          if($_SERVER['REQUEST_METHOD'] == 'GET'){
               require_once('views/users/contactus.php');
            }
@@ -36,13 +54,17 @@ class userController {
                 User::contactus();
 
           }
+          } catch (Exception $ex) {
+                return call('pages', 'error');
+            }
 
     }
 
 
-    public function register() {
+    /*public function register() {
+        try{
       if($_SERVER['REQUEST_METHOD'] == 'GET'){
-          require_once('views/users/register.php');
+          require_once('views/users/login_register.php');
        }
       else { 
             User::register();
@@ -50,8 +72,11 @@ class userController {
 //            $blogs = User::login(); 
 //            require_once('views/users/login.php');
       }
+      } catch (Exception $ex) {
+                return call('pages', 'error');
+            }
       
-    }
+    }*/
     
     public function readMine(){
      if (!isset($_GET['username']))#change delete so sends to readmine not read all?
@@ -63,7 +88,7 @@ class userController {
       #require_once('./models/user.php'); //did this when trying to get create to redirect to readMine not readAll
       require_once('views/users/readMine.php');
       }
-        catch (Exception $ex){
+        catch (Exception $ex){                      
             return call('pages','error');
         }
     }
@@ -72,16 +97,18 @@ class userController {
     
     
     public function changePassword() {
+        try{
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             
-            require_once('views/users/changePassword.php');
-        }       
+            require_once('views/users/passwordReset.php');
+        }           
             else{
 
                 if (User::confirmUserExists()){
-                    try{ User::modify();
-
-                    require_once('views/users/login.php');
+                    try{ 
+                        User::modify();                    
+                    
+                        header('location:?controller=user&action=login');
                     }
                     catch (Exception $ex){
                     return call('pages','error');
@@ -94,6 +121,9 @@ class userController {
                     echo '<script type="text/javascript">alert("'.$message.'");history.go(-1);</script>';
                 }
         }
+        } catch (Exception $ex) {
+                return call('pages', 'error');
+            }
       
     }
     

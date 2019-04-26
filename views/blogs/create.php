@@ -4,6 +4,8 @@ if (isset($_POST['username'])) {
     $_SESSION['username'] = $_POST['username'];
 }
 $db = Db::getInstance();
+ if(!is_null($db)){
+     try{
 $stmt = $db->prepare("select CategoryName from category");
 $stmt_con = $db->prepare("select ContinentName from continent");
 $stmt_cou = $db->prepare("select CountryName from country");
@@ -14,6 +16,15 @@ $stmt_cou->execute();
 $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $result_con = $stmt_con->fetchAll(PDO::FETCH_ASSOC);
 $result_cou = $stmt_cou->fetchAll(PDO::FETCH_ASSOC);
+     }catch(PDOException $e){
+                $e->getMessage();
+                // log this exception somewhere
+            }
+            catch(Exception $ex){
+              $ex->getMessage();  
+              // log this exception somewhere
+            }           
+ }
 ?>
 <!--no longer needed - flexible navbar  <a href='?controller=pages&action=logout'>logout</a>-->
 
