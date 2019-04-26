@@ -26,13 +26,6 @@ $result_cou = $stmt_cou->fetchAll(PDO::FETCH_ASSOC);
             }           
  }
 ?>
-<!--no longer needed - flexible navbar  <a href='?controller=pages&action=logout'>logout</a>-->
-
-<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-
 <html>
     <head>
         <meta charset="UTF-8">
@@ -70,8 +63,9 @@ $result_cou = $stmt_cou->fetchAll(PDO::FETCH_ASSOC);
                 <div class="col-sm-4">    
 
                     <form action="" method="POST" class="w3-container" enctype="multipart/form-data"> 
-
-                        <br>
+                        <br><br><br><br><br>
+                        
+                        
                         <h2 align="center"><b>New Blog Post</b></h2>
                         <hr class="colorgraph">                                                                       
                         <div class="row">
