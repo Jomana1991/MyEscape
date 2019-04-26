@@ -150,20 +150,27 @@ public function read() {
                     foreach ($blogs as $blog) {
                          echo '<br>';
                         echo "<strong>" . $blog->title . "</strong>" . "<br>";
-                        echo $blog->username . "<br>";
-                        echo $blog->categoryName . "<br>";
-                        echo $blog->countryName . "<br>";
-                        echo $blog->continentName . "<br>";
+                       
+                        echo "Author: ". $blog->username . "<br>";
+                        echo "Category: ". $blog->categoryName . "<br>";
+                        echo "Country: ". $blog->countryName . "<br>";
+                        echo "Continent: ".$blog->continentName . "<br>";
 
 
                         //If blog is greater than 200 characters, the content will be shortened to 150 characters, if not the whole content will be echo'd
                         if (strlen($blog->content) > 150) {
-                            echo substr($blog->content, 0, strpos(wordwrap($blog->content, 150), "\n")) . '...' . "<br><br>";
+                            echo substr("Blog content: ".$blog->content, 0, strpos(wordwrap($blog->content, 150), "\n")) . '...' . "<br><br>";
                             //        here I am using wordwrap to line breakat the nearest word to 150 characters(so you don't get half words),
                             //        strpos then returns the position of the first line break, and the content will therefore be shortened to this position by substr
+                             echo "<a href='?controller=blog&action=read&blogID=".$blog->blogID."> Read Full Blog </a>"."<br>";
+                            echo  "<hr>";
                         } else {
-                            echo $blog->content . "<br><br>";
+                            echo "Blog content: ".$blog->content . "<br><br>";
+                             echo "<a href='?controller=blog&action=read&blogID=".$blog->blogID."> Read Full Blog </a>"."<br>";
+                          echo  "<hr>";
+
                         }
+                         
                     }
                 } catch (Exception $ex) {
                     return call('pages', 'error');
