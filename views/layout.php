@@ -7,12 +7,14 @@
     @import url('https://fonts.googleapis.com/css?family=Cinzel+Decorative|Sacramento|Oswald|Roboto|Courgette');
  body {
   background-color: #F6F4D2;
+  margin: auto;
 }
 
 h2 {
   color: #395C6B;
-  font: 72px 'Roboto condensed', cursive;
-/*  font-weight: bold;
+  font: 72px 'Sacramento', cursive;
+  font-weight: bold;
+  text-align: center;
 }
 
 h3 {
@@ -32,15 +34,16 @@ p {
   font: 16px 'Roboto', sans-serif;
 }
 
-/*.avatar {
-  border-radius: 50%;
-}*/
+.avatar{
+    width:180px;
+    height:180px;
+    border-radius: 50%;
+}
 
 .flip-card {
   background-color: transparent;
-  width: 200px;
-  height: 200px;
-/*  border-radius: 50%;*/
+  width: 180px;
+  height: 180px;
   perspective: 1000px; /* Remove this if you don't want the 3D effect */
 }
 
@@ -49,6 +52,7 @@ p {
   position: relative;
   width: 100%;
   height: 100%;
+  border-radius: 50%;
   text-align: center;
   transition: transform 0.8s;
   transform-style: preserve-3d;
@@ -64,6 +68,7 @@ p {
   position: absolute;
   width: 100%;
   height: 100%;
+  border-radius: 50%;
   backface-visibility: hidden;
 }
 
@@ -75,7 +80,7 @@ p {
 
 /* Style the back side */
 .flip-card-back {
-  background-color: #FFFFFF;
+  background-color: dodgerblue;
   color: white;
   transform: rotateY(180deg);
 }
