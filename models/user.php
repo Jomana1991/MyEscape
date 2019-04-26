@@ -17,7 +17,11 @@ class User {
     public static function login() {//add in santisation for email
                
             $db = Db::getInstance();
+
+            if(!is_null($db)){
+            try{
             $query = $db->prepare("SELECT * FROM user WHERE Username = :username AND Password = :password");
+
 
             if(isset($_POST['username'])&& $_POST['username']!=""){
                 $username = filter_input(INPUT_POST,'username', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -43,12 +47,26 @@ class User {
                 echo '<script type="text/javascript">alert("'.$message.'");history.go(-1);</script>';
                 die();
             }
+            }
+            catch(PDOException $e){              
+                $e->getMessage();
+                // log this exception somewhere
+                throw  new Exception();
+            }                     
+         }
+            
+
     }
         
     
 
     public static function register() {
         $db = Db::getInstance();
+
+        if(!is_null($db))
+        {
+            try{
+            
         $username = $_POST["username"];
         $password = $_POST['password'];
         $email = $_POST["email"];
@@ -78,48 +96,79 @@ class User {
          
          if ($result ==1 ) { 
              echo "Please enter the login details";
-             header('location:?controller=user&action=login');}
+             header('location:?controller=user&action=login');}            
+            
             }
+            }
+            catch(PDOException $e){
+                $e->getMessage();
+                // log this exception somewhere
+                throw  new Exception();
+            }
+            
+        }
     }
     
     
     public static function readMine($username) 
-    {
+    {        
       $list = [];
       $db = Db::getInstance();
+
+      if(!is_null($db)){      
+       try{   
+            $sqlfindmine= "Call readMyBlogs (:username)";
+       
       
-       $sqlfindmine= "Call readMyBlogs (:username)";
-      
-      $req = $db->prepare($sqlfindmine);
-      
-      require_once('blog.php');
-      
-      $req->execute(array('username' => $username));
-      foreach($req->fetchAll() as $blog) 
-          {
-        $list[] = new Blog($blog['BlogID'], $blog['Title'], $blog['Content'], $blog['CountryName'], $blog['ContinentName'], $blog['CategoryName'],$blog['Username'], $blog['LikeCounter']);
-      }
-      return $list;
+            $req = $db->prepare($sqlfindmine);
+
+            require_once('blog.php');
+
+            $req->execute(array(':username' => $username));
+            foreach($req->fetchAll() as $blog) 
+                {
+              $list[] = new Blog($blog['BlogID'], $blog['Title'], $blog['Content'], $blog['CountryName'], $blog['ContinentName'], $blog['CategoryName'],$blog['Username'], $blog['LikeCounter']);
+            }
+            return $list;
+       }
+       catch(PDOException $e){
+           $e->getMessage();           
+           
+           // log this exception somewhere
+           throw  new Exception();
+       }
+             
+    }
     }
     
     
     public static function contactus() {
         $db = Db::getInstance();
-        $stmt = $db->prepare("INSERT INTO userfeedback (FullName, Email,Comments) VALUES ( :FullName, :Email, :Comments)");
+        if(!is_null($db)){
+        try{    
+            $stmt = $db->prepare("INSERT INTO userfeedback (FullName, Email,Comments) VALUES ( :FullName, :Email, :Comments)");
 
-        $fullname = $_POST["fullname"];
-        $email = $_POST["email"];
-        $comments = $_POST["comments"];
+            $fullname = $_POST["fullname"];
+            $email = $_POST["email"];
+            $comments = $_POST["comments"];
 
-        $stmt->bindParam(':FullName', $fullname);
-        $stmt->bindParam(':Email', $email);
-        $stmt->bindParam(':Comments', $comments);
-        
-        $result = $stmt->execute();
-         
-         if ($result ==1 ) { echo "Thanks for the feedback,we will get back to you soon";}
+            $stmt->bindParam(':FullName', $fullname);
+            $stmt->bindParam(':Email', $email);
+            $stmt->bindParam(':Comments', $comments);
+
+            $result = $stmt->execute();
+
+             if ($result ==1 ) { echo "Thanks for the feedback,we will get back to you soon";}
+        }
+        catch(PDOException $e){
+            $e->getMessage();
+            // log this exception somewhere
+            throw  new Exception();
+        }        
+    }
     }
     
+
     
     public static function filterInput($userDetail) {//create a sanitising function for sanitising strings
         if (isset($_POST["$userDetail"]) && $_POST["$userDetail"] != "") {
@@ -132,7 +181,9 @@ class User {
     public static function modify() {
         $db = Db::getInstance();
 
-
+        if(!is_null($db))
+        {
+        try{
         $req = $db->prepare("Call updatePassword(:username, :newPassword);");
         $req->bindParam(':username', $username);
         $req->bindParam(':newPassword', $newPassword);
@@ -150,11 +201,19 @@ class User {
             $req->execute();
             
         }
+        }
+        catch (PDOException $e){
+            $e->getMessage();
+            // log this exception somewhere
+            throw  new Exception();
+        }
+        }
     }
     
     public static function confirmUserExists() {
         $db = Db::getInstance();
-
+        if(!is_null($db)){
+        try{
         $req = $db->prepare("Call confirmUserExists(:username);");
         $req->bindParam(':username', $username);        
 
@@ -175,6 +234,13 @@ class User {
             else{
             throw new Exception('A real exception should go here'); //replace with a more meaningful exception
             }
+        }
+        }
+        catch (PDOException $e){
+            $e->getMessage();
+            // log this exception somewhere
+            throw  new Exception();
+        }
         }
     }
 
