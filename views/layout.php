@@ -66,8 +66,9 @@
     }
     .bg-custom
     {
-       background-color: #E88D67; 
+       background-color: #fff; 
        opacity: 0.9;
+        color: #001D4A;
     }
     
  .main h2 {
