@@ -69,7 +69,7 @@
     
   </head>
   
-  <nav class="navbar fixed-top navbar-expand-md navbar-light bg-custom " >
+  <nav class="navbar-fixed-top navbar-expand-md navbar-light bg-custom " >
   <div class="container">
       <a class="navbar-brand active" href='?controller=pages&action=home'>MyEscape</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
