@@ -9,13 +9,13 @@
   <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:600'>
   
   <style>
-      body{
+/*      body{
 	margin:0;
 	color:#9599af;
-	/*background:#F6F4D2;*/
+	background:#F6F4D2;
         background:url("loginholiday2.jpg");
 	font:600 16px/18px 'Open Sans',sans-serif;
-}
+}*/
 *,:after,:before{box-sizing:border-box}
 .clearfix:after,.clearfix:before{content:'';display:table}
 .clearfix:after{clear:both;display:block}
@@ -36,6 +36,7 @@ a{color:inherit;text-decoration:none}
 	position:absolute;
 	padding:90px 70px 50px 70px;
 	background:rgba(50,57,95,.8);
+        
        /* background:rgba(50,57,101,.9);*/
 }
 .login-html .sign-in-htm,
@@ -175,6 +176,7 @@ a{color:inherit;text-decoration:none}
 
     </head>
     <body>
+        <div class="main">
        <!-- <form method='POST' action=" ">-->
          <div class="login-wrap" >
 	<div class="login-html">
@@ -235,6 +237,7 @@ a{color:inherit;text-decoration:none}
 		</div>
 	</div>
 </div>
+        </div>
  <!-- </form>-->
   
     </body>

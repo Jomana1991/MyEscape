@@ -8,6 +8,7 @@
 ?>
 <html>
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -227,7 +228,7 @@
         <header>
 
         </header>
-
+        <main role="main">
         <div class="fader">
 
         </div>
@@ -242,11 +243,12 @@
             <div class="button-border"> <a class="button" href='?controller=user&action=register'>Register</a></div>
 
         </div>
+            <div>
         <span class="b">Who are we?</span>
         <span class="a">Search our Blogs</span>
 
         <span class="c">Travel quote of the day</span>
-
+            </div>
         <div class="search-wrapper">
             <svg height="60" width="320" xmlns="http://www.w3.org/2000/svg">
                 <rect class="shape" height="60" width="320" />
@@ -260,7 +262,7 @@
             </svg>
             <div class="text"> <a href='index.php?controller=blog&action=aboutus'>About Us</a></div>
         </div>
-
+        </main>
         <script>
 
 
