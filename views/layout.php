@@ -52,6 +52,7 @@
 }
 .container {
     margin-left: 10px;
+/*    margin-right: 10px;*/
     margin-top: 50px;
 }
 
@@ -62,7 +63,7 @@
     .bg-custom
     {
        background-color: #E88D67; 
-       opacity: 0.75;
+       opacity: 0.9;
     }
 
 </style>
