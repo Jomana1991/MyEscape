@@ -9,25 +9,7 @@
 <!--        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />-->
         
         <style>
-.main h2 {
-  color: #395C6B;
-  font: 72px 'Sacramento', cursive;
-/*  font-weight: bold;*/
-  text-align: center;
-  width:100%
-}
 
-.main h3 {
-  color: #001D4A;
-  font-family: 'Roboto', sans-serif;
-  font-weight: bold;
-}
-
-.main h4 {
-  color: #001D4A;
-  font-family: 'Roboto', sans-serif;
-  font-weight: bold;
-}
 
 .avatar{
     width:160px;
