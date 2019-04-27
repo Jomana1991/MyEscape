@@ -10,7 +10,7 @@
     echo $blog->countryName."<br>";
     echo $blog->continentName."<br>";
     echo $blog->username."<br>";
-    echo $blog->categoryName."<br>";
+    echo $blog->categoryName."<br><br>";
     
     //If blog is greater than 200 characters, the content will be shortened to 150 characters, if not the whole content will be echo'd
     if (strlen($blog->content) > 150){ 
@@ -25,8 +25,7 @@
       
     ?>
     &nbsp; &nbsp;
-  
-    
+ 
     <a href='?controller=blog&action=read&blogID=<?php echo $blog->blogID; ?>'> Read Full Blog </a> &nbsp; &nbsp;
     <a href='?controller=blog&action=update&blogID=<?php echo $blog->blogID; ?>'> Update Blog </a> &nbsp; &nbsp;
     <a href='?controller=blog&action=delete&blogID=<?php echo $blog->blogID; ?>' onclick="return confirm('Are you sure you want to delete this blog?')"> Delete Blog </a> &nbsp;

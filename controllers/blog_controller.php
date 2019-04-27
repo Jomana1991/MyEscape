@@ -8,7 +8,7 @@ class BlogController {
     public function readAll() {
         try{
         $blogs = Blog::all();
-        require_once('views/blogs/readAll.php');
+        require_once('views/blogs/readAllBlogs.php');
         }
         catch (Exception $ex) {
                 return call('pages', 'error');
@@ -19,7 +19,11 @@ class BlogController {
 public function read() {
         // we expect a url of form ?controller=posts&action=show&id=x
         // without an id we just redirect to the error page as we need the post id to find it in the database
+
+
+
     try {
+
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             if (!isset($_GET['blogID']))
                 return call('pages', 'error');
@@ -27,6 +31,7 @@ public function read() {
             
                 // we use the given id to get the correct post
                 $blogid = $_GET['blogID'];
+                Blog::incrementViewCount($blogid);
                 $blog = Blog::find($_GET['blogID']);
 
 
@@ -49,6 +54,7 @@ public function read() {
             require_once './models/comment.php';
             $comments = Comment::fetchComment($blogid);
             require_once('views/blogs/read.php');
+
         }
         } catch (Exception $ex) {
                 return call('pages', 'error');
@@ -225,6 +231,20 @@ public function read() {
         }
     }
 
-}
 
+public function viewBlog() {
+        
+        if (!isset($_GET['blogID']))
+            return call('pages', 'error');
+
+        try {
+           
+            $blog = Blog::find($_GET['blogID']);
+            require_once('views/blogs/read.php');
+            
+        } catch (Exception $ex) {
+            return call('pages', 'error');
+        }       
+    }
+}
 ?>
