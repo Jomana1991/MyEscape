@@ -7,7 +7,78 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
         
-        
+        <style>
+            h2 {
+  color: #395C6B;
+  font: 72px 'Sacramento', cursive;
+/*  font-weight: bold;*/
+  text-align: center;
+  width:100%
+}
+
+h3 {
+  color: #001D4A;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+}
+
+h4 {
+  color: #001D4A;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+}
+
+.avatar{
+    width:180px;
+    height:180px;
+    border-radius: 50%;
+}
+
+.flip-card {
+  background-color: transparent;
+  width: 180px;
+  height: 180px;
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+}
+
+/* This container is needed to position the front and back side */
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  backface-visibility: hidden;
+}
+
+/* Style the front side (fallback if image is missing) */
+.flip-card-front {
+  background-color: #bbb;
+  color: black;
+}
+
+/* Style the back side */
+.flip-card-back {
+  background-color: dodgerblue;
+  color: white;
+  transform: rotateY(180deg);
+}
+
+}
+        </style>    
         
     </head>
 
@@ -15,7 +86,7 @@
 <div class="main">
             <div class="container">
                 <div class="row">
-                    <div class=" text-center col-md-10 col-md-offset-2">
+                    <div class=" text-center col-md-10 col-md-offset-1">
 
                         <div id="orangefloat" >
   <div class="row">
