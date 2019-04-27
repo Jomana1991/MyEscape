@@ -55,54 +55,7 @@
     margin-top: 50px;
 }
 
-h2 {
-  color: #395C6B;
-  font: 72px 'Sacramento', cursive;
-/*  font-weight: bold;*/
-  text-align: center;
-  width:100%
-}
 
-h3 {
-  color: #001D4A;
-  font-family: 'Roboto', sans-serif;
-  font-weight: bold;
-}
-
-h4 {
-  color: #001D4A;
-  font-family: 'Roboto', sans-serif;
-  font-weight: bold;
-}
-
-.avatar{
-    width:180px;
-    height:180px;
-    border-radius: 50%;
-}
-
-.flip-card {
-  background-color: transparent;
-  width: 180px;
-  height: 180px;
-  perspective: 1000px; /* Remove this if you don't want the 3D effect */
-}
-
-/* This container is needed to position the front and back side */
-.flip-card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  text-align: center;
-  transition: transform 0.8s;
-  transform-style: preserve-3d;
-}
-
-/* Do an horizontal flip when you move the mouse over the flip box container */
-.flip-card:hover .flip-card-inner {
-  transform: rotateY(180deg);
-}
 
 
 
