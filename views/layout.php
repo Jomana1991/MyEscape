@@ -1,5 +1,6 @@
 <html>
   <head>
+        <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <!--        <link href="css/styles-general.css" rel="stylesheet" type="text/css"/>-->
@@ -13,8 +14,9 @@
 h2 {
   color: #395C6B;
   font: 72px 'Sacramento', cursive;
-  font-weight: bold;
+/*  font-weight: bold;*/
   text-align: center;
+  width:100%
 }
 
 h3 {
