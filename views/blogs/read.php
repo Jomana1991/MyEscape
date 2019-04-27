@@ -32,6 +32,7 @@ $_SESSION ['blogID'] = $_GET ['blogID'];
         </style>
     </head>
     <body>
+
         <div class='fader'>
         </div>  
         <br>
@@ -66,7 +67,6 @@ $_SESSION ['blogID'] = $_GET ['blogID'];
             ?>
             </div>
         </div>    
-
 <!--Attempting AJAX-->
 <div class="row">
     <div class="col-md-4" >
