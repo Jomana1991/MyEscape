@@ -106,65 +106,64 @@ class Blog {
         if(!is_null($db)){
             try {
      
-        $stmt = $db-> prepare("select CategoryID, CategoryName from category order by CategoryID");
-        $result =$stmt->fetchAll();
-        $req = $db->prepare( "Call addBlog(:username, :title, :content, :countryName, :continentName, :categoryName)"); 
-            // sanitize input, set parameters and execute
-        
-
-        $blogDetails = filter_input_array(INPUT_POST);
-
-        //asking whether title is empty refers to whether the addform has been submitted yet, if not the query is run
-        //I could ask whether the general $_POST array is empty as it's not - it contains the username and password from the login page
-
-
-        if(!empty($_POST['title']))
-        {//loops through Post Superglobal array, sanitising each input item
-        
-            
-            foreach($blogDetails as $blogDetail => $blogValue) 
-            {
-                //filter all except blog contents
-                if($blogDetail == 'content')
-                {
-                    ${$blogDetail} = $_POST["$blogDetail"];
-                }
-                else        
-                {
-                    ${$blogDetail} = Blog::filterInput($blogDetail);
+//                $stmt = $db-> prepare("select CategoryID, CategoryName from category order by CategoryID");
+//                $result =$stmt->fetchAll();
                 
+                $req = $db->prepare( "Call addBlog(:username, :title, :content, :countryName, :continentName, :categoryName)"); 
+                    // sanitize input, set parameters and execute
+
+
+                $blogDetails = filter_input_array(INPUT_POST);
+
+                //asking whether title is empty refers to whether the addform has been submitted yet, if not the query is run
+                //I could ask whether the general $_POST array is empty as it's not - it contains the username and password from the login page
+
+
+                if(!empty($_POST['title']))
+                {//loops through Post Superglobal array, sanitising each input item
+
+
+                    foreach($blogDetails as $blogDetail => $blogValue) 
+                    {
+                        //filter all except blog contents
+                        if($blogDetail == 'content')
+                        {
+                            ${$blogDetail} = $_POST[$blogDetail];
+                        }
+                        else        
+                        {
+                            ${$blogDetail} = Blog::filterInput($blogDetail);
+
+                        }
+                        
+                    }
+                        $username = $_SESSION['username'];
+
+                        $req->bindParam(':username', $username);
+                        $req->bindParam(':title', $title);
+                        $req->bindParam(':content', $content);
+                        $req->bindParam(':countryName', $countryName);
+                        $req->bindParam(':continentName', $continentName);
+                        $req->bindParam(':categoryName', $categoryName);
+
+                        $req->execute();
+                     
                 }
-                $username = $_SESSION['username'];
 
-                $req->bindParam(':username', $username);
-                $req->bindParam(':title', $title);
-                $req->bindParam(':content', $content);
-                $req->bindParam(':countryName', $countryName);
-                $req->bindParam(':continentName', $continentName);
-                $req->bindParam(':categoryName', $categoryName);
-
-                $req->execute();
-            } 
-        }
-    }
+                     //only upload blog image if one loaded
+               if (!empty($_FILES[self::UploadKey]['name'])) {
+                            Blog::uploadFile($title."_".$username);
+                }//need to handle so that if there is an error with image upload, blog content not added to db
+            }
        
         catch(PDOException $e){
                 $e->getMessage();
                 // log this exception somewhere
                 throw new Exception(); 
             }
-                //only upload blog image if one loaded
-                
-        
-        
-     
- 
-    //only upload blog image if one loaded
-       if (!empty($_FILES[self::UploadKey]['name'])) {
-                    Blog::uploadFile($title."_".$username);
-        }//need to handle so that if there is an error with image upload, blog content not added to db
+            
         }   
-        }
+    }
 
     const AllowedTypes = ['image/jpeg','image/jpg'];
 
