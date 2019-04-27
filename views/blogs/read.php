@@ -15,7 +15,7 @@ $_SESSION ['blogID'] = $_GET ['blogID'];
 
 
         <h2>
-            <?php echo $blog->title . "<br>"; ?>
+            <?php echo $blog->title. "<br>"; ?>
         </h2>
         <p>
             <?php echo $blog->content; ?>
