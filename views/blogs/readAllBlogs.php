@@ -171,6 +171,7 @@
     
     }?>
                       </p>
+                      <br>
                       <div class="button"><a href='?controller=blog&action=read&blogID=<?php echo $blog->blogID; ?>'> Read Full Blog </a></div>
                     </li>
                       <?php } ?>
