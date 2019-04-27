@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 
 <html>
-<head>
+
+    <head>
         <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
@@ -24,15 +25,11 @@
     
     
 .main{
-
     display: table;
     height: 100%;
     position: relative;
     width: 100%;
     background-size: cover;
-
-
-
 }
 .main:before {
     content: '';
@@ -43,111 +40,30 @@
     height: 100%;
     z-index: -1;
     background-repeat: no-repeat;
-
-
 }
-
 #orangefloat {
-
     height: auto;               
-
     background: linear-gradient(to right, #EABE7C, #E88D67);
 /*    font-size: 45px;
     font-family: 'Oswald', sans-serif;*/
-
     color: #fff;
-
     min-height: 500px;
     opacity:0.8;
-
-
 }
-
 .container {
     margin-left: 10px;
     margin-top: 50px;
 }
-
-h2 {
-  color: #395C6B;
-  font: 72px 'Sacramento', cursive;
-/*  font-weight: bold;*/
-  text-align: center;
-  width:100%
-}
-
-h3 {
-  color: #001D4A;
-  font-family: 'Roboto', sans-serif;
-  font-weight: bold;
-}
-
-h4 {
-  color: #001D4A;
-  font-family: 'Roboto', sans-serif;
-  font-weight: bold;
-}
-
-h1 {
+/*    body {
+  background-color: #F6F4D2;
+}*/
+/*h1 {
   color: blue;
-
-p {
+}*/
+/*p {
   color: #001D4A;
-  font: 16px 'Roboto', sans-serif;
-}
-
-.avatar{
-    width:180px;
-    height:180px;
-    border-radius: 50%;
-}
-
-.flip-card {
-  background-color: transparent;
-  width: 180px;
-  height: 180px;
-  perspective: 1000px; /* Remove this if you don't want the 3D effect */
-}
-
-/* This container is needed to position the front and back side */
-.flip-card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  text-align: center;
-  transition: transform 0.8s;
-  transform-style: preserve-3d;
-}
-
-/* Do an horizontal flip when you move the mouse over the flip box container */
-.flip-card:hover .flip-card-inner {
-  transform: rotateY(180deg);
-}
-
-/* Position the front and back side */
-.flip-card-front, .flip-card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  backface-visibility: hidden;
-}
-
-/* Style the front side (fallback if image is missing) */
-.flip-card-front {
-  background-color: #bbb;
-  color: black;
-}
-
-/* Style the back side */
-.flip-card-back {
-  background-color: dodgerblue;
-  color: white;
-  transform: rotateY(180deg);
-}
-
-
+  font: 14px 'Roboto', sans-serif;
+}*/
 </style>
     
   </head>
@@ -210,19 +126,17 @@ p {
 </nav>
   
   
-  <body>
-
-    <div class="w3-container w3-pink">
+      
         <?php require_once('routes.php'); ?>
 
 
-    </div>
+    </div
     <?php require_once('footer.html'); ?>
-      </div>
+    
   
 <!--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>-->
 <!--  <script src="jsFunctions.js" type="text/javascript"></script>-->
   
-  </body>
+  
 </html>
