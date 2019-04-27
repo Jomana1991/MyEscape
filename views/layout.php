@@ -48,7 +48,7 @@
     font-family: 'Oswald', sans-serif;*/
     color: #fff;
     min-height: 500px;
-    opacity:0.8;
+    opacity:0.85;
 }
 .container {
     margin-left: 10px;
