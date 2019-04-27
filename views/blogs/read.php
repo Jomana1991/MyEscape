@@ -32,7 +32,7 @@ $_SESSION ['blogID'] = $_GET ['blogID'];
         </style>
     </head>
     <body>
-
+<div class="main">
         <div class='fader'>
         </div>  
         <br>
@@ -42,30 +42,34 @@ $_SESSION ['blogID'] = $_GET ['blogID'];
         </div>
         <br>
         <div class="row">
-            <div class="col-md-4">
-
-            </div>
-            <div class="col-md-4" align="justify">
-                <p>
-                    <?php echo $blog->content; ?>
-                </p>
-            </div>     
-             <div class="col-md-4">
-             </div>
-        </div>
-        <div class="row">
             <div class="col-md-12"align="center">
             <?php
             $file = 'views/blogImages/' . $blog->title . "_" . $blog->username . '.jpeg';
 
             if (file_exists($file)) {
-                $img = "<img src='$file' width='150' />";
+                $img = "<img src='$file' width='350' /><br><br>";
                 echo $img;
             } else {
                 echo '';
             }
             ?>
             </div>
+            <br>
+            <br>
+        
+            <div class="row">
+            <div class="col-md-3">
+
+            </div>
+            <div class="col-md-6" align="justify">
+                <p>
+                    <?php echo $blog->content; ?>
+                </p>
+            </div>     
+             <div class="col-md-3">
+             </div>
+        </div>
+        
         </div>    
 <!--Attempting AJAX-->
 <div class="row">
@@ -140,7 +144,7 @@ $_SESSION ['blogID'] = $_GET ['blogID'];
         </div> 
 
   
-
+</div>
     </body>
 </html>
 
