@@ -11,63 +11,104 @@
 <html>
     <head>
         <title> </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <style>
             @import url('https://fonts.googleapis.com/css?family=Oswald');
+/*            body {
+                background: url("./img/share.jpg");
+                opacity: 0.8;
+                background-repeat: no-repeat;
+            }*/
+
             #result {
                 /*                display: inline-block;*/
-                width: 100vw;
+/*                width: 100vw;*/
                 height: auto;                /*                padding: 50px;*/
                 /*                    margin-left: 320px;
                                     margin-top: 300px;*/
                 background: linear-gradient(to right, #EABE7C, #E88D67);
                 font-size: 45px;
                 font-family: 'Oswald', sans-serif;
-                text-align:  center;
-                position: absolute;
+/*                text-align:  center;*/
+/*                position: absolute;*/
                 color: #fff;
-                display: flex;
-                flex-direction: column;
+/*                display: flex;*/
+/*                flex-direction: column;*/
                 min-height: 500px;
-                 border-radius: 80px;
-                border: 10px solid white;
+                opacity:0.8;
+                /*                 border-radius: 80px;*/
+                /*                border: 5px solid white;*/
+             
 
             }
+
+            .main{
+
+                display: table;
+                height: 100%;
+                position: relative;
+                width: 100%;
+                background-size: cover;
+        
+                  
+
+            }
+            .main:before {
+                content: '';
+                position: absolute; 
+                opacity: 0.4;
+                background: url(./img/share.jpg) no-repeat 0 50%; 
+                width: 100%;
+                height: 100%;
+                z-index: -1;
+               background-repeat: no-repeat;
+
+
+            }
+
             hr {
                 color: #fff;
             }
 
-            body {
-                padding: 0;
-                margin: 0;
+            .container {
+                       margin-left: 40px;
+               margin-top: 50px;
             }
+          
             ::placeholder {
                 color: #ECEFF1;
             }
             .body {
-                width: 100vw;
-                height: 50vh;
+/*                width: 70vw;
+                height: 50vh;*/
                 background: linear-gradient(to right, #EABE7C, #E88D67);
-                  border-radius: 80px;
-                border: 10px solid white;
+                opacity: 0.8;
+                vertical-align: middle;
+                    
+                
+/*                border-radius: 80px;*/
+                /*                border: 5px solid white;*/
 
             }
             .input {
                 display:none;
                 background: transparent;
                 color: white;
-                position: absolute;
-                left: 54.7%;
-                top: 29%;
+/*                position: absolute;*/
+/*                left: 54.7%;
+                top: 29%;*/
                 transform: translate(-70%, -60%);
-                width: 440px;
-                height: 40px;
+                width: 390px;
+                height: 30px;
                 border-radius: 100px;
-                padding: 30px;
-                font-size: 50px;
+                padding: 20px;
+                font-size: 30px;
                 border: none;
+                font-family: 'Oswald', sans-serif;
+                
             }
             .input:focus {
                 outline: none;
@@ -76,20 +117,20 @@
                 background: transparent;
                 width: 100px;
                 height: 100px;
-                border-radius: 80px;
-                border: 15px solid white;
-                position: absolute;
-                left: 50%;
-                top: 30%;
-                transform: translate(-70%, -60%);
+                border-radius: 50px;
+                border: 10px solid white;
+/*                position: absolute;*/
+/*                left: 50%;
+                top: 30%;*/
+/*                transform: translate(-0%, -0%);*/
                 box-shadow: 0px 5px 10px rgba(0,0,0,.3);
             }
             .bar {
-                height: 80px;
-                width: 30px;
+                height: 60px;
+                width: 20px;
                 border-radius: 50px;
                 background: white;
-                position: absolute;
+/*                position: absolute;*/
                 top: 90%;
                 left: 100%;
                 transform: rotate(-45deg);
@@ -102,44 +143,38 @@
 
     </head>
     <body>
-
-        <div class="body">
-            <div class="search">
-                <div class="bar"></div>
+<div class="main">
+    <div class="container">
+    <div class="row">
+         <div class=" text-center col-md-11 col-md-offset-2">
+        <div class="body" >
+           
+            <div class="search" >
+                <div class="bar">
+                      <input name="query" id="query" type="text" class="input" autofocus>
+                </div>
             </div>
-            <input name="query" id="query" type="text" class="input" autofocus>
-            
-        </div>  
-        <!--<p>Search for a blog below</p>
+        </div>
+        </div>
+         </div>
+        </div>
+      
+    <div class="container">
+        <div class="row">
+              <div class=" text-center col-md-10 col-md-offset-2">
+           
+ <div id="result" > Results</div>
         
-        <form action=" " method="POST">
-            <input type="text" name="query" id="query" placeholder="Enter your search here"/>
-            <input type="submit" id="search_button" value="Search" />
-        </form>
-        <div id="searchresults" id="result">
-        <div id="cover">
-            <div class="tb">
-              <div class="td"><input type="text" name="query" id="query" placeholder="Enter your search here" required></div>
-              <div class="td" id="s-cover">
-               
-                  <div id="s-circle"></div>
-                  <span></span>
-              
-              </div>
-            </div>
-          
-        </div>-->
-
-        <span id="result" class="c"> Results</span>
-
-
-        <!--</div>-->
-
+       
+        
+    </div>
+     </div>
+</div>
+       </div> 
 
         &nbsp; &nbsp;
 
         <script>
-
 
 
             $(document).ready(function () {
@@ -168,7 +203,6 @@
 
             $(".search").click(function () {
                 if ($(".search").css("width") == "100px")
-
                 {
                     $(".bar").animate({
                         height: "0px",
