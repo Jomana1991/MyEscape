@@ -8,287 +8,256 @@
 ?>
 <html>
     <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+     
+   
+        <style>
+            @import url('https://fonts.googleapis.com/css?family=Oswald');
+                        @import url('https://fonts.googleapis.com/css?family=Courgette');
 
-            <style>
-                @import url('https://fonts.googleapis.com/css?family=Courgette');
-                @import url('https://fonts.googleapis.com/css?family=Oswald');
 
-                .fader {
-                    position: absolute;
-                    height: 100%;
-                    width:100%;
-                    left: 0;
+html, body {
+  
+  height: 100%;
 
-                    background-repeat: no-repeat;
-                    background-position: center;
-                    background-size: 100%;
-                    opacity: 0.35;
-                }
+  text-align: center;
+}
 
-                .landing-text {
-                    margin-top: 100px;
-                    text-align: center;
-                    vertical-align: central;
-                    position: absolute;
-                    left: 400px;
-                    color: #001d4a;
-                    font-family: 'Oswald', sans-serif;
-                }
+            header {
+                font-family: 'Oswald', sans-serif;
+                color: #001D4A;
+            }
 
-                .landing-text h1{
-                    font-size: 500%;
-                    font-weight: 700;
+            header.masthead {
+                position: relative;
 
-                }
+                padding-top: 8rem;
+                padding-bottom: 8rem;
 
-                .inspiration {
-                    height: 100%;
-                    width:100%;
-                    background: cover;
-                    background-color: #f6f4d2;
-                    position: absolute;
-                    margin-top: 650px;
-                    left: 0;
-                }
 
-                #changeText {
-                    font-size: 500%;
-                    font-weight:700; 
-                    text-align: center;
-                    vertical-align:middle;
-                    font-family: 'Courgette', cursive; 
-                    margin-top: 300px;
-                }
+            }
 
-                .button {
-                    background-color: #e88d67;
-                    border: none;
-                    color: #ffffff;
-                    outline: none;
-                    padding: 15px 40px 15px;
-                    position: absolute;
-                    margin-top: 300px;
-                    left: 670px;
-                    font-family: 'Oswald', sans-serif;
-                    font-size: 22px;
-                }
-                .button:before,
-                .button:after {
-                    border: 0 solid transparent;
-                    transition: all 0.25s;
-                    content: '';
-                    height: 24px;
-                    position: absolute;
-                    width: 24px;
-                }
-                .button:before {
-                    border-top: 2px solid #e88d67;
-                    left: 0px;
-                    top: -5px;
-                }
-                .button:after {
-                    border-bottom: 2px solid #e88d67;
-                    bottom: -5px;
-                    right: 0px;
-                }
-                .button:hover {
-                    background-color: #e88d67;
-                }
-                .button:hover:before,
-                .button:hover:after {
-                    height: 100%;
-                    width: 100%;
-                }
 
-                span.b {
-                    display: inline-block;
-                    width: 400px;
-                    height: 400px;
-                    padding: 50px;
-                    margin-left: 75px;
-                    margin-top: 600px;
-                    background-color: #e88d67; 
-                    font-size: 30px;
-                    font-family: 'Oswald', sans-serif;
-                    text-align:  center;
-                    position: absolute;
-
-                }
-
-                span.a {
-                    display: inline-block;
-                    width: 400px;
-                    height: 400px;
-                    padding: 50px;
-                    margin-left: 930px;
-                    margin-top: 600px;
-                    background-color: #e88d67; 
-                    font-size: 30px;
-                    font-family: 'Oswald', sans-serif;
-                    text-align:  center;
-                    position: absolute;
-
-                }
-                span.c {
-                    display: inline-block;
-                    width: 300px;
-                    height: 300px;
-                    padding: 50px;
-                    margin-left: 560px;
-                    margin-top: 650px;
-                    background-color: #e88d67; 
-                    font-size: 30px;
-                    font-family: 'Courgette', cursive; 
-                    text-align:  center;
-                    position: absolute;
-
-                }
-                /*html, body {
-                  background: #333;
-                  height: 100%;
-                  overflow: hidden;
-                  text-align: center;
-                }*/
-
-                .search-wrapper {
-                    height: 60px;
-                    margin-top: 490px;
-                    margin-left: 970px;
-                    position: absolute;
-                    top: 50%;
-                    transform: translateY(-40%);
-                    width: 320px;
-                    text-align: center;
-
-                }
-
-                .search-wrapper a {
-                    all: unset                    
-                }
+            header.masthead .overlay {
+                position: absolute;
+                height: 100%;
+                width: 100%;
+                top: 0;
+                left: 0;  
+                opacity: 0.3;
+                background-repeat: no-repeat;
+                background-size: cover;
+                color: #001d4a !important;
                 
-                .aboutus-wrapper a {
-                    all: unset                    
-                }
 
-                .shape {
-                    fill: transparent;
+
+            }
+
+            header.masthead h1 {
+                font-size: 60px;
+                   letter-spacing: 5px;
+            }
+
+            @media (min-width: 768px) {
+                header.masthead {
+                    padding-top: 12rem;
+                    padding-bottom: 12rem;
+                }
+                header.masthead h1 {
+                    font-size: 3rem;
+                }
+            }
+
+            .refined {
+/*                padding: 100px;*/
+                background-color: #e88d67; 
+/*                width: 100%;*/
+margin: 0 auto;
+                font-family: 'Oswald', sans-serif;
+                   
+
+            }
+            .features-icons {
+                padding-top: 2rem;
+                padding-bottom: 2rem;
+                background-color: #e88d67; 
+
+            }
+
+            .features-icons .features-icons-item {
+                max-width: 20rem;
+            }
+
+            .features-icons .features-icons-item .features-icons-icon {
+                height: 7rem;
+            }
+
+            .features-icons .features-icons-item .features-icons-icon i {
+                font-size: 4.5rem;
+            }
+
+            .features-icons .features-icons-item:hover .features-icons-icon i {
+                font-size: 5rem;
+            }
+
+            .svg-wrapper {
+                height: 60px;
+                margin: 0 auto;
+                position: relative;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 320px;
+            }
+            .svg-wrapper a {
+                all: unset                    
+            }
+
+            .shape {
+                fill: transparent;
+                stroke-dasharray: 140 540;
+                stroke-dashoffset: -474;
+                stroke-width: 8px;
+                stroke: #fff;
+            }
+
+            .text {
+                color: #fff;
+                font-family: 'Roboto Condensed';
+                font-size: 22px;
+                letter-spacing: 8px;
+                line-height: 32px;
+                position: relative;
+                top: -48px;
+            
+            }
+            .quote {
+                font-family: 'Courgette', cursive; 
+            }
+
+            @keyframes draw {
+                0% {
                     stroke-dasharray: 140 540;
                     stroke-dashoffset: -474;
                     stroke-width: 8px;
-                    stroke: #fff;
                 }
-
-                .text {
-                    color: #fff;
-                    font-family: 'Roboto Condensed';
-                    font-size: 22px;
-                    letter-spacing: 8px;
-                    line-height: 32px;
-                    position: relative;
-                    top: -48px;
+                100% {
+                    stroke-dasharray: 760;
+                    stroke-dashoffset: 0;
+                    stroke-width: 2px;
                 }
+            }
 
-                @keyframes draw {
-                    0% {
-                        stroke-dasharray: 140 540;
-                        stroke-dashoffset: -474;
-                        stroke-width: 8px;
-                    }
-                    100% {
-                        stroke-dasharray: 760;
-                        stroke-dashoffset: 0;
-                        stroke-width: 2px;
-                    }
-                }
+            .svg-wrapper:hover .shape {
+                -webkit-animation: 0.5s draw linear forwards;
+                animation: 0.5s draw linear forwards;
+            }
 
-                .aboutus-wrapper:hover .shape,  .search-wrapper:hover .shape {
-                    -webkit-animation: 0.5s draw linear forwards;
-                    animation: 0.5s draw linear forwards;
-                }
 
-                .aboutus-wrapper {
-                    height: 60px;
-                    margin-top: 490px;
-                    margin-left: 115px;
-                    position: absolute;
-                    top: 50%;
-                    transform: translateY(-40%);
-                    width: 320px;
-                    text-align: center;
-                }
-
-             
-            </style>
+        </style>
     </head>
-    <body style="background-color: #fff">
-        <header>
-
-        </header>
-        <main role="main">
-        <div class="fader">
-
-        </div>
-        <div>
-
-            <div class="landing-text">
-                <h1> TRAVEL . EXPLORE . SHARE </h1>
 
 
-                <h2>Register below to share your travel experiences</h2> 
-            </div> 
-            <div class="button-border"> <a class="button" href='?controller=user&action=register'>Register</a></div>
 
-        </div>
-            <div>
-        <span class="b">Who are we?</span>
-        <span class="a">Search our Blogs</span>
+    <body>
 
-        <span class="c">Travel quote of the day</span>
+
+        <header class="masthead text-center">
+            <div class="overlay"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-9 mx-auto">
+                        <h1 class="mb-5">Travel . Explore . Share</h1>
+                    </div>
+
+                </div>
             </div>
-        <div class="search-wrapper">
-            <svg height="60" width="320" xmlns="http://www.w3.org/2000/svg">
-                <rect class="shape" height="60" width="320" />
-            </svg>
-            <div class="text">  <a href='index.php?controller=blog&action=search'>Search</a></div>
-        </div>
+        </header>
 
-        <div class="aboutus-wrapper">
-            <svg height="60" width="320" xmlns="http://www.w3.org/2000/svg">
-                <rect class="shape" height="60" width="320" />
-            </svg>
-            <div class="text"> <a href='index.php?controller=blog&action=aboutus'>About Us</a></div>
-        </div>
-        </main>
-        <script>
+        <!-- Icons Grid -->
+        <section class="features-icons text-center">
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="col-lg-4">
+                        <div class="refined"> 
+                            <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+
+                                <i class="icon-screen-desktop m-auto text-primary"></i>
+
+                                <h3>Read Blogs</h3>
+                                <div class="features-icons-icon d-flex">
+           
+               <div class="svg-wrapper">
+                                    <svg height="60" width="320" xmlns="http://www.w3.org/2000/svg">
+                                    <rect class="shape" height="60" width="320" />
+                                    </svg>
+                                    <div class="text"><a href='index.php?controller=blog&action=readAll'>All Blogs</a></div>
+                                </div>
+            </div>
+                           
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="refined"> 
+                            <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+
+                                <i class="icon-layers m-auto text-primary"></i>
+
+                                <h3 class="quote" >Quote of the day</h3>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="refined"> 
+                            <div class="features-icons-item mx-auto mb-0 mb-lg-3">
+
+                                <i class="icon-check m-auto text-primary"></i>
+
+                                <h3>Search Blogs</h3>
+                                  <div class="features-icons-icon d-flex">
+                                <div class="svg-wrapper">
+                                    <svg height="60" width="320" xmlns="http://www.w3.org/2000/svg">
+                                    <rect class="shape" height="60" width="320" />
+                                    </svg>
+                                    <div class="text"><a href='index.php?controller=blog&action=search'>Search</a></div>
+                                </div>
+                                  </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+    </section>
 
 
-            $(document).ready(function () {
+    <script>
+        $(document).ready(function () {
 
-                var count = 0;
-                var images = ["img/share.jpg", "img/desert.jpg", "img/forest1.jpg", "img/baloons2.jpg", "img/airplane.jpg", "img/sea.jpg"];
-                var image = $(".fader");
+            var count = 0;
+            var images = ["img/share.jpg", "img/desert.jpg", "img/forest1.jpg", "img/baloons2.jpg", "img/airplane.jpg", "img/sea.jpg"];
+            var image = $(".overlay");
 
-                image.css("background-image", "url(" + images[count++] + ")");
+            image.css("background-image", "url(" + images[count++] + ")");
 
-                setInterval(function () {
-                    image.fadeOut(500, function () {
-                        image.css("background-image", "url(" + images[count++] + ")");
-                        image.fadeIn(500);
-                    });
-                    if (count == images.length)
-                    {
-                        count = 0;
-                    }
-                }, 5000);
+            setInterval(function () {
+                image.fadeOut(500, function () {
+                    image.css("background-image", "url(" + images[count++] + ")");
+                    image.fadeIn(500);
+                });
+                if (count == images.length)
+                {
+                    count = 0;
+                }
+            }, 5000);
 
-            });
-
-            $(document).ready(function () {
-                $(".c").hover(function () {
+        });
+        
+          $(document).ready(function () {
+                $(".quote").hover(function () {
                     $(this).toggleClass("highLight");
                     $(this).html("'We travel not to escape life, but for life not to escape us' - Anonymous");
                 }
@@ -298,33 +267,7 @@
                 });
             })
 
+    </script>
 
-//
-//            var text = ["Travel the world", "Explore and discover new places", "Share your adventures on MyEscape"];
-//            var counter = 0;
-//            var elem = document.getElementById("changeText");
-//            var inst = setInterval(change, 4000);
-//
-//            function change() {
-//                elem.innerHTML = text[counter];
-//                counter++;
-//                if (counter >= text.length) {
-//                    counter = 0;
-//                    // clearInterval(inst); // uncomment this if you want to stop refreshing after one cycle
-//                }
-//            }
-
-//            $(document).ready(function () {
-//                $(".btn-toggle-nav").click(function () {
-//                    $(".nav-sidebar").toggle(1000);
-//
-//                });
-//
-//            });
-
-        </script>
-
-    </body>
-
-
+</body>
 </html>
