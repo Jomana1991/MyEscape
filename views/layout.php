@@ -2,21 +2,68 @@
   <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <link href="css/styles-general.css" rel="stylesheet" type="text/css"/>
 <!--        <link href="css/styles-general.css" rel="stylesheet" type="text/css"/>-->
 <style>
     @import url('https://fonts.googleapis.com/css?family=Oswald|Roboto');
-    body {
-  background-color: #F6F4D2;
+    
+    
+.main{
+
+    display: table;
+    height: 100%;
+    position: relative;
+    width: 100%;
+    background-size: cover;
+
+
+
 }
+.main:before {
+    content: '';
+    position: absolute; 
+    opacity: 0.4;
+    background: url(./img/share.jpg) no-repeat 0 50%; 
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-repeat: no-repeat;
+
+
+}
+
+#orangefloat {
+
+    height: auto;               
+
+    background: linear-gradient(to right, #EABE7C, #E88D67);
+/*    font-size: 45px;
+    font-family: 'Oswald', sans-serif;*/
+
+    color: #fff;
+
+    min-height: 500px;
+    opacity:0.8;
+
+
+}
+.container {
+    margin-left: 10px;
+    margin-top: 50px;
+}
+/*    body {
+
+  background-color: #F6F4D2;
+}*/
 
 /*h1 {
   color: blue;
 }*/
 
-p {
+/*p {
   color: #001D4A;
   font: 14px 'Roboto', sans-serif;
-}
+}*/
 </style>
     
     <title>MyEscape</title>
