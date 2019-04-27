@@ -8,7 +8,7 @@ class BlogController {
     public function readAll() {
         try{
         $blogs = Blog::all();
-        require_once('views/blogs/readAll.php');
+        require_once('views/blogs/readAllBlogs.php');
         }
         catch (Exception $ex) {
                 return call('pages', 'error');
