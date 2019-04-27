@@ -147,19 +147,27 @@ class User {
         $db = Db::getInstance();
         if(!is_null($db)){
         try{    
-            $stmt = $db->prepare("INSERT INTO userfeedback (FullName, Email,Comments) VALUES ( :FullName, :Email, :Comments)");
+            $stmt = $db->prepare("call addFeedback( :name, :email, :message)");
 
-            $fullname = $_POST["fullname"];
-            $email = $_POST["email"];
-            $comments = $_POST["comments"];
+            $contactUsForm = filter_input_array(INPUT_POST);
+            if (!empty($_POST['name'])) {//loops through Post Superglobal array, sanitising each input item
+                foreach ($contactUsForm as $formDetail => $formValue) {
+                    ${$formDetail} = User::filterInput($formDetail);
+                }
+            $email=filter_var($email, FILTER_SANITIZE_EMAIL);#additional filter for email
+            }
 
-            $stmt->bindParam(':FullName', $fullname);
-            $stmt->bindParam(':Email', $email);
-            $stmt->bindParam(':Comments', $comments);
+            $stmt->bindParam(':name', $name);
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':message', $message);
 
             $result = $stmt->execute();
 
-             if ($result ==1 ) { echo "Thanks for the feedback,we will get back to you soon";}
+             if ($result ==1 ) {
+                 $successmessage = "Thanks for the feedback, we will get back to you soon";
+                 echo '<script type="text/javascript">alert("'.$successmessage.'");</script>';
+                 
+             }
         }
         catch(PDOException $e){
             $e->getMessage();
@@ -244,5 +252,39 @@ class User {
         }
         }
     }
+    
+    
+    public static function emailUs(){ //NB this doesn't currently work as we do not have a mail/web server - we are working on local server.
+        $errors = '';
+        $myemail = 'faithege@hotmail.co.uk';
+        
+        if(empty($_POST['name'])  || empty($_POST['email']) || empty($_POST['message'])) {
+                $errors .= "\n Error: all fields are required";
+        }
+        $contactUsForm = filter_input_array(INPUT_POST);
+        if (!empty($_POST['name'])) {//loops through Post Superglobal array, sanitising each input item
+            foreach ($contactUsForm as $formDetail => $formValue) {
+                ${$formDetail} = User::filterInput($formDetail);
+            }
+        $email=filter_var($email, FILTER_SANITIZE_EMAIL);#additional filter for email
+        }
+        
+##keep going change email_address to email
+        if( empty($errors))
+        {
+                $to = $myemail; 
+                $email_subject = "Contact form submission: $name";
+                $email_body = "You have received a new message.".
+                " Here are the details:\n Name: $name \n Email: $email \n Message \n $message"; 
+
+                $headers = "From: $myemail\n"; 
+                $headers .= "Reply-To: $email";
+
+                mail($to,$email_subject,$email_body,$headers);
+                //redirect to the 'thank you' page
+//                header('Location: views/users/contactus.php');
+        } 
+            }
 
 }
+
