@@ -3,12 +3,12 @@
 <html>
     <head>
         <title>About us</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
         
         <style>
-h2 {
+.main h2 {
   color: #395C6B;
   font: 72px 'Sacramento', cursive;
 /*  font-weight: bold;*/
@@ -16,13 +16,13 @@ h2 {
   width:100%
 }
 
-h3 {
+.main h3 {
   color: #001D4A;
   font-family: 'Roboto', sans-serif;
   font-weight: bold;
 }
 
-h4 {
+.main h4 {
   color: #001D4A;
   font-family: 'Roboto', sans-serif;
   font-weight: bold;
@@ -56,7 +56,7 @@ h4 {
 .flip-card:hover .flip-card-inner {
   transform: rotateY(180deg);
 
-.flip-card-front, .flip-card-back {
+.flip-card-front, #flip-card-back {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -71,7 +71,7 @@ h4 {
 }
 
 /* Style the back side */
-.flip-card-back {
+#flip-card-back {
   background-color: dodgerblue;
   color: white;
   transform: rotateY(180deg);
@@ -85,19 +85,19 @@ h4 {
     <body>
 <div class="main">
             <div class="container">
-                <div class="row">
+<!--                <div class="row">-->
                     <div class="  col-md-10 col-md-offset-1">
 <!--                        text-center-->
 
                         <div id="orangefloat" >
   <div class="row">
-<!--    <div class="col-sm-1"  >
-    </div>-->
+    <div class="col-sm-1"  >
+    </div>
     <div class="col-xs-12 col-sm-10"  >
         <h2>About MyEscape</h2>
     </div>
-<!--    <div class="col-sm-1"  >
-    </div>-->
+    <div class="col-sm-1"  >
+    </div>
   </div>
   <div class="row">
      <div class="col-sm-1"  >
@@ -151,7 +151,7 @@ h4 {
                 <div class="flip-card-front">
                     <img src="/MyEscape/views/images/dhanu.jpg" class="avatar" alt="Dhanu"> 
                 </div>
-                <div class="flip-card-back">
+                <div id="flip-card-back">
                     <h4>Dhanu</h4> 
                     <p>Top 3 places: x,y,z</p> 
                     <p>Travel tip: Insert text here</p>
@@ -216,7 +216,7 @@ h4 {
 
                         </div>
                     </div>
-                </div>
+<!--                </div>-->
 
             </div>
 
