@@ -69,6 +69,26 @@
        background-color: #E88D67; 
        opacity: 0.9;
     }
+    
+ .main h2 {
+  color: #395C6B;
+  font: 72px 'Sacramento', cursive;
+/*  font-weight: bold;*/
+  text-align: center;
+  width:100%
+}
+
+.main h3 {
+  color: #001D4A;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+}
+
+.main h4 {
+  color: #001D4A;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+}
 
 </style>
     
