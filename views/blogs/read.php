@@ -64,6 +64,7 @@ $_SESSION ['blogID'] = $_GET ['blogID'];
 </p>-->
 
 
+
        <br />
         <br />
 
@@ -106,6 +107,14 @@ $_SESSION ['blogID'] = $_GET ['blogID'];
 &nbsp; 
 
 
+&nbsp; 
+
+  <p>No of views :   
+       <span> <?php echo $blog->viewcounter; ?> </span>    
+  </p>
+
+
+
 <script>
     function addLikeCounter(blogID) {
     var xhttp; //new variable
@@ -134,3 +143,4 @@ $_SESSION ['blogID'] = $_GET ['blogID'];
                         }
 </script>
 <!--<script src="../jsFunctions.js" type="text/javascript"></script>-->
+

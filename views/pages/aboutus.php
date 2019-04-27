@@ -1,4 +1,23 @@
 <!--<link href="css/styles-general.css" rel="stylesheet" type="text/css"/>-->
+
+<html>
+    <head>
+        <title>About us</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+        
+        
+        
+    </head>
+
+    <body>
+<div class="main">
+            <div class="container">
+                <div class="row">
+                    <div class=" text-center col-md-10 col-md-offset-2">
+
+                        <div id="orangefloat" >
   <div class="row">
     <div class="col-sm-1"  >
     </div>
@@ -122,6 +141,15 @@
       
         
     
-    
- 
- 
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    </body>
+</html>

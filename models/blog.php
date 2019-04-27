@@ -13,17 +13,22 @@ class Blog {
     public $username;
     public $likecounter;
     public $blogImageDestination;
-
-    public function __construct($blogID, $title, $content, $countryName, $continentName, $categoryName, $username, $likecounter) {
-        $this->blogID = $blogID;
-        $this->title = $title;
-        $this->content = $content;
-        $this->countryName = $countryName;
-        $this->continentName = $continentName;
-        $this->categoryName = $categoryName;
-        $this->username = $username;
-        $this->likecounter = $likecounter;
-    }
+    public $viewcounter;
+      
+    
+    public function __construct($blogID, $title, $content, $countryName, $continentName, $categoryName, $username, $likecounter, $viewcounter)
+    {
+      $this->blogID    = $blogID;
+      $this->title    = $title;
+      $this->content    = $content;
+      $this->countryName = $countryName;
+      $this->continentName = $continentName;
+      $this->categoryName = $categoryName;
+      $this->username = $username;
+      $this->likecounter=$likecounter;
+      $this->viewcounter=$viewcounter;
+    } 
+    
 
     public static function all() {
         $list = [];
@@ -32,9 +37,9 @@ class Blog {
             try{
                
         $req = $db->query('Call findAllPublishedBlogs'); //stored procedure that returns all blogs in reverse chronological order
-
+       
         foreach ($req->fetchAll() as $blog) {
-            $list[] = new Blog($blog['BlogID'], $blog['Title'], $blog['Content'], $blog['CountryName'], $blog['ContinentName'], $blog['CategoryName'], $blog['Username'], $blog['LikeCounter']);
+            $list[] = new Blog($blog['BlogID'], $blog['Title'], $blog['Content'], $blog['CountryName'], $blog['ContinentName'], $blog['CategoryName'], $blog['Username'], $blog['LikeCounter'], $blog['ViewCounter']);
         }
             }  catch(PDOException $e){
                 $e->getMessage();
@@ -43,15 +48,19 @@ class Blog {
             }  
             
         return $list;
-            
+   
     }
+
     }
 
     
     public static function find($id) {
       $db = Db::getInstance();
+
+
       if(!is_null($db)){
           try{
+
       
       $id = intval($id);//use intval to make sure $id is an integer
       $req = $db->prepare("Call findBlogByID(:blogID)");
@@ -60,8 +69,13 @@ class Blog {
       $blog = $req->fetch();
       
       if($blog){
-              return new Blog($blog['BlogID'], $blog['Title'], $blog['Content'], $blog['CountryName'], $blog['ContinentName'], $blog['CategoryName'],$blog['Username'], $blog['LikeCounter']);
+
+              return new Blog($blog['BlogID'], $blog['Title'], $blog['Content'], $blog['CountryName'], $blog['ContinentName'], $blog['CategoryName'],$blog['Username'], $blog['LikeCounter'],$blog['ViewCounter']);
       }
+      else{
+          throw new Exception('A real exception should go here'); //replace with a more meaningful exception
+        }
+                
       
           } catch(PDOException $e){
                 $e->getMessage();
@@ -70,20 +84,20 @@ class Blog {
                 throw new Exception(); 
             }                     
       }
+
     }
 
-    public static function filterInput($blogDetail) {//create a sanitising function for sanitising strings
-        if (isset($_POST["$blogDetail"]) && $_POST["$blogDetail"] != "") {
-            return filter_input(INPUT_POST, $blogDetail, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
+    
+    public static function filterInput($blogDetail) 
+    {//create a sanitising function for sanitising strings
+        if(isset($_POST["$blogDetail"])&& $_POST["$blogDetail"]!="")
+        {   
+                        
+            return filter_input(INPUT_POST,$blogDetail,FILTER_SANITIZE_STRING,FILTER_FLAG_STRIP_HIGH);
         }
-
-        
-     
     }
+             
 
-
-       
-      
     public static function add() 
     { 
 
@@ -91,99 +105,103 @@ class Blog {
 
         if(!is_null($db)){
             try {
-     //
-        $stmt = $db-> prepare("select CategoryID, CategoryName from category order by CategoryID");
-        $result =$stmt->fetchAll();
-        $req = $db->prepare( "Call addBlog(:username, :title, :content, :countryName, :continentName, :categoryName)"); 
-            // sanitize input, set parameters and execute
-        
+     
+//                $stmt = $db-> prepare("select CategoryID, CategoryName from category order by CategoryID");
+//                $result =$stmt->fetchAll();
+                
+                $req = $db->prepare( "Call addBlog(:username, :title, :content, :countryName, :continentName, :categoryName)"); 
+                    // sanitize input, set parameters and execute
 
-        $blogDetails = filter_input_array(INPUT_POST);
 
-        //asking whether title is empty refers to whether the addform has been submitted yet, if not the query is run
-        //I could ask whether the general $_POST array is empty as it's not - it contains the username and password from the login page
-        if (!empty($_POST['title'])) {//loops through Post Superglobal array, sanitising each input item
-            foreach ($blogDetails as $blogDetail => $blogValue) {
-                ${$blogDetail} = Blog::filterInput($blogDetail);
+                $blogDetails = filter_input_array(INPUT_POST);
+
+                //asking whether title is empty refers to whether the addform has been submitted yet, if not the query is run
+                //I could ask whether the general $_POST array is empty as it's not - it contains the username and password from the login page
+
+
+                if(!empty($_POST['title']))
+                {//loops through Post Superglobal array, sanitising each input item
+
+
+                    foreach($blogDetails as $blogDetail => $blogValue) 
+                    {
+                        //filter all except blog contents
+                        if($blogDetail == 'content')
+                        {
+                            ${$blogDetail} = $_POST[$blogDetail];
+                        }
+                        else        
+                        {
+                            ${$blogDetail} = Blog::filterInput($blogDetail);
+
+                        }
+                        
+                    }
+                        $username = $_SESSION['username'];
+
+                        $req->bindParam(':username', $username);
+                        $req->bindParam(':title', $title);
+                        $req->bindParam(':content', $content);
+                        $req->bindParam(':countryName', $countryName);
+                        $req->bindParam(':continentName', $continentName);
+                        $req->bindParam(':categoryName', $categoryName);
+
+                        $req->execute();
+                     
+                }
+
+                     //only upload blog image if one loaded
+               if (!empty($_FILES[self::UploadKey]['name'])) {
+                            Blog::uploadFile($title."_".$username);
+                }//need to handle so that if there is an error with image upload, blog content not added to db
             }
-
-            $username = $_SESSION['username'];
-
-            $req->bindParam(':username', $username);
-            $req->bindParam(':title', $title);
-            $req->bindParam(':content', $content);
-            $req->bindParam(':countryName', $countryName);
-            $req->bindParam(':continentName', $continentName);
-            $req->bindParam(':categoryName', $categoryName);
-
-            $req->execute();
-
-        }
-            }
+       
         catch(PDOException $e){
                 $e->getMessage();
                 // log this exception somewhere
                 throw new Exception(); 
             }
-                      
-        
-    //only upload blog image if one loaded
-       if (!empty($_FILES[self::UploadKey]['name'])) {
-                    Blog::uploadFile($title."_".$username);
-        }//need to handle so that if there is an error with image upload, blog content not added to db
+            
         }   
-        }
+    }
 
     const AllowedTypes = ['image/jpeg','image/jpg'];
 
     const UploadKey = 'blogUploader';
-
     //die() function calls replaced with trigger_error() calls
     //replace with structured exception handling
     public static function uploadFile(string $name) {
-
-
         if ($_FILES[self::UploadKey]['error'] == (1 || 2)) {
             trigger_error("File too big!");
             die();
         }
-
         if (!in_array($_FILES[self::UploadKey]['type'], self::AllowedTypes)) {
             trigger_error("Handle File Type Not Allowed: " . $_FILES[self::UploadKey]['type']);
             die();
         }
-
         if ($_FILES[self::UploadKey]['error'] > 0) {
             trigger_error("Handle the error! " . $_FILES[UploadKey]['error']);
             die();
             ;
         }
-
         $tempFile = $_FILES[self::UploadKey]['tmp_name'];
         #$macpath = "/Applications/XAMPP/xamppfiles/htdocs/MyEscape/views/blogImages/";
         $filepath = "C:/xampp/htdocs/MyEscape/views/blogImages/";
         $destinationFile = $filepath . $name . '.jpeg';
-
-
         if (!move_uploaded_file($tempFile, $destinationFile)) {
             trigger_error("Handle Error");
         }
-
         //Clean up the temp file
         if (file_exists($tempFile)) {
             unlink($tempFile);
         }
-
         // $uploaddb = $db->prepare ( Insert into blogimage(BlogID,ImageName) Values ($destinaionFile,  where 
     }
 
-    public static function modify($id) {
+public static function modify($id) {
         $db = Db::getInstance();
-
         if(!is_null($db)){
   try{
-
-
         $req = $db->prepare("Call updateBlog(:blogID, :username, :title, :content, :countryName, :continentName, :categoryName)");
         $req->bindParam(':blogID', $id);
         $req->bindParam(':username', $username);
@@ -192,17 +210,12 @@ class Blog {
         $req->bindParam(':countryName', $countryName);
         $req->bindParam(':continentName', $continentName);
         $req->bindParam(':categoryName', $categoryName);
-
-
         $blogUpdateDetails = filter_input_array(INPUT_POST);
-
         //asking whether title is empty refers to whether the addform has been submitted yet, if not the query is run
         if (!empty($_POST['title'])) {//loops through Post Superglobal array, sanitising each input item
             foreach ($blogUpdateDetails as $blogDetail => $blogValue) {
                 ${$blogDetail} = Blog::filterInput($blogDetail);
             }
-
-
             $req->execute();
         }
   }
@@ -217,21 +230,17 @@ class Blog {
                 Blog::uploadFile($title . "_" . $username);
             }
         }
-
         }
     
         
-
     public static function delete($blogid) {
         $db = Db::getInstance();
         //make sure $id is an integer
         if(!is_null($db)){
             try{
-
         $blogid = intval($blogid);
         $stmt = $db->prepare('call deleteBlog(:BlogID)');
         $stmt->bindParam(':BlogID', $blogid);
-
         // the query was prepared, now replace :id with the actual $id value
         $stmt->execute();
         
@@ -261,7 +270,7 @@ class Blog {
             $sqlsearch->execute(array ('query' => $likesearch));
             
             foreach ($sqlsearch->fetchAll() as $blog) {
-                $list[] = new Blog($blog['BlogID'], $blog['Title'], $blog['Content'], $blog['CountryName'], $blog['ContinentName'], $blog['CategoryName'], $blog['Username'], $blog['LikeCounter']);
+                $list[] = new Blog($blog['BlogID'], $blog['Title'], $blog['Content'], $blog['CountryName'], $blog['ContinentName'], $blog['CategoryName'], $blog['Username'], $blog['LikeCounter'],$blog['ViewCounter']);
             }
             }catch(PDOException $e){
                 $e->getMessage();
@@ -270,18 +279,22 @@ class Blog {
             }
                         
             return $list; 
+
+    }
+
              }
+
            
-}
-    public function getBlogImageDestination() {
+    public function getBlogImageDestination() 
+    {
         return $this->blogImageDestination;
     }
+
 
    
     
 
 public function addComment($blogid,$username) {
-
 
         $db = Db::getInstance();
         if(!is_null($db)){
@@ -295,6 +308,7 @@ public function addComment($blogid,$username) {
             if (isset($_POST['senderName']) && $_POST['senderName'] != "") {
                 $senderName = filter_input(INPUT_POST, 'senderName', FILTER_SANITIZE_SPECIAL_CHARS);
             }
+
 
             $sql = $db->prepare("CALL addComment(:Username, :BlogID, :Content, :senderName)");
              $sql->bindParam(':Username', $username);
@@ -327,6 +341,7 @@ public function addComment($blogid,$username) {
             header('header:?controller=blog&action=read&blogID=' . $blogid);
         }
     }
+
         }
         catch(PDOException $e){
             $e->getMessage();
@@ -334,6 +349,7 @@ public function addComment($blogid,$username) {
             throw new Exception(); 
         }
         }
+
     }
 
             
@@ -362,8 +378,8 @@ public function addComment($blogid,$username) {
 
     public static function dislike($id) {
         $db = Db::getInstance();
-  
-        if(!is_null($db)){
+
+ if(!is_null($db)){
             try{
         $req = $db->prepare("Call subtractLikeCounter(:blogID)");
         $req->bindParam(':blogID', $id); 
@@ -378,6 +394,16 @@ public function addComment($blogid,$username) {
     }   
 
     
+    public static function incrementViewCount($id) {
+        $db = Db::getInstance();
+  
+        $req = $db->prepare("Call addViewCounter(:blogID)");
+        
+        $req->bindParam(':blogID', $id); 
+        $req->execute();
+ }
+
+ 
     
      public static function counter($id) {
       $db = Db::getInstance();
@@ -403,6 +429,5 @@ public function addComment($blogid,$username) {
         }
     } 
 
-}
-
-?>
+ 
+}//Blog
