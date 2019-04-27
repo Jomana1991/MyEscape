@@ -62,7 +62,7 @@
 
     p {
       color: #001D4A;
-      font: 14px 'Roboto', sans-serif;
+      font: 16px 'Roboto', sans-serif;
     }
     .bg-custom
     {
