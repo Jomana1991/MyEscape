@@ -57,9 +57,9 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-sm-2 col-md-2"  >
-    </div>
-    <div class="col-xs-12 col-sm-5 col-md-2 text-center"  >
+<!--    <div class="col-sm-2 col-md-2"  >
+    </div>-->
+    <div class="col-xs-12 col-sm-5 col-md-3 text-center"  >
         <div class="flip-card">
             <div class="flip-card-inner">
                 <div class="flip-card-front">
@@ -73,7 +73,7 @@
             </div>
         </div>
     </div>
-    <div class="col-xs-12 col-sm-5 col-md-2 text-center"  >
+    <div class="col-xs-12 col-sm-5 col-md-3 text-center"  >
         <div class="flip-card">
             <div class="flip-card-inner">
                 <div class="flip-card-front">
@@ -91,7 +91,7 @@
     </div>
     <div class="col-sm-1 hidden-lg hidden-md" >
     </div>
-    <div class="col-xs-12 col-sm-5 col-md-2 text-center"  >
+    <div class="col-xs-12 col-sm-5 col-md-3 text-center"  >
         <div class="flip-card">
             <div class="flip-card-inner">
                 <div class="flip-card-front">
@@ -106,7 +106,7 @@
         </div>
     </div>
       
-    <div class="col-xs-12 col-sm-5 col-md-2 text-center"  >
+    <div class="col-xs-12 col-sm-5 col-md-3 text-center"  >
         <div class="flip-card">
             <div class="flip-card-inner">
                 <div class="flip-card-front">
@@ -120,8 +120,8 @@
             </div>
         </div>
     </div>
-    <div class="col-sm-2 col-md-2">
-    </div>
+<!--    <div class="col-sm-2 col-md-2">
+    </div>-->
   </div>
 </center>
     
