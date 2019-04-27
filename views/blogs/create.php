@@ -30,7 +30,7 @@ $result_cou = $stmt_cou->fetchAll(PDO::FETCH_ASSOC);
     <head>
         <meta charset="UTF-8">
         <script src="https://cdn.ckeditor.com/4.11.4/standard/ckeditor.js"></script>
-        <title>Add New blog post</title>
+        
         <!-- (text) ck editor library 
         <script src="//cdn.ckeditor.com/4.11.4/standard/ckeditor.js"></script>  -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -57,7 +57,7 @@ $result_cou = $stmt_cou->fetchAll(PDO::FETCH_ASSOC);
                     height: 100%;
                     width:100%;
                     left: 0;
-                    background-image: url("img/boats.jpg");                   
+                    background-image: url("img/share.jpg");                   
                     background-repeat: repeat;
                     background-position: center;
                     background-size: auto;
@@ -67,7 +67,7 @@ $result_cou = $stmt_cou->fetchAll(PDO::FETCH_ASSOC);
             {
                 font-family: 'Oswald', sans-serif; 
                 
-                color: #fff; 
+                color: chocolate; 
             }
         </style>
     </head>
@@ -84,18 +84,10 @@ $result_cou = $stmt_cou->fetchAll(PDO::FETCH_ASSOC);
                     
                     
                     <form action="" method="POST" class="w3-container form_attribs" enctype="multipart/form-data"> 
-                        <br><br><br>
-                        
+                        <br><br><br>                                               
                         <div class="row">
-                           <div class="col-md-4" align="center">
-                               <h2>
-                            <a href='?controller=user&action=readMine&username=<?php echo $_SESSION['username']; ?>' class ="form_attribs"><b>Blog Archives</b></a> &nbsp; &nbsp;
-                               </h2>
-                           </div>  
-                             <div class="col-md-2">
-                                   
-                            </div>
-                             <div class="col-md-6" align="left">
+                            
+                             <div class="col-md-12" align="center">
                              <h2><b>New Blog Post</b></h2>
                              </div>
                             
@@ -202,11 +194,9 @@ $result_cou = $stmt_cou->fetchAll(PDO::FETCH_ASSOC);
                             </div>
                             <div class="col-md-3">
                                    
-                            </div>
-   
+                            </div>   
                                
                         </div>
-
 
                     </form>
                     
