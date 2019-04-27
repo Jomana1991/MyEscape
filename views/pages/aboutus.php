@@ -3,9 +3,10 @@
 <html>
     <head>
         <title>About us</title>
+
 <!--        <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+<!--        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />-->
         
         <style>
 .main h2 {
@@ -85,23 +86,25 @@
     <body>
 <div class="main">
             <div class="container">
+
 <!--                <div class="row">-->
+
                     <div class="  col-md-10 col-md-offset-1">
 <!--                        text-center-->
 
                         <div id="orangefloat" >
   <div class="row">
-    <div class="col-sm-1"  >
-    </div>
+<!--    <div class="col-sm-1"  >
+    </div>-->
     <div class="col-xs-12 col-sm-10"  >
         <h2>About MyEscape</h2>
     </div>
-    <div class="col-sm-1"  >
-    </div>
+<!--    <div class="col-sm-1"  >
+    </div>-->
   </div>
   <div class="row">
-     <div class="col-sm-1"  >
-     </div>
+<!--     <div class="col-sm-1"  >
+     </div>-->
     <div class="col-xs-12 col-sm-10"  >
         <h3>Welcome!</h3> 
         <p>
@@ -124,8 +127,8 @@
         <br>
         <h3>Meet the team</h3>
         <center>
-        <div class="col-sm-1"  >
-        </div>
+<!--        <div class="col-sm-1"  >
+        </div>-->
     </div>
   </div>
   <div class="row">
@@ -221,7 +224,7 @@
             </div>
 
         </div>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<!--        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>-->
     </body>
 </html>

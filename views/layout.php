@@ -15,8 +15,8 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="css/bootstrap.css">
-        <link rel="stylesheet" href="css/bootstrap-responsive.css">
+<!--        <link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" href="css/bootstrap-responsive.css">-->
         <meta charset="UTF-8">
 
 
@@ -56,20 +56,27 @@
 }
 .container {
     margin-left: 10px;
+/*    margin-right: 10px;*/
     margin-top: 50px;
 }
 
-
-
-
+    p {
+      color: #001D4A;
+      font: 14px 'Roboto', sans-serif;
+    }
+    .bg-custom
+    {
+       background-color: #E88D67; 
+       opacity: 0.9;
+    }
 
 </style>
     
   </head>
   
-  <nav class="navbar fixed-top navbar-expand-md navbar-light bg-custom " >
+  <nav class="navbar-fixed-top navbar-expand-md navbar-light bg-custom " >
   <div class="container">
-      <a class="navbar-brand" href='?controller=pages&action=home'>MyEscape</a>
+      <a class="navbar-brand active" href='?controller=pages&action=home'>MyEscape</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -79,27 +86,27 @@
 
     
         <li class="nav-item active">
-          <a class="nav-link" href='?controller=pages&action=home'>Home
+            <a class="nav-link" href='?controller=pages&action=home'><b>Home</b>
             
           </a>
         </li>
 
    
-        <li class="nav-item">
-          <a class="nav-link" href='?controller=pages&action=aboutus'>About us</a>
+        <li class="nav-item active">
+            <a class="nav-link" href='?controller=pages&action=aboutus'><b>About us</b></a>
         </li>
 
      
-        <li class="nav-item">
-          <a class="nav-link" href='?controller=blog&action=readAll'>Blogs</a>
+        <li class="nav-item active">
+          <a class="nav-link" href='?controller=blog&action=readAll'><b>Blogs</b></a>
         </li>
         
-        <li class="nav-item">
-          <a class="nav-link" href='?controller=blog&action=search'>Search</a>
+        <li class="nav-item active">
+          <a class="nav-link" href='?controller=blog&action=search'><b>Search</b></a>
         </li>
         
-        <li class="nav-item">
-          <a class="nav-link" href='?controller=user&action=contactus'>Contact us</a>
+        <li class="nav-item active">
+          <a class="nav-link" href='?controller=user&action=contactus'><b>Contact us</b></a>
         </li>
       </ul>
 
@@ -108,34 +115,39 @@
           if (empty($_SESSION['username']))
           {
             echo "<ul class='nav navbar-nav ml-auto'>";
-            echo "<li class='nav-item'>";
-            echo "<a class='nav-link' href='?controller=user&action=login'>Login|Register</a>";
+            echo "<li class='nav-item active'>";
+            echo "<a class='nav-link' href='?controller=user&action=login'><b>Login|Register</b></a>";
             echo "</li></ul>";
           }
           else
           {
             echo "<ul class='nav navbar-nav ml-auto'>";
-            echo "<li class='nav-item'><a class='nav-link'  href='?controller=blog&action=create'>Profile Page</a></li> ";
-            echo "<li class='nav-item'><a class='nav-link'  href='?controller=pages&action=logout'>Logout</a></li></ul>";
+            echo "<li class='nav-item active'><a class='nav-link'  href='?controller=blog&action=create'><b>Profile Page</b></a></li> ";
+            echo "<li class='nav-item active'><a class='nav-link'  href='?controller=user&action=readMine&username=".$_SESSION['username']."'><b>Blog Archives</b></a></li>";
+            echo "<li class='nav-item active'><a class='nav-link'  href='?controller=pages&action=logout'><b>Logout</b></a></li></ul>";
+            
           }
-          ?>
+    ?>
       
     </div>
   </div>
 </nav>
-  
-  
-      
+
+   
+
+
         <?php require_once('routes.php'); ?>
 
 
-    </div
+    
     <?php require_once('footer.html'); ?>
     
   
-<!--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>-->
-<!--  <script src="jsFunctions.js" type="text/javascript"></script>-->
+
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+ <script src="jsFunctions.js" type="text/javascript"></script>-->
+
   
   
 </html>

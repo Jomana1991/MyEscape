@@ -9,7 +9,7 @@
         <div class="main">
             <div class="container">
                 <div class="row">
-                    <div class=" text-center col-md-10 col-md-offset-2">
+                    <div class=" text-center col-md-10 col-md-offset-1">
 
                         <div id="orangefloat" >
 
