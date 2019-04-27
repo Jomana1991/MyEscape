@@ -8,29 +8,19 @@
     </head>
 
     <body>
-            <div class="container-fluid">
-            <div class='row'>
-                <div class='col-sm-4'></div>
-                <div class='col-sm-4' style="align-content:center">
-                    <h1 style = "align-content:center"> Contact Us </h1>
-                    <p  style = "align-content:center"> Do you have a question ,inquiry or feedback from us? Please use the form below</p>
-                </div>
-                <div class='col-sm-4'></div>
-            </div>
-
-<div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-2"></div>  
-                <form method='POST' action=" ">
-            Full Name <input type="text" name="fullname" placeholder="FullName" value="" ><br>
-            Email     <input type="email" name="email" placeholder="Email" value="" ><br>
-            Comments  <textarea name="comments" cols="40" rows="5" placeholder = "Comments"></textarea><br>
-                       <input type="submit" value="Submit" />
-                </form>
-                <div class="col-sm-2"></div>
-            </div>
-            </div>
-    
+        <h2>Contact Us</h2>
+        <p  style = "align-content:center"> Do you have a question for us, feedback to give, or just want to say hi?</p>
+        <br>
+        <form method="post" name="contact_form" action="">
+            Your Name:* <input type="text" name="name" placeholder="Full Name" required>
+            <br><br>
+            Email Address:* <input type="email" name="email" placeholder="Email" required>
+            <br><br>
+            Message:* <textarea name="message" cols="40" rows="5" placeholder = "Type your message here!" required></textarea>
+            <br><br>
+            <input type="submit" value="Submit">
+        </form> 
+        
     
     </body>
 </html>
