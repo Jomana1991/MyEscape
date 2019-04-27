@@ -57,7 +57,7 @@
 .container {
     margin-left: 10px;
 /*    margin-right: 10px;*/
-    margin-top: 50px;
+    margin-top: 20px;
 }
 
     p {
