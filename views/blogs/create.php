@@ -26,19 +26,13 @@ $result_cou = $stmt_cou->fetchAll(PDO::FETCH_ASSOC);
             }           
  }
 ?>
-<!--no longer needed - flexible navbar  <a href='?controller=pages&action=logout'>logout</a>-->
-
-<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-
 <html>
     <head>
         <meta charset="UTF-8">
+        <script src="https://cdn.ckeditor.com/4.11.4/standard/ckeditor.js"></script>
         <title>Add New blog post</title>
-        <!-- (text) ck editor library -->
-        <script src="//cdn.ckeditor.com/4.11.4/standard/ckeditor.js"></script>  
+        <!-- (text) ck editor library 
+        <script src="//cdn.ckeditor.com/4.11.4/standard/ckeditor.js"></script>  -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
@@ -69,8 +63,9 @@ $result_cou = $stmt_cou->fetchAll(PDO::FETCH_ASSOC);
                 <div class="col-sm-4">    
 
                     <form action="" method="POST" class="w3-container" enctype="multipart/form-data"> 
-
-                        <br>
+                        <br><br><br><br><br>
+                        
+                        
                         <h2 align="center"><b>New Blog Post</b></h2>
                         <hr class="colorgraph">                                                                       
                         <div class="row">
@@ -100,7 +95,7 @@ $result_cou = $stmt_cou->fetchAll(PDO::FETCH_ASSOC);
                         
                         <div class="row">
                             <div class="col-xs-12 col-sm-6 col-md-6">
-                                <div class="form-group">
+                                <div class="form-group"><br>
                                     <lable> Select Country</lable>
                                     <select name = "countryName" tabindex="3" >
 
@@ -116,7 +111,7 @@ $result_cou = $stmt_cou->fetchAll(PDO::FETCH_ASSOC);
                             </div>
                           
                             <div class="col-xs-12 col-sm-6 col-md-6">
-                                <div class="form-group">
+                                <div class="form-group"><br>
                                     <lable> Select Continent</lable>
                                     <select name = "continentName" tabindex="4">
 
@@ -155,7 +150,8 @@ $result_cou = $stmt_cou->fetchAll(PDO::FETCH_ASSOC);
                     </form>  
                     <script>
                         CKEDITOR.replace( "content" );
-                </script>  
+                        
+                    </script>  
                </div>
             </div>
 
