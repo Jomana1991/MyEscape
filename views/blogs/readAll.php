@@ -11,7 +11,7 @@
     echo $blog->username."<br>";
     echo $blog->categoryName."<br>";
     echo $blog->countryName."<br>";
-    echo $blog->continentName."<br>";
+    echo $blog->continentName."<br><br>";
     
     
     //If blog is greater than 150 characters, the content will be shortened to 150 characters, if not the whole content will be echo'd

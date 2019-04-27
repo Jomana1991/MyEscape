@@ -21,19 +21,15 @@
 
 
 <style>
-    @import url('https://fonts.googleapis.com/css?family=Oswald|Roboto');
+    @import url('https://fonts.googleapis.com/css?family=Cinzel+Decorative|Sacramento|Oswald|Roboto|Courgette');
     
     
 .main{
-
     display: table;
     height: 100%;
     position: relative;
     width: 100%;
     background-size: cover;
-
-
-
 }
 .main:before {
     content: '';
@@ -44,44 +40,30 @@
     height: 100%;
     z-index: -1;
     background-repeat: no-repeat;
-
-
 }
-
 #orangefloat {
-
     height: auto;               
-
     background: linear-gradient(to right, #EABE7C, #E88D67);
 /*    font-size: 45px;
     font-family: 'Oswald', sans-serif;*/
-
     color: #fff;
-
     min-height: 500px;
     opacity:0.8;
-
-
 }
-
 .container {
     margin-left: 10px;
     margin-top: 50px;
 }
 /*    body {
-
   background-color: #F6F4D2;
 }*/
-
 /*h1 {
   color: blue;
 }*/
-
 /*p {
   color: #001D4A;
   font: 14px 'Roboto', sans-serif;
 }*/
-
 </style>
     
   </head>
@@ -144,19 +126,17 @@
 </nav>
   
   
-  <body>
-
-    <div class="w3-container w3-pink">
+      
         <?php require_once('routes.php'); ?>
 
 
-    </div>
+    </div
     <?php require_once('footer.html'); ?>
-      </div>
+    
   
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<!--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>-->
 <!--  <script src="jsFunctions.js" type="text/javascript"></script>-->
   
-  </body>
+  
 </html>

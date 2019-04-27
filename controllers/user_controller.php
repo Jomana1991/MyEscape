@@ -52,6 +52,9 @@ class userController {
            }
           else { 
                 User::contactus();
+                require_once('views/users/contactus.php');
+//                User::emailUs(); #Doesn't currently work as we do not have a mail server
+//                require_once('views/users/contactus.php');
 
           }
           } catch (Exception $ex) {
