@@ -54,16 +54,33 @@
     margin-left: 10px;
     margin-top: 50px;
 }
-/*    body {
-  background-color: #F6F4D2;
-}*/
-/*h1 {
-  color: blue;
-}*/
-/*p {
+
+h2 {
+  color: #395C6B;
+  font: 72px 'Sacramento', cursive;
+/*  font-weight: bold;*/
+  text-align: center;
+  width:100%
+}
+
+h3 {
   color: #001D4A;
-  font: 14px 'Roboto', sans-serif;
-}*/
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+}
+
+h4 {
+  color: #001D4A;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+}
+
+.avatar{
+    width:180px;
+    height:180px;
+    border-radius: 50%;
+}
+
 </style>
     
   </head>
