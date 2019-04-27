@@ -91,11 +91,13 @@ h4 {
 
                         <div id="orangefloat" >
   <div class="row">
-
+<!--    <div class="col-sm-1"  >
+    </div>-->
     <div class="col-xs-12 col-sm-10"  >
         <h2>About MyEscape</h2>
     </div>
-    
+<!--    <div class="col-sm-1"  >
+    </div>-->
   </div>
   <div class="row">
      <div class="col-sm-1"  >
