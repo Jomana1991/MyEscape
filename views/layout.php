@@ -34,7 +34,7 @@
 .main:before {
     content: '';
     position: absolute; 
-    opacity: 0.4;
+    opacity: 0.25;
     background: url(./img/share.jpg) no-repeat 0 50%; 
     width: 100%;
     height: 100%;
@@ -80,6 +80,31 @@ h4 {
     height:180px;
     border-radius: 50%;
 }
+
+.flip-card {
+  background-color: transparent;
+  width: 180px;
+  height: 180px;
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+}
+
+/* This container is needed to position the front and back side */
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+
 
 </style>
     
