@@ -129,14 +129,12 @@
 </nav>
 
    
-  <body>
 
-    <div class="w3-container w3-pink">
 
         <?php require_once('routes.php'); ?>
 
 
-    </div
+    
     <?php require_once('footer.html'); ?>
     
   
