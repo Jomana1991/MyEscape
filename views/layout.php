@@ -30,6 +30,7 @@
     position: relative;
     width: 100%;
     background-size: cover;
+    
 }
 .main:before {
     content: '';
@@ -40,15 +41,18 @@
     height: 100%;
     z-index: -1;
     background-repeat: no-repeat;
+    
 }
 #orangefloat {
     height: auto;               
     background: linear-gradient(to right, #EABE7C, #E88D67);
 /*    font-size: 45px;
     font-family: 'Oswald', sans-serif;*/
-    color: #fff;
+    color: #001D4A;;
     min-height: 500px;
     opacity:0.85;
+    font: 16px 'Roboto', sans-serif;
+
 }
 .container {
     margin-left: 10px;
