@@ -69,6 +69,16 @@ $result_cou = $stmt_cou->fetchAll(PDO::FETCH_ASSOC);
                 
                 color: chocolate; 
             }
+            
+            .contact2-form-title {
+                display: block;
+                font-size: 39px;
+                color: #001D4A ;
+                line-height: 1.2;
+                text-align: center;
+                padding-bottom: 20px;
+                font: 72px 'Sacramento', cursive;
+            }
         </style>
     </head>
     <body> 
@@ -88,7 +98,9 @@ $result_cou = $stmt_cou->fetchAll(PDO::FETCH_ASSOC);
                         <div class="row">
                             
                              <div class="col-md-12" align="center">
-                             <h2><b>New Blog Post</b></h2>
+                             <span class="contact2-form-title">
+                                Create a Blog Post
+                            </span>
                              </div>
                             
                         </div>
