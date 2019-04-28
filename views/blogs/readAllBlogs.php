@@ -132,13 +132,25 @@
                 color: #57b846;
             }
             
+            .contact2-form-title {
+                display: block;
+                font-size: 39px;
+                color: #001D4A ;
+                line-height: 1.2;
+                text-align: center;
+                padding-bottom: 20px;
+                font: 72px 'Sacramento', cursive;
+            }
+            
         </style>
     </head>
     <body>
 
         <div class="blogscontainer" style="background: linear-gradient(to right, #EABE7C, #E88D67);">
             <!--                <div class="title animated fadeInDown" id="title">-->
-            <h1>Blogs</h1>
+            <span class="contact2-form-title">
+                Blogs
+            </span>
             <!--</div>-->
 
             <ul class="blog-post columns-2">
