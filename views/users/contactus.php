@@ -385,7 +385,7 @@
             <div class="container-contact2">
                 <div class="wrap-contact2">
                         <span class="contact2-form-title">
-                            Contact Us
+                         About MyEscape
                         </span>
                         <form method="post" name="contact_form" action=" ">
                             <div class="wrap-input2 validate-input" >
