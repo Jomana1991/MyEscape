@@ -163,12 +163,12 @@
                       <p><?php echo $blog->countryName ?></p>
                       <p><?php echo $blog->continentName ?></p>
                       <p style="height:50px;"><?php  if (strlen($blog->content) > 150){ 
-                                    echo substr($blog->content,0,strpos(wordwrap($blog->content, 150), "\n")).'...'."<br><br>";
+                                    echo strip_tags(substr($blog->content,0,strpos(wordwrap($blog->content, 150), "\n"))).'...'."<br><br>";
                             //        here I am using wordwrap to line break at the nearest word to 150 characters(so you don't get half words),
                             //        strpos then returns the position of the first line break, and the content will therefore be shortened to this position by substr
                                 }   
                                 else {
-                                        echo $blog->content."<br><br>";
+                                        echo strip_tags($blog->content)."<br><br>";
     
     }?>
                       </p>
