@@ -95,9 +95,6 @@ $_SESSION ['blogID'] = $_GET ['blogID'];
     </div>
 </div>
 
-
-
-
        <br />
         <br />
 
@@ -136,12 +133,10 @@ $_SESSION ['blogID'] = $_GET ['blogID'];
 
  <div class='fader'>
         </div> 
-
   
 </div>
     </body>
 </html>
-
 
 <script>
     function addLikeCounter(blogID) {
