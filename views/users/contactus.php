@@ -17,7 +17,7 @@
         <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
         <!--===============================================================================================-->
         <style>
-
+            @import url('https://fonts.googleapis.com/css?family=Oswald');
             @font-face {
                 font-family: Poppins-Regular;
                 src: url('../fonts/poppins/Poppins-Regular.ttf'); 
@@ -37,7 +37,7 @@
 
             /*//////////////////////////////////////////////////////////////////
             [ RESTYLE TAG ]*/
-            @import url('https://fonts.googleapis.com/css?family=Oswald');
+            
             * {
                 margin: 0px; 
                 padding: 0px; 
