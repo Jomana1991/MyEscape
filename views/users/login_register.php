@@ -20,7 +20,7 @@
 *,:after,:before{box-sizing:border-box}
 .clearfix:after,.clearfix:before{content:'';display:table}
 .clearfix:after{clear:both;display:block}
-a{color:inherit;text-decoration:none}
+a{color: #001D4A;text-decoration:none}
 
 .login-wrap{
 	width:100%;
@@ -77,7 +77,7 @@ a{color:inherit;text-decoration:none}
 .login-html .sign-in:checked + .tab,
 .login-html .sign-up:checked + .tab{
 	color:#fff;
-	border-color:#1161ee;
+	border-color: #001D4A;
 }
 .login-form{
 	min-height:345px;
@@ -113,7 +113,7 @@ a{color:inherit;text-decoration:none}
 	font-size:12px;
 }
 .login-form .group .button{
-	background:#1161ee;
+	background: #001D4A;
 }
 .login-form .group label .icon{
 	width:15px;
@@ -149,7 +149,7 @@ a{color:inherit;text-decoration:none}
 	color:#fff;
 }
 .login-form .group .check:checked + label .icon{
-	background:#1161ee;
+	background: #001d4a;
 }
 .login-form .group .check:checked + label .icon:before{
 	-webkit-transform:scale(1) rotate(45deg);
@@ -162,10 +162,12 @@ a{color:inherit;text-decoration:none}
 .login-html .sign-in:checked + .tab + .sign-up + .tab + .login-form .sign-in-htm{
 	-webkit-transform:rotate(0);
 	        transform:rotate(0);
+              
 }
 .login-html .sign-up:checked + .tab + .login-form .sign-up-htm{
 	-webkit-transform:rotate(0);
 	        transform:rotate(0);
+                
 }
 
 .hr{
@@ -204,7 +206,7 @@ a{color:inherit;text-decoration:none}
                             <div class="hr"></div>
 				<div class="foot-lnk">
 					<!--<a href="#forgot">Forgot Password?</a>-->
-                                        <a href='?controller=user&action=changePassword'>Forgot password? </a>
+                                        <a href='?controller=user&action=changePassword' style="color: #001D4A">Forgot password? </a>
 				</div>
 				<!--<div class="hr"></div>-->
                             </form>
@@ -234,7 +236,7 @@ a{color:inherit;text-decoration:none}
 				</div>
 				<div class="hr"></div>
 				<div class="foot-lnk">
-					<label for="tab-1">Already Member?</a>
+					<label for="tab-1">Already a Member?</a>
 				</div>
                             </form>
 			</div>
