@@ -106,6 +106,7 @@ $result_cou = $stmt_cou->fetchAll(PDO::FETCH_ASSOC);
                                    
                                 </div>
                         </div>
+                        
                         <div class="row"><br></div>
                         <div class="row">
                                 <div class="col-md-4"align="right">
@@ -208,7 +209,6 @@ $result_cou = $stmt_cou->fetchAll(PDO::FETCH_ASSOC);
             </div>
 
         </div> <!-- row-->
-   <div class='fader'>
-        </div>  
+  
     </body>
 </html>

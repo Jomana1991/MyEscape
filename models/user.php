@@ -8,10 +8,10 @@ class User {
 
     public function __construct($username, $password, $email) {
 
-        $this->username = $username;
-        $this->password = $Password;
+        $this->username =$username;
+        $this->password =$password;
 
-        $this->email = $Email;
+        $this->email =$email;
     }
 
     
@@ -27,8 +27,12 @@ class User {
             if(isset($_POST['password'])&& $_POST['password']!=""){
                 $password = filter_input(INPUT_POST,'password', FILTER_SANITIZE_SPECIAL_CHARS);
             }
+            
+//            $hashedPassword=password_hash($password, PASSWORD_DEFAULT);
+            
             $query->bindParam(':username', $username);
             $query->bindParam(':password', $password);
+//            $query->bindParam(':password', $hashedPassword);
             $query->execute();
             $results = $query->fetchAll();
             if ($results) {
@@ -59,17 +63,17 @@ class User {
         {
             try{
         
-        if(isset($_POST['Username'])&& $_POST['Username']!=""){
-            $username = filter_input(INPUT_POST,'Username', FILTER_SANITIZE_SPECIAL_CHARS);
+        if(isset($_POST['username'])&& $_POST['username']!=""){
+            $username = filter_input(INPUT_POST,'username', FILTER_SANITIZE_SPECIAL_CHARS);
         }
-        if(isset($_POST['Password'])&& $_POST['Password']!=""){
-            $password = filter_input(INPUT_POST,'Password', FILTER_SANITIZE_SPECIAL_CHARS);
+        if(isset($_POST['password'])&& $_POST['password']!=""){
+            $password = filter_input(INPUT_POST,'password', FILTER_SANITIZE_SPECIAL_CHARS);
         }
 
         
-        $username = $_POST["Username"];
-        $password = $_POST['Password'];
-        $email = $_POST["Email"];
+        $username =$_POST["username"];
+        $password =$_POST['password'];
+        $email =$_POST["email"];
 
            
         $sql_u = $db->prepare("SELECT * FROM user where Username='$username'");
@@ -86,7 +90,7 @@ class User {
         
         }
         else {
-        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+        $hashed_password= password_hash($password, PASSWORD_DEFAULT);
         $rej = $db->prepare("INSERT INTO user (Username, Email, Password) VALUES ( :username, :email, :password)");
     
 
@@ -194,7 +198,7 @@ class User {
         try{
         $req = $db->prepare("Call updatePassword(:username, :newPassword);");
         $req->bindParam(':username', $username);
-        $req->bindParam(':newPassword', $newPassword);
+        $req->bindParam(':newPassword', $newPasswordHashed);
         
         $passwordUpdateDetails = filter_input_array(INPUT_POST);
         //asking whether title is empty refers to whether the addform has been submitted yet, if not the query is run
@@ -202,6 +206,9 @@ class User {
             foreach ($passwordUpdateDetails as $formDetail => $formValue) {
                 ${$formDetail} = User::filterInput($formDetail);
             }
+            
+            $newPasswordHashed=password_hash($newPassword, PASSWORD_DEFAULT);
+            
             $req->execute();
             
         }

@@ -43,6 +43,7 @@ $_SESSION ['blogID'] = $_GET ['blogID'];
         </div>
         <br>
         <div class="row">
+
             <div class="col-md-12"align="center">
             <?php
             $file = 'views/blogImages/' . $blog->title . "_" . $blog->username . '.jpeg';
@@ -84,9 +85,11 @@ $_SESSION ['blogID'] = $_GET ['blogID'];
         <a class="btn btn-default btn-sm" id="thumb-button" onclick="subtractLikeCounter(<?php echo $blog->blogID;?>)">
               <span class="fa fa-thumbs-down" ></span> <span style="font: 16px 'Roboto';">Dislike</span>
         </a>
+
         <br>
         <p id="counter" class="badge" style="font: 16px 'Roboto';color:#395C6B;font-weight: bold;"></p>
         <p id="viewCount" align="right">Views : <?php echo $blog->viewcounter; ?> </p>
+
     </div>
     <div class="col-md-4" >
     </div>
