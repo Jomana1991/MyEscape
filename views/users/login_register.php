@@ -13,8 +13,10 @@
 /*      body{
 	margin:0;
 	color:#9599af;
+
 	background:#F6F4D2;
-        background:url("loginholiday2.jpg");
+        background:url("img/share.jpg");
+
 	font:600 16px/18px 'Open Sans',sans-serif;
 }*/
 *,:after,:before{box-sizing:border-box}
