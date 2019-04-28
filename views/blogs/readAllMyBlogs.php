@@ -8,30 +8,31 @@
     
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:600'>
-     
+      
+      <link href="css/BlogListStyle.css" rel="stylesheet" type="text/css"/>
       <style>
 
                 @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro|Open+Sans:300);
 
 
 
-/*              .title{
+              .title{
                       font-family: Open Sans, sans-serif;
                       font-size: 55px;
                       font-style: bold;
                       text-align: center;
-              }*/
+              }
 
-/*              nav{ 
+              nav{ 
                       font-family: Open Sans, sans-serif;
                       text-align: center;
                       word-spacing: 30px;
-              }*/
+              }
 
-/*              nav a{
+              nav a{
                       text-decoration: none;
                       color: #CAD3E0;
-              }*/
+              }
 
 
               .container {
@@ -128,10 +129,10 @@
                       }
               }
 
-/*              footer{
+              footer{
                       font-family: Open Sans, sans-serif;
                       text-align: center;
-              }       */
+              }       
       </style>
 </head>
     <body>
@@ -172,7 +173,11 @@
     }?>
                       </p>
                       <br>
-                      <div class="button"><a href='?controller=blog&action=read&blogID=<?php echo $blog->blogID; ?>'> Read Full Blog </a></div>
+                      <div>
+                          <button class = "button"> <a href='?controller=blog&action=read&blogID=<?php echo $blog->blogID; ?>'> Read More </a></button>
+                          <button class = "button"> <a href='?controller=blog&action=update&blogID=<?php echo $blog->blogID; ?>'> Update </a></button>
+                          <button class = "button">  <a href='?controller=blog&action=delete&blogID=<?php echo $blog->blogID; ?>' onclick="return confirm('Are you sure you want to delete this blog?')"> Delete </a> </button>
+                      </div>
                     </li>
                       <?php } ?>
                    </ul>
