@@ -10,30 +10,6 @@
           <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:600'>
         -->
         <style>
-
-            @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro|Open+Sans:300);
-
-
-
-            /*              .title{
-                                  font-family: Open Sans, sans-serif;
-                                  font-size: 55px;
-                                  font-style: bold;
-                                  text-align: center;
-                          }*/
-
-            /*              nav{ 
-                                  font-family: Open Sans, sans-serif;
-                                  text-align: center;
-                                  word-spacing: 30px;
-                          }*/
-
-            /*              nav a{
-                                  text-decoration: none;
-                                  color: #CAD3E0;
-                          }*/
-
-
             .blogscontainer {
                 margin: 2em 0;
                 text-align: center;
@@ -155,10 +131,7 @@
                 text-decoration: none;
                 color: #57b846;
             }
-            /*              footer{
-                                  font-family: Open Sans, sans-serif;
-                                  text-align: center;
-                          }       */
+            
         </style>
     </head>
     <body>
@@ -192,8 +165,8 @@
                         <br>
                         <div class="bloginfo" style="height:100px;">
                             <?php
-                            if (strlen($blog->content) > 120) {
-                                echo substr($blog->content, 0, strpos(wordwrap($blog->content, 120), "\n")) . '...' . "<br><br>";
+                            if (strlen($blog->content) > 150) {
+                                echo substr($blog->content, 0, strpos(wordwrap($blog->content, 150), "\n")) . '...' . "<br><br>";
                                 //        here I am using wordwrap to line break at the nearest word to 150 characters(so you don't get half words),
                                 //        strpos then returns the position of the first line break, and the content will therefore be shortened to this position by substr
                             } else {
