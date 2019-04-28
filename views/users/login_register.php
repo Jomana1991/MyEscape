@@ -239,7 +239,7 @@ a{color: #001D4A;text-decoration:none}
 
                                 <div class="foot-lnk">
                                     
-                                        <a href='?controller=user&action=login'>Already Member?</a>
+                                        <a href='?controller=user&action=login' style="color: #001D4A">Already Member?</a>
 
 				</div>
 				

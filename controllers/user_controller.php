@@ -9,7 +9,8 @@ class userController {
              
             if (!empty($_SESSION['username'])) {
             // if logged in can skip login page and go straight to create blog page
-            header('location:?controller=blog&action=create');
+//            header('location:?controller=blog&action=create');
+                echo "<script>window.location.href = 'index.php?controller=pages&action=home';</script";
             }        
             else{
                 

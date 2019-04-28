@@ -1,36 +1,36 @@
 
-<?php 
-    #session_start();//removed as now in layout
-    if (!empty($_SESSION['username'])){
-        echo '<p>Hi '.$_SESSION['username'].' , you are still logged in - want to visit your '
-                . "<a href='?controller=blog&action=create'>profile page </a>?</p>";
-    }
+<?php
+#session_start();//removed as now in layout
+if (!empty($_SESSION['username'])) {
+    echo '<p>Hi ' . $_SESSION['username'] . ' , you are still logged in - want to visit your '
+    . "<a href='?controller=blog&action=create'>profile page </a>?</p>";
+}
 ?>
 <html>
     <head>         <style>
-                @import url('https://fonts.googleapis.com/css?family=Courgette');
-                @import url('https://fonts.googleapis.com/css?family=Oswald');
+            @import url('https://fonts.googleapis.com/css?family=Courgette');
+            @import url('https://fonts.googleapis.com/css?family=Oswald');
 
-                .fader {
-                    position: absolute;
-                    height: 100%;
-                    width:100%;
-                    left: 0;
+            .fader {
+                position: absolute;
+                height: 100%;
+                width:100%;
+                left: 0;
 
-                    background-repeat: no-repeat;
-                    background-position: center;
-                    background-size: 100%;
-                    opacity: 0.35;
-                }
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: 100%;
+                opacity: 0.35;
+            }
 
 
 
-html, body {
-  
-  height: 100%;
+            html, body {
 
-  text-align: center;
-}
+                height: 100%;
+
+                text-align: center;
+            }
 
             header {
                 font-family: 'Oswald', sans-serif;
@@ -57,14 +57,14 @@ html, body {
                 background-repeat: no-repeat;
                 background-size: cover;
                 color: #001d4a !important;
-                
+
 
 
             }
 
             header.masthead h1 {
-                font-size: 60px;
-                   letter-spacing: 5px;
+                font-size: 90px;
+                letter-spacing: 3px;
             }
 
             @media (min-width: 768px) {
@@ -73,17 +73,17 @@ html, body {
                     padding-bottom: 12rem;
                 }
                 header.masthead h1 {
-                    font-size: 3rem;
+                    font-size: 4rem;
                 }
             }
 
             .refined {
-/*                padding: 100px;*/
+                /*                padding: 100px;*/
                 background-color: #e88d67; 
-/*                width: 100%;*/
-margin: 0 auto;
+                /*                width: 100%;*/
+                margin: 0 auto;
                 font-family: 'Oswald', sans-serif;
-                   
+
 
             }
             .features-icons {
@@ -118,7 +118,8 @@ margin: 0 auto;
                 width: 320px;
             }
             .svg-wrapper a {
-                all: unset                    
+                all: unset;
+                text-decoration: none;
             }
 
             .shape {
@@ -137,7 +138,7 @@ margin: 0 auto;
                 line-height: 32px;
                 position: relative;
                 top: -48px;
-            
+
             }
             .quote {
                 font-family: 'Courgette', cursive; 
@@ -196,15 +197,15 @@ margin: 0 auto;
 
                                 <h3>Read Blogs</h3>
                                 <div class="features-icons-icon d-flex">
-           
-               <div class="svg-wrapper">
-                                    <svg height="60" width="320" xmlns="http://www.w3.org/2000/svg">
-                                    <rect class="shape" height="60" width="320" />
-                                    </svg>
-                                    <div class="text"><a href='index.php?controller=blog&action=readAll'>All Blogs</a></div>
+
+                                    <div class="svg-wrapper">
+                                        <svg height="60" width="320" xmlns="http://www.w3.org/2000/svg">
+                                            <rect class="shape" height="60" width="320" />
+                                        </svg>
+                                        <div class="text"><a href='index.php?controller=blog&action=readAll'>All Blogs</a></div>
+                                    </div>
                                 </div>
-            </div>
-                           
+
                             </div>
                         </div>
                     </div>
@@ -215,7 +216,7 @@ margin: 0 auto;
                                 <i class="icon-layers m-auto text-primary"></i>
 
                                 <h3 class="quote" >Quote of the day</h3>
-                                
+
                             </div>
                         </div>
                     </div>
@@ -227,46 +228,46 @@ margin: 0 auto;
                                 <i class="icon-check m-auto text-primary"></i>
 
                                 <h3>Search Blogs</h3>
-                                  <div class="features-icons-icon d-flex">
-                                <div class="svg-wrapper">
-                                    <svg height="60" width="320" xmlns="http://www.w3.org/2000/svg">
-                                    <rect class="shape" height="60" width="320" />
-                                    </svg>
-                                    <div class="text"><a href='index.php?controller=blog&action=search'>Search</a></div>
+                                <div class="features-icons-icon d-flex">
+                                    <div class="svg-wrapper">
+                                        <svg height="60" width="320" xmlns="http://www.w3.org/2000/svg">
+                                            <rect class="shape" height="60" width="320" />
+                                        </svg>
+                                        <div class="text"><a href='index.php?controller=blog&action=search'>Search</a></div>
+                                    </div>
                                 </div>
-                                  </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        
-    </section>
+
+        </section>
 
 
-    <script>
-        $(document).ready(function () {
+        <script>
+            $(document).ready(function () {
 
-            var count = 0;
-            var images = ["img/share.jpg", "img/desert.jpg", "img/forest1.jpg", "img/baloons2.jpg", "img/airplane.jpg", "img/sea.jpg"];
-            var image = $(".overlay");
+                var count = 0;
+                var images = ["img/share.jpg", "img/desert.jpg", "img/forest1.jpg", "img/baloons2.jpg", "img/airplane.jpg", "img/sea.jpg"];
+                var image = $(".overlay");
 
-            image.css("background-image", "url(" + images[count++] + ")");
+                image.css("background-image", "url(" + images[count++] + ")");
 
-            setInterval(function () {
-                image.fadeOut(500, function () {
-                    image.css("background-image", "url(" + images[count++] + ")");
-                    image.fadeIn(500);
-                });
-                if (count == images.length)
-                {
-                    count = 0;
-                }
-            }, 5000);
+                setInterval(function () {
+                    image.fadeOut(500, function () {
+                        image.css("background-image", "url(" + images[count++] + ")");
+                        image.fadeIn(500);
+                    });
+                    if (count == images.length)
+                    {
+                        count = 0;
+                    }
+                }, 5000);
 
-        });
-        
-          $(document).ready(function () {
+            });
+
+            $(document).ready(function () {
                 $(".quote").hover(function () {
                     $(this).toggleClass("highLight");
                     $(this).html("'We travel not to escape life, but for life not to escape us' - Anonymous");
@@ -277,7 +278,7 @@ margin: 0 auto;
                 });
             })
 
-    </script>
+        </script>
 
-</body>
+    </body>
 </html>
