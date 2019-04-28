@@ -36,7 +36,10 @@ a{color:inherit;text-decoration:none}
 	height:100%;
 	position:absolute;
 	padding:90px 70px 50px 70px;
-	background:rgba(50,57,95,.8);
+	background: rgba(50,57,95,.8);
+        background-color:   #E88D67 !important; 
+        opacity: 0.9;
+
         
        /* background:rgba(50,57,101,.9);*/
 }
@@ -106,7 +109,7 @@ a{color:inherit;text-decoration:none}
 	-webkit-text-security:circle;
 }
 .login-form .group .label{
-	color:#aaa;
+	color:#fff;
 	font-size:12px;
 }
 .login-form .group .button{
