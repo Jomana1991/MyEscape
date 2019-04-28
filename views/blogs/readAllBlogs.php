@@ -8,8 +8,7 @@
     
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:600'>
-      
-      <link href="css/BlogListStyle.css" rel="stylesheet" type="text/css"/>
+     
       <style>
 
                 @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro|Open+Sans:300);
