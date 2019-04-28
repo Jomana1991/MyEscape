@@ -28,10 +28,11 @@ class User {
                 $password = filter_input(INPUT_POST,'password', FILTER_SANITIZE_SPECIAL_CHARS);
             }
             
-            $hashedPassword=password_hash($password, PASSWORD_DEFAULT);
+//            $hashedPassword=password_hash($password, PASSWORD_DEFAULT);
             
             $query->bindParam(':username', $username);
-            $query->bindParam(':password', $hashedPassword);
+            $query->bindParam(':password', $password);
+//            $query->bindParam(':password', $hashedPassword);
             $query->execute();
             $results = $query->fetchAll();
             if ($results) {
