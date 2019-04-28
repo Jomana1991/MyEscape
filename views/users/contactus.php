@@ -189,7 +189,7 @@
 
             .contact2-form-title {
                 display: block;
-                font-family: 'Oswald', sans-serif;
+                font: 72px 'Sacramento', cursive;
                 font-size: 39px;
                 color: #001D4A ;
                 line-height: 1.2;
@@ -385,7 +385,7 @@
             <div class="container-contact2">
                 <div class="wrap-contact2">
                         <span class="contact2-form-title">
-                         About MyEscape
+                         Contact Us
                         </span>
                         <form method="post" name="contact_form" action=" ">
                             <div class="wrap-input2 validate-input" >
