@@ -189,12 +189,12 @@
 
             .contact2-form-title {
                 display: block;
-                font: 72px 'Sacramento', cursive;
                 font-size: 39px;
                 color: #001D4A ;
                 line-height: 1.2;
                 text-align: center;
                 padding-bottom: 90px;
+                font: 72px 'Sacramento', cursive;
             }
 
 
