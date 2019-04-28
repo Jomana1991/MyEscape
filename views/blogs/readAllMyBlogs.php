@@ -173,7 +173,11 @@
     }?>
                       </p>
                       <br>
-                      <div class="button"><a href='?controller=blog&action=read&blogID=<?php echo $blog->blogID; ?>'> Read Full Blog </a></div>
+                      <div>
+                          <button class = "button"> <a href='?controller=blog&action=read&blogID=<?php echo $blog->blogID; ?>'> Read More </a></button>
+                          <button class = "button"> <a href='?controller=blog&action=update&blogID=<?php echo $blog->blogID; ?>'> Update </a></button>
+                          <button class = "button">  <a href='?controller=blog&action=delete&blogID=<?php echo $blog->blogID; ?>' onclick="return confirm('Are you sure you want to delete this blog?')"> Delete </a> </button>
+                      </div>
                     </li>
                       <?php } ?>
                    </ul>
