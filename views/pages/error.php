@@ -47,78 +47,14 @@
 
             }
 
-
-            /*------------------------------------------------------------------
-            [  ]*/
-
-            .contact2-form {
-                width: 100%;
-            }
-
-            .contact2-form-title {
-                display: block;
-
-                font-size: 50px;
-                color: #001D4A ;
-                line-height: 1.2;
-                text-align: center;
-                padding-bottom: 90px;
-            }
-
-            .avatar{
-                width:160px;
-                height:160px;
-                border-radius: 50%;
-            }
-
-            .flip-card {
-                background-color: transparent;
-                width: 160px;
-                height: 160px;
-                perspective: 1000px; /* Remove this if you don't want the 3D effect */
-                margin: 70px;
-            }
-
-            /* This container is needed to position the front and back side */
-            .flip-card-inner {
-                position: relative;
-                width: 100%;
-                height: 100%;
-                border-radius: 50%;
-                text-align: center;
-                transition: transform 0.8s;
-                transform-style: preserve-3d;
-            }
-
-            /* Do an horizontal flip when you move the mouse over the flip box container */
-            .flip-card:hover .flip-card-inner {
-                transform: rotateY(180deg);
-
-                .flip-card-front, #flip-card-back {
-                    position: absolute;
-                    width: 100%;
-                    height: 100%;
-                    border-radius: 50%;
-                    backface-visibility: hidden;
-                }
-
-                /* Style the front side (fallback if image is missing) */
-                .flip-card-front {
-                    background-color: #bbb;
-                    color: black;
-                }
-
-                /* Style the back side */
-                #flip-card-back {
-                    background-color: dodgerblue;
-                    color: white;
-                    transform: rotateY(180deg);
-                }
-                #lastrow {
-                    margin: 70px;
-                }
+            span {
+                font-family: 'Roboto', sans-serif;
+                font-size: 72px;
 
             }
+
+
+
         </style>    
 
     </head>
@@ -138,7 +74,7 @@
                         <br>
                     </p>
                     <p>
-                        If the error persists, please contact us by filling <a href='?controller=user&action=contactus'>this</a> and we investigate further.                      
+                        If the error persists, please contact us by filling <a href='?controller=user&action=contactus'>this</a> form and we investigate further.                      
                         <br>
                     </p>
                 </div>
