@@ -155,25 +155,26 @@ public function read() {
                     
              //       require_once('views/blogs/search.php');
                     foreach ($blogs as $blog) {
-                         echo '<br>';
-                        echo "<strong>" . $blog->title . "</strong>" . "<br>";
-                       
-                        echo "Author: ". $blog->username . "<br>";
-                        echo "Category: ". $blog->categoryName . "<br>";
-                        echo "Country: ". $blog->countryName . "<br>";
-                        echo "Continent: ".$blog->continentName . "<br>";
+                         echo '<div class="blogresult">';
+                        echo "<h1>" . $blog->title . "</h1>" ;                       
+                        echo " <h4> Author: ". $blog->username . "</h4>";
+                        echo "<h4> Category: " . $blog->categoryName . "</h4>";
+                        echo "<h4> Country: ". $blog->countryName . "</h4>";
+                        echo "<h4> Continent: " .$blog->continentName . "</h4>";
 
 
                         //If blog is greater than 200 characters, the content will be shortened to 150 characters, if not the whole content will be echo'd
                         if (strlen($blog->content) > 150) {
-                            echo substr("Blog content: ".$blog->content, 0, strpos(wordwrap($blog->content, 150), "\n")) . '...' . "<br><br>";
+                            echo substr(" <h6> Blog content: </6>".$blog->content, 0, strpos(wordwrap($blog->content, 150), "\n")) . '...' ;
                             //        here I am using wordwrap to line breakat the nearest word to 150 characters(so you don't get half words),
                             //        strpos then returns the position of the first line break, and the content will therefore be shortened to this position by substr
                              echo "<a href='?controller=blog&action=read&blogID=".$blog->blogID."> Read Full Blog </a>"."<br>";
+                              echo  "</div>";
                             echo  "<hr>";
                         } else {
-                            echo "Blog content: ".$blog->content . "<br><br>";
+                            echo "<h6> Blog content: </h6> ".$blog->content;
                              echo "<a href='?controller=blog&action=read&blogID=".$blog->blogID."> Read Full Blog </a>"."<br>";
+                               echo  "</div>";
                           echo  "<hr>";
 
                         }
