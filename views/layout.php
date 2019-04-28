@@ -56,8 +56,10 @@
 }
 .container {
     margin-left: 10px;
+
 /*    margin-right: 10px;*/
     margin-top: 20px;
+
 }
 
     p {
@@ -66,9 +68,11 @@
     }
     .bg-custom
     {
+
        background-color: #fff; 
        opacity: 0.9;
         color: #001D4A;
+
     }
     
  .main h2 {
@@ -95,7 +99,9 @@
     
   </head>
   
+
   <nav class="navbar-fixed-top navbar-expand-md navbar-light bg-custom " >
+
   <div class="container">
       <a class="navbar-brand active" href='?controller=pages&action=home'>MyEscape</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -111,12 +117,10 @@
             
           </a>
         </li>
-
    
         <li class="nav-item active">
             <a class="nav-link" href='?controller=pages&action=aboutus'><b>About us</b></a>
         </li>
-
      
         <li class="nav-item active">
           <a class="nav-link" href='?controller=blog&action=readAll'><b>Blogs</b></a>
