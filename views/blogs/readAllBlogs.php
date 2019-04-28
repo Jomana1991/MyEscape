@@ -63,7 +63,7 @@
                       box-sizing: border-box;
                       -moz-box-sizing: border-box;
                       -webkit-box-sizing: border-box;
-                 height: 650px;
+                 height: 600px;
               }
 
               ul.blog-post li img {
@@ -158,12 +158,14 @@
                           }
                          ?>
                       <h3><?php echo $blog->title . "<br>";?> </h3>
-                      <p><?php echo $blog->username ?></p>
-                      <p><?php echo $blog->categoryName ?></p>
-                      <p><?php echo $blog->countryName ?></p>
-                      <p><?php echo $blog->continentName ?></p>
-                      <p style="height:50px;"><?php  if (strlen($blog->content) > 150){ 
-                                    echo substr($blog->content,0,strpos(wordwrap($blog->content, 150), "\n")).'...'."<br><br>";
+                      <div style="text-align: left;">Author: <?php echo $blog->username ?></div>
+                      <div style="text-align: left;"><?php echo $blog->categoryName ?></div>
+                      <div style="text-align: left;"><?php echo $blog->countryName ?></div>
+                      <div style="text-align: left;"><?php echo $blog->continentName ?></div>
+                      <br>
+                        <div style="height:100px;text-align: left;">
+                          <?php  if (strlen($blog->content) > 120){ 
+                                    echo substr($blog->content,0,strpos(wordwrap($blog->content, 120), "\n")).'...'."<br><br>";
                             //        here I am using wordwrap to line break at the nearest word to 150 characters(so you don't get half words),
                             //        strpos then returns the position of the first line break, and the content will therefore be shortened to this position by substr
                                 }   
@@ -171,8 +173,7 @@
                                         echo $blog->content."<br><br>";
     
     }?>
-                      </p>
-                      <br>
+                      </div>
                       <div class="button"><a href='?controller=blog&action=read&blogID=<?php echo $blog->blogID; ?>'> Read Full Blog </a></div>
                     </li>
                       <?php } ?>
