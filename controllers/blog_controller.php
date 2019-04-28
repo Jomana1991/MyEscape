@@ -94,12 +94,10 @@ public function read() {
         } else {
             Blog::add();
 
-            #Can't get this to work
-            #$blogs = User::readMine($_GET['username']);
             require_once('./models/user.php');
 
             $blogs = User::readMine($_SESSION['username']);
-            require_once('views/users/readMine.php');
+            require_once('views/blogs/readAllMyBlogs.php');
         }
         } catch (Exception $ex) {
                 return call('pages', 'error');
@@ -123,7 +121,7 @@ public function read() {
 
             require_once('./models/user.php');
             $blogs = User::readMine($_SESSION['username']);
-            require_once('views/users/readMine.php');
+            require_once('views/blogs/readAllMyBlogs.php');
         }
         } catch (Exception $ex) {
                 return call('pages', 'error');
@@ -136,7 +134,7 @@ public function read() {
 
         require_once('./models/user.php');
         $blogs = User::readMine($_SESSION['username']);
-        require_once('views/users/readMine.php');
+        require_once('views/blogs/readAllMyBlogs.php');
         } catch (Exception $ex) {
                 return call('pages', 'error');
             }
