@@ -33,7 +33,7 @@
                 justify-content: center;
                 align-items: center;
                 padding: 35px;
-
+/*                padding-bottom: 35px;*/
 
 
             }
@@ -66,15 +66,15 @@
             }
 
             .avatar{
-                width:160px;
-                height:160px;
+                width:200px;
+                height:200px;
                 border-radius: 50%;
             }
 
             .flip-card {
                 background-color: transparent;
-                width: 160px;
-                height: 160px;
+                width: 200px;
+                height: 200px;
                 perspective: 1000px; /* Remove this if you don't want the 3D effect */
                 margin: 70px;
             }
@@ -94,29 +94,42 @@
             .flip-card:hover .flip-card-inner {
                 transform: rotateY(180deg);
 
-                .flip-card-front, #flip-card-back {
+/*                .flip-card-front, #flip-card-back {
                     position: absolute;
                     width: 100%;
                     height: 100%;
                     border-radius: 50%;
                     backface-visibility: hidden;
-                }
+                }*/
 
                 /* Style the front side (fallback if image is missing) */
-                .flip-card-front {
+/*                .flip-card-front {
                     background-color: #bbb;
                     color: black;
-                }
+                }*/
 
                 /* Style the back side */
-                #flip-card-back {
+/*                #flip-card-back {
                     background-color: dodgerblue;
                     color: white;
                     transform: rotateY(180deg);
-                }
+                }*/
                 #lastrow {
                     margin: 70px;
                 }
+                
+                #button2 {
+                text-align: center;
+                width: 30%;
+                border: none;
+                background: #001D4A; 
+                font-family: Roboto, sans-serif;
+                font-weight: 300;
+                font-size: 0.7em;
+                color: white;
+                border-radius: 5px;
+                padding: 8px 8px 8px 8px;
+            }
 
             }
         </style>    
@@ -143,7 +156,7 @@
                         <span style="color: #E88D67 ;">Travel is the best kind of education so go out and discover yourself, even if it’s just outside your own doorstep!</span>
                     </p>
 
-
+                    <br>
                     <h3>What can I do on this website?</h3> 
                     <p style="line-height:1.6;"> 
                         <span class="fa fa-globe"></span> Browse the website for inspiration, advice, and memories
@@ -163,10 +176,12 @@
                             <div class="col-xs-12 col-sm-6 col-md-6 text-center"  >
                                 <div class="flip-card">
                                     <div class="flip-card-inner">
-                                        <div class="flip-card-front">
+                                        <div class="flip-card-front" style="background-color: #bbb;color: black;position: absolute;
+                                        width: 100%;height: 100%;border-radius: 50%;backface-visibility: hidden;">
                                             <img src="/MyEscape/views/images/ash.jpg" class="avatar" alt="Ash">  
                                         </div>
-                                        <div class="flip-card-back">
+                                        <div class="flip-card-back" style="background-color: #E88D67;color: white;transform: rotateY(180deg);position: absolute;
+                                        width: 100%;height: 100%;border-radius: 50%;backface-visibility: hidden;">
                                             <h4>Ash</h4> 
                                             <p>Top 3 places: x,y,z</p>
                                             <p>Travel tip: Insert text here</p>
@@ -177,10 +192,12 @@
                             <div class="col-xs-12 col-sm-6 col-md-6 text-center"  >
                                 <div class="flip-card">
                                     <div class="flip-card-inner">
-                                        <div class="flip-card-front">
+                                        <div class="flip-card-front" style="background-color: #bbb;color: black;position: absolute;
+                                        width: 100%;height: 100%;border-radius: 50%;backface-visibility: hidden;">
                                             <img src="/MyEscape/views/images/dhanu.jpg" class="avatar" alt="Dhanu"> 
                                         </div>
-                                        <div id="flip-card-back">
+                                        <div class="flip-card-back" style="background-color: #E88D67;color: white;transform: rotateY(180deg);position: absolute;
+                                        width: 100%;height: 100%;border-radius: 50%;backface-visibility: hidden;">
                                             <h4>Dhanu</h4> 
                                             <p>Top 3 places: x,y,z</p> 
                                             <p>Travel tip: Insert text here</p>
@@ -197,10 +214,12 @@
                             <div class="col-xs-12 col-sm-6 col-md-6 text-center"  >
                                 <div class="flip-card">
                                     <div class="flip-card-inner">
-                                        <div class="flip-card-front">
+                                        <div class="flip-card-front" style="background-color: #bbb;color: black;position: absolute;
+                                        width: 100%;height: 100%;border-radius: 50%;backface-visibility: hidden;">
                                             <img src="/MyEscape/views/images/faith.jpg" class="avatar" alt="Faith">
                                         </div>
-                                        <div class="flip-card-back">
+                                        <div class="flip-card-back" style="background-color: #E88D67;color: white;transform: rotateY(180deg);position: absolute;
+                                        width: 100%;height: 100%;border-radius: 50%;backface-visibility: hidden;">
                                             <h4>Faith</h4> 
                                             <p>Top 3 places: <br>Tanzania, Cuba, Brazil</p>
                                             <p>Travel tip: Never turn down a clean toilet<br>opportunity!</p>
@@ -212,13 +231,15 @@
                             <div class="col-xs-12 col-sm-6 col-md-6 text-center"  >
                                 <div class="flip-card">
                                     <div class="flip-card-inner">
-                                        <div class="flip-card-front">
+                                        <div class="flip-card-front" style="background-color: #bbb;color: black;position: absolute;
+                                        width: 100%;height: 100%;border-radius: 50%;backface-visibility: hidden;">
                                             <img src="/MyEscape/views/images/jomana.jpg" class="avatar" alt="Jomana">
                                         </div>
-                                        <div class="flip-card-back">
+                                        <div class="flip-card-back" style="background-color: #E88D67;color: white;transform: rotateY(180deg);position: absolute;
+                                        width: 100%;height: 100%;border-radius: 50%;backface-visibility: hidden;">
                                             <h4>Jomana</h4> 
-                                            <p>Top 3 places: Tobago, Malta, Turkey</p> 
-                                            <p>Travel tip: Wherever you go, always make time to check the Mcdonald's desert menu!</p>
+                                            <p>Top 3 places: Malta, Tobago, Turkey</p> 
+                                            <p>Travel tip: Wherever you go, always make time to check the Mcdonald's dessert menu!</p>
                                         </div>
                                     </div>
                                 </div>
@@ -230,16 +251,16 @@
                     </center>
 
                    
-                        <div class="col-xs-12 col-sm-10"  >    
+                        <div class="col-xs-12 "  >    
+                            
+                            
+                            <h3>Get in touch</h3>
                             <br>
-                            <br>
-                            <br>
-                            <br>
-                            <h3>Get in touch</h3> 
-                            <p> Pop up contact us form here
-                                mini navbar at top which takes to lower pages in site?
-                            </p>
+                            <center>
+                            <div id="button button2"><a href='?controller=user&action=contactus' style="color: #fff;background: #001D4A; text-align: center;
+                width: 100%;border: none;background: #001D4A;font-family: Roboto, sans-serif;font-weight: 300;font-size: 20px;color: white;border-radius: 5px;padding: 8px 50px 8px 50px;"> Talk to us </a></div>
                         </div>
+</center>
                         <div class="col-sm-1"  >
                        
 
