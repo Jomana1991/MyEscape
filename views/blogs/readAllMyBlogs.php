@@ -157,7 +157,7 @@
                          echo $img = "<img src='$file' width='450' />";
                           }
                          ?>
-                      <<h3 style="height:35px;"><?php echo $blog->title . "<br>"; ?> </h3>
+                      <h3 style="height:35px;"><?php echo $blog->title . "<br>"; ?> </h3>
                         <div class="bloginfo" style="">Author: <?php echo $blog->username ?></div>
                         <br>
                         <div class="bloginfo button button1" style="line-height:1.3;color: #fff;"><?php echo $blog->categoryName ?></div>
