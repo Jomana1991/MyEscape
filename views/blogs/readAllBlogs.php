@@ -93,8 +93,8 @@
                 text-align: center;
                 width: 40%;
                 border: none;
-                background: #F6F4D2; 
-                font-family: Open Sans, sans-serif;
+                background: #001D4A; 
+                font-family: Roboto, sans-serif;
                 font-weight: 300;
                 font-size: 0.7em;
                 color: white;
@@ -105,6 +105,7 @@
               .button:hover {
                 opacity: 0.9;
                 cursor: pointer;
+                color: white;
               }
 
               ul.blog-post.columns-2 li {
@@ -133,6 +134,18 @@
                   color: #001D4A;
                   font: 16px 'Roboto', sans-serif;
               }
+              
+               a {
+
+                
+                color: #fff;
+                
+            }
+
+                        a:hover {
+                text-decoration: none;
+                color: #57b846;
+            }
 /*              footer{
                       font-family: Open Sans, sans-serif;
                       text-align: center;
@@ -164,8 +177,8 @@
                       <h3 style="height:35px;"><?php echo $blog->title . "<br>";?> </h3>
                       <div class="bloginfo" style="">Author: <?php echo $blog->username ?></div>
                       <br>
-                      <div class="bloginfo"style="line-height:1.3;"><?php echo $blog->categoryName ?></div>
-                      <div class="bloginfo"style="line-height:1.3;"><?php echo $blog->countryName ?></div>
+                      <div class="bloginfo" style="line-height:1.3;"><?php echo $blog->categoryName ?></div>
+                      <div class="bloginfo" style="line-height:1.3;"><?php echo $blog->countryName ?></div>
                       <div class="bloginfo" style="line-height:1.3;"><?php echo $blog->continentName ?></div>
                       <br>
                         <div class="bloginfo" style="height:100px;">
@@ -180,7 +193,7 @@
     }?>
                       </div>
                       <br>
-                      <div class="button"><a href='?controller=blog&action=read&blogID=<?php echo $blog->blogID; ?>'> Read Full Blog </a></div>
+                    <center><div class="button"><a href='?controller=blog&action=read&blogID=<?php echo $blog->blogID; ?>' style="color: #fff;"> Read Full Blog </a></div></center>
                     </li>
                       <?php } ?>
                    </ul>
