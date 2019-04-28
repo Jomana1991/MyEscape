@@ -135,10 +135,12 @@
       </style>
 </head>
     <body>
-                <div class="title animated fadeInDown" id="title">
-                          My Escape
-                </div>
-                <div class="container">
+        <div class="main">
+            <div class="container">
+<!--                <div class="title animated fadeInDown" id="title">-->
+                          <h2>Blogs</h2>
+                <!--</div>-->
+                
                   <ul class="blog-post columns-2">
                       <?php foreach($blogs as $blog) {?>
                       
@@ -169,11 +171,13 @@
     
     }?>
                       </p>
+                      <br>
                       <div class="button"><a href='?controller=blog&action=read&blogID=<?php echo $blog->blogID; ?>'> Read Full Blog </a></div>
                     </li>
                       <?php } ?>
                    </ul>
                 </div>
+        </div>
       </body>
      
 </html>
