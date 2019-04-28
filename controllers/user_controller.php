@@ -89,7 +89,7 @@ class userController {
       // we use the given id to get the correct post
       $blogs = User::readMine($_GET['username']);
       #require_once('./models/user.php'); //did this when trying to get create to redirect to readMine not readAll
-      require_once('views/users/readMine.php');
+      require_once('views/blogs/readAllMyBlogs.php');
       }
         catch (Exception $ex){                      
             return call('pages','error');
