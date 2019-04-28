@@ -42,15 +42,16 @@ $_SESSION ['blogID'] = $_GET ['blogID'];
         </div>
         <br>
         <div class="row">
-            <div class="col-md-4">
-
+            <div class="col-md-3" >
+                 
             </div>
-            <div class="col-md-4" align="justify">
+            <div class="col-md-6" align="justify">
                 <p>
                     <?php echo $blog->content; ?>
                 </p>
             </div>     
-             <div class="col-md-4">
+             <div class="col-md-3" align="center">
+                 <P id="viewCount" style="color: #6A381F; font-size: larger  "><b>Visitors so far : </b><?php echo $blog->viewcounter; ?> </p>
              </div>
         </div>
         <div class="row">
@@ -80,7 +81,7 @@ $_SESSION ['blogID'] = $_GET ['blogID'];
               <span class="glyphicon glyphicon-thumbs-down" ></span> Dislike
         </a>
         <p id="counter" class="badge"></p>
-        <p id="viewCount" align="right">Views : <?php echo $blog->viewcounter; ?> </p>
+        
     </div>
     <div class="col-md-4" >
     </div>
