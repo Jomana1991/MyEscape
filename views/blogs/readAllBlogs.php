@@ -88,8 +88,12 @@
                 font-family: Open Sans, sans-serif;
                 font-weight: 300;
               }
+              
+              .button1 {
+                  background-color: #E88D67;
+                    }
 
-              .button {
+              .button2 {
                 text-align: center;
                 width: 40%;
                 border: none;
@@ -102,7 +106,7 @@
                 padding: 8px 15px 8px 15px;
               }
 
-              .button:hover {
+              .button2:hover {
                 opacity: 0.9;
                 cursor: pointer;
                 color: white;
@@ -177,7 +181,7 @@
                       <h3 style="height:35px;"><?php echo $blog->title . "<br>";?> </h3>
                       <div class="bloginfo" style="">Author: <?php echo $blog->username ?></div>
                       <br>
-                      <div class="bloginfo" style="line-height:1.3;"><?php echo $blog->categoryName ?></div>
+                      <div class="bloginfo button button1" style="line-height:1.3;color: #fff;"><?php echo $blog->categoryName ?></div>
                       <div class="bloginfo" style="line-height:1.3;"><?php echo $blog->countryName ?></div>
                       <div class="bloginfo" style="line-height:1.3;"><?php echo $blog->continentName ?></div>
                       <br>
@@ -193,7 +197,7 @@
     }?>
                       </div>
                       <br>
-                    <center><div class="button"><a href='?controller=blog&action=read&blogID=<?php echo $blog->blogID; ?>' style="color: #fff;"> Read Full Blog </a></div></center>
+                    <center><div class="button button2"><a href='?controller=blog&action=read&blogID=<?php echo $blog->blogID; ?>' style="color: #fff;"> Read Full Blog </a></div></center>
                     </li>
                       <?php } ?>
                    </ul>
