@@ -10,17 +10,19 @@
   <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:600'>
   
   <style>
-      body{
+/*      body{
 	margin:0;
 	color:#9599af;
-	/*background:#F6F4D2;*/
+
+	background:#F6F4D2;
         background:url("img/share.jpg");
+
 	font:600 16px/18px 'Open Sans',sans-serif;
-}
+}*/
 *,:after,:before{box-sizing:border-box}
 .clearfix:after,.clearfix:before{content:'';display:table}
 .clearfix:after{clear:both;display:block}
-a{color:inherit;text-decoration:none}
+a{color: #001D4A;text-decoration:none}
 
 .login-wrap{
 	width:100%;
@@ -36,7 +38,11 @@ a{color:inherit;text-decoration:none}
 	height:100%;
 	position:absolute;
 	padding:90px 70px 50px 70px;
-	background:rgba(50,57,95,.8);
+	background: rgba(50,57,95,.8);
+        background-color:   #E88D67 !important; 
+        opacity: 0.9;
+
+        
        /* background:rgba(50,57,101,.9);*/
 }
 .login-html .sign-in-htm,
@@ -73,7 +79,7 @@ a{color:inherit;text-decoration:none}
 .login-html .sign-in:checked + .tab,
 .login-html .sign-up:checked + .tab{
 	color:#fff;
-	border-color:#1161ee;
+	border-color: #001D4A;
 }
 .login-form{
 	min-height:345px;
@@ -105,11 +111,11 @@ a{color:inherit;text-decoration:none}
 	-webkit-text-security:circle;
 }
 .login-form .group .label{
-	color:#aaa;
+	color:#fff;
 	font-size:12px;
 }
 .login-form .group .button{
-	background:#1161ee;
+	background: #001D4A;
 }
 .login-form .group label .icon{
 	width:15px;
@@ -145,7 +151,7 @@ a{color:inherit;text-decoration:none}
 	color:#fff;
 }
 .login-form .group .check:checked + label .icon{
-	background:#1161ee;
+	background: #001d4a;
 }
 .login-form .group .check:checked + label .icon:before{
 	-webkit-transform:scale(1) rotate(45deg);
@@ -158,10 +164,12 @@ a{color:inherit;text-decoration:none}
 .login-html .sign-in:checked + .tab + .sign-up + .tab + .login-form .sign-in-htm{
 	-webkit-transform:rotate(0);
 	        transform:rotate(0);
+              
 }
 .login-html .sign-up:checked + .tab + .login-form .sign-up-htm{
 	-webkit-transform:rotate(0);
 	        transform:rotate(0);
+                
 }
 
 .hr{
@@ -176,6 +184,7 @@ a{color:inherit;text-decoration:none}
 
     </head>
     <body>
+        <div class="main">
        <!-- <form method='POST' action=" ">-->
          <div class="login-wrap" >
 	<div class="login-html">
@@ -199,7 +208,7 @@ a{color:inherit;text-decoration:none}
                             
 				<div class="foot-lnk">
 					<!--<a href="#forgot">Forgot Password?</a>-->
-                                        <a href='?controller=user&action=changePassword'>Forgot password? </a>
+                                        <a href='?controller=user&action=changePassword' style="color: #001D4A">Forgot password? </a>
 				</div>
 				<!--<div class="hr"></div>-->
                             </form>
@@ -227,9 +236,11 @@ a{color:inherit;text-decoration:none}
 				<div class="group">
 					<input type="submit" name="registersubmit" class="button" value="Sign Up">
 				</div>
+
                                 <div class="foot-lnk">
                                     
                                         <a href='?controller=user&action=login'>Already Member?</a>
+
 				</div>
 				
 				
@@ -238,6 +249,7 @@ a{color:inherit;text-decoration:none}
 		</div>
 	</div>
 </div>
+        </div>
  <!-- </form>-->
   
     </body>

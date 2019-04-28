@@ -30,7 +30,7 @@ $result_cou = $stmt_cou->fetchAll(PDO::FETCH_ASSOC);
     <head>
         <meta charset="UTF-8">
         <script src="https://cdn.ckeditor.com/4.11.4/standard/ckeditor.js"></script>
-        <title>Add New blog post</title>
+        
         <!-- (text) ck editor library 
         <script src="//cdn.ckeditor.com/4.11.4/standard/ckeditor.js"></script>  -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -47,38 +47,72 @@ $result_cou = $stmt_cou->fetchAll(PDO::FETCH_ASSOC);
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
 
+        <style>
+               @import url('https://fonts.googleapis.com/css?family=Courgette');
+                @import url('https://fonts.googleapis.com/css?family=Oswald');
 
+            .fader
+            {
+            position: absolute;
+                    height: 100%;
+                    width:100%;
+                    left: 0;
+                    background-image: url("img/share.jpg");                   
+                    background-repeat: repeat;
+                    background-position: center;
+                    background-size: auto;
+                    opacity: 0.50;
+                    }
+            .form_attribs
+            {
+                font-family: 'Oswald', sans-serif; 
+                
+                color: chocolate; 
+            }
+        </style>
     </head>
     <body> 
-        <div class="container-fluid">
+        <div class='fader'>
+        </div>  
+      
+        <div class="container-fluid ">
 
             <div class="row">
 
-                <div class="col-sm-4">
-                    <br>
-                    <h2 align="center"><b>               
-                        <a href='?controller=user&action=readMine&username=<?php echo $_SESSION['username']; ?>'>See my blogs</a> &nbsp; &nbsp;
-                        </b></h2>
-                </div>
-                <div class="col-sm-4">    
-
-                    <form action="" method="POST" class="w3-container" enctype="multipart/form-data"> 
-                        <br><br><br><br><br>
-                        
-                        
-                        <h2 align="center"><b>New Blog Post</b></h2>
+            
+                <div class="col-md-12">    
+                    
+                    
+                    <form action="" method="POST" class="w3-container form_attribs" enctype="multipart/form-data"> 
+                        <br><br><br>                                               
+                        <div class="row">
+                            
+                             <div class="col-md-12" align="center">
+                             <h2><b>New Blog Post</b></h2>
+                             </div>
+                            
+                        </div>
                         <hr class="colorgraph">                                                                       
                         <div class="row">
-                            <p><b>Fill in the following form to write a new blog :</b></p>
-                            <div class="col-xs-12 col-sm-6 col-md-6">
-                                <div><lable> Title</lable>
-                                    <input type="text" name="title" id="title" autofocus="" class="form-control input-lg" placeholder=" Blog Title" tabindex="1" required>
-
+                           
+                            
+                                <div class="col-md-4" align="right">
+                                    <label> Title</label>
                                 </div>
-                            </div>
-                            <div class="col-xs-12 col-sm-6 col-md-6">
-                               
-                                <div><lable> Select Category</lable>
+                                <div class="col-md-4">
+                                    <input type="text" name="title" id="title" autofocus="" class="form-control input-lg" placeholder=" Blog Title" tabindex="1" required>
+                                </div>
+                                <div class="col-md-4">
+                                   
+                                </div>
+                        </div>
+                        
+                        <div class="row"><br></div>
+                        <div class="row">
+                                <div class="col-md-4"align="right">
+                                    <label>Category</label>
+                                </div>
+                                <div class="col-md-8">
                                     <select name = "categoryName" tabindex=" ">
                                       
                                         <?php
@@ -90,13 +124,15 @@ $result_cou = $stmt_cou->fetchAll(PDO::FETCH_ASSOC);
                                     </select>
 
                                 </div>
-                            </div>
+                            
                         </div>
-                        
+                        <div class="row"><br></div>
                         <div class="row">
-                            <div class="col-xs-12 col-sm-6 col-md-6">
-                                <div class="form-group"><br>
-                                    <lable> Select Country</lable>
+                            
+                                <div class="col-md-4"align="right">
+                                    <label>Country</label>
+                                </div>
+                                <div class="col-md-8">
                                     <select name = "countryName" tabindex="3" >
 
                                         <?php
@@ -108,11 +144,13 @@ $result_cou = $stmt_cou->fetchAll(PDO::FETCH_ASSOC);
                                     </select>
 
                                 </div>
+                        </div>
+                        <div class="row"><br></div>
+                        <div class="row">
+                            <div class="col-md-4"align="right">
+                                <label> Continent</label>
                             </div>
-                          
-                            <div class="col-xs-12 col-sm-6 col-md-6">
-                                <div class="form-group"><br>
-                                    <lable> Select Continent</lable>
+                            <div class="col-md-8">
                                     <select name = "continentName" tabindex="4">
 
                                         <?php
@@ -122,32 +160,47 @@ $result_cou = $stmt_cou->fetchAll(PDO::FETCH_ASSOC);
                                         ?>
 
                                     </select>
-                                </div>
+                            </div>                           
+                        </div>
+                        <div class="row"><br></div>    
+                        
+                        <div class="row">
+                           <div class="col-md-4"align="right">
+                                <label> Blog content</label> 
+                            </div>
+                            <div class="col-md-6">
+                            <textarea  name="content" id="content" class="form-control input-lg" placeholder=" Content" tabindex="5" cols="100" rows="10" required></textarea>
+                            </div>
+                            <div class="col-md-2">
+                                   
                             </div>
                         </div>
-                
-                        <br>
-                        <div><lable>Write content</lable>
-                            <textarea name="content" id="content" class="form-control input-lg" placeholder=" Content" tabindex="5" cols="100" rows="10" required></textarea>
-                        </div>
-                        <br>
-                        <div>
+                        <div class="row"><br></div>    
+                        <div class="row">
+                            <div class="col-md-3">
+                                   
+                            </div>
+                            <div class="col-md-3" align="right">
                             <input type="hidden" 
                                    name="MAX_FILE_SIZE" 
                                    value="10000000"
                                    />
-
                             <input type="file" name="blogUploader" class="w3-btn w3-pink" />
-                        </div>                   
-                        <br>
-                        <div class="form-group"> 
-
-                            <input style=" align: center; background-color: #183149; font-size: 15px; border-radius: 5px; border: none; box-shadow: 0px 8px 15px rgba(0,0,0,0.1); padding-top: 12px; padding-right: 27; padding-bottom: 12; padding-left: 27" type="submit" name="submit" value="SUBMIT" class="btn btn-primary btn-block btn-lg" tabindex="6">
-
+                            </div>
+                            
+                            <div class="col-md-3" align="center">       
+                                <!--<input style=" background-color: #183149; font-size: 15px; border-radius: 5px; border: none; box-shadow: 0px 8px 15px rgba(0,0,0,0.1); padding-top: 12px; padding-right: 27; padding-bottom: 12; padding-left: 27" type="submit" name="submit" value="Post" class="btn btn-primary btn-block btn-sm" tabindex="6">-->
+                                <input type="submit" style=" background-color: E88D67;box-shadow: 0px 8px 15px rgba(0,0,0,0.1) " name="submit" value="Post" class="btn btn-primary btn-block btn-sm form_attribs" tabindex="6">
+   
+                            </div>
+                            <div class="col-md-3">
+                                   
+                            </div>   
+                               
                         </div>
 
-
-                    </form>  
+                    </form>
+                    
                     <script>
                         CKEDITOR.replace( "content" );
                         
@@ -156,5 +209,6 @@ $result_cou = $stmt_cou->fetchAll(PDO::FETCH_ASSOC);
             </div>
 
         </div> <!-- row-->
-    
+  
+    </body>
 </html>

@@ -8,10 +8,10 @@ class User {
 
     public function __construct($username, $password, $email) {
 
-        $this->username = $username;
-        $this->password = $Password;
+        $this->username =$username;
+        $this->password =$password;
 
-        $this->email = $Email;
+        $this->email =$email;
     }
 
     
@@ -27,8 +27,12 @@ class User {
             if(isset($_POST['password'])&& $_POST['password']!=""){
                 $password = filter_input(INPUT_POST,'password', FILTER_SANITIZE_SPECIAL_CHARS);
             }
+            
+//            $hashedPassword=password_hash($password, PASSWORD_DEFAULT);
+            
             $query->bindParam(':username', $username);
             $query->bindParam(':password', $password);
+//            $query->bindParam(':password', $hashedPassword);
             $query->execute();
             $results = $query->fetchAll();
             if ($results) {
@@ -59,17 +63,17 @@ class User {
         {
             try{
         
-        if(isset($_POST['Username'])&& $_POST['Username']!=""){
-            $username = filter_input(INPUT_POST,'Username', FILTER_SANITIZE_SPECIAL_CHARS);
+        if(isset($_POST['username'])&& $_POST['username']!=""){
+            $username = filter_input(INPUT_POST,'username', FILTER_SANITIZE_SPECIAL_CHARS);
         }
-        if(isset($_POST['Password'])&& $_POST['Password']!=""){
-            $password = filter_input(INPUT_POST,'Password', FILTER_SANITIZE_SPECIAL_CHARS);
+        if(isset($_POST['password'])&& $_POST['password']!=""){
+            $password = filter_input(INPUT_POST,'password', FILTER_SANITIZE_SPECIAL_CHARS);
         }
 
         
-        $username = $_POST["Username"];
-        $password = $_POST['Password'];
-        $email = $_POST["Email"];
+        $username =$_POST["username"];
+        $password =$_POST['password'];
+        $email =$_POST["email"];
 
            
         $sql_u = $db->prepare("SELECT * FROM user where Username='$username'");
@@ -86,7 +90,7 @@ class User {
         
         }
         else {
-        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+        $hashed_password= password_hash($password, PASSWORD_DEFAULT);
         $rej = $db->prepare("INSERT INTO user (Username, Email, Password) VALUES ( :username, :email, :password)");
     
 
@@ -147,15 +151,29 @@ class User {
         $db = Db::getInstance();
         if(!is_null($db)){
         try{    
-            $stmt = $db->prepare("INSERT INTO userfeedback (FullName, Email,Comments) VALUES ( :FullName, :Email, :Comments)");
-            $fullname = $_POST["fullname"];
-            $email = $_POST["email"];
-            $comments = $_POST["comments"];
-            $stmt->bindParam(':FullName', $fullname);
-            $stmt->bindParam(':Email', $email);
-            $stmt->bindParam(':Comments', $comments);
+
+            $stmt = $db->prepare("call addFeedback( :name, :email, :message)");
+
+            $contactUsForm = filter_input_array(INPUT_POST);
+            if (!empty($_POST['name'])) {//loops through Post Superglobal array, sanitising each input item
+                foreach ($contactUsForm as $formDetail => $formValue) {
+                    ${$formDetail} = User::filterInput($formDetail);
+                }
+            $email=filter_var($email, FILTER_SANITIZE_EMAIL);#additional filter for email
+            }
+
+            $stmt->bindParam(':name', $name);
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':message', $message);
+
             $result = $stmt->execute();
-             if ($result ==1 ) { echo "Thanks for the feedback,we will get back to you soon";}
+
+             if ($result ==1 ) {
+                 $successmessage = "Thanks for the feedback, we will get back to you soon";
+                 echo '<script type="text/javascript">alert("'.$successmessage.'");</script>';
+                 
+             }
+
         }
         catch(PDOException $e){
             $e->getMessage();
@@ -180,7 +198,7 @@ class User {
         try{
         $req = $db->prepare("Call updatePassword(:username, :newPassword);");
         $req->bindParam(':username', $username);
-        $req->bindParam(':newPassword', $newPassword);
+        $req->bindParam(':newPassword', $newPasswordHashed);
         
         $passwordUpdateDetails = filter_input_array(INPUT_POST);
         //asking whether title is empty refers to whether the addform has been submitted yet, if not the query is run
@@ -188,6 +206,9 @@ class User {
             foreach ($passwordUpdateDetails as $formDetail => $formValue) {
                 ${$formDetail} = User::filterInput($formDetail);
             }
+            
+            $newPasswordHashed=password_hash($newPassword, PASSWORD_DEFAULT);
+            
             $req->execute();
             
         }
@@ -230,4 +251,40 @@ class User {
         }
         }
     }
+
+    
+    
+    public static function emailUs(){ //NB this doesn't currently work as we do not have a mail/web server - we are working on local server.
+        $errors = '';
+        $myemail = 'faithege@hotmail.co.uk';
+        
+        if(empty($_POST['name'])  || empty($_POST['email']) || empty($_POST['message'])) {
+                $errors .= "\n Error: all fields are required";
+        }
+        $contactUsForm = filter_input_array(INPUT_POST);
+        if (!empty($_POST['name'])) {//loops through Post Superglobal array, sanitising each input item
+            foreach ($contactUsForm as $formDetail => $formValue) {
+                ${$formDetail} = User::filterInput($formDetail);
+            }
+        $email=filter_var($email, FILTER_SANITIZE_EMAIL);#additional filter for email
+        }
+        
+##keep going change email_address to email
+        if( empty($errors))
+        {
+                $to = $myemail; 
+                $email_subject = "Contact form submission: $name";
+                $email_body = "You have received a new message.".
+                " Here are the details:\n Name: $name \n Email: $email \n Message \n $message"; 
+
+                $headers = "From: $myemail\n"; 
+                $headers .= "Reply-To: $email";
+
+                mail($to,$email_subject,$email_body,$headers);
+                //redirect to the 'thank you' page
+//                header('Location: views/users/contactus.php');
+        } 
+            }
+
 }
+

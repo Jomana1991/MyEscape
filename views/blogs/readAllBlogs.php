@@ -6,9 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title> Blogs List</title>
     
-  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:600'>
-
       
       <link href="css/BlogListStyle.css" rel="stylesheet" type="text/css"/>
       <style>
@@ -135,10 +134,12 @@
       </style>
 </head>
     <body>
-                <div class="title animated fadeInDown" id="title">
-                          My Escape
-                </div>
-                <div class="container">
+        <div class="main">
+            <div class="container">
+<!--                <div class="title animated fadeInDown" id="title">-->
+                          <h2>Blogs</h2>
+                <!--</div>-->
+                
                   <ul class="blog-post columns-2">
                       <?php foreach($blogs as $blog) {?>
                       
@@ -169,11 +170,13 @@
     
     }?>
                       </p>
+                      <br>
                       <div class="button"><a href='?controller=blog&action=read&blogID=<?php echo $blog->blogID; ?>'> Read Full Blog </a></div>
                     </li>
                       <?php } ?>
                    </ul>
                 </div>
+        </div>
       </body>
      
 </html>
