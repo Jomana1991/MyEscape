@@ -35,7 +35,7 @@
 .main:before {
     content: '';
     position: absolute; 
-    opacity: 0.25;
+    opacity: 0.7;
     background: url(./img/share.jpg) no-repeat 0 50%; 
     width: 100%;
     height: 100%;
@@ -58,10 +58,10 @@ margin: 0 auto;
 }
 .container {
 
-    margin-left: 10px;
+/*    margin-left: 10px;
 
-/*    margin-right: 10px;*/
-    margin-top: 20px;
+    margin-right: 10px;
+    margin-top: 20px;*/
 
 }
 
@@ -80,7 +80,7 @@ margin: 0 auto;
     }
     
  .main h2 {
-  color: #395C6B;
+  color:  #001D4A;
   font: 72px 'Sacramento', cursive;
 /*  font-weight: bold;*/
   text-align: center;
