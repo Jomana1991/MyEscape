@@ -63,6 +63,9 @@ $_SESSION ['blogID'] = $_GET ['blogID'];
                 text-align: center;
 
             }
+            #viewCount {
+               colour: #E88D67; 
+            }
         </style>
     </head>
     <body>
@@ -113,16 +116,16 @@ $_SESSION ['blogID'] = $_GET ['blogID'];
                         </div>
                         <div class="col-md-12" >
 
-                            <a class="btn btn-default btn-sm" id="thumb-button" onclick="addLikeCounter(<?php echo $blog->blogID; ?>)">
+                            <a class="btn btn-default btn-sm"  id="thumb-button" onclick="addLikeCounter(<?php echo $blog->blogID; ?>)">
                                 <span class="fa fa-thumbs-up" ></span> <span style="font: 16px 'Roboto';">Like</span>
                             </a>
-                            <a class="btn btn-default btn-sm" id="thumb-button" onclick="subtractLikeCounter(<?php echo $blog->blogID; ?>)">
+                            <a class="btn btn-default btn-sm"  id="thumb-button" onclick="subtractLikeCounter(<?php echo $blog->blogID; ?>)">
                                 <span class="fa fa-thumbs-down" ></span> <span style="font: 16px 'Roboto';">Dislike</span>
                             </a>
 
                             <br>
-                            <p id="counter" class="badge" style="font: 16px 'Roboto';color:#395C6B;font-weight: bold;"></p>
-                            <p id="viewCount" align="right">Views : <?php echo $blog->viewcounter; ?> </p>
+                            <p id="counter" class="badge" style="font: 16px 'Roboto';color: #E88D67; font-weight: bold;"></p>
+                            <p id="viewCount"  style="font-weight: bold; font: 18px 'Roboto';color: #E88D67;" align="right">Visitors : <?php echo $blog->viewcounter; ?> </p>
 
                         </div>
                         <div class="col-md-12" >

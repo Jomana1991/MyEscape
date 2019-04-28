@@ -165,14 +165,14 @@ public function read() {
 
                         //If blog is greater than 200 characters, the content will be shortened to 150 characters, if not the whole content will be echo'd
                         if (strlen($blog->content) > 150) {
-                            echo substr(" <h6> Blog content: </6>".$blog->content, 0, strpos(wordwrap($blog->content, 150), "\n")) . '...' ;
+                            echo substr(" <h6> Blog content: </6>".$blog->content, 0, strpos(wordwrap($blog->content, 150), "\n")) . '...'."<br>" ;
                             //        here I am using wordwrap to line breakat the nearest word to 150 characters(so you don't get half words),
                             //        strpos then returns the position of the first line break, and the content will therefore be shortened to this position by substr
                              echo "<a href='?controller=blog&action=read&blogID=".$blog->blogID."> Read Full Blog </a>"."<br>";
                               echo  "</div>";
                             echo  "<hr>";
                         } else {
-                            echo "<h6> Blog content: </h6> ".$blog->content;
+                            echo "<h6> Blog content: </h6> ".$blog->content."<br>";
                              echo "<a href='?controller=blog&action=read&blogID=".$blog->blogID."> Read Full Blog </a>"."<br>";
                                echo  "</div>";
                           echo  "<hr>";
