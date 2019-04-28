@@ -78,7 +78,7 @@
 
             .button2 {
                 text-align: center;
-                width: 40%;
+                width: 30%;
                 border: none;
                 background: #001D4A; 
                 font-family: Roboto, sans-serif;
@@ -176,9 +176,8 @@
     
     }?>
                       </div>
-                      <br>
                       <div>
-                          <button class = "button button2"> <a href='?controller=blog&action=read&blogID=<?php echo $blog->blogID; ?>' style="color: #fff;"> Read More </a></button>
+                          <button class = "button button2"> <a href='?controller=blog&action=read&blogID=<?php echo $blog->blogID; ?>' style="color: #fff; width:0px;"> Read More </a></button>
                           <button class = "button button2"> <a href='?controller=blog&action=update&blogID=<?php echo $blog->blogID; ?>' style="color: #fff;"> Update </a></button>
                           <button class = "button button2">  <a href='?controller=blog&action=delete&blogID=<?php echo $blog->blogID; ?> ' style="color: #fff;" onclick="return confirm('Are you sure you want to delete this blog?')"> Delete </a> </button>
                       </div>
