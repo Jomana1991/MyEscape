@@ -2,6 +2,7 @@
 
 <html>
     <head>
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
         <title>About us</title>
 
 <!--        <meta charset="UTF-8">
@@ -100,11 +101,11 @@
         <br>
         <h3>What can I do on this website?</h3> 
         <p style="line-height:1.6;"> 
-            <span class="glyphicon glyphicon-globe"></span> Browse the website for inspiration, advice, and memories
-            <br><span class="glyphicon glyphicon-globe"></span> Find particular blogs by geography, category, or keywords
-            <br><span class="glyphicon glyphicon-globe"></span> Register to become part of the ever-growing MyEscape community
-            <br><span class="glyphicon glyphicon-globe"></span> Share your own content and inspire even more people
-            <br><span class="glyphicon glyphicon-globe"></span> Incorporate your Instagram and Twitter feeds with your blog posts
+            <span class="fa fa-globe"></span> Browse the website for inspiration, advice, and memories
+            <br><span class="fa fa-globe"></span> Find particular blogs by geography, category, or keywords
+            <br><span class="fa fa-globe"></span> Register to become part of the ever-growing MyEscape community
+            <br><span class="fa fa-globe"></span> Share your own content and inspire even more people
+            <br><span class="fa fa-globe"></span> Incorporate your Instagram and Twitter feeds with your blog posts
         </p>
         <br>
         <h3>Meet the team</h3>

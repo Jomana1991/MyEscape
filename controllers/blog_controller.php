@@ -121,8 +121,9 @@ public function read() {
             $id = $_GET['blogID'];
             Blog::modify($id);
 
-            $blogs = Blog::all();
-            require_once('views/blogs/readAll.php');
+            require_once('./models/user.php');
+            $blogs = User::readMine($_SESSION['username']);
+            require_once('views/users/readMine.php');
         }
         } catch (Exception $ex) {
                 return call('pages', 'error');

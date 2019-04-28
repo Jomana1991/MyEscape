@@ -144,7 +144,7 @@
           {
             echo "<ul class='nav navbar-nav ml-auto'>";
             echo "<li class='nav-item active'><a class='nav-link'  href='?controller=blog&action=create'><b>Profile Page</b></a></li> ";
-            echo "<li class='nav-item active'><a class='nav-link'  href='?controller=user&action=readMine&username=".$_SESSION['username']."'><b>Blog Archives</b></a></li>";
+            echo "<li class='nav-item active'><a class='nav-link'  href='?controller=user&action=readMine&username=".$_SESSION['username']."'><b>My Blog Archive</b></a></li>";
             echo "<li class='nav-item active'><a class='nav-link'  href='?controller=pages&action=logout'><b>Logout</b></a></li></ul>";
             
           }
