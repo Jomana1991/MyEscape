@@ -128,6 +128,11 @@
                       }
               }
 
+              .bloginfo{
+                  text-align: left;
+                  color: #001D4A;
+                  font: 16px 'Roboto', sans-serif;
+              }
 /*              footer{
                       font-family: Open Sans, sans-serif;
                       text-align: center;
@@ -157,12 +162,13 @@
                           }
                          ?>
                       <h3 style="height:35px;"><?php echo $blog->title . "<br>";?> </h3>
-                      <div style="text-align: left;">Author: <?php echo $blog->username ?></div>
-                      <div style="text-align: left;"><?php echo $blog->categoryName ?></div>
-                      <div style="text-align: left;"><?php echo $blog->countryName ?></div>
-                      <div style="text-align: left;"><?php echo $blog->continentName ?></div>
+                      <div class="bloginfo" style="">Author: <?php echo $blog->username ?></div>
                       <br>
-                        <div style="height:100px;text-align: left;">
+                      <div class="bloginfo"style="line-height:1.3;"><?php echo $blog->categoryName ?></div>
+                      <div class="bloginfo"style="line-height:1.3;"><?php echo $blog->countryName ?></div>
+                      <div class="bloginfo" style="line-height:1.3;"><?php echo $blog->continentName ?></div>
+                      <br>
+                        <div class="bloginfo" style="height:100px;">
                           <?php  if (strlen($blog->content) > 120){ 
                                     echo substr($blog->content,0,strpos(wordwrap($blog->content, 120), "\n")).'...'."<br><br>";
                             //        here I am using wordwrap to line break at the nearest word to 150 characters(so you don't get half words),
