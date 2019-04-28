@@ -168,8 +168,8 @@
                                         </div>
                                         <div class="flip-card-back">
                                             <h4>Ash</h4> 
-                                            <p>Top 3 places: x,y,z</p>
-                                            <p>Travel tip: Insert text here</p>
+                                            <p>Top 3 places: Iceland, Egypt, East part of India  </p>
+                                            <p>Travel tip: Wake up early to avoid crowds...And be flexible $ don't overplan</p>
                                         </div>
                                     </div>
                                 </div>
