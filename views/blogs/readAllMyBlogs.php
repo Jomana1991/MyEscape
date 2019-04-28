@@ -35,7 +35,7 @@
               }
 
 
-              .container {
+              .blogcontainer {
                 margin: 2em 0;
                 text-align: center;
                 
@@ -133,13 +133,16 @@
                       font-family: Open Sans, sans-serif;
                       text-align: center;
               }       
+               h1 {
+                font-family: 'Sacramento', cursive;
+            }
       </style>
 </head>
     <body>
-        <div class="main">
-            <div class="container" style="background: linear-gradient(to right, #EABE7C, #E88D67);">
+ 
+            <div class="blogcontainer" style="background: linear-gradient(to right, #EABE7C, #E88D67);">
 <!--                <div class="title animated fadeInDown" id="title">-->
-                          <h2>Blogs</h2>
+                          <h1>Blogs</h1>
                 <!--</div>-->
                 
                   <ul class="blog-post columns-2">
@@ -182,7 +185,7 @@
                       <?php } ?>
                    </ul>
                 </div>
-        </div>
+    
       </body>
      
 </html>

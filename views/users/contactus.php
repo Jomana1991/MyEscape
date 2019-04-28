@@ -17,7 +17,7 @@
         <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
         <!--===============================================================================================-->
         <style>
-            @import url('https://fonts.googleapis.com/css?family=Oswald');
+            
             @font-face {
                 font-family: Poppins-Regular;
                 src: url('../fonts/poppins/Poppins-Regular.ttf'); 
@@ -77,7 +77,7 @@
             }
 
             p {
-                font-family: 'Oswald', sans-serif;
+               font-family: 'Roboto', sans-serif;
                 font-size: 20px;
                 line-height: 1.7;
                 color: #666666;
@@ -213,8 +213,8 @@
                 display: block;
                 width: 100%;
 
-                font-family: 'Oswald', sans-serif;
-                font-size: 25px;
+               font-family: 'Roboto', sans-serif;
+                font-size: 18px;
                 color: #001D4A ;
                 line-height: 1.2;
             }
@@ -361,7 +361,7 @@
                 min-width: 244px;
                 height: 50px;
                 background-color: #E88D67;
-                font-family: 'Oswald', sans-serif;
+              font-family: 'Roboto', sans-serif;
                 font-size: 22px;
                 color: #fff;
                 line-height: 1.2;
@@ -389,19 +389,19 @@
                         </span>
                         <form method="post" name="contact_form" action=" ">
                             <div class="wrap-input2 validate-input" >
-                                <input class="input2" type="text" name="name" required>
-                                <span class="focus-input2" data-placeholder="NAME"></span>
+                                <input class="input2" type="text" name="name" required placeholder="NAME">
+<!--                                <span class="focus-input2" data-placeholder="NAME"></span>-->
                             </div>
 
                             <div class="wrap-input2 validate-input" >
-                                <input class="input2" type="text" name="email" required>
-                                <span class="focus-input2" data-placeholder="EMAIL"></span>
+                                <input class="input2" type="text" name="email" required placeholder="EMAIL">
+<!--                                <span class="focus-input2" data-placeholder="EMAIL"></span>-->
                             </div>
 
                             <div class="wrap-input2 validate-input" >
-                                <textarea class="input2" name="message" required></textarea>
+                                <textarea class="input2" name="message" required placeholder="MESSAGE"></textarea>
 
-                                <span class="focus-input2" data-placeholder="MESSAGE"></span>
+<!--                                <span class="focus-input2" data-placeholder="MESSAGE"></span>-->
                             </div>
 
                             <div class="container-contact2-form-btn">

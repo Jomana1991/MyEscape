@@ -65,7 +65,7 @@ $result_cou = $stmt_cou->fetchAll(PDO::FETCH_ASSOC);
                     }
             .form_attribs
             {
-                font-family: 'Oswald', sans-serif; 
+               font-family: 'Roboto', sans-serif;
                 
                 color: chocolate; 
             }
