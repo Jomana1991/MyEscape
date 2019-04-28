@@ -10,8 +10,7 @@
 
 <html>
     <head>
-     
-
+    
         <!-- Popper JS -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 
@@ -117,14 +116,23 @@
                 colour: #001D4A;
             }
 
-
+            span {
+                 font: 72px 'Sacramento', cursive;
+                 color: #fff;
+                  background: linear-gradient(to right, #EABE7C, #E88D67);
+                opacity: 0.9;
+              
+                 text-align: center;
+            }
 
         </style>
     </head>
     <body>      
 
 
-
+<div class="container-fuild">
+    <span> Click to search our blogs </span>
+        </div>
 
         <div class="body">
             <div class="search">
@@ -141,9 +149,8 @@
             <div id="result" ></div>
         </div>
 
-    </body>
-</html>
-<script>
+   
+    <script>
 
     $(document).ready(function () {
         $('#query').keyup(function () {
@@ -217,6 +224,8 @@
 
 
 </script>
+ </body>
+</html>
 
 
 
