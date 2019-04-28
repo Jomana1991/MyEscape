@@ -169,6 +169,7 @@
                          echo $img = "<img src='$file' width='450' />";
                           }
                          ?>
+
                       <h3 style="height:35px;"><?php echo $blog->title . "<br>"; ?> </h3>
                         <div class="bloginfo" style="">Author: <?php echo $blog->username ?></div>
                         <br>
@@ -179,12 +180,13 @@
                         <div class="bloginfo" style="height:100px;">
                             
                         <?php  if (strlen($blog->content) > 150){ 
-                                    echo substr($blog->content,0,strpos(wordwrap($blog->content, 150), "\n")).'...'."<br><br>";
+                                    echo strip_tags(substr($blog->content,0,strpos(wordwrap($blog->content, 150), "\n"))).'...'."<br><br>";
+
                             //        here I am using wordwrap to line break at the nearest word to 150 characters(so you don't get half words),
                             //        strpos then returns the position of the first line break, and the content will therefore be shortened to this position by substr
                                 }   
                                 else {
-                                        echo $blog->content."<br><br>";
+                                        echo strip_tags($blog->content)."<br><br>";
     
     }?>
                       </div>
