@@ -118,21 +118,21 @@ if (!is_null($db)) {
                                     <label for="staticEmail" class="col-sm-2 col-form-label">Username</label>
                                     <div class="col-sm-10">
                                        
-                                         <input type="text" class="form-control-plaintext" id="staticEmail" name="username" value="<?= $blog->username; ?>">
+                                        <input type="text" class="form-control-plaintext" autofocus="" tabindex="1" id="staticEmail" name="username" value="<?= $blog->username;?>">
                                     </div>
                                 </div>
                                   <div class="form-group row">
                                     <label for="staticEmail" class="col-sm-2 col-form-label">Title</label>
                                     <div class="col-sm-10">
                                        
-                                         <input class="form-control-plaintext" id="staticEmail" type="text" name="title" value="<?= $blog->title; ?>">
+                                         <input class="form-control-plaintext" id="staticEmail" type="text" name="title" value="<?= $blog->title; ?>" tabindex="2">
                                     </div>
                                 </div>
                            <div class="form-group row">
                                     <label for="staticEmail" class="col-sm-2 col-form-label">Category</label>
                                     <div class="col-sm-10">
                                        
-                                         <input class="form-control-plaintext" id="staticEmail" type="text" name="categoryName" value="<?= $blog->categoryName; ?>">
+                                         <input class="form-control-plaintext" id="staticEmail" type="text" name="categoryName" value="<?= $blog->categoryName; ?>" tabindex="3">
                                     </div>
                                 </div>
                                 
@@ -140,7 +140,7 @@ if (!is_null($db)) {
                                     <label for="staticEmail" class="col-sm-2 col-form-label">Country</label>
                                     <div class="col-sm-10">
                                        
-                                         <input class="form-control-plaintext" id="staticEmail" type="text" name="countryName" value="<?= $blog->countryName; ?>" tabindex="3">
+                                         <input class="form-control-plaintext" id="staticEmail" type="text" name="countryName" value="<?= $blog->countryName; ?>" tabindex="4">
                                     </div>
                                 </div>
                        
@@ -148,14 +148,14 @@ if (!is_null($db)) {
                                     <label for="staticEmail" class="col-sm-2 col-form-label">Continent</label>
                                     <div class="col-sm-10">
                                        
-                                         <input class="form-control-plaintext" id="staticEmail" type="text" name="continentName" value="<?= $blog->continentName; ?>" tabindex="4">
+                                         <input class="form-control-plaintext" id="staticEmail" type="text" name="continentName" value="<?= $blog->continentName; ?>" tabindex="5">
                                     </div>
                                 </div>
                             <div class="form-group row">
                                     <label for="staticEmail" class="col-sm-2 col-form-label">Content</label>
                                     <div class="col-sm-10">
                                        
-                                        <textarea  class="form-control-plaintext" name="content"  class="w3-input" tabindex="5" cols="100" rows="10" ><?= $blog->content; ?> </textarea> 
+                                        <textarea  class="form-control-plaintext" name="content"  class="w3-input" cols="100" rows="10" tabindex="6"><?= $blog->content; ?> </textarea> 
                                     </div>
                                 </div>
                             
@@ -176,12 +176,12 @@ if (!is_null($db)) {
                                             echo $img;
                                         }
                                         ?>
-                                        <input type="file" name="blogUploader" class="w3-btn w3-pink" />
+                                        <input tabindex="7" type="file" name="blogUploader" class="w3-btn w3-pink" />
                                     </div>
 
                                     <div class="col-md-5" align="center">       
                                         <!--<input style=" background-color: #183149; font-size: 15px; border-radius: 5px; border: none; box-shadow: 0px 8px 15px rgba(0,0,0,0.1); padding-top: 12px; padding-right: 27; padding-bottom: 12; padding-left: 27" type="submit" name="submit" value="Post" class="btn btn-primary btn-block btn-sm" tabindex="6">-->
-                                        <input type="submit" style=" background-color: #E88D67;box-shadow: 0px 8px 15px rgba(0,0,0,0.1) " name="submit" value="Update Blog" class="btn btn-primary btn-block btn-sm form_attribs" tabindex="6">
+                                        <input type="submit" style=" background-color: #E88D67;box-shadow: 0px 8px 15px rgba(0,0,0,0.1) " name="submit" value="Update Blog" class="btn btn-primary btn-block btn-sm form_attribs" tabindex="8">
 
                                     </div>
                                     <div class="col-md-9">
