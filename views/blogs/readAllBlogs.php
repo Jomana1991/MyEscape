@@ -16,23 +16,23 @@
 
 
 
-              .title{
+/*              .title{
                       font-family: Open Sans, sans-serif;
                       font-size: 55px;
                       font-style: bold;
                       text-align: center;
-              }
+              }*/
 
-              nav{ 
+/*              nav{ 
                       font-family: Open Sans, sans-serif;
                       text-align: center;
                       word-spacing: 30px;
-              }
+              }*/
 
-              nav a{
+/*              nav a{
                       text-decoration: none;
                       color: #CAD3E0;
-              }
+              }*/
 
 
               .container {
@@ -127,10 +127,10 @@
                       }
               }
 
-              footer{
+/*              footer{
                       font-family: Open Sans, sans-serif;
                       text-align: center;
-              }       
+              }       */
       </style>
 </head>
     <body>
