@@ -160,6 +160,7 @@
                         <?php
                         $file = 'views/blogImages/' . $blog->title . "_" . $blog->username . '.jpeg';
 
+
                         if (file_exists($file)) {
                             $img = "<img src='$file' width='450' />";
                             echo $img;
@@ -178,16 +179,17 @@
                         <div class="bloginfo" style="height:100px;">
                             <?php
                             if (strlen($blog->content) > 150) {
-                                echo substr($blog->content, 0, strpos(wordwrap($blog->content, 150), "\n")) . '...' . "<br><br>";
+                                echo strip_tags(substr($blog->content, 0, strpos(wordwrap($blog->content, 150), "\n"))) . '...' . "<br><br>";
                                 //        here I am using wordwrap to line break at the nearest word to 150 characters(so you don't get half words),
                                 //        strpos then returns the position of the first line break, and the content will therefore be shortened to this position by substr
                             } else {
-                                echo $blog->content . "<br><br>";
+                                echo strip_tags($blog->content) . "<br><br>";
                             }
                             ?>
                         </div>
                         <br>
                     <center><div class="button button2"><a href='?controller=blog&action=read&blogID=<?php echo $blog->blogID; ?>' style="color: #fff;"> Read Full Blog </a></div></center>
+
                     </li>
                 <?php } ?>
             </ul>
