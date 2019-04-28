@@ -57,7 +57,7 @@
 
             .contact2-form-title {
                 display: block;
-
+                font: 72px 'Sacramento', cursive;
                 font-size: 39px;
                 color: #001D4A ;
                 line-height: 1.2;
