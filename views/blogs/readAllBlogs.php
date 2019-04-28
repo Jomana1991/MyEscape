@@ -62,7 +62,7 @@
                       box-sizing: border-box;
                       -moz-box-sizing: border-box;
                       -webkit-box-sizing: border-box;
-                 height: 600px;
+                 height: 650px;
               }
 
               ul.blog-post li img {
@@ -156,7 +156,7 @@
                          echo $img = "<img src='$file' width='450' />";
                           }
                          ?>
-                      <h3><?php echo $blog->title . "<br>";?> </h3>
+                      <h3 style="height:35px;"><?php echo $blog->title . "<br>";?> </h3>
                       <div style="text-align: left;">Author: <?php echo $blog->username ?></div>
                       <div style="text-align: left;"><?php echo $blog->categoryName ?></div>
                       <div style="text-align: left;"><?php echo $blog->countryName ?></div>
@@ -173,6 +173,7 @@
     
     }?>
                       </div>
+                      <br>
                       <div class="button"><a href='?controller=blog&action=read&blogID=<?php echo $blog->blogID; ?>'> Read Full Blog </a></div>
                     </li>
                       <?php } ?>
