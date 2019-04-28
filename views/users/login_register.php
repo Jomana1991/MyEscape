@@ -196,7 +196,7 @@ a{color:inherit;text-decoration:none}
 				<div class="group">
 					<input type="submit" name="loginsubmit" class="button" value="Sign In">
 				</div>
-                            <div class="hr"></div>
+                            
 				<div class="foot-lnk">
 					<!--<a href="#forgot">Forgot Password?</a>-->
                                         <a href='?controller=user&action=changePassword'>Forgot password? </a>
@@ -227,10 +227,12 @@ a{color:inherit;text-decoration:none}
 				<div class="group">
 					<input type="submit" name="registersubmit" class="button" value="Sign Up">
 				</div>
-				<div class="hr"></div>
-				<div class="foot-lnk">
-					<label for="tab-1">Already Member?</a>
+                                <div class="foot-lnk">
+                                    
+                                        <a href='?controller=user&action=login'>Already Member?</a>
 				</div>
+				
+				
                             </form>
 			</div>
 		</div>
