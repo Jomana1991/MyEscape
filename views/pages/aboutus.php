@@ -63,6 +63,7 @@
                 line-height: 1.2;
                 text-align: center;
                 padding-bottom: 90px;
+                font: 72px 'Sacramento', cursive;
             }
 
             .avatar{
