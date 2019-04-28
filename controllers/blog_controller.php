@@ -94,8 +94,6 @@ public function read() {
         } else {
             Blog::add();
 
-            #Can't get this to work
-            #$blogs = User::readMine($_GET['username']);
             require_once('./models/user.php');
 
             $blogs = User::readMine($_SESSION['username']);
