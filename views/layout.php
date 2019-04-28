@@ -15,8 +15,8 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="css/bootstrap.css">
-        <link rel="stylesheet" href="css/bootstrap-responsive.css">
+<!--        <link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" href="css/bootstrap-responsive.css">-->
         <meta charset="UTF-8">
 
 
@@ -30,6 +30,7 @@
     position: relative;
     width: 100%;
     background-size: cover;
+    
 }
 .main:before {
     content: '';
@@ -40,37 +41,66 @@
     height: 100%;
     z-index: -1;
     background-repeat: no-repeat;
+    
 }
 #orangefloat {
     height: auto;               
     background: linear-gradient(to right, #EABE7C, #E88D67);
 /*    font-size: 45px;
     font-family: 'Oswald', sans-serif;*/
-    color: #fff;
+    color: #001D4A;;
     min-height: 500px;
     opacity:0.85;
+    font: 16px 'Roboto', sans-serif;
+
 }
 .container {
     margin-left: 10px;
-    margin-top: 10px;
-    
+
+/*    margin-right: 10px;*/
+    margin-top: 20px;
+
 }
 
     p {
       color: #001D4A;
-      font: 14px 'Roboto', sans-serif;
+      font: 16px 'Roboto', sans-serif;
     }
     .bg-custom
     {
-       background-color: #E88D67; 
-      
+
+       background-color: #fff; 
+       opacity: 0.9;
+        color: #001D4A;
+
     }
+    
+ .main h2 {
+  color: #395C6B;
+  font: 72px 'Sacramento', cursive;
+/*  font-weight: bold;*/
+  text-align: center;
+  width:100%
+}
+
+.main h3 {
+  color: #001D4A;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+}
+
+.main h4 {
+  color: #001D4A;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+}
 
 </style>
     
   </head>
   
-  <nav class="navbar fixed-top navbar-expand-md navbar-light bg-custom "style="">
+
+  <nav class="navbar-fixed-top navbar-expand-md navbar-light bg-custom " >
 
   <div class="container">
       <a class="navbar-brand active" href='?controller=pages&action=home'>MyEscape</a>
@@ -118,7 +148,7 @@
           {
             echo "<ul class='nav navbar-nav ml-auto'>";
             echo "<li class='nav-item active'><a class='nav-link'  href='?controller=blog&action=create'><b>Profile Page</b></a></li> ";
-            echo "<li class='nav-item active'><a class='nav-link'  href='?controller=user&action=readMine&username=".$_SESSION['username']."'><b>Blog Archives</b></a></li>";
+            echo "<li class='nav-item active'><a class='nav-link'  href='?controller=user&action=readMine&username=".$_SESSION['username']."'><b>My Blog Archive</b></a></li>";
             echo "<li class='nav-item active'><a class='nav-link'  href='?controller=pages&action=logout'><b>Logout</b></a></li></ul>";
             
           }
@@ -127,24 +157,11 @@
     </div>
   </div>
 </nav>
-
-   
-  <body>
-
-    <div class="w3-container w3-pink">
-
-        <?php require_once('routes.php'); ?>
-
-
-    </div
+<?php require_once('routes.php'); ?>
     <?php require_once('footer.html'); ?>
     
-  
-
   <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
  <script src="jsFunctions.js" type="text/javascript"></script>-->
 
-  
-  
 </html>

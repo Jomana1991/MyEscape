@@ -15,7 +15,8 @@ $_SESSION ['blogID'] = $_GET ['blogID'];
         <!-- Latest compiled JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-        <link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
+<!--        <link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">-->
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
         <style>
             .fader
             {
@@ -32,7 +33,7 @@ $_SESSION ['blogID'] = $_GET ['blogID'];
         </style>
     </head>
     <body>
-
+<div class="main">
         <div class='fader'>
         </div>  
         <br>
@@ -42,31 +43,35 @@ $_SESSION ['blogID'] = $_GET ['blogID'];
         </div>
         <br>
         <div class="row">
-            <div class="col-md-3" >
-                 
-            </div>
-            <div class="col-md-6" align="justify">
-                <p>
-                    <?php echo $blog->content; ?>
-                </p>
-            </div>     
-             <div class="col-md-3" align="center">
-                 <P id="viewCount" style="color: #6A381F; font-size: larger  "><b>Visitors so far : </b><?php echo $blog->viewcounter; ?> </p>
-             </div>
-        </div>
-        <div class="row">
+
             <div class="col-md-12"align="center">
             <?php
             $file = 'views/blogImages/' . $blog->title . "_" . $blog->username . '.jpeg';
 
             if (file_exists($file)) {
-                $img = "<img src='$file' width='150' />";
+                $img = "<img src='$file' width='350' /><br><br>";
                 echo $img;
             } else {
                 echo '';
             }
             ?>
             </div>
+            <br>
+            <br>
+        
+            <div class="row">
+            <div class="col-md-3">
+
+            </div>
+            <div class="col-md-6" align="justify">
+                <p>
+                    <?php echo $blog->content; ?>
+                </p>
+            </div>     
+             <div class="col-md-3">
+             </div>
+        </div>
+        
         </div>    
 <!--Attempting AJAX-->
 <div class="row">
@@ -75,29 +80,21 @@ $_SESSION ['blogID'] = $_GET ['blogID'];
     <div class="col-md-4" >
 
         <a class="btn btn-default btn-sm" id="thumb-button" onclick="addLikeCounter(<?php echo $blog->blogID;?>)">
-              <span class="glyphicon glyphicon-thumbs-up" ></span> Like
+            <span class="fa fa-thumbs-up" ></span> <span style="font: 16px 'Roboto';">Like</span>
         </a>
         <a class="btn btn-default btn-sm" id="thumb-button" onclick="subtractLikeCounter(<?php echo $blog->blogID;?>)">
-              <span class="glyphicon glyphicon-thumbs-down" ></span> Dislike
+              <span class="fa fa-thumbs-down" ></span> <span style="font: 16px 'Roboto';">Dislike</span>
         </a>
-        <p id="counter" class="badge"></p>
-        
+
+        <br>
+        <p id="counter" class="badge" style="font: 16px 'Roboto';color:#395C6B;font-weight: bold;"></p>
+        <p id="viewCount" align="right">Views : <?php echo $blog->viewcounter; ?> </p>
+
     </div>
     <div class="col-md-4" >
     </div>
 </div>
-<!--Non AJAX way-->
-<!--<p>
-    <a href='?controller=blog&action=likeBlog&blogID=<?php echo $blog->blogID; ?>' class="btn btn-default btn-sm" id="thumb-button" onClick="disableButton()">
-          <span class="glyphicon glyphicon-thumbs-up"></span> Like
-    </a>
-    <a href='?controller=blog&action=dislikeBlog&blogID=<?php echo $blog->blogID; ?>' class="btn btn-default btn-sm" id="thumb-button" onClick="disableButton()">
-          <span class="glyphicon glyphicon-thumbs-down"></span> Dislike
-    </a>
-    <br>
-    <span class="badge" id="counter">Score: <?php echo $blog->likecounter; ?></span>
-    <br>
-</p>-->
+
 
 
 
@@ -141,7 +138,7 @@ $_SESSION ['blogID'] = $_GET ['blogID'];
         </div> 
 
   
-
+</div>
     </body>
 </html>
 

@@ -2,30 +2,15 @@
 
 <html>
     <head>
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
         <title>About us</title>
+
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
         <style>
-h2 {
-  color: #395C6B;
-  font: 72px 'Sacramento', cursive;
-/*  font-weight: bold;*/
-  text-align: center;
-  width:100%
-}
 
-h3 {
-  color: #001D4A;
-  font-family: 'Roboto', sans-serif;
-  font-weight: bold;
-}
-
-h4 {
-  color: #001D4A;
-  font-family: 'Roboto', sans-serif;
-  font-weight: bold;
-}
 
 .avatar{
     width:160px;
@@ -55,7 +40,7 @@ h4 {
 .flip-card:hover .flip-card-inner {
   transform: rotateY(180deg);
 
-.flip-card-front, .flip-card-back {
+.flip-card-front, #flip-card-back {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -70,7 +55,7 @@ h4 {
 }
 
 /* Style the back side */
-.flip-card-back {
+#flip-card-back {
   background-color: dodgerblue;
   color: white;
   transform: rotateY(180deg);
@@ -84,7 +69,9 @@ h4 {
     <body>
 <div class="main">
             <div class="container">
-                <div class="row">
+
+<!--                <div class="row">-->
+
                     <div class="  col-md-10 col-md-offset-1">
 <!--                        text-center-->
 <br><br><br>
@@ -114,11 +101,11 @@ h4 {
         <br>
         <h3>What can I do on this website?</h3> 
         <p style="line-height:1.6;"> 
-            <span class="glyphicon glyphicon-globe"></span> Browse the website for inspiration, advice, and memories
-            <br><span class="glyphicon glyphicon-globe"></span> Find particular blogs by geography, category, or keywords
-            <br><span class="glyphicon glyphicon-globe"></span> Register to become part of the ever-growing MyEscape community
-            <br><span class="glyphicon glyphicon-globe"></span> Share your own content and inspire even more people
-            <br><span class="glyphicon glyphicon-globe"></span> Incorporate your Instagram and Twitter feeds with your blog posts
+            <span class="fa fa-globe"></span> Browse the website for inspiration, advice, and memories
+            <br><span class="fa fa-globe"></span> Find particular blogs by geography, category, or keywords
+            <br><span class="fa fa-globe"></span> Register to become part of the ever-growing MyEscape community
+            <br><span class="fa fa-globe"></span> Share your own content and inspire even more people
+            <br><span class="fa fa-globe"></span> Incorporate your Instagram and Twitter feeds with your blog posts
         </p>
         <br>
         <h3>Meet the team</h3>
@@ -150,7 +137,7 @@ h4 {
                 <div class="flip-card-front">
                     <img src="/MyEscape/views/images/dhanu.jpg" class="avatar" alt="Dhanu"> 
                 </div>
-                <div class="flip-card-back">
+                <div id="flip-card-back">
                     <h4>Dhanu</h4> 
                     <p>Top 3 places: x,y,z</p> 
                     <p>Travel tip: Insert text here</p>
@@ -215,12 +202,12 @@ h4 {
 
                         </div>
                     </div>
-                </div>
+<!--                </div>-->
 
             </div>
 
         </div>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<!--        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>-->
     </body>
 </html>

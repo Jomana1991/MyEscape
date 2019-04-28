@@ -236,9 +236,9 @@ $result_cou = $stmt_cou->fetchAll(PDO::FETCH_ASSOC);
 
     ?>
     <br/>
-      <input type="file" name="blogUploader" class="w3-btn w3-pink" />
+      <input type="file" name="blogUploader"  />
       <p>
-        <input class="w3-btn w3-gray" type="submit" value="Update Blog">
+        <input type="submit" style=" background-color: E88D67;box-shadow: 0px 8px 15px rgba(0,0,0,0.1) " name="submit" value="Update Blog" class="btn btn-primary btn-block btn-sm form_attribs" tabindex="6">
         </p>
    
     -->
