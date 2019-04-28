@@ -185,8 +185,8 @@
                                         <div class="flip-card-back" style="background-color: #E88D67;color: white;transform: rotateY(180deg);position: absolute;
                                         width: 100%;height: 100%;border-radius: 50%;backface-visibility: hidden;">
                                             <h4>Ash</h4> 
-                                            <p>Top 3 places: Iceland, Egypt, East part of India  </p>
-                                            <p>Travel tip: Wake up early to avoid crowds...And be flexible $ don't overplan</p>
+                                            <p>Top 3 places: Iceland,<br>Egypt, East part of India  </p>
+                                            <p>Travel tip: Wake up early to avoid crowds...And be flexible, don't overplan</p>
                                         </div>
                                     </div>
                                 </div>
