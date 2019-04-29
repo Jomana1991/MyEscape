@@ -2,8 +2,8 @@
 <?php
 #session_start();//removed as now in layout
 if (!empty($_SESSION['username'])) {
-    echo '<p>Hi ' . $_SESSION['username'] . ' , you are still logged in - want to visit your '
-    . "<a href='?controller=blog&action=create'>profile page </a>?</p>";
+    echo '<h6 style="text-align: center;color:chocolate">Hi ' . $_SESSION['username'] . ' , Why dont you write your travel experience to share with people. Visit '
+    . "<a href='?controller=blog&action=create'>profile page </a>?</h6>";
 }
 ?>
 <html>
@@ -53,7 +53,7 @@ if (!empty($_SESSION['username'])) {
                 width: 100%;
                 top: 0;
                 left: 0;  
-                opacity: 0.3;
+                opacity: 0.5;
                 background-repeat: no-repeat;
                 background-size: cover;
                 color: #001d4a !important;
@@ -176,7 +176,7 @@ if (!empty($_SESSION['username'])) {
             <div class="container">
                 <div class="row">
                     <div class="col-xl-9 mx-auto">
-                        <h1 class="mb-5">Travel . Explore . Share</h1>
+                        <h1 class="mb-5"><b>Travel . Explore . Share</b></h1>
                     </div>
 
                 </div>
@@ -249,21 +249,21 @@ if (!empty($_SESSION['username'])) {
             $(document).ready(function () {
 
                 var count = 0;
-                var images = ["img/share.jpg", "img/desert.jpg", "img/forest1.jpg", "img/baloons2.jpg", "img/airplane.jpg", "img/sea.jpg"];
+                var images = ["img/share.jpg", "img/desert.jpg", "img/lotus.jpeg", "img/baloons2.jpg", "img/airplane.jpg", "img/sea.jpg"];
                 var image = $(".overlay");
 
                 image.css("background-image", "url(" + images[count++] + ")");
 
                 setInterval(function () {
-                    image.fadeOut(500, function () {
+                    image.fadeOut(200, function () {
                         image.css("background-image", "url(" + images[count++] + ")");
-                        image.fadeIn(500);
+                        image.fadeIn(200);
                     });
                     if (count == images.length)
                     {
                         count = 0;
                     }
-                }, 5000);
+                }, 3000);
 
             });
 

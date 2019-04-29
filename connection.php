@@ -11,7 +11,7 @@ class DB {
             if (!isset(self::$instance)) 
             {
             $pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
-            self::$instance = new PDO('mysql:host=localhost;dbname=travelblog', 'blog', 'ADFJBLOG', $pdo_options);
+            self::$instance = new PDO('mysql:host=localhost;dbname=travelblog;charset=utf8mb4', 'blog', 'ADFJBLOG', $pdo_options);
             }
         }
         catch(PDOException $e){

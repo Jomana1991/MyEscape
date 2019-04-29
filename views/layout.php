@@ -5,7 +5,7 @@
     <head>
         <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-
+<link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
@@ -99,22 +99,26 @@ margin: 0 auto;
   font-weight: bold;
 }
 
+  
+  
+
+
 </style>
     
   </head>
   
-
+ 
   <nav class="navbar-fixed-top navbar-expand-md navbar-light bg-custom " >
 
-  <div class="container">
-      <a class="navbar-brand active" href='?controller=pages&action=home'>MyEscape</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+ <div class="container-fluid ">
+       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <!-- left navigation links -->
       <ul class="navbar-nav mr-auto">
-
+          <a class="navbar-brand active" href='?controller=pages&action=home'style="font-family: 'Satisfy', cursive; color: chocolate;font-size: 30px "><b>MyEscape</b></a>
+   
     
         <li class="nav-item active">
             <a class="nav-link" href='?controller=pages&action=home'><b>Home</b>

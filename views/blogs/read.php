@@ -58,7 +58,7 @@ $_SESSION ['blogID'] = $_GET ['blogID'];
                 display: block;
                 font-family: 'Sacramento', cursive;
                 font-size: 70px;
-                color: #E88D67 ;
+                color: chocolate;
                 line-height: 1.2;
                 text-align: center;
 
@@ -70,6 +70,16 @@ $_SESSION ['blogID'] = $_GET ['blogID'];
             .control-label{
                 font: 16px 'Roboto', sans-serif;
             }
+            
+            #share-buttons img 
+            {
+                width: 35px; 
+                padding: 5px;
+                border: 0;
+                box-shadow: 0;
+                display: inline;
+                
+            }
         </style>
     </head>
     <body>
@@ -80,7 +90,7 @@ $_SESSION ['blogID'] = $_GET ['blogID'];
 
 
                     <div class="col-md-12" align="center">
-                        <span><?php echo $blog->title . "<br>"; ?></span> 
+                        <span><b><?php echo utf8_decode($blog->title) . "<br>"; ?></b></span> 
                     </div>
                     <br>
                     <div class="row">
@@ -104,7 +114,7 @@ $_SESSION ['blogID'] = $_GET ['blogID'];
                             
                             <div class="col-md-12" align="justify">
                                 <p>
-                                    <?php echo $blog->content; ?>
+                                    <?php echo utf8_decode($blog->content); ?>
                                 </p>
                             </div>     
 <!--                            <div class="col-md-12">
@@ -127,18 +137,22 @@ $_SESSION ['blogID'] = $_GET ['blogID'];
 
                             <br>
                             <p id="counter" class="badge" style="font: 16px 'Roboto';color: #E88D67; font-weight: bold;"></p>
-                            <p id="viewCount"  style="font: 18px 'Roboto';color: #E88D67;font-weight: bold; " align="right">Visitors : <?php echo $blog->viewcounter; ?> </p>
-
+                            <p id="viewCount"  style="font: 18px 'Roboto';color: chocolate;font-weight: bold; " align="right"> Blog Visitors : <?php echo $blog->viewcounter; ?> </p>
                         </div>
-                        <div class="col-md-12" >
+                        <div class="col-md-12">
+                            
                         </div>
                     </div>
-
-
-
-
-                    <br />
-                    <br />
+                    <div id="share-buttons "style="text-align:center; font-size: 10px"><a href="https://www.facebook.com/sharer.php?u=https://frinmash.blogspot.com" target="_blank">
+                                    <img src="https://4.bp.blogspot.com/-raFYZvIFUV0/UwNI2ek6i3I/AAAAAAAAGSA/zs-kwq0q58E/s1600/facebook.png" alt="Facebook" /></a> 
+                                <a href="https://twitter.com/share?url=https://frinmash.blogspot.com&text=Simple Share Buttons" target="_blank">
+                                    <img src="https://4.bp.blogspot.com/--ISQEurz3aE/UwNI4hDaQMI/AAAAAAAAGS4/ZAgmPiM9Xpk/s1600/twitter.png" alt="Twitter" /></a> 
+                                 <a href="https://plus.google.com/share?url=https://frinmash.blogspot.com" target="_blank">
+                                     <img src="https://2.bp.blogspot.com/-9ijXNtKTaSk/UwNI3ANT4MI/AAAAAAAAGSY/Tu4kE8x9SnI/s1600/google.png" alt="Google" /></a>
+                                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://frinmash.blogspot.com" target="_blank">
+                                    <img src="https://2.bp.blogspot.com/-3_cATk7Wlho/UwNI3eoTTLI/AAAAAAAAGSQ/Y8cpq6S-SeQ/s1600/linkedin.png" alt="LinkedIn" /></a>
+                        </div>
+                  
 
                     <div class="row">
                         <div class="col-lg-12"> </div>
@@ -172,7 +186,9 @@ $_SESSION ['blogID'] = $_GET ['blogID'];
                             <?php } ?>
                         </div> 
                     </div>
-                </div> 
+                    
+                </div>
+                    
             </div>
 
         </div>

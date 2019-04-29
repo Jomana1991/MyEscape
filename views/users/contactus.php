@@ -1,8 +1,12 @@
 
 <html lang="en"><head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
         <title>Contact V2</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+       
+<!--        <link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" href="css/bootstrap-responsive.css">-->
+      
+
         <!--===============================================================================================-->
         <link rel="icon" type="image/png" href="images/icons/favicon.ico">
         <!--===============================================================================================-->
@@ -52,14 +56,14 @@
             /*---------------------------------------------*/
             a {
 
-                font-size: 14px;
+/*                font-size: 14px;*/
                 line-height: 1.7;
-                color: #666666;
+/*                color: #666666;*/
                 margin: 0px;
-                transition: all 0.4s;
-                -webkit-transition: all 0.4s;
+/*                transition: all 0.4s;*/
+/*                -webkit-transition: all 0.4s;
                 -o-transition: all 0.4s;
-                -moz-transition: all 0.4s;
+                -moz-transition: all 0.4s;*/
             }
 
             a:focus {
@@ -384,9 +388,9 @@
         <div class="bg-contact2" style="background-image: url('./img/share.jpg'); opacity: 0.7;">
             <div class="container-contact2">
                 <div class="wrap-contact2">
-                        <span class="contact2-form-title">
+                    <span class="contact2-form-title"><b>
                          Contact Us
-                        </span>
+                        </b></span>
                         <form method="post" name="contact_form" action=" ">
                             <div class="wrap-input2 validate-input" >
                                 <input class="input2" type="text" name="name" required placeholder="NAME">

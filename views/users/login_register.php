@@ -25,6 +25,7 @@
 a{color: #001D4A;text-decoration:none}
 
 .login-wrap{
+    padding-top: 7px;
 	width:100%;
 	margin:auto;
 	max-width:525px;
