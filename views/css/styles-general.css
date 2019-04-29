@@ -11,6 +11,10 @@ pale yellow - #F6F4D2
 FONTS
 font-family: 'Roboto', sans-serif;
 font-family: 'Oswald', sans-serif;
+<link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
+font-family: 'Satisfy', cursive;
+<link href="https://fonts.googleapis.com/css?family=Bangers|Satisfy" rel="stylesheet">
+font-family: 'Bangers', cursive;
 */
 
 .main{

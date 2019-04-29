@@ -108,7 +108,7 @@ if (!is_null($db)) {
                                 <div class="row">
 
                                     <div class="col-md-12" align="center">
-                                        <span> Update Blog Post </span>
+                                        <span><b> Update Blog Post</b> </span>
                                     </div>
 
                                 </div>
@@ -157,7 +157,7 @@ if (!is_null($db)) {
                                     <label for="staticEmail" class="col-sm-2 col-form-label">Content</label>
                                     <div class="col-sm-10">
                                        
-                                        <textarea  class="form-control-plaintext" name="content"  class="w3-input" cols="100" rows="10" tabindex="6"><?= $blog->content; ?> </textarea> 
+                                        <textarea  class="form-control-plaintext" name="content"  class="w3-input" cols="100" rows="10" tabindex="6"><?= utf8_decode($blog->content); ?> </textarea> 
                                     </div>
                                 </div>
                             
