@@ -82,21 +82,29 @@ class User {
         $res_e = $sql_e->execute();
      
   	if ($sql_u->fetchColumn()> 0) {
-  	   die("Sorry... username already taken"."Try differnt username". "<a href='?controller=user&action=register'>Register</a> "); 
+            $message = "This username has already been taken.\\nPlease try again.";
+        
+            echo '<script type="text/javascript">alert("'.$message.'");history.go(-1);</script>';
+            die();
+  	   
          
         }
         elseif ($sql_e->fetchColumn() > 0) {
-        die("Sorry... email is already taken")  ;    
+        $message = "This email has already been registered.\\nPlease try again.";
+        
+            echo '<script type="text/javascript">alert("'.$message.'");history.go(-1);</script>';
+            die();   
         
         }
         else {
-        $hashed_password= password_hash($password, PASSWORD_DEFAULT);
+//        $hashed_password= password_hash($password, PASSWORD_DEFAULT);
         $rej = $db->prepare("INSERT INTO user (Username, Email, Password) VALUES ( :username, :email, :password)");
     
 
 
         $rej->bindParam(':username', $username);
-        $rej->bindParam(':password', $hashed_password);
+//        $rej->bindParam(':password', $hashed_password);
+        $rej->bindParam(':password', $password);
         $rej->bindParam(':email', $email);
 
         

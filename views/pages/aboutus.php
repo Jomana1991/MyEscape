@@ -148,19 +148,19 @@
                         About MyEscape
                     </span>
 
-                    <p>
-                        We are 'MyEscape', a global travel community created to inspire and connect travellers around the world.
-                        We are obsessed with exploring the world, meeting new people and getting as lost as possible.
+                    <p style="text-align:justify">
+                        We are<b> 'MyEscape'</b>, a global travel community created to inspire and connect travellers around the world.
+                        We are obsessed with exploring the world, meeting new people and getting as lots as possible.
                         <br>
-                        We hope this website gives you some inspiration, handy tips to go and chase your own adventures, and a place for you to report back to fellow travellers.
+                        We hope this website gives you some inspiration, handy tips to go and chase your own adventures, and a place for you to report back to fellow travellers. 
                         <br>
                         <br>
-                        <span style="color: #E88D67 ;">Travel is the best kind of education so go out and discover yourself, even if it’s just outside your own doorstep!</span>
+                        <span style="color: chocolate;"><b>Travel is the best kind of education so go out and discover yourself, even if it’s just outside your own doorstep!</b></span>
                     </p>
 
                     <br>
-                    <h3>What can I do on this website?</h3> 
-                    <p style="line-height:1.6;"> 
+                    <h3 style="text-align:center; font: 40px 'Sacramento', cursive;">What can you get on this website?</h3> 
+                    <p  style="line-height:1.6;text-align:justify"> 
                         <span class="fa fa-globe"></span> Browse the website for inspiration, advice, and memories
                         <br><span class="fa fa-globe"></span> Find particular blogs by geography, category, or keywords
                         <br><span class="fa fa-globe"></span> Register to become part of the ever-growing MyEscape community
@@ -168,7 +168,7 @@
                         <br><span class="fa fa-globe"></span> Incorporate your Instagram and Twitter feeds with your blog posts
                     </p>
                     <br>
-                    <h3>Meet the team</h3>
+                    <h3 style="text-align:center; font: 40px 'Sacramento', cursive; ">Meet the team</h3>
                     <center>
                         <div class="row marginRow">
                             <!--    <div class="col-sm-2 col-md-2"  >
@@ -201,8 +201,8 @@
                                         <div class="flip-card-back" style="background-color: #E88D67;color: white;transform: rotateY(180deg);position: absolute;
                                         width: 100%;height: 100%;border-radius: 50%;backface-visibility: hidden;">
                                             <h4>Dhanu</h4> 
-                                            <p>Top 3 places: x,y,z</p> 
-                                            <p>Travel tip: Insert text here</p>
+                                            <p>Top 3 places: <br>Spain,India,Caribbean</p> 
+                                            <p>Travel tip: Don't stick to touristy places, explore local places and cuisine, you will be pleasantly surprised.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -256,17 +256,17 @@
                         <div class="col-xs-12 "  >    
                             <br>
                             
-                            <h3>Get in touch</h3>
+                            
                             <br>
                             <center>
                             <div id="button button2"><a href='?controller=user&action=contactus' style="color: #fff;background: #001D4A; text-align: center;
                 width: 100%;border: none;background: #001D4A;font-family: Roboto, sans-serif;font-weight: 300;font-size: 20px;color: white;border-radius: 5px;padding: 8px 50px 8px 50px;"> Talk to us </a></div>
                         </div>
-</center>
+                    <br>
+                    <h6 style="text-align: center">Want to know more?</h6>
+                    </center>
                         <div class="col-sm-1"  >
-                       
-
-
+                            
                 </div>
             </div>
         </div>

@@ -2,8 +2,8 @@
 @import url('https://fonts.googleapis.com/css?family=Oswald|Roboto');
 
 /*COLOUR PALETTE
-black - #001D4A
-navy - #395C6B
+dark blue - #001D4A
+teal - #395C6B
 dark orange - E88D67
 light orange - #EABE7C
 pale yellow - #F6F4D2
@@ -11,6 +11,10 @@ pale yellow - #F6F4D2
 FONTS
 font-family: 'Roboto', sans-serif;
 font-family: 'Oswald', sans-serif;
+<link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
+font-family: 'Satisfy', cursive;
+<link href="https://fonts.googleapis.com/css?family=Bangers|Satisfy" rel="stylesheet">
+font-family: 'Bangers', cursive;
 */
 
 .main{
