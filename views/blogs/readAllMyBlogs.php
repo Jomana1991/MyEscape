@@ -147,8 +147,8 @@
             <div class="blogscontainer" style="background: linear-gradient(to right, #EABE7C, #E88D67);;margin-top: 0;">
 <!--                <div class="title animated fadeInDown" id="title">-->
                     <span class="contact2-form-title" style="margin-top: 0">
-                        My Blogs
-                    </span>
+                        <b>My Blogs
+                        </b></span>
                 <!--</div>-->
                 
                   <ul class="blog-post columns-2">
