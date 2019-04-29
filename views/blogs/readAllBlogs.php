@@ -146,9 +146,9 @@
     </head>
     <body>
 
-        <div class="blogscontainer" style="background: linear-gradient(to right, #EABE7C, #E88D67);">
+        <div class="blogscontainer" style="background: linear-gradient(to right, #EABE7C, #E88D67);margin-top: 0;">
             <!--                <div class="title animated fadeInDown" id="title">-->
-            <span class="contact2-form-title">
+            <span class="contact2-form-title" style="margin-top: 0;">
                 Blogs
             </span>
             <!--</div>-->
@@ -165,7 +165,7 @@
                             $img = "<img src='$file' width='450' />";
                             echo $img;
                         } else {
-                            $file = 'views/blogImages/holiday_image_default.jpg';
+                            $file = 'views/blogImages/No_Image.jpg';
                             echo $img = "<img src='$file' width='450' />";
                         }
                         ?>

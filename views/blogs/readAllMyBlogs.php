@@ -6,17 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title> Blogs List</title>
     
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:600'>
+  
       
-      <link href="css/BlogListStyle.css" rel="stylesheet" type="text/css"/>
+      
       <style>
 
                 .blogscontainer {
-                margin: 2em 0;
+                margin-top:0;
                 text-align: center;
-
-
             }
 
             h1 {
@@ -147,9 +144,9 @@
 </head>
     <body>
  
-            <div class="blogscontainer" style="background: linear-gradient(to right, #EABE7C, #E88D67);">
+            <div class="blogscontainer" style="background: linear-gradient(to right, #EABE7C, #E88D67);;margin-top: 0;">
 <!--                <div class="title animated fadeInDown" id="title">-->
-                    <span class="contact2-form-title">
+                    <span class="contact2-form-title" style="margin-top: 0">
                         My Blogs
                     </span>
                 <!--</div>-->
@@ -165,7 +162,7 @@
                            $img = "<img src='$file' width='450' />";
                          echo $img;
                          } else {
-                             $file = 'views/blogImages/holiday_image_default.jpg';
+                             $file = 'views/blogImages/No_Image.jpg';
                          echo $img = "<img src='$file' width='450' />";
                           }
                          ?>
