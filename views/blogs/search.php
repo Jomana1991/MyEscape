@@ -10,15 +10,11 @@
 
 <html>
     <head>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-          <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
+    
         <!-- Popper JS -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 
         <!-- Latest compiled JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
         <title> </title>
 
         <style>
@@ -35,8 +31,8 @@
                 background: linear-gradient(to right, #EABE7C, #E88D67);
                 opacity: 0.9;
                 text-align: center;
-font-family: 'Roboto', sans-serif;
-        color: #fff;
+                font-family: 'Roboto', sans-serif;
+                color: #fff;
             }
             .input {
                 display:none;
@@ -79,76 +75,84 @@ font-family: 'Roboto', sans-serif;
                 transform: rotate(-45deg);
                 box-shadow: 0px 5px 10px rgba(0,0,0,.3);
             }
-            
+
             #result {
-                       
-/*                width: 100vw;*/
-        height: auto;                /*                padding: 50px;*/
-        /*                    margin-left: 320px;
-                            margin-top: 300px;*/
-        background: linear-gradient(to right, #EABE7C, #E88D67);
-        font-size: 45px;
-       font-family: 'Roboto', sans-serif;
-/*                text-align:  center;*/
-/*                position: absolute;*/
-        color: #fff;
-/*                display: flex;*/
-/*                flex-direction: column;*/
-        min-height: 500px;
-        opacity:0.9;
-         
-        /*                 border-radius: 80px;*/
-        /*                border: 5px solid white;*/
-     
+
+                /*                width: 100vw;*/
+                height: auto;                /*                padding: 50px;*/
+                /*                    margin-left: 320px;
+                                    margin-top: 300px;*/
+                background: linear-gradient(to right, #EABE7C, #E88D67);
+                font-size: 45px;
+                font-family: 'Roboto', sans-serif;
+                /*                text-align:  center;*/
+                /*                position: absolute;*/
+                color: #fff;
+                /*                display: flex;*/
+                /*                flex-direction: column;*/
+                min-height: 500px;
+                opacity:0.9;
+
+                /*                 border-radius: 80px;*/
+                /*                border: 5px solid white;*/
+
             }
-            
+
             #result .blogresult  {
-           margin-left: 50px
-       
-        }
-        #result .blogresult a {
-            all: unset;
-           font-size: 30px;
-           border: 2px solid white;
-           letter-spacing: 3px;
-           font-family: 'Roboto Condensed'
-       
-        }
-        
-        #result .blogresult hr {
-            width: 40px;
-            colour: #001D4A;
-        }
-        
-    
-           
+                margin-left: 50px
+
+            }
+            #result .blogresult a {
+                all: unset;
+                font-size: 30px;
+                border: 2px solid white;
+                letter-spacing: 3px;
+                font-family: 'Roboto Condensed'
+
+            }
+
+            #result .blogresult hr {
+                width: 40px;
+                colour: #001D4A;
+            }
+
+            span {
+                 font: 72px 'Sacramento', cursive;
+                 color: #fff;
+                  background: linear-gradient(to right, #EABE7C, #E88D67);
+                opacity: 0.9;
+              
+                 text-align: center;
+            }
+
         </style>
     </head>
     <body>      
 
 
-
+<div class="container-fuild">
+    <span> Click to search our blogs </span>
+        </div>
 
         <div class="body">
             <div class="search">
                 <div class="bar"></div>
-                 
+
             </div>
-<!--           <h1> Search for a blog</h1>-->
-           <input name="query" id="query" type="text" class="input" autofocus>
-           <br>
-           <br>
+            <!--           <h1> Search for a blog</h1>-->
+            <input name="query" id="query" type="text" class="input" autofocus>
+            <br>
+            <br>
 
         </div>
         <div class="container-fuild">
- <div id="result" ></div>
+            <div id="result" ></div>
         </div>
 
-    </body>
-</html>
-        <script>
-            
-               $(document).ready(function () {
+   
+    <script>
+
+    $(document).ready(function () {
         $('#query').keyup(function () {
             var txt = $(this).val();
             if (txt != '')
@@ -171,57 +175,58 @@ font-family: 'Roboto', sans-serif;
 
         });
     });
-            $(".search").click(function() {
-  if($(".search").css("width")=="100px")
-    {
-      $(".bar").animate({
-        height: "0px",
-        left: "80%"
-      }, 400);
-      setTimeout(function() {
-        $(".search").animate({
-          width: "500px",
-          left: "55%"
-        });
-        $(".input").css("display", "initial");
-      }, 400);
-      setTimeout(function() {
-        $(".input").attr("placeholder", "Search").focus();
-      }, 900);
-    }
-  else {
-    $(".search").animate({
-        width: "100px",
-        left: "50%"
-      });
-      $(".input").css("display", "none");
-      setTimeout(function() {
-        $(".bar").animate({
-          height: "80px",
-          left: "100%"
-        }, 400);
-      }, 400);
-  }
-});
-$(".body").click(function() {
-  if($(".search").css("width")=="500px") {
-      $(".search").animate({
-        width: "100px",
-        left: "50%"
-      });
-      $(".input").css("display", "none");
-      setTimeout(function() {
-        $(".bar").animate({
-          height: "80px",
-          left: "100%"
-        }, 400);
-      }, 400);
-     }
-});
+    $(".search").click(function () {
+        if ($(".search").css("width") == "100px")
+        {
+            $(".bar").animate({
+                height: "0px",
+                left: "80%"
+            }, 400);
+            setTimeout(function () {
+                $(".search").animate({
+                    width: "500px",
+                    left: "55%"
+                });
+                $(".input").css("display", "initial");
+            }, 400);
+            setTimeout(function () {
+                $(".input").attr("placeholder", "Search").focus();
+            }, 900);
+        } else {
+            $(".search").animate({
+                width: "100px",
+                left: "50%"
+            });
+            $(".input").css("display", "none");
+            setTimeout(function () {
+                $(".bar").animate({
+                    height: "80px",
+                    left: "100%"
+                }, 400);
+            }, 400);
+        }
+    });
+    $(".body").click(function () {
+        if ($(".search").css("width") == "500px") {
+            $(".search").animate({
+                width: "100px",
+                left: "50%"
+            });
+            $(".input").css("display", "none");
+            setTimeout(function () {
+                $(".bar").animate({
+                    height: "80px",
+                    left: "100%"
+                }, 400);
+            }, 400);
+        }
+    });
 
 
-            </script>
-            
+</script>
+ </body>
+</html>
+
 
 
 

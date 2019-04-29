@@ -29,7 +29,7 @@ if (!empty($_SESSION['username'])) {
 
                 height: 100%;
 
-                /*text-align: center;*/
+
             }
 
             header {
