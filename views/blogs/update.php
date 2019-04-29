@@ -118,7 +118,7 @@ if (!is_null($db)) {
                                     <label for="staticEmail" class="col-sm-2 col-form-label">Username</label>
                                     <div class="col-sm-10">
                                        
-                                         <input type="text" class="form-control-plaintext" id="staticEmail" name="username" value="<?= $blog->username; ?>">
+                                        <input type="text" class="form-control-plaintext" id="staticEmail" autofocus="" name="username" value="<?= $blog->username; ?>">
                                     </div>
                                 </div>
                                   <div class="form-group row">
