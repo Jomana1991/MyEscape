@@ -27,7 +27,7 @@
             }
             .body {
                 width: 100vw;
-                height: 40vh;
+                height: 32vh;
                 background: linear-gradient(to right, #EABE7C, #E88D67);
                 opacity: 0.9;
                 text-align: center;
@@ -98,31 +98,32 @@
 
             }
 
-            #result .blogresult  {
+/*            #result .blogresult  {
                 margin-left: 50px
 
-            }
+            }*/
             #result .blogresult a {
-                all: unset;
+                all:unset;
                 font-size: 30px;
-                border: 2px solid white;
-                letter-spacing: 3px;
-                font-family: 'Roboto Condensed'
+/*                border: 2px solid white;*/
+                letter-spacing: 2px;
+               font-family: 'Roboto', sans-serif;
 
             }
 
-            #result .blogresult hr {
-                width: 40px;
-                colour: #001D4A;
-            }
+           
+            
+            .title {}
 
-            span {
-                 font: 72px 'Sacramento', cursive;
+            .title p {
+                 font: 52px 'Sacramento', cursive;
                  color: #fff;
                   background: linear-gradient(to right, #EABE7C, #E88D67);
                 opacity: 0.9;
-              
+           padding-right: 5%;
+           padding-top: 1%;
                  text-align: center;
+                     margin-bottom: 0rem;
             }
 
         </style>
@@ -131,18 +132,27 @@
 
 
 <div class="container-fuild">
-    <span> Click to search our blogs </span>
+    <div class="title">
+    <p> Click to search our blogs </p>
         </div>
-
-        <div class="body">
+    <div class="body">
             <div class="search">
                 <div class="bar"></div>
 
             </div>
             <!--           <h1> Search for a blog</h1>-->
             <input name="query" id="query" type="text" class="input" autofocus>
+    </div>
+
+<!--        <div class="body">
+            <div class="search">
+                <div class="bar"></div>
+
+            </div>
+                       <h1> Search for a blog</h1>
+            <input name="query" id="query" type="text" class="input" autofocus>
             <br>
-            <br>
+            <br>-->
 
         </div>
         <div class="container-fuild">
