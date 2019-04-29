@@ -1,8 +1,12 @@
 
 <html lang="en"><head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
         <title>Contact V2</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+       
+<!--        <link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" href="css/bootstrap-responsive.css">-->
+      
+
         <!--===============================================================================================-->
         <link rel="icon" type="image/png" href="images/icons/favicon.ico">
         <!--===============================================================================================-->
