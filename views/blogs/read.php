@@ -63,6 +63,13 @@ $_SESSION ['blogID'] = $_GET ['blogID'];
                 text-align: center;
 
             }
+            #viewCount {
+               colour: #E88D67; 
+            }
+            
+            .control-label{
+                font: 16px 'Roboto', sans-serif;
+            }
         </style>
     </head>
     <body>
@@ -94,16 +101,14 @@ $_SESSION ['blogID'] = $_GET ['blogID'];
                         <br>
 
                         <div class="row">
-                            <div class="col-md-12">
-
-                            </div>
+                            
                             <div class="col-md-12" align="justify">
                                 <p>
                                     <?php echo $blog->content; ?>
                                 </p>
                             </div>     
-                            <div class="col-md-12">
-                            </div>
+<!--                            <div class="col-md-12">
+                            </div>-->
                         </div>
 
                     </div>    
@@ -113,16 +118,16 @@ $_SESSION ['blogID'] = $_GET ['blogID'];
                         </div>
                         <div class="col-md-12" >
 
-                            <a class="btn btn-default btn-sm" id="thumb-button" onclick="addLikeCounter(<?php echo $blog->blogID; ?>)">
+                            <a class="btn btn-default btn-sm"  id="thumb-button" onclick="addLikeCounter(<?php echo $blog->blogID; ?>)">
                                 <span class="fa fa-thumbs-up" ></span> <span style="font: 16px 'Roboto';">Like</span>
                             </a>
-                            <a class="btn btn-default btn-sm" id="thumb-button" onclick="subtractLikeCounter(<?php echo $blog->blogID; ?>)">
+                            <a class="btn btn-default btn-sm"  id="thumb-button" onclick="subtractLikeCounter(<?php echo $blog->blogID; ?>)">
                                 <span class="fa fa-thumbs-down" ></span> <span style="font: 16px 'Roboto';">Dislike</span>
                             </a>
 
                             <br>
-                            <p id="counter" class="badge" style="font: 16px 'Roboto';color:#395C6B;font-weight: bold;"></p>
-                            <p id="viewCount" align="right">Views : <?php echo $blog->viewcounter; ?> </p>
+                            <p id="counter" class="badge" style="font: 16px 'Roboto';color: #E88D67; font-weight: bold;"></p>
+                            <p id="viewCount"  style="font: 18px 'Roboto';color: #E88D67;font-weight: bold; " align="right">Visitors : <?php echo $blog->viewcounter; ?> </p>
 
                         </div>
                         <div class="col-md-12" >
@@ -145,11 +150,11 @@ $_SESSION ['blogID'] = $_GET ['blogID'];
                                     <div class="col-lg-12">
                                         <textarea class="form-control" rows="2" cols="5" name="senderName" placeholder="Enter your name" required ></textarea>
                                         <br />
-                                        <textarea class="form-control" rows="5" cols="10" name="Content" placeholder="comment" required></textarea>
+                                        <textarea class="form-control" rows="5" cols="10" name="Content" placeholder="Comment" required></textarea>
                                     </div>
                                 </div>
                                 <br />
-                                <input type="submit" name="postcomment" value="comment" class="btn btn-primary">
+                                <input type="submit" name="postcomment" value="Comment" class="btn btn-primary" style="background: #001D4A;border: none;">
 
                             </form>  
 
@@ -171,6 +176,7 @@ $_SESSION ['blogID'] = $_GET ['blogID'];
             </div>
 
         </div>
+
 
 
         <script>
@@ -195,6 +201,7 @@ $_SESSION ['blogID'] = $_GET ['blogID'];
                         document.getElementById("counter").innerHTML = this.responseText;//how to deal with server response
                     }
                 };//end of readystate change function
+
 
                 xhttp.open("GET", "index.php?controller=blog&action=dislikeBlog&blogID=" + blogID, true);
                 xhttp.send();

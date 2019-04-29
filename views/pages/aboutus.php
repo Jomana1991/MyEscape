@@ -76,7 +76,8 @@
                 width: 200px;
                 height: 200px;
                 perspective: 1000px; /* Remove this if you don't want the 3D effect */
-                margin: 70px;
+                margin: 30px 70px 30px 70px;
+/*                margin-bottom: 10px;*/
             }
 
             /* This container is needed to position the front and back side */
@@ -93,6 +94,7 @@
             /* Do an horizontal flip when you move the mouse over the flip box container */
             .flip-card:hover .flip-card-inner {
                 transform: rotateY(180deg);
+            }
 
 /*                .flip-card-front, #flip-card-back {
                     position: absolute;
@@ -131,7 +133,7 @@
                 padding: 8px 8px 8px 8px;
             }
 
-            }
+            
         </style>    
 
     </head>
@@ -168,7 +170,7 @@
                     <br>
                     <h3>Meet the team</h3>
                     <center>
-                        <div class="row">
+                        <div class="row marginRow">
                             <!--    <div class="col-sm-2 col-md-2"  >
                                 </div>-->
 
@@ -183,8 +185,8 @@
                                         <div class="flip-card-back" style="background-color: #E88D67;color: white;transform: rotateY(180deg);position: absolute;
                                         width: 100%;height: 100%;border-radius: 50%;backface-visibility: hidden;">
                                             <h4>Ash</h4> 
-                                            <p>Top 3 places: x,y,z</p>
-                                            <p>Travel tip: Insert text here</p>
+                                            <p>Top 3 places: Iceland,<br>Egypt, East part of India  </p>
+                                            <p>Travel tip: Wake up early to avoid crowds...And be flexible, don't overplan</p>
                                         </div>
                                     </div>
                                 </div>
@@ -206,7 +208,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row marginRow">
                             <!--    <div class="col-sm-1  hidden-lg hidden-md">
                                 </div>
                                 <div class="col-sm-1 hidden-lg hidden-md" >
@@ -252,7 +254,7 @@
 
                    
                         <div class="col-xs-12 "  >    
-                            
+                            <br>
                             
                             <h3>Get in touch</h3>
                             <br>

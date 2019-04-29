@@ -221,6 +221,10 @@ a{color: #001D4A;text-decoration:none}
 					<label for="user" class="label">Username</label>
                                         <input id="user" type="text" name="username" class="input" required >
 				</div>
+                                <div class="group">
+					<label for="pass" class="label">Email </label>
+					<input id="pass" type="text" name="email"class="input" required  >
+				</div>
 				<div class="group">
 					<label for="pass" class="label">Password</label>
                                         <input id="pass" type="password" class="input" name="password" data-type="password" value="" pattern="^[a-zA-Z]\w{3,14}$" required >
@@ -229,17 +233,14 @@ a{color: #001D4A;text-decoration:none}
 					<label for="pass" class="label">Confirm Password</label>
 					<input id="pass" type="password" class="input"  name="confirmPassword" data-type="password" required  >
 				</div>
-				<div class="group">
-					<label for="pass" class="label">Email </label>
-					<input id="pass" type="text" name="email"class="input" required  >
-				</div>
+				
 				<div class="group">
 					<input type="submit" name="registersubmit" class="button" value="Sign Up">
 				</div>
 
                                 <div class="foot-lnk">
                                     
-                                        <a href='?controller=user&action=login' style="color: #001D4A">Already Member?</a>
+                                        <a href='?controller=user&action=login' style="color: #001D4A">Already a Member?</a>
 
 				</div>
 				
