@@ -145,7 +145,7 @@
                 <div class="wrap-contact2">
                     <span class="contact2-form-title">
 
-                        About MyEscape
+                        <b>About MyEscape</b>
                     </span>
 
                     <p style="text-align:justify">
@@ -259,11 +259,13 @@
                             
                             <br>
                             <center>
-                            <div id="button button2"><a href='?controller=user&action=contactus' style="color: #fff;background: #001D4A; text-align: center;
+                            <div id="button button2">
+                                <h6 style="text-align: center">Want to know more?</h6>
+                                <a href='?controller=user&action=contactus' style="color: #fff;background: #001D4A; text-align: center;
                 width: 100%;border: none;background: #001D4A;font-family: Roboto, sans-serif;font-weight: 300;font-size: 20px;color: white;border-radius: 5px;padding: 8px 50px 8px 50px;"> Talk to us </a></div>
                         </div>
                     <br>
-                    <h6 style="text-align: center">Want to know more?</h6>
+                    
                     </center>
                         <div class="col-sm-1"  >
                             
