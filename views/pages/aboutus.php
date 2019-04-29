@@ -152,7 +152,7 @@
                         We are<b> 'MyEscape'</b>, a global travel community created to inspire and connect travellers around the world.
                         We are obsessed with exploring the world, meeting new people and getting as lots as possible.
                         <br>
-                        We hope this website gives you some inspiration, handy tips to go and chase your own adventures, and a place for you to report back to fellow travellers.
+                        We hope this website gives you some inspiration, handy tips to go and chase your own adventures, and a place for you to report back to fellow travellers. 
                         <br>
                         <br>
                         <span style="color: chocolate;"><b>Travel is the best kind of education so go out and discover yourself, even if it’s just outside your own doorstep!</b></span>
