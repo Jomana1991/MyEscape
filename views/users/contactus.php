@@ -384,9 +384,9 @@
         <div class="bg-contact2" style="background-image: url('./img/share.jpg'); opacity: 0.7;">
             <div class="container-contact2">
                 <div class="wrap-contact2">
-                        <span class="contact2-form-title">
+                    <span class="contact2-form-title"><b>
                          Contact Us
-                        </span>
+                        </b></span>
                         <form method="post" name="contact_form" action=" ">
                             <div class="wrap-input2 validate-input" >
                                 <input class="input2" type="text" name="name" required placeholder="NAME">
