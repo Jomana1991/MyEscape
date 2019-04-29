@@ -201,8 +201,8 @@
                                         <div class="flip-card-back" style="background-color: #E88D67;color: white;transform: rotateY(180deg);position: absolute;
                                         width: 100%;height: 100%;border-radius: 50%;backface-visibility: hidden;">
                                             <h4>Dhanu</h4> 
-                                            <p>Top 3 places: x,y,z</p> 
-                                            <p>Travel tip: Insert text here</p>
+                                            <p>Top 3 places: <br>Spain,India,Caribbean</p> 
+                                            <p>Travel tip: Don't stick to touristy places, explore local places and cuisine, you will be pleasantly surprised.</p>
                                         </div>
                                     </div>
                                 </div>
