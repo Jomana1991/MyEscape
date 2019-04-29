@@ -80,7 +80,7 @@ $_SESSION ['blogID'] = $_GET ['blogID'];
 
 
                     <div class="col-md-12" align="center">
-                        <span><?php echo $blog->title . "<br>"; ?></span> 
+                        <span><?php echo utf8_decode($blog->title) . "<br>"; ?></span> 
                     </div>
                     <br>
                     <div class="row">
@@ -104,7 +104,7 @@ $_SESSION ['blogID'] = $_GET ['blogID'];
                             
                             <div class="col-md-12" align="justify">
                                 <p>
-                                    <?php echo $blog->content; ?>
+                                    <?php echo utf8_decode($blog->content); ?>
                                 </p>
                             </div>     
 <!--                            <div class="col-md-12">
