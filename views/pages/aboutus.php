@@ -155,7 +155,7 @@
                         We hope this website gives you some inspiration, handy tips to go and chase your own adventures, and a place for you to report back to fellow travellers. 
                         <br>
                         <br>
-                        <span style="color: chocolate;"><b>Travel is the best kind of education so go out and discover yourself, even if it’s just outside your own doorstep!</b></span>
+                        <span style="color: chocolate;"><b>Travel is the best kind of education, so go out and discover yourself, even if it’s just outside your own doorstep!</b></span>
                     </p>
 
                     <br>
