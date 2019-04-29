@@ -149,7 +149,7 @@
         <div class="blogscontainer" style="background: linear-gradient(to right, #EABE7C, #E88D67);margin-top: 0;">
             <!--                <div class="title animated fadeInDown" id="title">-->
             <span class="contact2-form-title" style="margin-top: 0;">
-                Blogs
+                <b>Blogs</b>
             </span>
             <!--</div>-->
 
@@ -169,12 +169,13 @@
                             echo $img = "<img src='$file' width='450' />";
                         }
                         ?>
-                        <h3 style="height:35px;"><?php echo $blog->title . "<br>"; ?> </h3>
+                        <h3 style="height:35px;"><b><?php echo $blog->title . "<br>"; ?> </b></h3>
                         <div class="bloginfo" style="">Author: <?php echo $blog->username ?></div>
                         <br>
                         <div class="bloginfo button button1" style="line-height:1.3;color: #fff;"><?php echo $blog->categoryName ?></div>
-                        <div class="bloginfo" style="line-height:1.3;"><?php echo $blog->countryName ?></div>
-                        <div class="bloginfo" style="line-height:1.3;"><?php echo $blog->continentName ?></div>
+                        <br>
+                        <div class="bloginfo" style="line-height:1.3;">Country: <?php echo $blog->countryName ?></div>
+                        <div class="bloginfo" style="line-height:1.3;">Continent: <?php echo $blog->continentName ?></div>
                         <br>
                         <div class="bloginfo" style="height:100px;">
                             <?php
