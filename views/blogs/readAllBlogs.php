@@ -188,7 +188,7 @@
                             }
                             ?>
                         </div>
-                        <br>
+                        
                     <center><div class="button button2"><a href='?controller=blog&action=read&blogID=<?php echo $blog->blogID; ?>' style="color: #fff;"> Read Full Blog </a></div></center>
 
                     </li>
