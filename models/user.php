@@ -36,8 +36,7 @@ class User {
             $query->execute();
             $results = $query->fetchAll();
             if ($results) {
-                echo "<script>window.location.href = 'index.php?controller=blog&action=create';</script";
-                 #header('location:?controller=blog&action=create');
+                 header('location:?controller=blog&action=create');
             } 
             else {
                 $message = "Username and/or password are incorrect.\\nPlease try again.";
@@ -113,9 +112,7 @@ class User {
          
          if ($result ==1 ) { 
              echo "Please enter the login details";
-             header('location:?controller=user&action=login');
-             
-         }            
+             header('location:?controller=user&action=login');}            
             
             }
             }
@@ -209,7 +206,7 @@ class User {
         try{
         $req = $db->prepare("Call updatePassword(:username, :newPassword);");
         $req->bindParam(':username', $username);
-        $req->bindParam(':newPassword', $newPassword);
+        $req->bindParam(':newPassword', $newPasswordHashed);
         
         $passwordUpdateDetails = filter_input_array(INPUT_POST);
         //asking whether title is empty refers to whether the addform has been submitted yet, if not the query is run
@@ -218,7 +215,7 @@ class User {
                 ${$formDetail} = User::filterInput($formDetail);
             }
             
-            #$newPasswordHashed=password_hash($newPassword, PASSWORD_DEFAULT);
+            $newPasswordHashed=password_hash($newPassword, PASSWORD_DEFAULT);
             
             $req->execute();
             
@@ -298,4 +295,3 @@ class User {
             }
 
 }
-
