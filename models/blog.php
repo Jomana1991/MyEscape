@@ -185,8 +185,8 @@ class Blog {
             ;
         }
         $tempFile = $_FILES[self::UploadKey]['tmp_name'];
-        //$filepath = "/Applications/XAMPP/xamppfiles/htdocs/MyEscape/views/blogImages/";
-          $filepath = "/Applications/XAMPP/xamppfiles/htdocs/MyEscape/views/blogImages";
+//        $filepath = "/Applications/XAMPP/xamppfiles/htdocs/MyEscape/views/blogImages/";
+          $filepath = "/Applications/XAMPP/xamppfiles/htdocs/MyEscape/views/blogImages/";
 //        $filepath = "C:/xampp/htdocs/MyEscape/views/blogImages/";
         $destinationFile = $filepath . $name . '.jpeg';
         if (!move_uploaded_file($tempFile, $destinationFile)) {
