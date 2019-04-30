@@ -235,7 +235,7 @@
                                     <div class="flip-card-inner">
                                         <div class="flip-card-front" style="background-color: #bbb;color: black;position: absolute;
                                         width: 100%;height: 100%;border-radius: 50%;backface-visibility: hidden;">
-                                            <img src="/MyEscape/views/images/jomana.jpg" class="avatar" alt="Jomana">
+                                            <img src="/MyEscape/views/images/j.png" class="avatar" alt="Jomana">
                                         </div>
                                         <div class="flip-card-back" style="background-color: #E88D67;color: white;transform: rotateY(180deg);position: absolute;
                                         width: 100%;height: 100%;border-radius: 50%;backface-visibility: hidden;">
