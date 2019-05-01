@@ -2,8 +2,8 @@
 <?php
 #session_start();//removed as now in layout
 if (!empty($_SESSION['username'])) {
-    echo '<h6 style="text-align: center;color:chocolate">Hi ' . $_SESSION['username'] . ', Why dont you write your travel experience to share with the world. Visit '
-    . "<a href='?controller=blog&action=create'>your profile page </a>?</h6>";
+    echo '<h6 style="text-align: center;color:chocolate">Hi ' . $_SESSION['username'] . ', Why dont you share your travel experiences with the world?.. '
+    . "<a href='?controller=blog&action=create'>Write a blog </a></h6>";
 }
 ?>
 <html>
