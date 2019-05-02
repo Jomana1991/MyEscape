@@ -36,7 +36,8 @@ class User {
             $query->execute();
             $results = $query->fetchAll();
             if ($results) {
-                 header('location:?controller=blog&action=create');
+                 #header('location:?controller=blog&action=create');
+                echo "<script>window.location.href = 'index.php?controller=blog&action=create';</script>";
             } 
             else {
                 $message = "Username and/or password are incorrect.\\nPlease try again.";
@@ -111,8 +112,10 @@ class User {
          
          if ($result ==1 ) { 
              echo "Please enter the login details";
-             header('location:?controller=user&action=login');}            
-            
+             #header('location:?controller=user&action=login');}   
+             echo "<script>window.location.href = 'index.php?controller=user&action=login';</script>";
+         }
+             
             }
             }
             catch(PDOException $e){
