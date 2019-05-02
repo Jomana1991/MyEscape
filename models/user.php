@@ -101,7 +101,6 @@ class User {
         $rej = $db->prepare("INSERT INTO user (Username, Email, Password) VALUES ( :username, :email, :password)");
     
 
-
         $rej->bindParam(':username', $username);
 //        $rej->bindParam(':password', $hashed_password);
         $rej->bindParam(':password', $password);
