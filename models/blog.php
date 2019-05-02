@@ -188,8 +188,8 @@ class Blog {
 
 //        $filepath = "/Applications/XAMPP/xamppfiles/htdocs/MyEscape/views/blogImages/";
 
-          $filepath = "/Applications/XAMPP/xamppfiles/htdocs/MyEscape/views/blogImages/";
-//        $filepath = "C:/xampp/htdocs/MyEscape/views/blogImages/";
+          #$filepath = "/Applications/XAMPP/xamppfiles/htdocs/MyEscape/views/blogImages/";
+ $filepath = "C:/xampp/htdocs/MyEscape/views/blogImages/";
         $destinationFile = $filepath . $name . '.jpeg';
         if (!move_uploaded_file($tempFile, $destinationFile)) {
             trigger_error("Handle Error");
@@ -323,7 +323,8 @@ public function addComment($blogid,$username) {
             $sql->execute();
 
             if ($sql) {
-                header('header:?controller=blog&action=read&blogID=' . $blogid);
+                #header('location:?controller=blog&action=read&blogID=' . $blogid);
+                echo "<script>window.location.href = 'index.php?controller=blog&action=read&blogID=".$blogid."';</script>";
             }
         } else {
         if (isset($_POST['Content']) && $_POST['Content'] != "") {
@@ -341,7 +342,8 @@ public function addComment($blogid,$username) {
         $sql->execute();
 
         if ($sql) {
-            header('header:?controller=blog&action=read&blogID=' . $blogid);
+            #header('header:?controller=blog&action=read&blogID=' . $blogid);
+            echo "<script>window.location.href = 'index.php?controller=blog&action=read&blogID=".$blogid."';</script>";
         }
     }
 
